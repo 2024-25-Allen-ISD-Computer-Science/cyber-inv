@@ -21,12 +21,12 @@ export default function Home() {
       {/* Blobs */}
       {/* Blob 1 */}
       <div
-        className="absolute -top-4 right-1/2 w-[500px] h-[500px] bg-purple-500 rounded-full filter blur-3xl opacity-40 -translate-x-1/2 -translate-y-1/2"
+        className=" animate-pulse absolute -top-4 right-1/2 w-[500px] h-[500px] bg-purple-500 rounded-full filter blur-3xl opacity-40 -translate-x-1/2 -translate-y-1/2"
         style={{ transform: "rotate(45deg)" }}
       ></div>
       {/* Blob 2 */}
       <div
-        className="absolute left-1/2 w-[400px] h-[400px] bg-violet-300 rounded-full filter blur-3xl opacity-30 -translate-x-1/2"
+        className="animate-pulse delay-500 absolute left-1/2 w-[400px] h-[400px] bg-violet-300 rounded-full filter blur-3xl opacity-30 -translate-x-1/2"
         style={{ transform: "rotate(-30deg)" }}
       ></div>
       {/* Blob 3 */}
