@@ -5,6 +5,16 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import cyb1 from "@/app/gal/cybinv1.jpg";
+import cyb2 from "@/app/gal/cybinv2.jpg";
+import cyb3 from "@/app/gal/cybinv3.jpg";
+import cyb4 from "@/app/gal/cybinv4.jpg";
+import cyb5 from "@/app/gal/cybinv5.jpg";
+import cyb6 from "@/app/gal/cybinv6.jpg";
+import cyb7 from "@/app/gal/cybinv7.jpg";
+import cyb8 from "@/app/gal/cybinv8.jpg";
+import cyb9 from "@/app/gal/cybinv9.jpg";
+
 export default function Home() {
   return (
     <main className="relative w-full h-full bg-gradient-to-r from-gray-900 to-black overflow-hidden">
@@ -199,6 +209,27 @@ export default function Home() {
               <div className="text-lg text-center">Role of the person</div>
             </div>
           </div>
+        </div>
+      </section>
+      <section className="w-full h-full">
+        <h1 className="text-7xl text-center font-bold underline mb-10">
+          Gallery
+        </h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
+          {/* Gallery items */}
+          {[cyb1, cyb2, cyb3, cyb4, cyb5, cyb6, cyb7, cyb8, cyb9].map(
+            (image, index) => (
+              <div key={index} className="rounded-lg overflow-hidden shadow-lg">
+                <Image
+                  src={image}
+                  alt={`Gallery image ${index + 1}`}
+                  width={500}
+                  height={500}
+                  className="object-cover h-full w-full hover:zoom-in-75"
+                />
+              </div>
+            )
+          )}
         </div>
       </section>
     </main>
