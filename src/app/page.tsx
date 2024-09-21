@@ -212,10 +212,10 @@ export default function Home() {
         </div>
       </section>
       <section className="w-full h-full">
-        <h1 className="text-7xl text-center font-bold underline mb-10">
+        {/* <h1 className="text-7xl text-center font-bold underline mb-10">
           Gallery
-        </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
+        </h1> */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 p-4">
           {/* Gallery items */}
           {[cyb1, cyb2, cyb3, cyb4, cyb5, cyb6, cyb7, cyb8, cyb9].map(
             (image, index) => (
@@ -225,6 +225,9 @@ export default function Home() {
                   alt={`Gallery image ${index + 1}`}
                   width={500}
                   height={500}
+                  loading="lazy"
+                  placeholder="blur"
+                  
                   className="object-cover h-full w-full hover:zoom-in-75"
                 />
               </div>
