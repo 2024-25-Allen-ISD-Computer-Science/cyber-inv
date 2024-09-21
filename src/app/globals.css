@@ -104,3 +104,80 @@ body {
   -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
   mask-image: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
 }
+
+/* Section Styling */
+.main-section {
+  background: linear-gradient(to right, #2D2D2D, #141414);
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* Logo Section */
+.logo-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.eagle-logo {
+  width: 200px;
+  height: 200px;
+}
+
+/* Collaboration Section */
+.collab-section {
+  margin-top: 50px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+}
+
+.collab-logos img {
+  width: 100px;
+  height: auto;
+  margin: 0 20px;
+}
+
+.collab-text {
+  font-size: 1.5rem;
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+/* Buttons */
+.button-section {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.login-button {
+  background-color: #6A1B9A; /* Purple for login */
+  color: white;
+}
+
+.signup-button {
+  background-color: white;
+  color: #6A1B9A;
+  border: 2px solid #6A1B9A;
+}
