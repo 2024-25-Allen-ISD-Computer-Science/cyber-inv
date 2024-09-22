@@ -5,6 +5,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import Link from "next/link";
+import { AiOutlineDiscord } from "react-icons/ai";
+import { FaInstagram } from "react-icons/fa";
 import cyb1 from "@/app/gal/cybinv1.jpg";
 import cyb2 from "@/app/gal/cybinv2.jpg";
 import cyb3 from "@/app/gal/cybinv3.jpg";
@@ -14,7 +17,14 @@ import cyb6 from "@/app/gal/cybinv6.jpg";
 import cyb7 from "@/app/gal/cybinv7.jpg";
 import cyb8 from "@/app/gal/cybinv8.jpg";
 import cyb9 from "@/app/gal/cybinv9.jpg";
-
+import * as React from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 export default function Home() {
   return (
     <main className="relative w-full h-full bg-gradient-to-r from-gray-900 to-black overflow-hidden">
@@ -42,7 +52,8 @@ export default function Home() {
           {/* Eagle Icon */}
           <div className="relative w-72 h-72 z-20 my-20">
             <Image
-              src="/favicon.ico" // Replace with actual logo path
+              src="/favicon.ico"
+              priority // Replace with actual logo path
               width={500}
               height={500}
               alt="Eagle Logo"
@@ -57,7 +68,7 @@ export default function Home() {
 
         {/* Footer Section - Made in collaboration */}
         <div className="w-full py-4 bg-gray-50 bg-opacity-10 border-y border-gray-500 z-20">
-          <div className="text-center text-2xl text-gray-200 mb-4">
+          <div className="text-center text-2xl text-gray-200/60 mb-4">
             Made in collaboration with
           </div>
 
@@ -68,26 +79,14 @@ export default function Home() {
 
       {/* Placeholder for Additional Sections */}
       <section className="w-full h-full px-4 flex flex-col justify-center place-content-center gap-5">
-        <div className="bg-black bg-opacity-30 p-10 rounded-3xl w-full">
-          <h1 className="text-7xl text-center font-bold underline">
-            Social Links
-          </h1>
-
-          {/* Responsive grid layout */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6 h-fit justify-center place-items-center mt-10 w-full">
-            {/* Each person */}
-            <div className="flex flex-col items-center">
-              <div className="rounded-full bg-gray-300 h-32 w-32"></div>
-            </div>
-
-            <div className="flex flex-col items-center">
-              <div className="rounded-full bg-gray-300 h-32 w-32"></div>
-            </div>
-
-            <div className="flex flex-col items-center">
-              <div className="rounded-full bg-gray-300 h-32 w-32"></div>
-            </div>
-          </div>
+        {/* Responsive grid layout */}
+        <div className="inline-flex justify-center gap-x-10 my-10">
+          <Link href={"#"}>
+            <AiOutlineDiscord className="size-24 hover:fill-blue-400" />
+          </Link>
+          <Link href={"https://www.instagram.com/allencyberinvitational/"}>
+            <FaInstagram className="size-24 hover:fill-violet-400" />
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
@@ -118,8 +117,27 @@ export default function Home() {
               <h1 className="text-5xl text-center font-bold underline">
                 Prizes
               </h1>
-              <div className="text-9xl font-bold text-center flex justify-center place-content-center p-5">
-                <div></div>
+
+              <div className="text-9xl font-bold text-center  w-full md:p-5">
+                <div className="flex space-x-4 items-end h-96 w-full  justify-center place-content-center">
+                  <div className="flex flex-col justify-end items-center w-28 h-40 rounded-md bg-zinc-900">
+                    <div className="w-full h-20 mb-2 "></div>
+                    <span className="text-2xl mb-2">$$$</span>
+                    <span className="text-xl">3rd</span>
+                  </div>
+
+                  <div className="flex flex-col justify-end items-center w-36 h-52 rounded-md bg-zinc-900">
+                    <div className="w-full h-28 mb-2 "></div>
+                    <span className="text-3xl mb-2">$$$$$</span>
+                    <span className="text-xl">1st</span>
+                  </div>
+
+                  <div className="flex flex-col justify-end items-center w-32 h-48 rounded-md bg-zinc-900">
+                    <div className="w-full h-24 mb-2 "></div>
+                    <span className="text-2xl mb-2">$$$$</span>
+                    <span className="text-xl">2nd</span>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -158,63 +176,73 @@ export default function Home() {
             Brought to you by!
           </h1>
 
-          {/* Responsive grid layout */}
-          <div className="border-white border-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6 h-fit justify-items-center mt-10">
-            {/* Each person */}
-            <div className="flex flex-col items-center h-full">
-              <div className="rounded-full bg-gray-300 h-32 w-32"></div>
-              <div className="text-lg font-bold mt-4 text-center">
-                Name of the person
-              </div>
-              <div className="text-lg text-center">Role of the person</div>
-            </div>
+          {/* Carousel wrapper */}
+          <div className="flex justify-center mt-10">
+            <Carousel>
+              <CarouselContent className="flex justify-center -ml-2 md:-ml-4">
+                <CarouselItem className="pl-2 md:pl-4">
+                  <div className="grid grid-cols-3 gap-6 h-fit justify-items-center">
+                    {/* Each person */}
+                    <div className="flex flex-col items-center h-full">
+                      <div className="rounded-full bg-gray-300 h-32 w-32"></div>
+                      <div className="text-lg font-bold mt-4 text-center">
+                        Person 1
+                      </div>
+                      <div className="text-lg text-center">Role 1</div>
+                    </div>
+                    <div className="flex flex-col items-center h-full">
+                      <div className="rounded-full bg-gray-300 h-32 w-32"></div>
+                      <div className="text-lg font-bold mt-4 text-center">
+                        Person 2
+                      </div>
+                      <div className="text-lg text-center">Role 2</div>
+                    </div>
+                    <div className="flex flex-col items-center h-full">
+                      <div className="rounded-full bg-gray-300 h-32 w-32"></div>
+                      <div className="text-lg font-bold mt-4 text-center">
+                        Person 3
+                      </div>
+                      <div className="text-lg text-center">Role 3</div>
+                    </div>
+                  </div>
+                </CarouselItem>
 
-            <div className="flex flex-col items-center h-full">
-              <div className="rounded-full bg-gray-300 h-32 w-32"></div>
-              <div className="text-lg font-bold mt-4 text-center">
-                Name of the person
-              </div>
-              <div className="text-lg text-center">Role of the person</div>
-            </div>
+                <CarouselItem className="pl-2 md:pl-4">
+                  <div className="grid grid-cols-3 gap-6 h-fit justify-items-center">
+                    <div className="flex flex-col items-center h-full">
+                      <div className="rounded-full bg-gray-300 h-32 w-32"></div>
+                      <div className="text-lg font-bold mt-4 text-center">
+                        Person 4
+                      </div>
+                      <div className="text-lg text-center">Role 4</div>
+                    </div>
+                    <div className="flex flex-col items-center h-full">
+                      <div className="rounded-full bg-gray-300 h-32 w-32"></div>
+                      <div className="text-lg font-bold mt-4 text-center">
+                        Person 5
+                      </div>
+                      <div className="text-lg text-center">Role 5</div>
+                    </div>
+                    <div className="flex flex-col items-center h-full">
+                      <div className="rounded-full bg-gray-300 h-32 w-32"></div>
+                      <div className="text-lg font-bold mt-4 text-center">
+                        Person 6
+                      </div>
+                      <div className="text-lg text-center">Role 6</div>
+                    </div>
+                  </div>
+                </CarouselItem>
 
-            <div className="flex flex-col items-center h-full">
-              <div className="rounded-full bg-gray-300 h-32 w-32"></div>
-              <div className="text-lg font-bold mt-4 text-center">
-                Name of the person
-              </div>
-              <div className="text-lg text-center">Role of the person</div>
-            </div>
-
-            <div className="flex flex-col items-center h-full">
-              <div className="rounded-full bg-gray-300 h-32 w-32"></div>
-              <div className="text-lg font-bold mt-4 text-center">
-                Name of the person
-              </div>
-              <div className="text-lg text-center">Role of the person</div>
-            </div>
-
-            <div className="flex flex-col items-center h-full">
-              <div className="rounded-full bg-gray-300 h-32 w-32"></div>
-              <div className="text-lg font-bold mt-4 text-center">
-                Name of the person
-              </div>
-              <div className="text-lg text-center">Role of the person</div>
-            </div>
-
-            <div className="flex flex-col items-center h-full">
-              <div className="rounded-full bg-gray-300 h-32 w-32"></div>
-              <div className="text-lg font-bold mt-4 text-center">
-                Name of the person
-              </div>
-              <div className="text-lg text-center">Role of the person</div>
-            </div>
+                {/* Add more CarouselItems as needed */}
+              </CarouselContent>
+            </Carousel>
           </div>
         </div>
       </section>
-      <section className="w-full h-full">
-        {/* <h1 className="text-7xl text-center font-bold underline mb-10">
-          Gallery
-        </h1> */}
+      <section className="relative w-full h-full">
+        {/* Fade-out shadow */}
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black to-transparent pointer-events-none z-10"></div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 p-4">
           {/* Gallery items */}
           {[cyb1, cyb2, cyb3, cyb4, cyb5, cyb6, cyb7, cyb8, cyb9].map(
@@ -227,7 +255,6 @@ export default function Home() {
                   height={500}
                   loading="lazy"
                   placeholder="blur"
-                  
                   className="object-cover h-full w-full hover:zoom-in-75"
                 />
               </div>

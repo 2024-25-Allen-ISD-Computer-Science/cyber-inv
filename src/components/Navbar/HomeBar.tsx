@@ -63,11 +63,16 @@ export default function HomeBar() {
       <div className="backdrop-blur-3xl rounded-3xl w-fit grid grid-cols-3 gap-5 items-center p-2">
         {/* Left Section (Logo) */}
         <div className="flex p-0 w-full grow justify-center items-center">
+        <Link
+            href="/"
+            
+          >
           <Image src="/favicon.ico" height={70} width={70} alt="favicon" />
+        </Link>
         </div>
 
         {/* Middle Section (Timer) */}
-        <div className="text-xs sm:text-sm lg:text-xl text-white font-bold text-center flex justify-center items-center">
+        <div className="text-xs sm:text-sm lg:text-xl text-red-100 font-bold text-center flex justify-center items-center animate-pulse">
           <Link
             href="/"
             className="flex grow gap-x-0.5 sm:gap-x-1 lg:gap-x-2 lg:text-xl align-text-bottom"
