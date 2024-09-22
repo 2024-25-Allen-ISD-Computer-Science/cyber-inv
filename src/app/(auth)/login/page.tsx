@@ -11,8 +11,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-export const description =
-  "A login form with email and password. There's an option to login with Google and a link to sign up if you don't have an account.";
 
 export default function LoginForm() {
   return (
@@ -50,9 +48,7 @@ export default function LoginForm() {
             <Button type="submit" className="w-full">
               Login
             </Button>
-            <Button variant="outline" className="w-full">
-              Login with Google
-            </Button>
+
           </div>
           <div className="mt-4 text-center text-sm">
             Don&apos;t have an account?{" "}
