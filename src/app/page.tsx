@@ -88,7 +88,6 @@ export default function Home() {
             <FaInstagram className="size-24 hover:fill-violet-400" />
           </Link>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
           {/* Column 1 */}
           <div className="flex flex-col gap-6 w-full">
@@ -123,19 +122,19 @@ export default function Home() {
                   <div className="flex flex-col justify-end items-center w-28 h-40 rounded-md bg-zinc-900">
                     <div className="w-full h-20 mb-2 "></div>
                     <span className="text-2xl mb-2">$$$</span>
-                    <span className="text-xl">3rd</span>
+                    <span className="text-3xl">3rd</span>
                   </div>
 
                   <div className="flex flex-col justify-end items-center w-36 h-52 rounded-md bg-zinc-900">
                     <div className="w-full h-28 mb-2 "></div>
                     <span className="text-3xl mb-2">$$$$$</span>
-                    <span className="text-xl">1st</span>
+                    <span className="text-3xl">1st</span>
                   </div>
 
                   <div className="flex flex-col justify-end items-center w-32 h-48 rounded-md bg-zinc-900">
                     <div className="w-full h-24 mb-2 "></div>
                     <span className="text-2xl mb-2">$$$$</span>
-                    <span className="text-xl">2nd</span>
+                    <span className="text-3xl">2nd</span>
                   </div>
                 </div>
               </div>
@@ -170,7 +169,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-
         <div className="bg-black bg-opacity-30 p-10 rounded-3xl w-full">
           <h1 className="text-7xl text-center font-bold underline">
             Brought to you by!
@@ -179,26 +177,26 @@ export default function Home() {
           {/* Carousel wrapper */}
           <div className="flex justify-center mt-10">
             <Carousel>
-              <CarouselContent className="flex justify-center -ml-2 md:-ml-4">
-                <CarouselItem className="pl-2 md:pl-4">
+              <CarouselContent>
+                <CarouselItem>
                   <div className="grid grid-cols-3 gap-6 h-fit justify-items-center">
                     {/* Each person */}
                     <div className="flex flex-col items-center h-full">
-                      <div className="rounded-full bg-gray-300 h-32 w-32"></div>
+                      <div className="rounded-full bg-gray-300 md:h-32 md:w-32 h-16 w-16"></div>
                       <div className="text-lg font-bold mt-4 text-center">
                         Person 1
                       </div>
                       <div className="text-lg text-center">Role 1</div>
                     </div>
                     <div className="flex flex-col items-center h-full">
-                      <div className="rounded-full bg-gray-300 h-32 w-32"></div>
+                      <div className="rounded-full bg-gray-300 md:h-32 md:w-32 h-16 w-16"></div>
                       <div className="text-lg font-bold mt-4 text-center">
                         Person 2
                       </div>
                       <div className="text-lg text-center">Role 2</div>
                     </div>
                     <div className="flex flex-col items-center h-full">
-                      <div className="rounded-full bg-gray-300 h-32 w-32"></div>
+                      <div className="rounded-full bg-gray-300 md:h-32 md:w-32 h-16 w-16"></div>
                       <div className="text-lg font-bold mt-4 text-center">
                         Person 3
                       </div>
@@ -207,24 +205,24 @@ export default function Home() {
                   </div>
                 </CarouselItem>
 
-                <CarouselItem className="pl-2 md:pl-4">
+                <CarouselItem >
                   <div className="grid grid-cols-3 gap-6 h-fit justify-items-center">
                     <div className="flex flex-col items-center h-full">
-                      <div className="rounded-full bg-gray-300 h-32 w-32"></div>
+                      <div className="rounded-full bg-gray-300 md:h-32 md:w-32 h-16 w-16"></div>
                       <div className="text-lg font-bold mt-4 text-center">
                         Person 4
                       </div>
                       <div className="text-lg text-center">Role 4</div>
                     </div>
                     <div className="flex flex-col items-center h-full">
-                      <div className="rounded-full bg-gray-300 h-32 w-32"></div>
+                      <div className="rounded-full bg-gray-300 md:h-32 md:w-32 h-16 w-16"></div>
                       <div className="text-lg font-bold mt-4 text-center">
                         Person 5
                       </div>
                       <div className="text-lg text-center">Role 5</div>
                     </div>
                     <div className="flex flex-col items-center h-full">
-                      <div className="rounded-full bg-gray-300 h-32 w-32"></div>
+                      <div className="rounded-full bg-gray-300 md:h-32 md:w-32 h-16 w-16"></div>
                       <div className="text-lg font-bold mt-4 text-center">
                         Person 6
                       </div>
@@ -232,8 +230,6 @@ export default function Home() {
                     </div>
                   </div>
                 </CarouselItem>
-
-                {/* Add more CarouselItems as needed */}
               </CarouselContent>
             </Carousel>
           </div>
