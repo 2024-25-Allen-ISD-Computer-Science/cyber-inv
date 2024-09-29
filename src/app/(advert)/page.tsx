@@ -205,7 +205,7 @@ export default function Home() {
                   </div>
                 </CarouselItem>
 
-                <CarouselItem >
+                <CarouselItem>
                   <div className="grid grid-cols-3 gap-6 h-fit justify-items-center">
                     <div className="flex flex-col items-center h-full">
                       <div className="rounded-full bg-gray-300 md:h-32 md:w-32 h-16 w-16"></div>
@@ -254,7 +254,7 @@ export default function Home() {
                   className="object-cover h-full w-full hover:zoom-in-75"
                 />
               </div>
-            )
+            ),
           )}
         </div>
       </section>

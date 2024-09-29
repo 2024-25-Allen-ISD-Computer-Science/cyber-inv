@@ -11,11 +11,13 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-
+import PocketBase from "pocketbase";
 export default function LoginForm() {
+  // example create data
+
   return (
     <main className="w-full min-h-screen flex justify-center items-center">
-            <Card className="mx-auto max-w-sm">
+      <Card className="mx-auto max-w-sm">
         <CardHeader>
           <CardTitle className="text-2xl">Login</CardTitle>
           <CardDescription>
@@ -48,7 +50,6 @@ export default function LoginForm() {
             <Button type="submit" className="w-full">
               Login
             </Button>
-
           </div>
           <div className="mt-4 text-center text-sm">
             Don&apos;t have an account?{" "}

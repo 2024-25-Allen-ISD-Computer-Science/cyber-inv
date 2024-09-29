@@ -31,14 +31,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased w-full h-full bg-gradient-to-r from-gray-900 to-black `}
       >
         {/* Navbar */}
-        
-        <HomeBar />
-      
 
         {/* Content */}
-         {/* Adjust padding based on your navbar height */}
-          {children}
-      
+        {/* Adjust padding based on your navbar height */}
+        {children}
       </body>
     </html>
   );
