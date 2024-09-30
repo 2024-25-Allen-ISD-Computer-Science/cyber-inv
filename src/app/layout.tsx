@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import HomeBar from "@/components/Navbar/HomeBar"; // Assuming you have this Navbar component
-
+import { ThemeProvider } from "@/components/theme-provider";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -28,13 +27,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased w-full h-full bg-gradient-to-r from-gray-900 to-black `}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased w-full h-full`}
       >
-        {/* Navbar */}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {/* Navbar */}
 
-        {/* Content */}
-        {/* Adjust padding based on your navbar height */}
-        {children}
+          {/* Content */}
+          {/* Adjust padding based on your navbar height */}
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -12,7 +12,7 @@ export default function AdvertLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section>
+    <section className=" bg-gradient-to-r from-gray-900 to-black  antialiased w-full h-full">
       <HomeBar />
 
       {/* Include shared UI here e.g. a header or sidebar */}
