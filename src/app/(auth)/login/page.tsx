@@ -1,5 +1,5 @@
+"use client";
 import Link from "next/link";
-
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -7,58 +7,69 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
+  CardFooter,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import * as React from "react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
-import PocketBase from "pocketbase";
 export default function LoginForm() {
-  // example create data
 
   return (
     <main className="w-full min-h-screen flex justify-center items-center">
-      <Card className="mx-auto max-w-sm">
-        <CardHeader>
-          <CardTitle className="text-2xl">Login</CardTitle>
-          <CardDescription>
-            Enter your email below to login to your account
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid gap-4">
-            <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="m@example.com"
-                required
-              />
-            </div>
-            <div className="grid gap-2">
-              <div className="flex items-center">
-                <Label htmlFor="password">Password</Label>
-                <Link
-                  href="#"
-                  className="ml-auto inline-block text-sm underline"
-                >
-                  Forgot your password?
-                </Link>
+      <div className="w-full max-w-md">
+        {/* Card for the form */}
+        <Card className="w-full h-auto drop-shadow-2xl">
+          <CardHeader>
+            <CardTitle className="text-3xl font-bold">Login</CardTitle>
+          </CardHeader>
+
+          {/* Form starts here */}
+          <form className="w-full h-full  space-y-4 px-4 py-2">
+            <CardContent className="space-y-4">
+              <div>
+                <Label htmlFor="email">Email Address / Username</Label>
+                <Input
+                  id="email"
+                  placeholder="Email Address"
+                  type="email"
+                  required
+                />
               </div>
-              <Input id="password" type="password" required />
-            </div>
-            <Button type="submit" className="w-full">
-              Login
-            </Button>
-          </div>
-          <div className="mt-4 text-center text-sm">
-            Don&apos;t have an account?{" "}
-            <Link href="/signup" className="underline">
-              Sign up
-            </Link>
-          </div>
-        </CardContent>
-      </Card>
+
+
+
+              <div>
+                <Label htmlFor="password">
+                  Password
+                </Label>
+                <Input
+                  id="password"
+                  type="password"
+                  placeholder="password"
+                  required
+                />
+              </div>
+
+      
+            </CardContent>
+
+            {/* Footer with a submit button */}
+            <CardFooter className="w-full flex justify-end gap-4">
+              <Button type="submit" className="bg-green-300">{">"}</Button>
+            </CardFooter>
+          </form>
+        </Card>
+      </div>
     </main>
   );
 }

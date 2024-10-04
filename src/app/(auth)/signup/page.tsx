@@ -29,13 +29,13 @@ export default function LoginForm() {
     <main className="w-full min-h-screen flex justify-center items-center">
       <div className="w-full max-w-md">
         {/* Card for the form */}
-        <Card className="w-full h-auto">
+        <Card className="w-full h-auto drop-shadow-2xl">
           <CardHeader>
             <CardTitle className="text-3xl font-bold">Sign up</CardTitle>
           </CardHeader>
 
           {/* Form starts here */}
-          <form className="w-full h-full bg-transparent backdrop-blur-xl space-y-4 px-4 py-2">
+          <form className="w-full h-full bg-transparent  space-y-4 px-4 py-2">
             <CardContent className="space-y-4">
               <div>
                 <Label htmlFor="email">Email Address</Label>
