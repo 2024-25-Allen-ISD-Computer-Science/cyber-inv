@@ -1,5 +1,4 @@
 "use client";
-import QueueBar from "@/components/Navbar/QueueBar";
 import { useEffect, useMemo, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import {
@@ -111,7 +110,6 @@ export default function queueLayout({
           options={options}
           className="w-full h-full absolute -z-10 overflow-y-hidden"
         />
-        <QueueBar />
         {children}
       </div>
     );
@@ -119,7 +117,6 @@ export default function queueLayout({
 
   return (
     <div className="w-full h-full">
-      <QueueBar />
       {children}
     </div>
   );
