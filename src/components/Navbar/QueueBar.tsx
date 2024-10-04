@@ -17,7 +17,6 @@ export default function QueueBar() {
         <Button variant="destructive" asChild>
           <div className="flex items-center space-x-2">
             <MdExitToApp className="w-6 h-6 fill-white" />
-            <span>Exit</span>
           </div>
         </Button>
       </Link>
