@@ -1,6 +1,6 @@
 name: Build and Lint
 
-# Run this workflow on every push to any branch, and on pull requests
+# Trigger the workflow on push and pull requests
 on:
   push:
     branches:
@@ -17,17 +17,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Set up the necessary environment (Node.js in this example)
+      # Set up Node.js version >= 18.17.0
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '18.17.0'
 
-      # Install dependencies (adjust based on your package manager)
+      # Install dependencies
       - name: Install dependencies
         run: npm install
 
-      # Run the build script
+      # Run the build command for Next.js
       - name: Build project
         run: npm run build
 
@@ -40,16 +40,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Set up the environment (Node.js again)
+      # Set up Node.js version >= 18.17.0
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '18.17.0'
 
-      # Install dependencies (same as in the build job)
+      # Install dependencies
       - name: Install dependencies
         run: npm install
 
-      # Run linting (this assumes you're using ESLint or a similar tool)
+      # Run linting
       - name: Run linter
         run: npm run lint
