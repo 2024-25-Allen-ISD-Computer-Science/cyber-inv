@@ -1,0 +1,55 @@
+name: Build and Lint
+
+# Run this workflow on every push to any branch, and on pull requests
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    name: Build Project
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up the necessary environment (Node.js in this example)
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      # Install dependencies (adjust based on your package manager)
+      - name: Install dependencies
+        run: npm install
+
+      # Run the build script
+      - name: Build project
+        run: npm run build
+
+  lint:
+    name: Lint Check
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up the environment (Node.js again)
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      # Install dependencies (same as in the build job)
+      - name: Install dependencies
+        run: npm install
+
+      # Run linting (this assumes you're using ESLint or a similar tool)
+      - name: Run linter
+        run: npm run lint
