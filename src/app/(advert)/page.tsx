@@ -251,6 +251,7 @@ export default function Home() {
                   height={500}
                   loading="lazy"
                   placeholder="blur"
+                  quality={80}
                   className="object-cover h-full w-full hover:zoom-in-75"
                 />
               </div>

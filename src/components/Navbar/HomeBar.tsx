@@ -10,7 +10,6 @@ interface TimeLeft {
   hours: number;
   minutes: number;
   seconds: number;
-  milliseconds: number;
 }
 
 export default function HomeBar() {
@@ -26,7 +25,6 @@ export default function HomeBar() {
         hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
         minutes: Math.floor((difference / 1000 / 60) % 60),
         seconds: Math.floor((difference / 1000) % 60),
-        milliseconds: Math.floor((difference % 1000) / 10), // Two-digit milliseconds
       };
     } else {
       return {
@@ -34,7 +32,6 @@ export default function HomeBar() {
         hours: 0,
         minutes: 0,
         seconds: 0,
-        milliseconds: 0,
       };
     }
   };
@@ -80,8 +77,7 @@ export default function HomeBar() {
             <div>{String(timeLeft.days).padStart(2, "0")}</div>:
             <div>{String(timeLeft.hours).padStart(2, "0")}</div>:
             <div>{String(timeLeft.minutes).padStart(2, "0")}</div>:
-            <div>{String(timeLeft.seconds).padStart(2, "0")}</div>:
-            <div>{String(timeLeft.milliseconds).padStart(2, "0")}</div>
+            <div>{String(timeLeft.seconds).padStart(2, "0")}</div>
           </Link>
         </div>
 
