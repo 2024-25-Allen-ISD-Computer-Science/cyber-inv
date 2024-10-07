@@ -13,35 +13,80 @@ import { Button } from "@/components/ui/button";
 import Grade from "@/components/Grade";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { HiOutlinePlusSm, HiOutlineMinusSm } from "react-icons/hi";
+import pb from "@/app/api/pocketbase"; // PocketBase API integration
 
 export default function LoginForm() {
-  const [forms, setForms] = React.useState([{}]);
+  const [forms, setForms] = React.useState([{ email: "", name: "", school: "", password: "", confirmPassword: "", grade: "", file: null }]);
   const [selectedFiles, setSelectedFiles] = React.useState<File[]>([]);
+  const [error, setError] = React.useState<string | null>(null);
+  const [success, setSuccess] = React.useState<string | null>(null);
+
+  // Function to handle form input changes
+  const handleInputChange = (index: number, field: string, value: string) => {
+    const updatedForms = [...forms];
+    updatedForms[index] = { ...updatedForms[index], [field]: value };
+    setForms(updatedForms);
+  };
+
+  // Function to handle file uploads
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const updatedForms = [...forms];
+      updatedForms[index] = { ...updatedForms[index], file }; // Attach the file to the corresponding form
+      setForms(updatedForms);
+
+      // Also update the selectedFiles array to maintain consistency
+      const updatedFiles = [...selectedFiles];
+      updatedFiles[index] = file;
+      setSelectedFiles(updatedFiles);
+    }
+  };
 
   // Function to add a new form (limit to 2 forms)
   const addForm = () => {
     if (forms.length < 2) {
-      setForms([...forms, {}]);
+      setForms([...forms, { email: "", name: "", school: "", password: "", confirmPassword: "", grade: "", file: null }]);
     }
   };
 
-  // Function to remove a form by index
-  const removeForm = (index: number) => {
-    const newForms = forms.filter((_, i) => i !== index);
-    setForms(newForms);
-    setSelectedFiles((prevFiles) => prevFiles.filter((_, i) => i !== index)); // Remove corresponding file
-  };
-
-  // Function to handle file selection for each team member
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
-    if (event.target.files) {
-      const file = event.target.files[0];
-      setSelectedFiles((prevFiles) => {
-        const updatedFiles = [...prevFiles];
-        updatedFiles[index] = file; // Set the file for the corresponding team member
-        return updatedFiles;
-      });
-      console.log(`Selected file for Team Member ${index + 1}:`, file);
+  // Function to handle form submission
+  const handleSignUp = async (event: React.FormEvent, index: number) => {
+    event.preventDefault(); // Prevent default form submission behavior
+  
+    const form = forms[index];
+  
+    // Check if passwords match
+    if (form.password !== form.confirmPassword) {
+      alert("Passwords do not match!"); // Display an error message to the user
+      return; // Stop form submission if passwords don't match
+    }
+  
+    const formData = new FormData(); // Create FormData object to handle both text and file inputs
+  
+    // Append regular text fields
+    formData.append("email", form.email);
+    formData.append("name", form.name);
+    formData.append("school", form.school);
+    formData.append("password", form.password);
+    formData.append("passwordConfirm", form.confirmPassword);
+  
+    // Append the uploaded file (School ID photo)
+    const file = form.file;
+    if (file) {
+      formData.append("PhotoID", file); // Ensure this matches the field name in the PocketBase collection
+    }
+  
+    try {
+      // Send the request to PocketBase
+      const createdRecord = await pb.collection("player").create(formData);
+      console.log("Player created:", createdRecord);
+  
+      // Redirect to the dashboard or desired page on success
+      router.push("/dashboard/queue");
+    } catch (error) {
+      console.error("Error creating player:", error);
+      // Handle error (e.g., display a message to the user)
     }
   };
 
@@ -59,7 +104,7 @@ export default function LoginForm() {
               </CardHeader>
 
               {/* Form starts here */}
-              <form className="w-full h-full bg-transparent space-y-4 px-4 py-2">
+              <form className="w-full h-full bg-transparent space-y-4 px-4 py-2" onSubmit={(e) => handleSignUp(e, index)}>
                 <CardContent className="space-y-4">
                   <div>
                     <Label htmlFor={`email-${index}`}>Email Address</Label>
@@ -68,6 +113,8 @@ export default function LoginForm() {
                       placeholder="Email Address"
                       type="email"
                       required
+                      value={forms[index].email}
+                      onChange={(e) => handleInputChange(index, "email", e.target.value)}
                     />
                   </div>
 
@@ -77,6 +124,8 @@ export default function LoginForm() {
                       id={`name-${index}`}
                       placeholder="Enter your full name"
                       required
+                      value={forms[index].name}
+                      onChange={(e) => handleInputChange(index, "name", e.target.value)}
                     />
                   </div>
 
@@ -86,6 +135,8 @@ export default function LoginForm() {
                       id={`school-${index}`}
                       placeholder="Enter your School Name"
                       required
+                      value={forms[index].school}
+                      onChange={(e) => handleInputChange(index, "school", e.target.value)}
                     />
                   </div>
 
@@ -122,6 +173,8 @@ export default function LoginForm() {
                       type="password"
                       placeholder="Password"
                       required
+                      value={forms[index].password}
+                      onChange={(e) => handleInputChange(index, "password", e.target.value)}
                     />
                   </div>
 
@@ -132,8 +185,14 @@ export default function LoginForm() {
                       type="password"
                       placeholder="Confirm password"
                       required
+                      value={forms[index].confirmPassword}
+                      onChange={(e) => handleInputChange(index, "confirmPassword", e.target.value)}
                     />
                   </div>
+
+                  {/* Display error/success message */}
+                  {error && <div className="text-red-500">{error}</div>}
+                  {success && <div className="text-green-500">{success}</div>}
                 </CardContent>
 
                 {/* Footer with a submit button */}
