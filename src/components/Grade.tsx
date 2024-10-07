@@ -13,7 +13,7 @@ import {
   import { Button } from "@/components/ui/button";
   
 export default function Grade(){
-    const [position, setPosition] = React.useState("7th");
+    const [position, setPosition] = React.useState("9th");
 
     return(
         <DropdownMenu>
@@ -27,12 +27,7 @@ export default function Grade(){
             value={position}
             onValueChange={setPosition}
           >
-            <DropdownMenuRadioItem value="7th">
-              7th
-            </DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="8th">
-              8th
-            </DropdownMenuRadioItem>
+
             <DropdownMenuRadioItem value="9th">
               9th
             </DropdownMenuRadioItem>

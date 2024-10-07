@@ -9,7 +9,7 @@ import {
 } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
 
-export default function queueLayout({
+export default function QueueLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -17,10 +17,15 @@ export default function queueLayout({
   const [init, setInit] = useState(false);
 
   useEffect(() => {
-    // Lock vertical scrolling on the entire page
-    document.body.style.overflow = "hidden";
+    // Function to detect if it's a mobile device
+    const isMobile = window.innerWidth <= 768;
 
-    // Unlock scrolling when component is unmounted
+    // Lock vertical scrolling on the entire page for desktop only
+    if (!isMobile) {
+      document.body.style.overflow = "hidden";
+    }
+
+    // Unlock scrolling when component is unmounted or on mobile
     return () => {
       document.body.style.overflow = "auto";
     };
@@ -43,7 +48,6 @@ export default function queueLayout({
       fpsLimit: 120,
       interactivity: {
         events: {
-   
           onHover: {
             enable: true,
             mode: "repulse",
@@ -108,7 +112,7 @@ export default function queueLayout({
           id="tsparticles"
           particlesLoaded={particlesLoaded}
           options={options}
-          className="w-full h-full absolute -z-10 overflow-y-hidden"
+          className="w-full h-full absolute -z-10"
         />
         {children}
       </div>

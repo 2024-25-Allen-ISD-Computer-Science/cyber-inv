@@ -1,5 +1,7 @@
 import Image from "next/image";
+import pb from "@/app/api/pocketbase";
 export default function Page() {
+
   return (
     <main className="w-full h-full flex items-center justify-center mt-auto">
       <div className=" rounded-2xl w-2/3 h-1/3 md:p-5">
