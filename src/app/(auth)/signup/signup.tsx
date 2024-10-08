@@ -191,7 +191,7 @@ export default function LoginForm() {
       {/* Error message */}
       {error && <p className="text-red-500">{error}</p>}
 
-      {/* Form in the middle */}
+      {/* Form in the middle hello*/}
       <div className="w-full max-w-7xl flex  flex-col md:flex-row items-center gap-5">
         {forms.map((_, index) => (
           <div key={index} className="w-full max-w-2xl">
