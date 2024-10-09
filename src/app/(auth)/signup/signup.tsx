@@ -177,6 +177,7 @@ export default function LoginForm() {
 
   return (
     <main className="w-full min-h-screen flex flex-col justify-between items-center px-4 py-8">
+      
       {/* Search bar on top */}
       <div className="w-full max-w-4xl mb-6">
         <Label htmlFor="team-name">Team Name</Label>
@@ -191,7 +192,7 @@ export default function LoginForm() {
       {/* Error message */}
       {error && <p className="text-red-500">{error}</p>}
 
-      {/* Form in the middle hello*/}
+      {/* Form in the middle hellogit*/}
       <div className="w-full max-w-7xl flex  flex-col md:flex-row items-center gap-5">
         {forms.map((_, index) => (
           <div key={index} className="w-full max-w-2xl">
