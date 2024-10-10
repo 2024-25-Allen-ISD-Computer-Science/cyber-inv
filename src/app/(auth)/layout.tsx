@@ -21,9 +21,7 @@ export default function QueueLayout({
     const isMobile = window.innerWidth <= 768;
 
     // Lock vertical scrolling on the entire page for desktop only
-    if (!isMobile) {
-      document.body.style.overflow = "hidden";
-    }
+
 
     // Unlock scrolling when component is unmounted or on mobile
     return () => {
