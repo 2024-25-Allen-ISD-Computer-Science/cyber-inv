@@ -79,7 +79,7 @@ export default function QueueLayout({
             default: OutMode.out,
           },
           random: false,
-          speed: 6,
+          speed: 3,
           straight: false,
         },
         number: {

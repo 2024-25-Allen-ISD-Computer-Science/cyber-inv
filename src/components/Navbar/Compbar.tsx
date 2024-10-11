@@ -1,27 +1,45 @@
-import { MdSpaceDashboard } from "react-icons/md";
-import { RiPuzzle2Fill } from "react-icons/ri";
-import { IoShieldHalfOutline } from "react-icons/io5";
-import { GiRetroController } from "react-icons/gi";
+"use client";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { ModeToggle } from "@/components/Toggle";
-export default function Compbar() {
+import Image from "next/image";
+import { MdExitToApp } from "react-icons/md";
+import pb from "@/app/api/pocketbase"; // Importing PocketBase
+import { MdSpaceDashboard } from "react-icons/md";
+import { IoExtensionPuzzle } from "react-icons/io5";
+import { GiBattleAxe } from "react-icons/gi";
+import { IoGameController } from "react-icons/io5";
+export default function QueueBar() {
+  const handleExitClick = () => {
+    // Clear PocketBase session
+    pb.authStore.clear();
+    // console.log("PocketBase session cleared.");
+  };
+
   return (
-    <div className="h-full w-fit ml-2 border-r-2 border-accent-foreground">
-      <div className="flex-col gap-5 h-full flex justify-center place-content-center">
-        <Link href={"#"}>
-          <MdSpaceDashboard className="size-7  fill-primary hover:fill-muted" />
+    <div className="w-full h-fit p-2 flex items-center flex-row sticky">
+      {/* Logo and Text */}
+      <div className="flex items-center space-x-4 w-full justify-start">
+        <Image src="/favicon.ico" width={60} height={60} alt="ico" />
+        <div className="text-xl text-white underline">
+          Allen Cyber Invitational
+        </div>
+      </div>
+      <div className="w-full flex justify-center text-3xl">00:00:00:00</div>
+      {/* Exit Button */}
+      <div className="w-full flex justify-end">
+        <div className="inline-flex gap-x-2 align-middle px-2">
+          <Button variant={"outline"}><MdSpaceDashboard className="w-8 h-8 hover:fill-red-300" /></Button>
+          <Button variant={"outline"}><IoExtensionPuzzle className="w-8 h-8" /></Button>
+          <Button variant={"outline"}><GiBattleAxe className="w-8 h-8" /></Button>
+          <Button variant={"outline"}><IoGameController className="w-8 h-8" /></Button>
+        </div>
+        <Link href={"/"}>
+          <Button variant="destructive" asChild onClick={handleExitClick}>
+            <div className="flex items-center space-x-2">
+              <MdExitToApp className="w-6 h-6 fill-white" />
+            </div>
+          </Button>
         </Link>
-        <Link href={"#"}>
-          <RiPuzzle2Fill className="size-7  fill-primary hover:fill-muted" />
-        </Link>
-        <Link href={"#"}>
-          <IoShieldHalfOutline className="size-7  fill-primary hover:fill-muted" />
-        </Link>
-        <Link href={"#"}>
-          <GiRetroController className="size-7  fill-primary hover:fill-muted" />
-        </Link>
-        <ModeToggle />
       </div>
     </div>
   );
