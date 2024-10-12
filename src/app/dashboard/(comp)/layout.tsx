@@ -1,4 +1,3 @@
-
 "use client";
 import Compbar from "@/components/Navbar/Compbar";
 import { useEffect, useMemo, useState } from "react";
@@ -19,13 +18,14 @@ export default function DashboardLayout({
   const [init, setInit] = useState(false);
 
   useEffect(() => {
-    // Function to detect if it's a mobile device
     const isMobile = window.innerWidth <= 768;
 
-    // Lock vertical scrolling on the entire page for desktop only
+    // Lock scrolling on desktop
+    if (!isMobile) {
+      document.body.style.overflow = "hidden";
+    }
 
-
-    // Unlock scrolling when component is unmounted or on mobile
+    // Unlock scrolling when component is unmounted
     return () => {
       document.body.style.overflow = "auto";
     };
@@ -107,9 +107,8 @@ export default function DashboardLayout({
 
   if (init) {
     return (
-      
-      <div className="w-full h-full">
-      <Compbar/>
+      <div className="w-full h-full overflow-hidden">
+        <Compbar />
         <Particles
           id="tsparticles"
           particlesLoaded={particlesLoaded}
@@ -118,17 +117,15 @@ export default function DashboardLayout({
         />
         {children}
       </div>
- 
     );
   }
 
   return (
-
     <>
-    <Compbar/>
-    <div className="w-full h-full">
-      {children}
-    </div>
+      <Compbar />
+      <div className="w-full h-full">
+        {children}
+      </div>
     </>
   );
 }

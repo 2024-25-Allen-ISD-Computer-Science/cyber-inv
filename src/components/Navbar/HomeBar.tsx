@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import pb from "@/app/api/pocketbase";
 
 // Define the shape of the time left object
 interface TimeLeft {
@@ -54,6 +55,11 @@ export default function HomeBar() {
     // Prevent rendering countdown during server-side rendering to avoid mismatch
     return null;
   }
+  const handleExitClick = () => {
+    // Clear PocketBase session
+    pb.authStore.clear(); 
+    // console.log("PocketBase session cleared.");
+  };
 
   return (
     <div className="w-full sm:w-full h-fit fixed mt-1 top-0 z-50 flex justify-center bg-transparent">
@@ -91,6 +97,7 @@ export default function HomeBar() {
             <Link href="/signup">Sign up</Link>
           </Button>
           <Button
+          onClick={handleExitClick}
             variant="link"
             className="bg-purple-400 text-white px-2 sm:px-3 py-1 sm:py-2 text-xs sm:text-sm"
             asChild

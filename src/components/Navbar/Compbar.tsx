@@ -8,6 +8,8 @@ import { MdSpaceDashboard } from "react-icons/md";
 import { IoExtensionPuzzle } from "react-icons/io5";
 import { GiBattleAxe } from "react-icons/gi";
 import { IoGameController } from "react-icons/io5";
+import { Separator } from "../ui/separator";
+import { FaUserAlt } from "react-icons/fa";
 export default function QueueBar() {
   const handleExitClick = () => {
     // Clear PocketBase session
@@ -29,8 +31,11 @@ export default function QueueBar() {
       <div className="w-full flex justify-end">
         <div className="inline-flex gap-x-2 align-middle px-2">
           <Button variant={"outline"}><MdSpaceDashboard className="w-8 h-8 hover:fill-red-300" /></Button>
+          <Separator orientation="vertical" />
           <Button variant={"outline"}><IoExtensionPuzzle className="w-8 h-8" /></Button>
           <Button variant={"outline"}><GiBattleAxe className="w-8 h-8" /></Button>
+          <Separator orientation="vertical" />
+
           <Button variant={"outline"}><IoGameController className="w-8 h-8" /></Button>
         </div>
         <Link href={"/"}>
