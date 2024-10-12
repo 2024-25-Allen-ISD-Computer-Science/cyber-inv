@@ -1,9 +1,6 @@
-// pages/index.tsx or another top-level page
-import LoginForm from "./signup";
-export default function HomePage() {
-  return (
-    <div className=" w-full h-fit">
-      <LoginForm />
-    </div>
-  );
+// src/app/(auth)/signup/page.tsx
+import TeamMemberSignUp from "./signup";
+
+export default function SignUpPage() {
+    return <TeamMemberSignUp />;
 }

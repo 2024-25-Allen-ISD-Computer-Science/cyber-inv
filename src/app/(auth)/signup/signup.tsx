@@ -1,20 +1,19 @@
 "use client";
+import React, { useState } from "react";
+import { useRouter } from "next/navigation"; // <-- Import useRouter
+import { CiCirclePlus } from "react-icons/ci";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-  CardFooter,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import * as React from "react";
-import { Button } from "@/components/ui/button";
-import Grade from "@/components/Grade"; // Assuming this is a custom component
-import { FaCloudUploadAlt } from "react-icons/fa";
-import { HiOutlinePlusSm, HiOutlineMinusSm } from "react-icons/hi";
-import { useRouter } from "next/navigation";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import pb from "@/app/api/pocketbase";
+import Grade from "@/components/Grade"; // Your Grade component
 
 // Define the type for the form
 interface FormData {
@@ -27,9 +26,10 @@ interface FormData {
   file: File | null;
 }
 
-export default function LoginForm() {
-  const [teamName, setTeamName] = React.useState<string>("");
-  const [forms, setForms] = React.useState<FormData[]>([
+export default function TeamMemberSignUp() {
+  const router = useRouter(); // <-- Initialize useRouter
+  const [teamName, setTeamName] = useState<string>("");
+  const [forms, setForms] = useState<FormData[]>([
     {
       email: "",
       name: "",
@@ -40,10 +40,9 @@ export default function LoginForm() {
       file: null,
     },
   ]);
-  const [selectedFiles, setSelectedFiles] = React.useState<File[]>([]);
-  const [error, setError] = React.useState<string | null>(null);
-  const [success, setSuccess] = React.useState<string | null>(null);
-  const router = useRouter();
+  const [activeTab, setActiveTab] = useState<string>("teamMember1");
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
 
   // Function to handle form input changes
   const handleInputChange = (index: number, field: string, value: string) => {
@@ -51,31 +50,23 @@ export default function LoginForm() {
     updatedForms[index] = { ...updatedForms[index], [field]: value };
     setForms(updatedForms);
   };
+
   const handleGradeChange = (index: number, grade: string) => {
     const updatedForms = [...forms];
     updatedForms[index].grade = grade;
     setForms(updatedForms);
   };
 
-  // Function to handle file uploads
   const handleFileChange = (
     event: React.ChangeEvent<HTMLInputElement>,
     index: number
   ) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const updatedForms = [...forms];
-      updatedForms[index] = { ...updatedForms[index], file }; // Attach the file to the corresponding form
-      setForms(updatedForms);
-
-      // Also update the selectedFiles array to maintain consistency
-      const updatedFiles = [...selectedFiles];
-      updatedFiles[index] = file;
-      setSelectedFiles(updatedFiles);
-    }
+    const file = event.target.files?.[0] || null; // Get the selected file
+    const updatedForms = [...forms];
+    updatedForms[index] = { ...updatedForms[index], file }; // Update the file state
+    setForms(updatedForms); // Update forms state
   };
 
-  // Function to add a new form (limit to 2 forms)
   const addForm = () => {
     if (forms.length < 2) {
       setForms([
@@ -90,21 +81,10 @@ export default function LoginForm() {
           file: null,
         },
       ]);
+      setActiveTab("teamMember2");
     }
   };
 
-  // Function to remove a form
-  const removeForm = (index: number) => {
-    const updatedForms = forms.filter((_, formIndex) => formIndex !== index);
-    setForms(updatedForms);
-
-    const updatedFiles = selectedFiles.filter(
-      (_, fileIndex) => fileIndex !== index
-    );
-    setSelectedFiles(updatedFiles);
-  };
-
-  // Helper function to validate each form's fields
   const validateForm = () => {
     if (!teamName) {
       setError("Please provide a team name.");
@@ -125,226 +105,291 @@ export default function LoginForm() {
         alert(`Please fill in all fields for team member ${i + 1}`);
         return false;
       }
-
-      // Check if passwords match
       if (form.password !== form.confirmPassword) {
         alert(`Passwords do not match for team member ${i + 1}`);
         return false;
       }
     }
-
-    setError(null); // Clear the error if all validations pass
+    setError(null);
     return true;
   };
 
-  // Function to handle form submission
   const handleSignUp = async (event: React.FormEvent) => {
-    event.preventDefault(); // Prevent default form submission behavior
-
-    // Validate all forms before submission
+    event.preventDefault();
     if (!validateForm()) return;
-
+  
     try {
-      // Loop through each form and create a record for each
       for (const form of forms) {
-        const formData = new FormData(); // Create FormData object to handle both text and file inputs
-
-        // Append regular text fields including team name
-        formData.append("teamName", teamName); // Append the team name
+        const formData = new FormData();
+        formData.append("teamName", teamName);
         formData.append("email", form.email);
         formData.append("name", form.name);
         formData.append("school", form.school);
         formData.append("password", form.password);
         formData.append("passwordConfirm", form.confirmPassword);
-
-        // Append the uploaded file (School ID photo)
+        formData.append("grade", form.grade); // Include grade in FormData
         if (form.file) {
-          formData.append("PhotoID", form.file); // Ensure this matches the field name in the PocketBase collection
+          formData.append("PhotoID", form.file);
         }
-
-        // Send the request to PocketBase
         const createdRecord = await pb.collection("player").create(formData);
         console.log("Player created:", createdRecord);
+  
+        // Store relevant data in local storage
+        localStorage.setItem(`teamMember_${form.email}`, JSON.stringify({
+          name: form.name,
+          email: form.email,
+          school: form.school,
+          grade: form.grade,
+        }));
       }
-
-      // Redirect to the dashboard or desired page on success
-      router.push("/dashboard/queue");
+      setSuccess("Players created successfully!");
+  
+      // Redirect to /dashboard/queue after successful creation
+      router.push("/login"); // <-- Add this line for redirection
     } catch (error) {
       console.error("Error creating players:", error);
       setError("Failed to create players.");
     }
   };
+  
 
   return (
     <main className="w-full min-h-screen flex flex-col justify-between items-center px-4 py-8">
-      
-      {/* Search bar on top */}
-      <div className="w-full max-w-4xl mb-6">
-        <Label htmlFor="team-name">Team Name</Label>
-        <Input
-          id="team-name"
-          placeholder="Enter your team name"
-          value={teamName}
-          onChange={(e) => setTeamName(e.target.value)}
-        />
+      <div className="w-full max-w-2xl mb-4 flex justify-end">
+        <Button
+          variant="outline"
+          onClick={addForm}
+          disabled={forms.length >= 2}
+        >
+          <CiCirclePlus className="mr-2 size-9" />
+          Add Member
+        </Button>
       </div>
 
-      {/* Error message */}
+      {/* Error and Success Messages */}
       {error && <p className="text-red-500">{error}</p>}
+      {success && <p className="text-green-500">{success}</p>}
 
-      {/* Form in the middle hellogit*/}
-      <div className="w-full max-w-7xl flex  flex-col md:flex-row items-center gap-5">
-        {forms.map((_, index) => (
-          <div key={index} className="w-full max-w-2xl">
-            <Card className="w-full h-auto drop-shadow-2xl">
+      {/* Tab Layout for Team Member Forms */}
+      <Tabs
+        defaultValue="teamMember1"
+        value={activeTab}
+        onValueChange={setActiveTab}
+        className="w-full max-w-2xl mx-auto"
+      >
+        <TabsList className="grid w-full grid-cols-2">
+          <TabsTrigger value="teamMember1">Team Member 1</TabsTrigger>
+          {forms.length > 1 && (
+            <TabsTrigger value="teamMember2">Team Member 2</TabsTrigger>
+          )}
+        </TabsList>
+
+        {/* Team Member 1 Form */}
+        <TabsContent value="teamMember1">
+          <Card className="w-full drop-shadow-xl p-4">
+            <CardHeader>
+              <CardTitle className="text-2xl font-bold">
+                Team Member #1 - Sign up
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div>
+                <Label htmlFor="team-name">Team Name</Label>
+                <Input
+                  id="team-name"
+                  placeholder="Enter your team name"
+                  value={teamName}
+                  onChange={(e) => setTeamName(e.target.value)}
+                  required
+                />
+              </div>
+              <div>
+                <Label htmlFor="email-1">Email Address</Label>
+                <Input
+                  id="email-1"
+                  placeholder="Email Address"
+                  type="email"
+                  required
+                  value={forms[0].email}
+                  onChange={(e) =>
+                    handleInputChange(0, "email", e.target.value)
+                  }
+                />
+              </div>
+              <div>
+                <Label htmlFor="name-1">Full Name</Label>
+                <Input
+                  id="name-1"
+                  placeholder="Enter your full name"
+                  required
+                  value={forms[0].name}
+                  onChange={(e) =>
+                    handleInputChange(0, "name", e.target.value)
+                  }
+                />
+              </div>
+              <div>
+                <Label htmlFor="school-1">School Name</Label>
+                <Input
+                  id="school-1"
+                  placeholder="Enter your school name"
+                  required
+                  value={forms[0].school}
+                  onChange={(e) =>
+                    handleInputChange(0, "school", e.target.value)
+                  }
+                />
+              </div>
+              <div>
+                <Label htmlFor="grade-1">Grade Level</Label>
+                <Grade
+                  value={forms[0].grade}
+                  onChange={(newGrade) => handleGradeChange(0, newGrade)}
+                />
+              </div>
+              <div>
+                <Label htmlFor="password-1">Password</Label>
+                <Input
+                  id="password-1"
+                  type="password"
+                  placeholder="Enter your password"
+                  value={forms[0].password}
+                  onChange={(e) =>
+                    handleInputChange(0, "password", e.target.value)
+                  }
+                  required
+                />
+              </div>
+              <div>
+                <Label htmlFor="confirm-password-1">Confirm Password</Label>
+                <Input
+                  id="confirm-password-1"
+                  type="password"
+                  placeholder="Confirm your password"
+                  value={forms[0].confirmPassword}
+                  onChange={(e) =>
+                    handleInputChange(0, "confirmPassword", e.target.value)
+                  }
+                  required
+                />
+              </div>
+              <div>
+                <Label htmlFor="file-1">Upload Photo ID</Label>
+                <Input
+                  id="file-1"
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => handleFileChange(e, 0)}
+                />
+                {forms[0].file && (
+                  <p className="text-gray-500">Selected file: {forms[0].file.name}</p>
+                )}
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* Team Member 2 Form */}
+        {forms.length > 1 && (
+          <TabsContent value="teamMember2">
+            <Card className="w-full drop-shadow-xl p-4">
               <CardHeader>
                 <CardTitle className="text-2xl font-bold">
-                  Team Member #{index + 1} - Sign up
+                  Team Member #2 - Sign up
                 </CardTitle>
               </CardHeader>
-
-              <CardContent className="space-y-4 px-4 py-2">
+              <CardContent className="space-y-4">
                 <div>
-                  <Label htmlFor={`email-${index}`}>Email Address</Label>
+                  <Label htmlFor="email-2">Email Address</Label>
                   <Input
-                    id={`email-${index}`}
+                    id="email-2"
                     placeholder="Email Address"
                     type="email"
                     required
-                    value={forms[index].email}
+                    value={forms[1].email}
                     onChange={(e) =>
-                      handleInputChange(index, "email", e.target.value)
+                      handleInputChange(1, "email", e.target.value)
                     }
                   />
                 </div>
-
                 <div>
-                  <Label htmlFor={`name-${index}`}>
-                    First and last name
-                  </Label>
+                  <Label htmlFor="name-2">Full Name</Label>
                   <Input
-                    id={`name-${index}`}
+                    id="name-2"
                     placeholder="Enter your full name"
                     required
-                    value={forms[index].name}
+                    value={forms[1].name}
                     onChange={(e) =>
-                      handleInputChange(index, "name", e.target.value)
+                      handleInputChange(1, "name", e.target.value)
                     }
                   />
                 </div>
-
                 <div>
-                  <Label htmlFor={`school-${index}`}>School Name</Label>
+                  <Label htmlFor="school-2">School Name</Label>
                   <Input
-                    id={`school-${index}`}
-                    placeholder="Enter your School Name"
+                    id="school-2"
+                    placeholder="Enter your school name"
                     required
-                    value={forms[index].school}
+                    value={forms[1].school}
                     onChange={(e) =>
-                      handleInputChange(index, "school", e.target.value)
+                      handleInputChange(1, "school", e.target.value)
                     }
                   />
                 </div>
-
-                <div className="inline-flex justify-between w-full md:flex-col gap-4">
-                  <div className="grid-cols-1">
-                    <Label htmlFor={`Grade-${index}`}>Grade Level</Label>
-                    <Grade
-                      value={forms[index].grade}
-                      onChange={(newGrade) =>
-                        handleGradeChange(index, newGrade)
-                      }
-                    />
-                  </div>
-
-                  <div className="grid-cols-1">
-                    <Label htmlFor={`school-id-${index}`}>
-                      School ID photo
-                    </Label>
-                    <input
-                      id={`file-upload-${index}`}
-                      type="file"
-                      accept="image/*"
-                      onChange={(e) => handleFileChange(e, index)}
-                      className="hidden"
-                    />
-                    <Button
-                      variant="outline"
-                      onClick={() =>
-                        document
-                          .getElementById(`file-upload-${index}`)
-                          ?.click()
-                      }
-                    >
-                      <FaCloudUploadAlt className="h-6 w-6" />
-                      {selectedFiles[index]
-                        ? selectedFiles[index].name
-                        : "Upload ID"}
-                    </Button>
-                  </div>
-                </div>
-
                 <div>
-                  <Label htmlFor={`password-${index}`}>Password</Label>
+                  <Label htmlFor="grade-2">Grade Level</Label>
+                  <Grade
+                    value={forms[1].grade}
+                    onChange={(newGrade) => handleGradeChange(1, newGrade)}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="password-2">Password</Label>
                   <Input
-                    id={`password-${index}`}
+                    id="password-2"
                     type="password"
-                    placeholder="Password"
-                    required
-                    value={forms[index].password}
+                    placeholder="Enter your password"
+                    value={forms[1].password}
                     onChange={(e) =>
-                      handleInputChange(index, "password", e.target.value)
+                      handleInputChange(1, "password", e.target.value)
                     }
+                    required
                   />
                 </div>
-
                 <div>
-                  <Label htmlFor={`confirmPassword-${index}`}>
-                    Confirm Password
-                  </Label>
+                  <Label htmlFor="confirm-password-2">Confirm Password</Label>
                   <Input
-                    id={`confirmPassword-${index}`}
+                    id="confirm-password-2"
                     type="password"
-                    placeholder="Confirm Password"
-                    required
-                    value={forms[index].confirmPassword}
+                    placeholder="Confirm your password"
+                    value={forms[1].confirmPassword}
                     onChange={(e) =>
-                      handleInputChange(
-                        index,
-                        "confirmPassword",
-                        e.target.value
-                      )
+                      handleInputChange(1, "confirmPassword", e.target.value)
                     }
+                    required
                   />
+                </div>
+                <div>
+                  <Label htmlFor="file-2">Upload Photo ID</Label>
+                  <Input
+                    id="file-2"
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => handleFileChange(e, 1)}
+                  />
+                  {forms[1].file && (
+                    <p className="text-gray-500">Selected file: {forms[1].file.name}</p>
+                  )}
                 </div>
               </CardContent>
-
-              <CardFooter className="flex justify-between">
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={() => removeForm(index)}
-                >
-                  <HiOutlineMinusSm className="h-5 w-5" />
-                  Remove Member
-                </Button>
-              </CardFooter>
             </Card>
-          </div>
-        ))}
+          </TabsContent>
+        )}
+      </Tabs>
 
-      </div>
-        <Button type="button" onClick={addForm} disabled={forms.length >= 2}>
-          <HiOutlinePlusSm className="h-5 w-5" />
-          Add Member
-        </Button>
-
-      {/* Submit button at the bottom */}
-      <div className="w-full max-w-4xl mt-6">
-        <Button className="w-full" onClick={handleSignUp}>
-          Sign Up
-        </Button>
-      </div>
+      <Button onClick={handleSignUp} className="mt-4">
+        Sign Up
+      </Button>
     </main>
   );
 }
