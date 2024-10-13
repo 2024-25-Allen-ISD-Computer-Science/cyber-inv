@@ -30,13 +30,37 @@ export default function QueueBar() {
       {/* Exit Button */}
       <div className="w-full flex justify-end">
         <div className="inline-flex gap-x-2 align-middle px-2">
-          <Button variant={"outline"}><MdSpaceDashboard className="w-8 h-8 hover:fill-red-300" /></Button>
+            <Button variant={"outline"}>
+          <Link href={"/dashboard/users"}>
+              <FaUserAlt className="w-8 h-8" />
+          </Link>
+            </Button>
+            <Button variant={"outline"} asChild>
+          <Link href={"/dashboard/stats"}>
+              <MdSpaceDashboard className="w-8 h-8" />
+          </Link>
+            </Button>
+
           <Separator orientation="vertical" />
-          <Button variant={"outline"}><IoExtensionPuzzle className="w-8 h-8" /></Button>
-          <Button variant={"outline"}><GiBattleAxe className="w-8 h-8" /></Button>
+            <Button variant={"outline"} asChild>
+          <Link href={"/dashboard/puzzle"}>
+              <IoExtensionPuzzle className="w-8 h-8" />
+          </Link>
+            </Button>
+          <Button variant={"outline"} asChild>
+          <Link href={"#"}>
+
+            <GiBattleAxe className="w-8 h-8" />
+            </Link>
+          </Button>
           <Separator orientation="vertical" />
 
-          <Button variant={"outline"}><IoGameController className="w-8 h-8" /></Button>
+          <Button variant={"outline"} asChild>
+          <Link href={"#"}>
+
+            <IoGameController className="w-8 h-8" />
+            </Link>
+          </Button>
         </div>
         <Link href={"/"}>
           <Button variant="destructive" asChild onClick={handleExitClick}>

@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import pb from "@/app/api/pocketbase";
-
 // Define the shape of the time left object
 interface TimeLeft {
   days: number;
