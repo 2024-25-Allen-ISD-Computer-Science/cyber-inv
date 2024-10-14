@@ -38,7 +38,7 @@ export default function LoginForm() {
       }
   
       // Redirect to /dashboard/queue after successful login
-      router.push("/dashboard/Home");
+      router.push("/dashboard/user");
   
     } catch (err: any) {
       // Handle error during login

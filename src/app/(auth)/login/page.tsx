@@ -15,7 +15,7 @@ export default function Page() {
     // Check if the user is already authenticated
     if (pb.authStore.isValid) {
       // Redirect to the dashboard queue if authenticated
-      router.push("/dashboard/queue");
+      router.push("/dashboard/user");
     }
   }, [router]);
 

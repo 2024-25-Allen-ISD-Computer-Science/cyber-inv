@@ -1,8 +1,8 @@
  - [x] polish sign up page
     - [x] shad cn log in
-- [ ] user dashboard
-    - [ ] qr code for check-in
-    - [ ] information
+- [x] user dashboard
+    - [x] qr code for check-in
+    - [x] information
 - [ ] team dashboard
     - [ ] Team graph
     - [ ] Team Score Breakdown
