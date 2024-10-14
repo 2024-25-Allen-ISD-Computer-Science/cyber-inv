@@ -31,7 +31,7 @@ export default function QueueBar() {
       <div className="w-full flex justify-end">
         <div className="inline-flex gap-x-2 align-middle px-2">
             <Button variant={"outline"}>
-          <Link href={"/dashboard/users"}>
+          <Link href={"/dashboard/user"}>
               <FaUserAlt className="w-8 h-8" />
           </Link>
             </Button>
