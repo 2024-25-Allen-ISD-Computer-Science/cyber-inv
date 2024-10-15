@@ -1,0 +1,15 @@
+ - [x] polish sign up page
+    - [x] shad cn log in
+- [x] user dashboard
+    - [x] qr code for check-in
+    - [x] information
+- [ ] team dashboard
+    - [ ] Team graph
+    - [ ] Team Score Breakdown
+- [ ] puzzle dashboard
+    - [ ] Puzzle card
+    - [ ] puzzle popup
+    - [ ] Notification sound / popout
+- [ ] Battle round
+    - [ ] puzzle card
+    - [ ] 
