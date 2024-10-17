@@ -1,23 +1,123 @@
-import type { Metadata } from "next";
-import "@/app/globals.css";
-import HomeBar from "@/components/Navbar/HomeBar"; // Assuming you have this Navbar component
+"use client";
+import { useEffect, useMemo, useState } from "react";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import {
+  type Container,
+  type ISourceOptions,
+  MoveDirection,
+  OutMode,
+} from "@tsparticles/engine";
+import { loadSlim } from "@tsparticles/slim";
 
-export const metadata: Metadata = {
-  title: "ACI",
-  description: "Allen Cyber Invitational",
-};
-export default function AdvertLayout({
-  children, // will be a page or nested layout
+export default function QueueLayout({
+  children,
 }: {
   children: React.ReactNode;
 }) {
+  const [init, setInit] = useState(false);
+
+  useEffect(() => {
+    // Function to detect if it's a mobile device
+    const isMobile = window.innerWidth <= 768;
+
+
+    // Unlock scrolling when component is unmounted or on mobile
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setInit(true);
+    });
+  }, []);
+
+  const particlesLoaded = async (container?: Container): Promise<void> => {
+    console.log(container);
+  };
+
+  const options: ISourceOptions = useMemo(
+    () => ({
+      fpsLimit: 120,
+      interactivity: {
+        events: {
+          onHover: {
+            enable: true,
+            mode: "repulse",
+          },
+        },
+        modes: {
+          push: {
+            quantity: 100,
+          },
+          repulse: {
+            distance: 200,
+            duration: 1.4,
+          },
+        },
+      },
+      particles: {
+        color: {
+          value: "#cb6bfb",
+        },
+        links: {
+          color: "#ffffff",
+          distance: 150,
+          enable: true,
+          opacity: 0.5,
+          width: 1,
+        },
+        move: {
+          direction: MoveDirection.none,
+          enable: true,
+          outModes: {
+            default: OutMode.out,
+          },
+          random: false,
+          speed: 1,
+          straight: false,
+        },
+        number: {
+          density: {
+            enable: true,
+          },
+          value: 100,
+        },
+        opacity: {
+          value: 0.5,
+        },
+        shape: {
+          type: "square",
+        },
+        size: {
+          value: { min: 1, max: 5 },
+        },
+      },
+      detectRetina: true,
+    }),
+    []
+  );
+
+  if (init) {
+    return (
+      <div className="w-full h-full">
+        <Particles
+          id="tsparticles"
+          particlesLoaded={particlesLoaded}
+          options={options}
+          className="w-full h-full absolute z-10"
+        />
+        {children}
+      </div>
+    );
+  }
+
   return (
-    <section className=" bg-gradient-to-r from-gray-900 to-black  antialiased w-full h-full">
-      <HomeBar />
-
-      {/* Include shared UI here e.g. a header or sidebar */}
-
+    <div className="w-full h-full">
       {children}
-    </section>
+    </div>
   );
 }

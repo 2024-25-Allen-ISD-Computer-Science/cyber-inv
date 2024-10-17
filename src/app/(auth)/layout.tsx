@@ -9,7 +9,7 @@ import {
 } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
 
-export default function QueueLayout({
+export default function AuthLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -19,9 +19,6 @@ export default function QueueLayout({
   useEffect(() => {
     // Function to detect if it's a mobile device
     const isMobile = window.innerWidth <= 768;
-
-    // Lock vertical scrolling on the entire page for desktop only
-
 
     // Unlock scrolling when component is unmounted or on mobile
     return () => {
@@ -79,7 +76,7 @@ export default function QueueLayout({
             default: OutMode.out,
           },
           random: false,
-          speed: 3,
+          speed: 1,
           straight: false,
         },
         number: {
