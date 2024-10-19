@@ -8,7 +8,7 @@ export type Team = {
   teamName: string;
   self: boolean;
   score: number;
-  division: "Silver" | "Gold" | "Platinum";
+  division: "Gold" | "Platinum";
 };
 
 export const columns: ColumnDef<Team>[] = [

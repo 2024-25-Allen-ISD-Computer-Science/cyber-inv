@@ -1,3 +1,5 @@
+
+
 import { Team, columns } from "./Columns";
 import { DataTable } from "./DataTable";
 import { useState } from "react";
@@ -19,13 +21,13 @@ const teams: Team[] = [
     teamName: "Team Avocado",
     self: true,
     score: 100,
-    division: "Silver",
+    division: "Silver"
   },
   {
     teamName: "Team Apple",
     self: false,
     score: 200,
-    division: "Gold",
+    division: "Gold"
   },
   {
     teamName: "Team Banana",
@@ -149,7 +151,7 @@ export default function LeaderBoard() {
   if (position == "All")
     sortedTeams.forEach((team, index) => {
       if (team.self) {
-        defaultPage = Math.floor(index / 10);
+        defaultPage = Math.floor(index / 5);
       }
     });
   return (
@@ -171,9 +173,7 @@ export default function LeaderBoard() {
               value={position}
               onValueChange={setPosition}
             >
-              <DropdownMenuRadioItem value="Silver">
-                Silver
-              </DropdownMenuRadioItem>
+
               <DropdownMenuRadioItem value="Gold">Gold</DropdownMenuRadioItem>
               <DropdownMenuRadioItem value="Platinum">
                 Platinum

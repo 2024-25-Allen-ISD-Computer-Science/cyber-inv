@@ -76,7 +76,7 @@ export default function Home() {
             </button>
             </a>
 
-
+            col
             <a href="/Login">
 
             <button className="bg-blue-500 text-white py-4 px-6 rounded-xl shadow-xl shadow-zinc-400/10 hover:cursor-pointer opacity-100 z-10 hover:bg-slate-500 ease-in-out duration-200">

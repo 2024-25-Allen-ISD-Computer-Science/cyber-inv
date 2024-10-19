@@ -29,7 +29,7 @@ export default function NavBar() {
               <PuzzlePieceIcon className="size-6" />
               Puzzle Round
             </NavItem>
-            <NavItem to="/">
+            <NavItem to="#">
               <ShieldExclamationIcon className="size-6" />
               Battle Round
             </NavItem>

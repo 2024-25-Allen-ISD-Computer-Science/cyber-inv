@@ -36,7 +36,7 @@ export default function Grade({
         <DropdownMenuSeparator />
         <DropdownMenuRadioGroup
           value={position}
-          onValueChange={(newValue) => {
+          onValueChange={(newValue:string) => {
             setPosition(newValue); // Update local state
             onChange(newValue); // Notify parent of the change
           }}
