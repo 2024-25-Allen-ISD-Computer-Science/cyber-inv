@@ -209,10 +209,59 @@ export default function Home() {
       </section>
 
       {/*Meet the team*/}
-      <section className="opacity-100 gap-5 flex z-10 h-[70vh] w-[80vw] mb-20">
+      <section className="opacity-100 gap-5 flex z-10 h-[70vh] w-[80vw] mb-60 mx-auto mt-20">
+        <div className="flex justify-center items-center flex-col w-full">
+          <div className="text-6xl p-10 text-blue-500 font-extrabold text-center">
+            Meet The Team!
+          </div>
 
-          
+          <div className="flex flex-row mt-10">
 
+            <button className="text-gray-100 my-auto text-9xl hover:scale-125 hover:text-white ease-in-out duration-150">◂</button>
+
+            <div className="flex-1 bg-white p-8 rounded-xl border-4 -mr-20 opacity-50">
+              <div className="w-[18vw] h-[18vw] relative bg-zinc-400 rounded-full"><Image
+                src={cyb1}
+                priority
+                layout="fill"
+                objectFit="cover"
+                alt="headshot"
+              />
+              </div>
+              <div className="text-4xl font-medium text-center mt-3">Tanay</div>
+              <div className="text-2xl font-light text-center">Project Manager</div>
+            </div>
+
+            <div className="lex-1 bg-white p-8 rounded-xl border-4 border-blue-500 z-10 scale-110 shadow shadow-lg">
+              <div className="w-[18vw] h-[18vw] relative bg-zinc-400 rounded-full "><Image
+                src={cyb8}
+                priority
+                layout="fill"
+                objectFit="cover"
+                alt="headshot"
+              />
+              </div>
+              <div className="text-4xl font-medium text-center mt-3">Abel</div>
+              <div className="text-2xl font-light text-center">Project Manager</div>
+            </div>
+
+            <div className="flex-1 bg-white p-8 rounded-xl border-4 -ml-20 opacity-50">
+              <div className="w-[18vw] h-[18vw] relative bg-zinc-400 rounded-full"><Image
+                src={cyb7}
+                priority
+                layout="fill"
+                objectFit="cover"
+                alt="headshot"
+              />
+              </div>
+              <div className="text-4xl font-medium text-center mt-3">Richard</div>
+              <div className="text-2xl font-light text-center">Project Manager</div>
+            </div>
+
+            <button className="text-gray-100 my-auto text-9xl hover:scale-125 hover:text-white ease-in-out duration-150">▸</button>
+
+          </div>
+        </div>
 
       </section>
 
