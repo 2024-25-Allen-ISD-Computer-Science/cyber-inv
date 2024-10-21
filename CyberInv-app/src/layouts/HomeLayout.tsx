@@ -102,8 +102,7 @@ export default function Layout() {
 
   return (
     <ThemeProvider>
-      <div className="min-h-screen flex flex-col inter-400">
-        <div className="grow">
+      <div className="h-screen flex flex-col inter-400">
         <Particles
           id="tsparticles"
           particlesLoaded={particlesLoaded}
@@ -112,7 +111,7 @@ export default function Layout() {
         />
           <Outlet />
         </div>
-      </div>
+      
     </ThemeProvider>
   );
 }

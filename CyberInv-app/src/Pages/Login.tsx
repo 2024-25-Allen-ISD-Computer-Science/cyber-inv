@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,11 +10,15 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import pb from "@/api/pocketbase"; // Ensure PocketBase is properly initialized
+import { useNavigate } from "react-router-dom"; // Import useNavigate hook
 
 export default function LoginForm() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [error, setError] = React.useState<string | null>(null);
+  
+  // Initialize useNavigate hook
+  const navigate = useNavigate();
 
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault(); // Prevent default form submission behavior
@@ -30,12 +33,12 @@ export default function LoginForm() {
         console.log("Logged in successfully");
         console.log("Token:", pb.authStore.token);
         console.log("User ID:", pb.authStore.model.id); // Access id safely
+
+        // Redirect to /Dashboard after successful login
+        navigate("/Dashboard");
       } else {
         console.log("Login successful, but no user data found.");
       }
-
-      // Redirect to /dashboard/queue after successful login
-
     } catch (err: any) {
       // Handle error during login
       console.error("Login failed:", err);
@@ -44,16 +47,16 @@ export default function LoginForm() {
   };
 
   return (
-    <main className="w-full h-full flex justify-center items-center">
-      <Card className="w-fit h-fit drop-shadow-2xl">
+    <main className="w-full h-screen flex justify-center items-center">
+      <Card className="w-fit h-fit drop-shadow-2xl p-2">
         <CardHeader>
           <CardTitle className="text-3xl font-bold">Login</CardTitle>
         </CardHeader>
 
         <form className="w-full h-full space-y-4 px-4 py-2" onSubmit={handleLogin}>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-2">
             <div>
-              <Label htmlFor="email">Email Address / Username</Label>
+              <Label htmlFor="email">Email Address</Label>
               <Input
                 id="email"
                 placeholder="Email Address"
@@ -86,6 +89,5 @@ export default function LoginForm() {
         </form>
       </Card>
     </main>
-
   );
 }

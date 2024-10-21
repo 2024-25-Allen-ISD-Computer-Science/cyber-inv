@@ -54,7 +54,7 @@ export default function Home() {
           <div className="relative w-72 h-72 z-20 my-0">
             <img
               src="/favicon.ico"
-              
+
               width={500}
               height={500}
               alt="Eagle Logo"
@@ -71,17 +71,16 @@ export default function Home() {
         <div className="w-full h-[50vh]">
           <div className="flex flex-row gap-5 justify-center items-center text-center text-3xl">
             <a href="/Signup">
-            <button className="bg-violet-500 text-white py-4 px-6 rounded-xl shadow-xl shadow-zinc-400/10 hover:cursor-pointer opacity-100 z-10 hover:bg-violet-600 ease-in-out duration-200">
-              Sign Up
-            </button>
+              <button className="bg-violet-500 text-white py-4 px-6 rounded-xl shadow-xl shadow-zinc-400/10 hover:cursor-pointer opacity-100 z-10 hover:bg-violet-600 ease-in-out duration-200">
+                Sign Up
+              </button>
             </a>
 
-            col
             <a href="/Login">
 
-            <button className="bg-blue-500 text-white py-4 px-6 rounded-xl shadow-xl shadow-zinc-400/10 hover:cursor-pointer opacity-100 z-10 hover:bg-slate-500 ease-in-out duration-200">
-Login
-            </button>
+              <button className="bg-blue-500 text-white py-4 px-6 rounded-xl shadow-xl shadow-zinc-400/10 hover:cursor-pointer opacity-100 z-10 hover:bg-slate-500 ease-in-out duration-200">
+                Login
+              </button>
             </a>
           </div>
           {/* Learn More */}
@@ -219,7 +218,7 @@ Login
       {/*Meet the team*/}
       <section className="opacity-100 gap-5 flex z-10 h-[70vh] w-[80vw] mb-20">
 
-          
+
 
 
       </section>
@@ -254,7 +253,7 @@ Login
           <div className="text-white text-5xl font-semibold flex items-center text-center">
             <img
               src="/favicon.ico"
-              
+
               width={100}
               height={100}
               alt="Eagle Logo"
