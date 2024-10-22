@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -16,9 +16,18 @@ export default function LoginForm() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [error, setError] = React.useState<string | null>(null);
-  
+
   // Initialize useNavigate hook
   const navigate = useNavigate();
+
+  // Auto sign-in if already authenticated
+  useEffect(() => {
+    if (pb.authStore.isValid) {
+      // If the authStore has a valid user, redirect to the dashboard
+      console.log("User already signed in, redirecting...");
+      navigate("/tmp"); // Redirect to the desired page
+    }
+  }, [navigate]); // The dependency array ensures this runs only once when the component mounts
 
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault(); // Prevent default form submission behavior
@@ -34,7 +43,7 @@ export default function LoginForm() {
         console.log("Token:", pb.authStore.token);
         console.log("User ID:", pb.authStore.model.id); // Access id safely
 
-        // Redirect to /Dashboard after successful login
+        // Redirect to /tmp after successful login
         navigate("/tmp");
       } else {
         console.log("Login successful, but no user data found.");
