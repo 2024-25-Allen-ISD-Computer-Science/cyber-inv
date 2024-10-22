@@ -35,7 +35,7 @@ export default function LoginForm() {
         console.log("User ID:", pb.authStore.model.id); // Access id safely
 
         // Redirect to /Dashboard after successful login
-        navigate("/Dashboard");
+        navigate("/tmp");
       } else {
         console.log("Login successful, but no user data found.");
       }

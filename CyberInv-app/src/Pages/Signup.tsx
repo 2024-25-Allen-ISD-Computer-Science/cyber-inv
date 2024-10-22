@@ -12,6 +12,7 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import pb from "@/api/pocketbase";
 import Grade from "@/components/Grade"; // Your Grade component
+import { useNavigate } from "react-router-dom"; // Import useNavigate hook
 
 // Define the type for the form
 interface FormData {
@@ -40,6 +41,9 @@ export default function TeamMemberSignUp() {
   const [activeTab, setActiveTab] = useState<string>("teamMember1");
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
+  
+  // Initialize useNavigate hook
+  const navigate = useNavigate();
 
   // Function to handle form input changes
   const handleInputChange = (index: number, field: string, value: string) => {
@@ -114,10 +118,11 @@ export default function TeamMemberSignUp() {
   const handleSignUp = async (event: React.FormEvent) => {
     event.preventDefault();
     if (!validateForm()) return;
-  
+
     try {
       for (const form of forms) {
         const formData = new FormData();
+
         formData.append("teamName", teamName);
         formData.append("email", form.email);
         formData.append("name", form.name);
@@ -130,24 +135,29 @@ export default function TeamMemberSignUp() {
         }
         const createdRecord = await pb.collection("player").create(formData);
         console.log("Player created:", createdRecord);
-  
+
         // Store relevant data in local storage
-        localStorage.setItem(`teamMember_${form.email}`, JSON.stringify({
-          name: form.name,
-          email: form.email,
-          school: form.school,
-          grade: form.grade,
-        }));
+        localStorage.setItem(
+          `teamMember_${form.email}`,
+          JSON.stringify({
+            name: form.name,
+            email: form.email,
+            school: form.school,
+            grade: form.grade,
+          })
+        );
       }
+
       setSuccess("Players created successfully!");
-  
+      
       // Redirect to /dashboard/queue after successful creation
+      navigate("/tmp");
+
     } catch (error) {
       console.error("Error creating players:", error);
       setError("Failed to create players.");
     }
   };
-  
 
   return (
     <main className="w-full min-h-screen flex flex-col justify-between items-center px-4 py-8">
@@ -270,7 +280,7 @@ export default function TeamMemberSignUp() {
                 />
               </div>
               <div>
-                <Label htmlFor="file-1">Upload Photo ID</Label>
+                <Label htmlFor="file-1">Upload School Photo ID</Label>
                 <Input
                   id="file-1"
                   type="file"
@@ -278,7 +288,9 @@ export default function TeamMemberSignUp() {
                   onChange={(e) => handleFileChange(e, 0)}
                 />
                 {forms[0].file && (
-                  <p className="text-gray-500">Selected file: {forms[0].file.name}</p>
+                  <p className="text-gray-500">
+                    Selected file: {forms[0].file.name}
+                  </p>
                 )}
               </div>
             </CardContent>
@@ -374,7 +386,9 @@ export default function TeamMemberSignUp() {
                     onChange={(e) => handleFileChange(e, 1)}
                   />
                   {forms[1].file && (
-                    <p className="text-gray-500">Selected file: {forms[1].file.name}</p>
+                    <p className="text-gray-500">
+                      Selected file: {forms[1].file.name}
+                    </p>
                   )}
                 </div>
               </CardContent>

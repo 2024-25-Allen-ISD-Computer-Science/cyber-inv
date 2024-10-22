@@ -11,6 +11,7 @@ import Overview from "@/Pages/Overview";
 import HomeLayout from "@/layouts/HomeLayout"
 import Signup from "@/Pages/Signup"
 import LoginForm from "@/Pages/Login";
+import Tmp from "./Pages/Tmp";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
@@ -20,6 +21,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <Route path="/" element={<Home />} />
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Login" element={<LoginForm />} />
+        <Route path="/Tmp" element={<Tmp/>}/>
         </Route>
         <Route element={<CompLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
