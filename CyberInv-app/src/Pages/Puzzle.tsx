@@ -1,7 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import { MouseEvent, useEffect, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
+import pb from "@/api/pocketbase";
 import {
   Pagination,
   PaginationContent,
@@ -31,6 +32,16 @@ import {
 // TODO: Use Suspense
 
 export default function Page() {
+  const navigate = useNavigate(); // Initialize useNavigate hook
+
+  // Check if the user is authenticated on component mount
+  useEffect(() => {
+    if (!pb.authStore.isValid) {
+      // If the user is not authenticated, redirect to the login page
+      navigate("/login");
+    }
+  }, [navigate]); // Runs only once when the component mounts
+
   const [fetching, setFetching] = useState(false);
 
   const [puzzles, setPuzzles] = useState<Puzzle[]>([]);
