@@ -40,21 +40,21 @@ const renderer = ({ days, hours, minutes, seconds }) => {
       {/* Days */}
       <div className="flex flex-col">
         <div className="flex flex-row">
-          <div className="text-7xl text-red-300 p-4 rounded-md animate-pulse">{String(days).padStart(2, '0')}</div>
+          <div className="text-7xl  p-4 rounded-md animate-pulse">{String(days).padStart(2, '0')}</div>
         </div>
         Days
       </div>
       {/* Hours */}
       <div className="flex flex-col">
         <div className="flex flex-row">
-          <div className="text-7xl  text-red-300  p-4 rounded-md animate-pulse">{String(hours).padStart(2, '0')}</div>
+          <div className="text-7xl   p-4 rounded-md animate-pulse">{String(hours).padStart(2, '0')}</div>
         </div>
         Hours
       </div>
       {/* Minutes */}
       <div className="flex flex-col">
         <div className="flex flex-row">
-          <div className="text-7xl  text-red-300  p-4 rounded-md animate-pulse">{String(minutes).padStart(2, '0')}</div>
+          <div className="text-7xl p-4 rounded-md animate-pulse">{String(minutes).padStart(2, '0')}</div>
         </div>
         Minutes
       </div>
@@ -62,7 +62,7 @@ const renderer = ({ days, hours, minutes, seconds }) => {
       {/* Seconds */}
       <div className="flex flex-col">
         <div className="flex flex-row">
-          <div className="text-7xl  text-red-300  p-4 rounded-md animate-pulse">{String(seconds).padStart(2, '0')}</div>
+          <div className="text-7xl p-4 rounded-md animate-pulse">{String(seconds).padStart(2, '0')}</div>
         </div>
       Seconds
       </div>
@@ -80,7 +80,7 @@ const renderer = ({ days, hours, minutes, seconds }) => {
               const href = `#${text.toLowerCase().replace(/\s+/g, '-')}`;
               return (
                 <a href={href}>
-                  <div className="text-white p-5 text-xl" key={text}>
+                  <div className=" p-5 text-xl" key={text}>
                     {text}
                   </div>
                 </a>
@@ -91,7 +91,7 @@ const renderer = ({ days, hours, minutes, seconds }) => {
       </div>
 
       {/* Main Section */}
-      <section className="w-full h-screen  flex flex-col items-center  text-white ">
+      <section className="w-full h-screen  flex flex-col items-center ">
         {/* Eagle Logo and Title */}
         <div className="flex flex-col md:flex-row justify-center items-center text-center md:text-left space-y-6 md:space-y-0 md:space-x-8 h-full pt-[5vh]">
           {/* Eagle Icon */}
@@ -102,6 +102,7 @@ const renderer = ({ days, hours, minutes, seconds }) => {
               width={500}
               height={500}
               alt="Eagle Logo"
+              className='fill-accent'
             />
           </div>
 
@@ -115,14 +116,14 @@ const renderer = ({ days, hours, minutes, seconds }) => {
         <div className="w-full h-[50vh]">
           <div className="flex flex-row gap-5 justify-center items-center text-center text-3xl">
             <a href="/Signup">
-              <button className="bg-violet-500 text-white py-4 px-6 rounded-xl shadow-xl shadow-zinc-400/10 hover:cursor-pointer opacity-100 z-10 hover:bg-violet-600 ease-in-out duration-200">
+              <button className="bg-violet-500  py-4 px-6 rounded-xl shadow-xl shadow-zinc-400/10 hover:cursor-pointer opacity-100 z-10 hover:bg-violet-600 ease-in-out duration-200">
                 Sign Up
               </button>
             </a>
 
             <a href="/Login">
 
-              <button className="bg-blue-500 text-white py-4 px-6 rounded-xl shadow-xl shadow-zinc-400/10 hover:cursor-pointer opacity-100 z-10 hover:bg-slate-500 ease-in-out duration-200">
+              <button className="bg-blue-500 text-accent py-4 px-6 rounded-xl shadow-xl shadow-zinc-400/10 hover:cursor-pointer opacity-100 z-10 hover:bg-slate-500 ease-in-out duration-200">
                 Login
               </button>
             </a>
@@ -141,10 +142,10 @@ const renderer = ({ days, hours, minutes, seconds }) => {
       <section className="py-[3vh] bg-slate-800/30 border-y z-20 mt-10 ">
         <div className="flex flex-col justify-center items-center">
 
-          <div className="text-white text-2xl font-light mb-5">
+          <div className="text-accent text-2xl font-light mb-5">
             Get In Touch
           </div>
-          <div className="flex flex-row text-white">
+          <div className="flex flex-row text-accent">
             <MdEmail style={{ fontSize: '40px', color: 'gray' }} className="hover:cursor-pointer mr-2 ml-2" />
             <AiOutlineDiscord style={{ fontSize: '40px', color: '#7289DA' }} className="hover:cursor-pointer mr-2 ml-2" />
             <FaInstagram style={{ fontSize: '40px', color: '#E4405F' }} className="hover:cursor-pointer mr-2 ml-2" />

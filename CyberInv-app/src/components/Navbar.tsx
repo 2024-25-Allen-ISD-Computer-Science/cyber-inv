@@ -4,25 +4,37 @@ import { UserIcon, CurrencyDollarIcon, ChartBarIcon, PuzzlePieceIcon, ShieldExcl
 import { Button } from "./ui/button";
 import { ReactNode } from "react";
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Countdown from 'react-countdown';
+import { IoExit } from "react-icons/io5";
+import PocketBase from "pocketbase";  // Import PocketBase
 
 export default function NavBar() {
-  // Random component
-  const Completionist = () => <span>No round active at the moment</span>;
-  const isMobile = window.innerWidth <= 768;
+  const pb = new PocketBase('http://127.0.0.1:8090'); // Initialize PocketBase instance (replace with your actual endpoint)
+  
+  // Logout handler
+  const handleLogout = () => {
+    pb.authStore.clear(); // Clear any saved user sessions
+    window.location.href = '/login'; // Redirect to login page or wherever you want after logout
+  };
 
-  // Renderer callback with condition
-  const renderer = ({ hours, minutes, seconds, completed }) => {
+  const Completionist = () => <span>No round active at the moment</span>;
+
+  // Helper to format time in 00:00:00 format
+  const formatTime = (time: number) => String(time).padStart(2, '0');
+
+  // Renderer callback with condition for 00:00:00 format
+  const renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
-      // Render a completed state
       return <Completionist />;
     } else {
-      // Render a countdown
-      return <span>{hours}:{minutes}:{seconds}</span>;
+      return (
+        <span>
+          {formatTime(days)}:{formatTime(hours)}:{formatTime(minutes)}:{formatTime(seconds)}
+        </span>
+      );
     }
   };
-  
+
   return (
     <div className="flex flex-row w-full justify-center items-center p-3">
       <div className="flex flex-row gap-3 max-w-screen-xl w-full">
@@ -39,13 +51,11 @@ export default function NavBar() {
 
           </div>
         </div>
-        <div className="grow flex flex-row justify- border rounded-md items-center gap-1.5 p-1.5 shadow">
+        <div className="grow flex flex-row justify-between border rounded-md items-center gap-1.5 p-1.5 shadow">
           <div className="inline-flex gap-x-5">
             <Countdown
-              date={Date.now() + 10000}
-              intervalDelay={0}
-              precision={2}
-              renderer={props => <div>{props.total}</div>}
+              date={Date.now() + 10000} // 10 second countdown for example
+              renderer={renderer}       // No need for precision, just seconds
             />
           </div>
 
@@ -71,6 +81,11 @@ export default function NavBar() {
 
         <div className="flex flex-row items-center gap-1.5 border rounded-md p-1.5 shadow">
           <ModeToggle />
+        </div>
+        <div className="flex flex-row items-center gap-1.5 border rounded-md p-1.5 shadow">
+          <Button asChild variant="destructive" onClick={handleLogout}>
+            <IoExit className="w-14 h-14 fill-accent" />
+          </Button>
         </div>
       </div>
     </div>

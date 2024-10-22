@@ -41,7 +41,7 @@ export default function Layout() {
 
   const options: ISourceOptions = useMemo(
     () => ({
-      fpsLimit: 120,
+      fpsLimit: 30,
       interactivity: {
         events: {
           onHover: {
@@ -51,7 +51,7 @@ export default function Layout() {
         },
         modes: {
           push: {
-            quantity: 100,
+            quantity: 70,
           },
           repulse: {
             distance: 200,
@@ -106,9 +106,8 @@ export default function Layout() {
 
 
       <ThemeProvider>
-        <div className="min-h-screen flex flex-col inter-400 w-full">
+        <div className="h-full flex flex-col inter-400 w-full">
           <Navbar />
-          <div className="grow">
             <Particles
               id="tsparticles"
               particlesLoaded={particlesLoaded}
@@ -124,7 +123,7 @@ export default function Layout() {
             </div>
             <Outlet />
           </div>
-        </div>
+        
       </ThemeProvider>
 
     );

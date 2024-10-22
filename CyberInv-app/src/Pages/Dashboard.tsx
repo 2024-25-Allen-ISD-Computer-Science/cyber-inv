@@ -52,9 +52,7 @@ export default function Dashboard() {
           </CardContent>
         </Card>
 
-        <Card className="shadow">
 
-        </Card>
       </div>
     </main>
   );
