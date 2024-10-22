@@ -128,16 +128,29 @@ const renderer = ({ days, hours, minutes, seconds }) => {
             </a>
           </div>
           {/* Learn More */}
-          <div className="flex flex-col justify-center items-center text-center text-2xl mt-[25vh]">
+          <div className=" animate-bounce flex flex-col justify-center items-center text-center text-2xl mt-[25vh]">
             Learn more
             <br />
-            <div className="animate-bounce mt-3">
+            <div className=" mt-3">
               &#9660;
             </div>
           </div>
         </div>
       </section>
+      {/* links Section */}
+      <section className="py-[3vh] bg-slate-800/30 border-y z-20 mt-10 ">
+        <div className="flex flex-col justify-center items-center">
 
+          <div className="text-white text-2xl font-light mb-5">
+            Get In Touch
+          </div>
+          <div className="flex flex-row text-white">
+            <MdEmail style={{ fontSize: '40px', color: 'gray' }} className="hover:cursor-pointer mr-2 ml-2" />
+            <AiOutlineDiscord style={{ fontSize: '40px', color: '#7289DA' }} className="hover:cursor-pointer mr-2 ml-2" />
+            <FaInstagram style={{ fontSize: '40px', color: '#E4405F' }} className="hover:cursor-pointer mr-2 ml-2" />
+          </div>
+        </div>
+      </section>
       {/* Countdown */}
       <section className="opacity-100  gap-5 flex items-center justify-center text-center z-10 h-[50vh] mb-20">
         <div className="rounded-3xl">
@@ -245,29 +258,7 @@ const renderer = ({ days, hours, minutes, seconds }) => {
         </div>
       </section>
 
-      {/* links Section */}
-      <section className="py-[3vh] bg-slate-800/30 border-y z-20 mt-10 ">
-        <div className="flex flex-col justify-center items-center">
-          <div className="text-white text-5xl font-semibold flex items-center text-center">
-            <img
-              src="/favicon.ico"
 
-              width={100}
-              height={100}
-              alt="Eagle Logo"
-            />
-            Allen Cyber Invitational
-          </div>
-          <div className="text-white text-2xl font-light mb-5">
-            Get In Touch
-          </div>
-          <div className="flex flex-row text-white">
-            <MdEmail style={{ fontSize: '40px', color: 'gray' }} className="hover:cursor-pointer mr-2 ml-2" />
-            <AiOutlineDiscord style={{ fontSize: '40px', color: '#7289DA' }} className="hover:cursor-pointer mr-2 ml-2" />
-            <FaInstagram style={{ fontSize: '40px', color: '#E4405F' }} className="hover:cursor-pointer mr-2 ml-2" />
-          </div>
-        </div>
-      </section>
     </main>
   );
 }
