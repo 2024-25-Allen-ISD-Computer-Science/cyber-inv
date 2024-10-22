@@ -23,18 +23,13 @@ export default function Dashboard() {
       <div className="mx-auto w-full max-w-screen-xl flex flex-col gap-3 mb-10">
         <Card className="shadow">
           <CardHeader>
-            <CardTitle>Team Members</CardTitle>
-          </CardHeader>
-          <hr />
-          <CardContent className="p-3">
-            <div className="grid grid-cols-2 gap-5">
+          <div className="grid grid-cols-2 gap-5">
               <UserCard data={userCardData} />
               <UserCard data={userCardData} />
             </div>
-          </CardContent>
-        </Card>
-
-        <Card className="shadow">
+          </CardHeader>
+          <hr />
+          <CardContent className="p-3">
           <CardHeader>
             <CardTitle>Leader Board</CardTitle>
           </CardHeader>
@@ -42,6 +37,11 @@ export default function Dashboard() {
           <CardContent >
             <LeaderBoard />
           </CardContent>
+          </CardContent>
+        </Card>
+
+        <Card className="shadow">
+
         </Card>
       </div>
     </main>

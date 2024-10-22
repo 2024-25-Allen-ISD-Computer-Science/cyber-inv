@@ -3,8 +3,26 @@ import { Link, useLocation } from "react-router-dom";
 import { UserIcon, CurrencyDollarIcon, ChartBarIcon, PuzzlePieceIcon, ShieldExclamationIcon, ServerStackIcon } from "@heroicons/react/24/outline";
 import { Button } from "./ui/button";
 import { ReactNode } from "react";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Countdown from 'react-countdown';
 
 export default function NavBar() {
+  // Random component
+  const Completionist = () => <span>No round active at the moment</span>;
+  const isMobile = window.innerWidth <= 768;
+
+  // Renderer callback with condition
+  const renderer = ({ hours, minutes, seconds, completed }) => {
+    if (completed) {
+      // Render a completed state
+      return <Completionist />;
+    } else {
+      // Render a countdown
+      return <span>{hours}:{minutes}:{seconds}</span>;
+    }
+  };
+  
   return (
     <div className="flex flex-row w-full justify-center items-center p-3">
       <div className="flex flex-row gap-3 max-w-screen-xl w-full">
@@ -16,10 +34,21 @@ export default function NavBar() {
           <div className="flex flex-row">
             <CurrencyDollarIcon className="size-6" />
             <p className="font-bold">100</p>
+            /
+            <p className="font-bold">100</p>
+
           </div>
         </div>
+        <div className="grow flex flex-row justify- border rounded-md items-center gap-1.5 p-1.5 shadow">
+          <div className="inline-flex gap-x-5">
+            <Countdown
+              date={Date.now() + 10000}
+              intervalDelay={0}
+              precision={2}
+              renderer={props => <div>{props.total}</div>}
+            />
+          </div>
 
-        <div className="grow flex flex-row justify-center border rounded-md items-center gap-1.5 p-1.5 shadow">
           <div className="flex flex-row gap-1.5">
             <NavItem to="/Dashboard">
               <ChartBarIcon className="size-6" />

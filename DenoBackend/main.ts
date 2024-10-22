@@ -9,6 +9,8 @@ const pb = new PocketBase('http://127.0.0.1:8090');
 const adminEmail = 'Deno@gmail.com';
 const adminPassword = "N@swr'5VaB;Vr},";
 
+
+
 // Function to authenticate as admin
 async function authenticateAdmin() {
   try {
