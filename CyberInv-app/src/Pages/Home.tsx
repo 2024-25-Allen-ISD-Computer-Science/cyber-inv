@@ -40,27 +40,31 @@ const renderer = ({ days, hours, minutes, seconds }) => {
       {/* Days */}
       <div className="flex flex-col">
         <div className="flex flex-row">
-          <div className="text-7xl text-red-400 p-4 rounded-md animate-pulse">{String(days).padStart(2, '0')}</div>
+          <div className="text-7xl text-red-300 p-4 rounded-md animate-pulse">{String(days).padStart(2, '0')}</div>
         </div>
+        Days
       </div>
       {/* Hours */}
       <div className="flex flex-col">
         <div className="flex flex-row">
-          <div className="text-7xl  text-red-400  p-4 rounded-md animate-pulse">{String(hours).padStart(2, '0')}</div>
+          <div className="text-7xl  text-red-300  p-4 rounded-md animate-pulse">{String(hours).padStart(2, '0')}</div>
         </div>
+        Hours
       </div>
       {/* Minutes */}
       <div className="flex flex-col">
         <div className="flex flex-row">
-          <div className="text-7xl  text-red-400  p-4 rounded-md animate-pulse">{String(minutes).padStart(2, '0')}</div>
+          <div className="text-7xl  text-red-300  p-4 rounded-md animate-pulse">{String(minutes).padStart(2, '0')}</div>
         </div>
+        Minutes
       </div>
 
       {/* Seconds */}
       <div className="flex flex-col">
         <div className="flex flex-row">
-          <div className="text-7xl  text-red-400  p-4 rounded-md animate-pulse">{String(seconds).padStart(2, '0')}</div>
+          <div className="text-7xl  text-red-300  p-4 rounded-md animate-pulse">{String(seconds).padStart(2, '0')}</div>
         </div>
+      Seconds
       </div>
     </div>
   );
@@ -145,11 +149,11 @@ const renderer = ({ days, hours, minutes, seconds }) => {
       </section>
 
       {/* FAQ Section */}
-      <section className="opacity-100 flex z-10 min-h-screen w-full mb-20 justify-center items-center">
+      <section className="opacity-100 flex z-10 min-h-screen w-full mb-20 justify-center items-center font-bold">
         <div className="flex flex-col w-[80vw]">
           <div className="border-2 border-white w-full rounded-xl mb-3">
             <div className="text-violet-500 text-6xl font-bold pl-10 pt-10 pb-7 text-center">FAQ</div>
-            <div className="text-zinc-500 text-3xl font-light pl-10 pb-10 text-center">
+            <div className=" text-3xl font-light pl-10 pb-10 text-center">
               Do you still have questions about the event?<br />
               Feel free to contact us at abelsemahagen@student.allenisd.org
             </div>
