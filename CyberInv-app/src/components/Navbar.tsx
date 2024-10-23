@@ -52,7 +52,7 @@ export default function NavBar() {
           </div>
         </div>
         <div className="grow flex flex-row justify-between border rounded-md items-center gap-1.5 p-1.5 shadow">
-          <div className="inline-flex gap-x-5">
+          <div className="pl-5 font-bold text-lg">
             <Countdown
               date={Date.now() + 10000} // 10 second countdown for example
               renderer={renderer}       // No need for precision, just seconds
