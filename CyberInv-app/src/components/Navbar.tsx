@@ -17,7 +17,7 @@ export default function NavBar() {
     window.location.href = '/login'; // Redirect to login page or wherever you want after logout
   };
 
-  const Completionist = () => <span>No round active at the moment</span>;
+  const Completionist = () => <span className="line-clamp-1">No round atm</span>;
 
   // Helper to format time in 00:00:00 format
   const formatTime = (time: number) => String(time).padStart(2, '0');
