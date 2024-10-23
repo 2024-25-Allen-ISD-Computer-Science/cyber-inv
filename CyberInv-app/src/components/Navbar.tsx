@@ -84,7 +84,7 @@ export default function NavBar() {
         </div>
         <div className="flex flex-row items-center gap-1.5 border rounded-md p-1.5 shadow">
           <Button asChild variant="destructive" onClick={handleLogout}>
-            <IoExit className="w-14 h-14 fill-accent" />
+            <IoExit className="w-14 h-14" />
           </Button>
         </div>
       </div>

@@ -48,20 +48,20 @@ export default function Page() {
 
   const [page, setPage] = useState(0);
 
-  // useEffect(() => {
-  //   async function fetchPuzzles() {
-  //     setFetching(true);
+  useEffect(() => {
+    async function fetchPuzzles() {
+      setFetching(true);
 
-  //     const fetchedPuzzles = await getPuzzles(page);
+      const fetchedPuzzles = await getPuzzles(page);
 
-  //     setFetching(false);
+      setFetching(false);
 
-  //     if (fetchedPuzzles.length <= 0) return setPage(Math.max(0, page - 1)); // current page is empty
-  //     setPuzzles(fetchedPuzzles);
-  //   }
+      if (fetchedPuzzles.length <= 0) return setPage(Math.max(0, page - 1)); // current page is empty
+      setPuzzles(fetchedPuzzles);
+    }
 
-  //   fetchPuzzles();
-  // }, [page]);
+    fetchPuzzles();
+  }, [page]);
 
   function handleNextPage(e: MouseEvent) {
     e.preventDefault();

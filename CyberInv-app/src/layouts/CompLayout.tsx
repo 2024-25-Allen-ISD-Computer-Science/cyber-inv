@@ -106,7 +106,7 @@ export default function Layout() {
 
 
       <ThemeProvider>
-        <div className="h-full flex flex-col inter-400 w-full">
+        <div className="h-screen flex flex-col inter-400 w-full">
           <Navbar />
             <Particles
               id="tsparticles"
