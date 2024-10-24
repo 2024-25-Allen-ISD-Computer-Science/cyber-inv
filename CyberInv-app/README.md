@@ -1,3 +1,10 @@
+# Team Members
+
+Abel Semahagen - 1sparo1
+Darrion Nguyen - t1np0tb0y
+Richard Jang - o7
+Tanay Sreedharan - stuffysaturn 
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
