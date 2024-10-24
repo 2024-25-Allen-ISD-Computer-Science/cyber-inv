@@ -6,11 +6,9 @@ import { ReactNode } from "react";
 import React from 'react';
 import Countdown from 'react-countdown';
 import { IoExit } from "react-icons/io5";
-import PocketBase from "pocketbase";  // Import PocketBase
-
+import pb from "@/api/pocketbase";
 export default function NavBar() {
-  const pb = new PocketBase('http://127.0.0.1:8090'); // Initialize PocketBase instance (replace with your actual endpoint)
-  
+
   // Logout handler
   const handleLogout = () => {
     pb.authStore.clear(); // Clear any saved user sessions
@@ -36,8 +34,10 @@ export default function NavBar() {
   };
 
   return (
-    <div className="flex flex-row w-full justify-center items-center p-3">
-      <div className="flex flex-row gap-3 max-w-screen-xl w-full">
+    <div className="flex flex-row w-full justify-center items-center p-3"> {/* Ensures centering */}
+      <div className="flex flex-row gap-3 max-w-screen-xl w-full justify-center"> {/* Centers the inner content */}
+        
+        {/* User Info */}
         <div className="flex flex-row items-center gap-1.5 border rounded-md p-1.5 px-3 shadow">
           <div className="flex flex-row">
             <UserIcon className="size-6" />
@@ -48,17 +48,21 @@ export default function NavBar() {
             <p className="font-bold">100</p>
             /
             <p className="font-bold">100</p>
-
           </div>
         </div>
-        <div className="grow flex flex-row justify-between border rounded-md items-center gap-1.5 p-1.5 shadow">
-          <div className="pl-5 font-bold text-lg">
+
+        {/* Countdown Timer */}
+        <div className="flex flex-row items-center border rounded-md shadow min-w-36">
+          <div className="w-full text-center font-bold text-lg">
             <Countdown
               date={Date.now() + 10000} // 10 second countdown for example
               renderer={renderer}       // No need for precision, just seconds
             />
           </div>
+        </div>
 
+        {/* Navigation Links */}
+        <div className="flex flex-row justify-between border rounded-md items-center gap-1.5 p-1.5 shadow">
           <div className="flex flex-row gap-1.5">
             <NavItem to="/Dashboard">
               <ChartBarIcon className="size-6" />
@@ -79,9 +83,12 @@ export default function NavBar() {
           </div>
         </div>
 
+        {/* Mode Toggle */}
         <div className="flex flex-row items-center gap-1.5 border rounded-md p-1.5 shadow">
           <ModeToggle />
         </div>
+
+        {/* Logout Button */}
         <div className="flex flex-row items-center gap-1.5 border rounded-md p-1.5 shadow">
           <Button asChild variant="destructive" onClick={handleLogout}>
             <IoExit className="w-14 h-14" />

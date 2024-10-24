@@ -161,11 +161,12 @@ export default function TeamMemberSignUp() {
 
   return (
     <main className="w-full min-h-screen flex flex-col justify-between items-center px-4 py-8">
-      <div className="w-full max-w-2xl mb-4 flex justify-end">
+      <div className="w-full max-w-2xl mb-4 flex justify-end ">
         <Button
           variant="outline"
           onClick={addForm}
           disabled={forms.length >= 2}
+          className="shadow-2xl"
         >
           <CiCirclePlus className="mr-2 size-9" />
           Add Member
@@ -181,7 +182,7 @@ export default function TeamMemberSignUp() {
         defaultValue="teamMember1"
         value={activeTab}
         onValueChange={setActiveTab}
-        className="w-full max-w-2xl mx-auto"
+        className="w-full max-w-2xl mx-auto "
       >
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="teamMember1">Team Member 1</TabsTrigger>
@@ -192,7 +193,7 @@ export default function TeamMemberSignUp() {
 
         {/* Team Member 1 Form */}
         <TabsContent value="teamMember1">
-          <Card className="w-full drop-shadow-xl p-4">
+          <Card className="w-full drop-shadow-xl p-4 shadow-2xl">
             <CardHeader>
               <CardTitle className="text-2xl font-bold">
                 Team Member #1 - Sign up
@@ -397,7 +398,7 @@ export default function TeamMemberSignUp() {
         )}
       </Tabs>
 
-      <Button onClick={handleSignUp} className="mt-4">
+      <Button onClick={handleSignUp} className="mt-4 shadow-2xl">
         Sign Up
       </Button>
     </main>
