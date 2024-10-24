@@ -53,7 +53,7 @@ export default function Home() {
         <div className="flex flex-col md:flex-row justify-center items-center text-center md:text-left space-y-6 md:space-y-0 md:space-x-8 h-full pt-[5vh]">
           <div className=" w-72 h-72 z-20 my-0">
             <img
-              src="/favicon.ico"
+              src="/ico.svg"
               width={500}
               height={500}
               alt="Eagle Logo"
