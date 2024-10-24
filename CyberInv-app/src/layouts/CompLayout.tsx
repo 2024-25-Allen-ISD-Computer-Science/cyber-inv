@@ -16,10 +16,10 @@ import { ThemeProvider } from "@/components/theme-provider";
 export default function Layout() {
   const [init, setInit] = useState(false);
 
+  const isMobile = window.innerWidth <= 768;
 
   useEffect(() => {
     // Function to detect if it's a mobile device
-    const isMobile = window.innerWidth <= 768;
 
     // Unlock scrolling when component is unmounted or on mobile
     return () => {
@@ -100,7 +100,7 @@ export default function Layout() {
     }),
     []
   );
-  if (init) {
+  if (init && !isMobile) {
 
     return (
 
@@ -108,36 +108,37 @@ export default function Layout() {
       <ThemeProvider>
         <div className="h-screen flex flex-col inter-400 w-full">
           <Navbar />
-            <Particles
-              id="tsparticles"
-              particlesLoaded={particlesLoaded}
-              options={options}
-              className="w-full h-full absolute -z-10"
-            />
-            <div className="w-full h-fit absolute justify-end">
-              {/* <img
+          <Particles
+            id="tsparticles"
+            particlesLoaded={particlesLoaded}
+            options={options}
+            className="w-full h-full absolute -z-10"
+          />
+          <div className="w-full h-fit absolute justify-end">
+            {/* <img
                 src={ani}
                 alt="ani"
                 className="fixed bottom-0 left-0 m-4 opacity-35" // <-- Add this line for positioning
               /> */}
-            </div>
-            <Outlet />
           </div>
-        
+          <Outlet />
+        </div>
+
       </ThemeProvider>
 
     );
   }
   return (
     <ThemeProvider>
-      <div className="min-h-screen flex flex-col inter-400">
-        <Navbar />
-
-        <div className="grow">
-          <div className=" w-full h-fit absolute justify-end"><img src={ani} alt="ani" /></div>
-          <Outlet />
-        </div>
+      <div className="min-h-screen flex flex-col inter-400 justify-center items-center font-semibold text-center text-wrap">
+        PLEASE HOP OFF YOUR PHONE
+        <img
+          src={ani}
+          alt="ani"
+          className="fixed m-4 opacity-35" // <-- Add this line for positioning
+        />
       </div>
     </ThemeProvider>
+
   );
 }
