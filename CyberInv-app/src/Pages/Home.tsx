@@ -16,8 +16,7 @@ import cyb6 from "@/gal/cybinv6.jpg";
 import cyb7 from "@/gal/cybinv7.jpg";
 import cyb8 from "@/gal/cybinv8.jpg";
 import cyb9 from "@/gal/cybinv9.jpg";
-import Countdown from 'react-countdown';
-
+import TimerComp from "@/components/TimerComp";
 // import {
 //   Carousel,
 //   CarouselContent,
@@ -27,56 +26,7 @@ import Countdown from 'react-countdown';
 // } from "@/components/ui/carousel";
 
 export default function Home() {
-  // Define the target date: March 15, 2025
-  const targetDate = new Date('2025-03-15T00:00:00');
 
-  interface CountdownRendererProps {
-    days: number;
-    hours: number;
-    minutes: number;
-    seconds: number;
-    completed?: boolean;
-  }
-
-  const renderer = ({ days, hours, minutes, seconds }: CountdownRendererProps) => {
-    return (
-      <div className="flex flex-row gap-5">
-        {/* Countdown display */}
-        <div className="flex flex-col">
-          <div className="flex flex-row">
-            <div className="text-7xl p-4 rounded-md animate-pulse">
-              {String(days).padStart(2, '0')}
-            </div>
-          </div>
-          Days
-        </div>
-        <div className="flex flex-col">
-          <div className="flex flex-row">
-            <div className="text-7xl p-4 rounded-md animate-pulse">
-              {String(hours).padStart(2, '0')}
-            </div>
-          </div>
-          Hours
-        </div>
-        <div className="flex flex-col">
-          <div className="flex flex-row">
-            <div className="text-7xl p-4 rounded-md animate-pulse">
-              {String(minutes).padStart(2, '0')}
-            </div>
-          </div>
-          Minutes
-        </div>
-        <div className="flex flex-col">
-          <div className="flex flex-row">
-            <div className="text-7xl p-4 rounded-md animate-pulse">
-              {String(seconds).padStart(2, '0')}
-            </div>
-          </div>
-          Seconds
-        </div>
-      </div>
-    );
-  };
 
   return (
     <main className=" w-full min-h-screen flex flex-col bg-gradient-to-bl  font-sans">
@@ -157,7 +107,7 @@ export default function Home() {
           <div className="flex justify-center items-center text-center text-5xl p-10 text-violet-500 font-extrabold">
             COUNTDOWN TIMER
           </div>
-          <Countdown date={targetDate} renderer={renderer} />
+          <TimerComp/>
         </div>
       </section>
 

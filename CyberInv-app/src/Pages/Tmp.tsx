@@ -7,6 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import TimerComp from "@/components/TimerComp"
 export default function Tmp() {
   const navigate = useNavigate(); // Initialize useNavigate hook
 
@@ -25,9 +26,9 @@ export default function Tmp() {
 
         {/* Grid for Video Embeds */}
         <div className="w-full grid grid-cols-1 gap-5 place-items-center">
-        <div className="text-center font-semibold mt-2">
-              So what now??
-            </div>
+          <div className="text-center font-semibold mt-2">
+            So what now??
+          </div>
           <div className="grid grid-flow-row md:grid-cols-2 gap-5 text-3xl">
             <Accordion type="single" collapsible>
               <AccordionItem value="item-1">
@@ -92,6 +93,7 @@ export default function Tmp() {
               Hey, Check out this video to set up your laptop.
             </div>
           </div>
+      <TimerComp />
 
         </div>
       </div>
