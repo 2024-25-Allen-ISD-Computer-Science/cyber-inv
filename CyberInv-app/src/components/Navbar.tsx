@@ -21,13 +21,13 @@ export default function NavBar() {
   const formatTime = (time: number) => String(time).padStart(2, '0');
 
   // Renderer callback with condition for 00:00:00 format
-  const renderer = ({ days, hours, minutes, seconds, completed }) => {
+  const renderer = ({  hours, minutes, seconds, completed }) => {
     if (completed) {
       return <Completionist />;
     } else {
       return (
         <span>
-          {formatTime(days)}:{formatTime(hours)}:{formatTime(minutes)}:{formatTime(seconds)}
+         {formatTime(hours)}:{formatTime(minutes)}:{formatTime(seconds)}
         </span>
       );
     }
