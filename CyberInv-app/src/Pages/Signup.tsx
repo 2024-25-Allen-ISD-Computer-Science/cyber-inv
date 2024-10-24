@@ -86,6 +86,11 @@ export default function TeamMemberSignUp() {
     }
   };
 
+  const removeForm = () => {
+    setForms(forms.slice(0, 1)); // Remove the second form by slicing the array
+    setActiveTab("teamMember1"); // Switch back to the first tab
+  };
+
   const validateForm = () => {
     if (!teamName) {
       setError("Please provide a team name.");
@@ -391,6 +396,11 @@ export default function TeamMemberSignUp() {
                       Selected file: {forms[1].file.name}
                     </p>
                   )}
+                </div>
+                <div className="mt-4">
+                  <Button variant="outline" onClick={removeForm} className="shadow-2xl">
+                    Remove Team Member 2
+                  </Button>
                 </div>
               </CardContent>
             </Card>
