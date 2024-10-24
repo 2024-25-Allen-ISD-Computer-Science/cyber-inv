@@ -21,7 +21,7 @@ const teams: Team[] = [
     teamName: "Team Avocado",
     self: true,
     score: 100,
-    division: "Silver"
+    division: "Gold"
   },
   {
     teamName: "Team Apple",
@@ -45,7 +45,7 @@ const teams: Team[] = [
     teamName: "Team Date",
     self: false,
     score: 150,
-    division: "Silver",
+    division: "Gold",
   },
   {
     teamName: "Team Elderberry",
@@ -81,13 +81,13 @@ const teams: Team[] = [
     teamName: "Team Lemon",
     self: false,
     score: 75,
-    division: "Silver",
+    division: "Gold",
   },
   {
     teamName: "Team Mango",
     self: false,
     score: 175,
-    division: "Silver",
+    division: "Gold",
   },
   {
     teamName: "Team Nectarine",
@@ -111,7 +111,7 @@ const teams: Team[] = [
     teamName: "Team Quince",
     self: false,
     score: 125,
-    division: "Silver",
+    division: "Gold",
   },
   {
     teamName: "Team Raspberry",

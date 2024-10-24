@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {
   Accordion,
   AccordionContent,
@@ -19,13 +18,13 @@ import cyb8 from "@/gal/cybinv8.jpg";
 import cyb9 from "@/gal/cybinv9.jpg";
 import Countdown from 'react-countdown';
 
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+// import {
+//   Carousel,
+//   CarouselContent,
+//   CarouselItem,
+//   CarouselNext,
+//   CarouselPrevious,
+// } from "@/components/ui/carousel";
 
 
 
@@ -33,42 +32,60 @@ export default function Home() {
 // Define the target date: March 15, 2025
 const targetDate = new Date('2025-03-15T00:00:00');
 
-// Countdown renderer function
-const renderer = ({ days, hours, minutes, seconds }) => {
+interface CountdownRendererProps {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+  completed?: boolean;
+}
+
+const renderer = ({ days, hours, minutes, seconds }: CountdownRendererProps) => {
   return (
     <div className="flex flex-row gap-5">
       {/* Days */}
       <div className="flex flex-col">
         <div className="flex flex-row">
-          <div className="text-7xl  p-4 rounded-md animate-pulse">{String(days).padStart(2, '0')}</div>
+          <div className="text-7xl p-4 rounded-md animate-pulse">
+            {String(days).padStart(2, '0')}
+          </div>
         </div>
         Days
       </div>
+      
       {/* Hours */}
       <div className="flex flex-col">
         <div className="flex flex-row">
-          <div className="text-7xl   p-4 rounded-md animate-pulse">{String(hours).padStart(2, '0')}</div>
+          <div className="text-7xl p-4 rounded-md animate-pulse">
+            {String(hours).padStart(2, '0')}
+          </div>
         </div>
         Hours
       </div>
+      
       {/* Minutes */}
       <div className="flex flex-col">
         <div className="flex flex-row">
-          <div className="text-7xl p-4 rounded-md animate-pulse">{String(minutes).padStart(2, '0')}</div>
+          <div className="text-7xl p-4 rounded-md animate-pulse">
+            {String(minutes).padStart(2, '0')}
+          </div>
         </div>
         Minutes
       </div>
-
+      
       {/* Seconds */}
       <div className="flex flex-col">
         <div className="flex flex-row">
-          <div className="text-7xl p-4 rounded-md animate-pulse">{String(seconds).padStart(2, '0')}</div>
+          <div className="text-7xl p-4 rounded-md animate-pulse">
+            {String(seconds).padStart(2, '0')}
+          </div>
         </div>
-      Seconds
+        Seconds
       </div>
     </div>
   );
 };
+
   return (
     <main className=" w-full min-h-screen flex flex-col bg-gradient-to-bl  font-sans">
 

@@ -17,7 +17,6 @@ export default function Layout() {
 
   useEffect(() => {
     // Function to detect if it's a mobile device
-    const isMobile = window.innerWidth <= 768;
 
     // Unlock scrolling when component is unmounted or on mobile
     return () => {

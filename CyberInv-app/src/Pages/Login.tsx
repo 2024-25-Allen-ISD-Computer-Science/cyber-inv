@@ -30,31 +30,29 @@ export default function LoginForm() {
   }, [navigate]); // The dependency array ensures this runs only once when the component mounts
 
   const handleLogin = async (event: React.FormEvent) => {
-    event.preventDefault(); // Prevent default form submission behavior
-    setError(null); // Clear previous errors
-
+    event.preventDefault();
+    setError(null);
+  
     try {
-      // PocketBase authentication call
-      const authData = await pb.collection("player").authWithPassword(email, password);
-
-      // Check if authStore.model is available
+      // Perform PocketBase authentication without storing authData
+      await pb.collection("player").authWithPassword(email, password);
+  
       if (pb.authStore.model) {
         console.log("Logged in successfully");
         console.log("Token:", pb.authStore.token);
-        console.log("User ID:", pb.authStore.model.id); // Access id safely
-
+        console.log("User ID:", pb.authStore.model.id);
+  
         // Redirect to /tmp after successful login
         navigate("/tmp");
       } else {
         console.log("Login successful, but no user data found.");
       }
     } catch (err: any) {
-      // Handle error during login
       console.error("Login failed:", err);
       setError("Login failed. Please check your credentials.");
     }
   };
-
+  
   return (
     <main className="w-full h-screen flex justify-center items-center">
       <Card className="w-fit h-fit drop-shadow-2xl p-2">
