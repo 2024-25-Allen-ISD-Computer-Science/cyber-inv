@@ -24,6 +24,8 @@ const chartData = [
   { Hour: "3 AM", points: 1700 },
   { Hour: "4 AM", points: 1800 },
   { Hour: "5 AM", points: 1900 },
+
+  
 ];
 
 const chartConfig = {
