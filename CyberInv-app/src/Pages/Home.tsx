@@ -29,16 +29,16 @@ export default function Home() {
 
 
   return (
-    <main className=" w-full min-h-screen flex flex-col bg-gradient-to-bl  font-sans">
+    <main className=" w-full flex flex-col bg-gradient-to-bl  font-sans">
       {/* Nav Bar */}
       <div className=" w-full">
         <div className="flex justify-center items-center text-center">
-          {["Sponsors", "FAQ", "Last Year", "Meet the Team"].map(
+          {["Sponsors", "FAQ", "Last Year", "Meet the Team", "Sign Up", "Login"].map(
             (text) => {
               const href = `#${text.toLowerCase().replace(/\s+/g, '-')}`;
               return (
                 <a href={href} key={text}>
-                  <div className=" p-5 text-xl" key={text}>
+                  <div className=" p-5 text-2xl" key={text}>
                     {text}
                   </div>
                 </a>
@@ -49,9 +49,9 @@ export default function Home() {
       </div>
 
       {/* Main Section */}
-      <section className="w-full h-screen flex flex-col items-center">
-        <div className="flex flex-col md:flex-row justify-center items-center text-center md:text-left space-y-6 md:space-y-0 md:space-x-8 h-full pt-[5vh]">
-          <div className=" w-72 h-72 z-20 my-0">
+      <section className="w-full h-[100vh] flex flex-col items-center">
+        <div className="flex flex-col md:flex-row justify-center items-center text-center md:text-left md:space-y-0 md:space-x-8 h-full">
+          <div className=" w-81 h-81 z-20 my-0">
             <img
               src="/ico.svg"
               width={500}
@@ -61,14 +61,14 @@ export default function Home() {
             />
           </div>
 
-          <div className="text-5xl md:text-6xl font-bold z-20">
+          <div className="text-9xl font-bold z-20">
             Allen Cyber <br /> Invitational
           </div>
         </div>
 
         {/* Sign Up */}
         <div className="w-full h-[50vh]">
-          <div className="flex flex-row gap-5 justify-center items-center text-center text-3xl text-white">
+          <div className="flex flex-row gap-5 justify-center items-center text-center text-3xl text-white -mt-[10vh]">
             <a href="/Signup">
               <button className="bg-violet-500 py-4 px-6 rounded-xl shadow-xl hover:cursor-pointer hover:bg-violet-600 ease-in-out duration-200">
                 Sign Up
@@ -76,7 +76,7 @@ export default function Home() {
             </a>
 
             <a href="/Login">
-              <button className="bg-blue-500 text-accent py-4 px-6 rounded-xl shadow-xl hover:cursor-pointer hover:bg-blue-700 ease-in-out duration-200">
+              <button className="bg-blue-500 py-4 px-6 rounded-xl shadow-xl hover:cursor-pointer hover:bg-blue-700 ease-in-out duration-200">
                 Login
               </button>
             </a>
