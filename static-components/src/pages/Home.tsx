@@ -6,10 +6,12 @@ import { SiGmail } from "react-icons/si";
 import Image1 from "../assets/images/compMedia1.jpg";
 import CS_Squared from "../assets/logos/CSSquared_Logo.png";
 // import SponsorCard from "../components/SponsorCard";
-
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer"
 export default function Home() {
     return (
         <>
+         <Navbar />
         <div className="flex flex-col items-center bg-black">
             {/* Cover */}
             <div className="h-[45vh] w-full background1">
@@ -146,6 +148,7 @@ export default function Home() {
                 </div>
             </div>
         </div>
+        <Footer />
         </>
     );
 }

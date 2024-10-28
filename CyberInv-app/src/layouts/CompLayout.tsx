@@ -43,7 +43,7 @@ export default function Layout() {
 
   const options: ISourceOptions = useMemo(
     () => ({
-      fpsLimit: 30,
+      fpsLimit: 60,
       interactivity: {
         events: {
           onHover: {
