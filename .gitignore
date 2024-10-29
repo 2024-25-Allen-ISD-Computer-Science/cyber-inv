@@ -2,5 +2,5 @@ node_modules/
 .next/
 .swc/
 .*.env
-pb/*
+pb_data/*
 storage/*

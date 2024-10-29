@@ -1,16 +1,16 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import { ModeToggle } from "@/components/mode-toggle";
 import { Link, useLocation } from "react-router-dom";
 import { UserIcon, CurrencyDollarIcon, ChartBarIcon, PuzzlePieceIcon, ShieldExclamationIcon, ServerStackIcon } from "@heroicons/react/24/outline";
 import { Button } from "./ui/button";
 import Countdown, { CountdownRendererFn } from 'react-countdown';
 import { IoExit } from "react-icons/io5";
-import pb from "@/api/pocketbase";
+import pb from "@/api/pocketbase"; // Assuming pb is the initialized PocketBase instance
 
 // Logout handler
 const handleLogout = () => {
-  pb.authStore.clear(); // Clear any saved user sessions
-  window.location.href = '/login'; // Redirect to login page or wherever you want after logout
+  pb.authStore.clear(); // Clear PocketBase auth store
+  window.location.href = '/login'; // Redirect to login page
 };
 
 // Completionist Component for Countdown End
@@ -49,7 +49,17 @@ const NavItem: React.FC<NavItemProps> = ({ to, children }) => {
   );
 };
 
-const NavBar: React.FC = () => {
+export default function Navbar() {
+  const [username, setUsername] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Get username from PocketBase authStore model if the user is authenticated
+    const user = pb.authStore.model;
+    if (user) {
+      setUsername(user.name); // Set username from PocketBase's auth store model
+    }
+  }, []);
+
   return (
     <div className="flex flex-row w-full justify-center items-center p-3"> {/* Ensures centering */}
       <div className="flex flex-row gap-3 max-w-screen-xl w-full justify-center"> {/* Centers the inner content */}
@@ -58,7 +68,7 @@ const NavBar: React.FC = () => {
         <div className="flex flex-row items-center gap-1.5 border rounded-md p-1.5 px-3 shadow">
           <div className="flex flex-row">
             <UserIcon className="size-6" />
-            Username
+            {username || 'Guest'}
           </div>
           <div className="flex flex-row">
             <CurrencyDollarIcon className="size-6" />
@@ -75,7 +85,8 @@ const NavBar: React.FC = () => {
               date={Date.now() + 10000} // 10 second countdown for example
               renderer={renderer}       // No need for precision, just seconds
             />
-          </div>
+          </div>   
+
         </div>
 
         {/* Navigation Links */}
@@ -115,5 +126,3 @@ const NavBar: React.FC = () => {
     </div>
   );
 };
-
-export default NavBar;
