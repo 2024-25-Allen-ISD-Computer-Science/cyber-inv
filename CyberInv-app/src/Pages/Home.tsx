@@ -1,9 +1,3 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { AiOutlineDiscord } from "react-icons/ai";
 import { FaInstagram } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
@@ -17,6 +11,7 @@ import cyb7 from "@/gal/cybinv7.jpg";
 import cyb8 from "@/gal/cybinv8.jpg";
 import cyb9 from "@/gal/cybinv9.jpg";
 import Countdown from 'react-countdown';
+import FAQ from "@/components/FAQ";
 
 // import {
 //   Carousel,
@@ -79,7 +74,7 @@ export default function Home() {
   };
 
   return (
-    <main className=" w-full min-h-screen flex flex-col bg-gradient-to-bl  font-sans">
+    <main className=" w-full min-h-screen flex flex-col bg-gradient-to-bl font-sans">
       {/* Nav Bar */}
       <div className=" w-full">
         <div className="flex justify-center items-center text-center">
@@ -172,37 +167,8 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid grid-flow-row md:grid-cols-2 gap-5 text-3xl">
-            <Accordion type="single" collapsible>
-              <AccordionItem value="item-1">
-                <AccordionTrigger>What is the location?</AccordionTrigger>
-                <AccordionContent className="text-2xl">TBD</AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-2">
-                <AccordionTrigger>What is the price?</AccordionTrigger>
-                <AccordionContent className="text-2xl">TBD</AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-3">
-                <AccordionTrigger>When does it start?</AccordionTrigger>
-                <AccordionContent className="text-2xl">TBD</AccordionContent>
-              </AccordionItem>
-            </Accordion>
+          <FAQ/>
 
-            <Accordion type="single" collapsible>
-              <AccordionItem value="item-4">
-                <AccordionTrigger>Do I need prior cybersecurity knowledge?</AccordionTrigger>
-                <AccordionContent className="text-2xl">TBD</AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-5">
-                <AccordionTrigger>Are there any prizes?</AccordionTrigger>
-                <AccordionContent className="text-2xl">TBD</AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-6">
-                <AccordionTrigger>What is the schedule for the day?</AccordionTrigger>
-                <AccordionContent className="text-2xl">TBD</AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </div>
         </div>
       </section>
 
