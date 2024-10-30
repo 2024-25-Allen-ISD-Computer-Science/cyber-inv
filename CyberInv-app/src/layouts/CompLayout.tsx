@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
-import ani from "@/gal/ani.png"
+import ani from "@/gal/ani.png";
 import { Outlet } from "react-router-dom";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useCallback } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import {
   type Container,
@@ -15,17 +15,19 @@ import { ThemeProvider } from "@/components/theme-provider";
 
 export default function Layout() {
   const [init, setInit] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-  const isMobile = window.innerWidth <= 768;
+  // Update isMobile state on resize
+  const handleResize = useCallback(() => {
+    setIsMobile(window.innerWidth <= 768);
+  }, []);
 
   useEffect(() => {
-    // Function to detect if it's a mobile device
-
-    // Unlock scrolling when component is unmounted or on mobile
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, []);
+    // Add event listener on mount
+    window.addEventListener("resize", handleResize);
+    // Remove event listener on unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, [handleResize]);
 
   useEffect(() => {
     initParticlesEngine(async (engine: any) => {
@@ -41,7 +43,7 @@ export default function Layout() {
 
   const options: ISourceOptions = useMemo(
     () => ({
-      fpsLimit: 30,
+      fpsLimit: 60,
       interactivity: {
         events: {
           onHover: {
@@ -100,11 +102,9 @@ export default function Layout() {
     }),
     []
   );
+
   if (init && !isMobile) {
-
     return (
-
-
       <ThemeProvider>
         <div className="h-screen flex flex-col inter-400 w-full">
           <Navbar />
@@ -118,27 +118,25 @@ export default function Layout() {
             {/* <img
                 src={ani}
                 alt="ani"
-                className="fixed bottom-0 left-0 m-4 opacity-35" // <-- Add this line for positioning
+                className="fixed bottom-0 left-0 m-4 opacity-35" 
               /> */}
           </div>
           <Outlet />
         </div>
-
       </ThemeProvider>
-
     );
   }
+
   return (
     <ThemeProvider>
       <div className="min-h-screen flex flex-col inter-400 justify-center items-center font-semibold text-center text-wrap">
-        PLEASE HOP OFF YOUR PHONE
-        <img
+        Your screen is too small. Please resize!
+        {/* <img
           src={ani}
           alt="ani"
-          className="fixed m-4 opacity-35" // <-- Add this line for positioning
-        />
+          className="fixed m-4 opacity-35" 
+        /> */}
       </div>
     </ThemeProvider>
-
   );
 }

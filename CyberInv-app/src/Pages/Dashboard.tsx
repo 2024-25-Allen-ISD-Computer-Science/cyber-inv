@@ -20,15 +20,15 @@ const userCardData: User = {
 };
 
 export default function Dashboard() {
-  const navigate = useNavigate(); // Initialize useNavigate hook
+  // const navigate = useNavigate(); // Initialize useNavigate hook
 
-  // Check if the user is authenticated on component mount
-  useEffect(() => {
-    if (!pb.authStore.isValid) {
-      // If the user is not authenticated, redirect to the login page
-      navigate("/login");
-    }
-  }, [navigate]); // Runs only once when the component mounts
+  // // Check if the user is authenticated on component mount
+  // useEffect(() => {
+  //   if (!pb.authStore.isValid) {
+  //     // If the user is not authenticated, redirect to the login page
+  //     navigate("/login");
+  //   }
+  // }, [navigate]); // Runs only once when the component mounts
 
   return (
     <main className="min-h-full min-w-full max-h-full max-w-full flex flex-col">

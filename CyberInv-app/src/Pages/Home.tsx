@@ -10,8 +10,8 @@ import cyb6 from "@/gal/cybinv6.jpg";
 import cyb7 from "@/gal/cybinv7.jpg";
 import cyb8 from "@/gal/cybinv8.jpg";
 import cyb9 from "@/gal/cybinv9.jpg";
-import Countdown from 'react-countdown';
 import FAQ from "@/components/FAQ";
+import TimerComp from "@/components/TimerComp";
 
 // import {
 //   Carousel,
@@ -22,68 +22,19 @@ import FAQ from "@/components/FAQ";
 // } from "@/components/ui/carousel";
 
 export default function Home() {
-  // Define the target date: March 15, 2025
-  const targetDate = new Date('2025-03-15T00:00:00');
 
-  interface CountdownRendererProps {
-    days: number;
-    hours: number;
-    minutes: number;
-    seconds: number;
-    completed?: boolean;
-  }
-
-  const renderer = ({ days, hours, minutes, seconds }: CountdownRendererProps) => {
-    return (
-      <div className="flex flex-row gap-5">
-        {/* Countdown display */}
-        <div className="flex flex-col">
-          <div className="flex flex-row">
-            <div className="text-7xl p-4 rounded-md animate-pulse">
-              {String(days).padStart(2, '0')}
-            </div>
-          </div>
-          Days
-        </div>
-        <div className="flex flex-col">
-          <div className="flex flex-row">
-            <div className="text-7xl p-4 rounded-md animate-pulse">
-              {String(hours).padStart(2, '0')}
-            </div>
-          </div>
-          Hours
-        </div>
-        <div className="flex flex-col">
-          <div className="flex flex-row">
-            <div className="text-7xl p-4 rounded-md animate-pulse">
-              {String(minutes).padStart(2, '0')}
-            </div>
-          </div>
-          Minutes
-        </div>
-        <div className="flex flex-col">
-          <div className="flex flex-row">
-            <div className="text-7xl p-4 rounded-md animate-pulse">
-              {String(seconds).padStart(2, '0')}
-            </div>
-          </div>
-          Seconds
-        </div>
-      </div>
-    );
-  };
 
   return (
-    <main className=" w-full min-h-screen flex flex-col bg-gradient-to-bl font-sans">
+    <main className=" w-full flex flex-col bg-gradient-to-bl font-sans">
       {/* Nav Bar */}
       <div className=" w-full">
         <div className="flex justify-center items-center text-center">
-          {["Sponsors", "FAQ", "Last Year", "Meet the Team"].map(
+          {["Sponsors", "FAQ", "Last Year", "Meet the Team", "Sign Up", "Login"].map(
             (text) => {
               const href = `#${text.toLowerCase().replace(/\s+/g, '-')}`;
               return (
                 <a href={href} key={text}>
-                  <div className=" p-5 text-xl" key={text}>
+                  <div className=" p-5 text-2xl" key={text}>
                     {text}
                   </div>
                 </a>
@@ -94,11 +45,11 @@ export default function Home() {
       </div>
 
       {/* Main Section */}
-      <section className="w-full h-screen flex flex-col items-center">
-        <div className="flex flex-col md:flex-row justify-center items-center text-center md:text-left space-y-6 md:space-y-0 md:space-x-8 h-full pt-[5vh]">
-          <div className=" w-72 h-72 z-20 my-0">
+      <section className="w-full h-[100vh] flex flex-col items-center">
+        <div className="flex flex-col md:flex-row justify-center items-center text-center md:text-left md:space-y-0 md:space-x-8 h-full">
+          <div className=" w-81 h-81 z-20 my-0">
             <img
-              src="/favicon.ico"
+              src="/ico.svg"
               width={500}
               height={500}
               alt="Eagle Logo"
@@ -106,14 +57,14 @@ export default function Home() {
             />
           </div>
 
-          <div className="text-5xl md:text-6xl font-bold z-20">
+          <div className="text-9xl font-bold z-20">
             Allen Cyber <br /> Invitational
           </div>
         </div>
 
         {/* Sign Up */}
         <div className="w-full h-[50vh]">
-          <div className="flex flex-row gap-5 justify-center items-center text-center text-3xl text-white">
+          <div className="flex flex-row gap-5 justify-center items-center text-center text-3xl text-white -mt-[10vh]">
             <a href="/Signup">
               <button className="bg-violet-500 py-4 px-6 rounded-xl shadow-xl hover:cursor-pointer hover:bg-violet-600 ease-in-out duration-200">
                 Sign Up
@@ -121,7 +72,7 @@ export default function Home() {
             </a>
 
             <a href="/Login">
-              <button className="bg-blue-500 text-accent py-4 px-6 rounded-xl shadow-xl hover:cursor-pointer hover:bg-blue-700 ease-in-out duration-200">
+              <button className="bg-blue-500 py-4 px-6 rounded-xl shadow-xl hover:cursor-pointer hover:bg-blue-700 ease-in-out duration-200">
                 Login
               </button>
             </a>
@@ -152,7 +103,7 @@ export default function Home() {
           <div className="flex justify-center items-center text-center text-5xl p-10 text-violet-500 font-extrabold">
             COUNTDOWN TIMER
           </div>
-          <Countdown date={targetDate} renderer={renderer} />
+          <TimerComp/>
         </div>
       </section>
 

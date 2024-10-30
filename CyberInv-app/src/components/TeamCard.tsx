@@ -6,24 +6,15 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 
 const chartData = [
-  { Hour: "12 AM", points: 100 },
-  { Hour: "1 AM", points: 150 },
-  { Hour: "2 AM", points: 200 },
-  { Hour: "3 AM", points: 300 },
-  { Hour: "4 AM", points: 450 },
-  { Hour: "5 AM", points: 650 },
-  { Hour: "12 AM", points: 900 },
-  { Hour: "1 AM", points: 900 },
-  { Hour: "2 AM", points: 1000 },
-  { Hour: "3 AM", points: 1100 },
-  { Hour: "4 AM", points: 1200 },
-  { Hour: "5 AM", points: 1300 },
-  { Hour: "12 AM", points: 1400 },
-  { Hour: "1 AM", points: 1500 },
-  { Hour: "2 AM", points: 1600 },
-  { Hour: "3 AM", points: 1700 },
-  { Hour: "4 AM", points: 1800 },
-  { Hour: "5 AM", points: 1900 },
+  { Hour: "1", points: 100 },
+  { Hour: "2", points: 150 },
+  { Hour: "3", points: 200 },
+  { Hour: "4", points: 300 },
+  { Hour: "5", points: 450 },
+  { Hour: "6", points: 650 },
+  { Hour: "7", points: 900 },
+  { Hour: "8", points: 900 },
+
 ];
 
 const chartConfig = {
@@ -62,7 +53,7 @@ export default function TeamCard() {
                   }}
                 >
                   <CartesianGrid vertical={false} />
-                  <XAxis dataKey="Hour" tickLine={true} axisLine={false} tickMargin={8} tickFormatter={(value) => value.slice(0, 3)} />
+                  <XAxis dataKey="Hour" tickLine={true} axisLine={true} tickMargin={8} tickFormatter={(value) => value.slice(0, 10)} />
                   <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
                   <defs>
                     <linearGradient id="fillDesktop" x1="0" y1="0" x2="0" y2="1">

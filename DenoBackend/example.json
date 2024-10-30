@@ -1,16 +1,16 @@
 /*point history graph*/
-{
+}
   "points_history": [
     {
-      "dateISO": "2024-10-21T00:00:00Z",
+      "minute": "2024-10-21T00:00:00Z",
       "points": 5
     },
     {
-      "dateISO": "2024-10-20T00:00:00Z",
+      "minute": "2024-10-20T00:00:00Z",
       "points": 10
     },
     {
-      "dateISO": "2024-10-19T00:00:00Z",
+      "minute": "2024-10-19T00:00:00Z",
       "points": 7
     }
   ]
@@ -45,8 +45,8 @@
 {
   "round_type": 1, // 1 == puzzle, 2 == battle, 3 == scenario 
   "round_length": {
-  "start": "iso date format",
-  "finish": "iso date format"
+    "start": "iso date format",
+    "finish": "iso date format"
   },
   "division": 1 // 1 == div_1, 2 == div_2
 }

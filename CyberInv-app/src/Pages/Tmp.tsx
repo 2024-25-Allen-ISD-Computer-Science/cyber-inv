@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import pb from "@/api/pocketbase"; // Import PocketBase
-import Countdown from "react-countdown";
 import FAQ from "@/components/FAQ";
+import Countdown from "react-countdown";
 
 export default function Tmp() {
 
@@ -79,11 +79,9 @@ export default function Tmp() {
 
         {/* Grid for Questions */}
         <div className="w-full grid grid-cols-1 gap-5 place-items-center">
-          <div className="text-center text-xl font-semibold mt-2">
-            So what now?
-          </div>
-          
-          <FAQ/>
+          <div className="text-center font-semibold mt-2">So what now??</div>
+
+          <FAQ />
 
           <div className="flex justify-center space-x-20 mt-8 mb-8">
             {/* First Video Embed */}
@@ -102,7 +100,8 @@ export default function Tmp() {
                 />
               </div>
               <div className="text-center font-semibold mt-2">
-                Hey, Check out this playlist to get you ahead for the competition.
+                Hey, Check out this playlist to get you ahead for the
+                competition.
               </div>
             </div>
 

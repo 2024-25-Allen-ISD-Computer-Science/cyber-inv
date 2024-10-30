@@ -74,8 +74,7 @@ export function UserCard({ data }: { data: User }) {
       </div>
       <hr className="my-3" />
       <div className="flex flex-row">
-        <img className="size-32 aspect-square border rounded-full" src="https://placehold.co/400x400" />
-        <ChartContainer className="h-32 my-auto ms-auto" config={chartConfig}>
+        <ChartContainer className="h-32 my-auto ms-auto w-full" config={chartConfig}>
           <AreaChart
             accessibilityLayer
             data={data.chartData}
@@ -84,8 +83,8 @@ export function UserCard({ data }: { data: User }) {
               right: 12,
             }}
           >
-            <CartesianGrid vertical={false} />
-            <XAxis dataKey="minute" tickLine={true} axisLine={false} tickMargin={8} tickFormatter={(value) => value.slice(0, 3)} />
+            <CartesianGrid vertical={true} />
+            <XAxis dataKey="minute" tickLine={true} axisLine={false} tickMargin={4} tickFormatter={(value) => value.slice(0, 3)} />
             <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="line" />} />
             <Area dataKey="points" type="natural" fill="var(--color-desktop)" fillOpacity={0.4} stroke="var(--color-desktop)" />
           </AreaChart>
