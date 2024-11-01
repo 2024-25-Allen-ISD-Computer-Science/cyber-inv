@@ -1,6 +1,9 @@
 import { AiOutlineDiscord } from "react-icons/ai";
 import { FaInstagram } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import { FaDiscord } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
+import { SiGmail } from "react-icons/si";
 import cyb1 from "@/gal/cybinv1.jpg";
 import cyb2 from "@/gal/cybinv2.jpg";
 import cyb3 from "@/gal/cybinv3.jpg";
@@ -25,7 +28,7 @@ export default function Home() {
 
 
   return (
-    <main className=" w-full flex flex-col bg-gradient-to-bl font-sans">
+    <main className=" w-full flex flex-col bg-gradient-to-bl font-sans overflow-x-hidden">
       {/* Nav Bar */}
       <div className=" w-full">
         <div className="flex justify-center items-center text-center">
@@ -77,7 +80,7 @@ export default function Home() {
               </button>
             </a>
           </div>
-          <div className=" animate-bounce flex flex-col justify-center items-center text-center text-2xl mt-[25vh]">
+          <div className=" animate-bounce flex flex-col justify-center items-center text-center text-2xl mt-[15vh]">
             Learn more
             <br />
             <div className="mt-3">&#9660;</div>
@@ -141,6 +144,28 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* Footer */}
+        <div className="w-screen bg-zinc-900 p-8 flex justify-center mt-[50vh]">
+            <div className="flex flex-col w-11/12 lg:w-5/6 items-center text-white">
+                <div className="w-full flex items-center justify-evenly">
+                    <div className="w-1/4 lg:w-1/3 bg-zinc-100 h-0.5"></div>
+                    <div className="w-1/2 lg:w-1/3 flex flex-row justify-evenly border-zinc-100 items-center">
+                        <a href="mailto:allencyberinvitational@gmail.com"><SiGmail /></a>
+                        <a href=""><FaInstagram /></a>
+                        <a href=""><FaDiscord /></a>
+                        <a href=""><FaLinkedin /></a>
+                    </div>
+                    <div className="w-1/4 lg:w-1/3 bg-zinc-100 h-0.5"></div>
+                </div>
+                <div className="flex items-center gap-3 my-3">
+                    <img src={"/ico.svg"} className="w-20 h-20" />
+                    <div className="text-white font-bold tracking-widest text-lg lg:text-3xl text-center">Allen Cyber Invitational</div>
+                </div>
+                <div className="text-sm lg:text-base">Copyright @ 2024 Allen Cyber Invitational</div>
+            </div>
+        </div>
+        
     </main>
   );
 }
