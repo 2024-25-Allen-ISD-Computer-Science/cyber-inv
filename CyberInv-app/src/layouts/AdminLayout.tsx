@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/Adminbar";
 import ani from "@/gal/ani.png";
 import { Outlet } from "react-router-dom";
 import { useEffect, useMemo, useState, useCallback } from "react";
@@ -12,19 +12,8 @@ import {
 import { loadSlim } from "@tsparticles/slim";
 
 import { ThemeProvider } from "@/components/theme-provider";
-import pb from "@/api/pocketbase";
-import { useNavigate } from "react-router-dom";
-export default function Layout() {
-  const navigate = useNavigate(); // Initialize useNavigate hook
 
-    // // Check if the user is authenticated on component mount
-    useEffect(() => {
-      if (!pb.authStore.isValid) {
-        // If the user is not authenticated, redirect to the login page
-        navigate("/login");
-      }
-    }, [navigate]); // Runs only once when the component mounts
-  
+export default function Layout() {
   const [init, setInit] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 

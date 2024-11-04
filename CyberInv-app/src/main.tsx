@@ -12,12 +12,16 @@ import HomeLayout from "@/layouts/HomeLayout"
 import Signup from "@/Pages/Signup"
 import LoginForm from "@/Pages/Login";
 import Tmp from "./Pages/Tmp";
+import Admin from "@/layouts/AdminLayout"
+import AdminDashboard from "@/Pages/AdminDashboard"
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
+      <Route element={<Admin />}>
+        <Route path="/Admin" element={<AdminDashboard />} />
+        </Route>
       <Route element={<HomeLayout />}>
-
         <Route path="/" element={<Home />} />
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Login" element={<LoginForm />} />

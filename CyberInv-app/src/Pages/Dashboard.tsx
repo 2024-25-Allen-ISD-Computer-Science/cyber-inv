@@ -1,9 +1,7 @@
 import LeaderBoard from "@/components/LeaderBoard/LeaderBoard";
 import { User, UserCard } from "@/components/UserCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import pb from "@/api/pocketbase";
+
 const userCardData: User = {
   username: "UserName",
   puzzleRoundPoint: 10,
@@ -20,15 +18,6 @@ const userCardData: User = {
 };
 
 export default function Dashboard() {
-  // const navigate = useNavigate(); // Initialize useNavigate hook
-
-  // // Check if the user is authenticated on component mount
-  // useEffect(() => {
-  //   if (!pb.authStore.isValid) {
-  //     // If the user is not authenticated, redirect to the login page
-  //     navigate("/login");
-  //   }
-  // }, [navigate]); // Runs only once when the component mounts
 
   return (
     <main className="min-h-full min-w-full max-h-full max-w-full flex flex-col">
@@ -51,8 +40,6 @@ export default function Dashboard() {
           </CardContent>
           </CardContent>
         </Card>
-
-
       </div>
     </main>
   );
