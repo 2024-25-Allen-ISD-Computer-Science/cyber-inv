@@ -5,19 +5,8 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import { Separator } from "./ui/separator";
 
 import { PuzzlePieceIcon, ShieldExclamationIcon, ServerStackIcon } from "@heroicons/react/24/outline";
+import {User } from "@/api/player"
 
-interface ChartDataPoint {
-  minute: string;
-  points: number;
-}
-
-export interface User {
-  username: string;
-  puzzleRoundPoint: number;
-  battleRoundPoint: number;
-  scenarioPoint: number;
-  chartData: ChartDataPoint[];
-}
 const chartConfig = {
   desktop: {
     label: "Desktop",
@@ -50,7 +39,7 @@ export function UserCard({ data }: { data: User }) {
             <TooltipTrigger>
               <span className="flex flex-row gap-1">
                 <ShieldExclamationIcon className="size-6" />
-                {data.puzzleRoundPoint}
+                {data.battleRoundPoint}
               </span>
             </TooltipTrigger>
             <TooltipContent>
@@ -63,7 +52,7 @@ export function UserCard({ data }: { data: User }) {
           <Tooltip delayDuration={100}>
             <TooltipTrigger>
               <span className="flex flex-row gap-1">
-                <ServerStackIcon className="size-6" /> {data.puzzleRoundPoint}
+                <ServerStackIcon className="size-6" /> {data.scenarioPoint}
               </span>
             </TooltipTrigger>
             <TooltipContent>
@@ -77,7 +66,7 @@ export function UserCard({ data }: { data: User }) {
         <ChartContainer className="h-32 my-auto ms-auto w-full" config={chartConfig}>
           <AreaChart
             accessibilityLayer
-            data={data.chartData}
+            data={data.pointHistory}
             margin={{
               left: 12,
               right: 12,

@@ -6,7 +6,7 @@ import { Button } from "./ui/button";
 import Countdown, { CountdownRendererFn } from 'react-countdown';
 import { IoExit } from "react-icons/io5";
 import pb from "@/api/pocketbase"; // Assuming pb is the initialized PocketBase instance
-
+import { userCardData } from '@/api/player';
 // Logout handler
 const handleLogout = () => {
   pb.authStore.clear(); // Clear PocketBase auth store
@@ -113,12 +113,11 @@ export default function Navbar() {
         <div className="flex flex-row items-center gap-1.5 border rounded-md p-1.5 px-3 shadow">
           <div className="flex flex-row">
             <UserIcon className="size-6" />
-            {username || 'Guest'}
+            {userCardData.username || 'Guest'}
           </div>
           <div className="flex flex-row">
             <CurrencyDollarIcon className="size-6" />
-            <p className="font-bold">100</p>/
-            <p className="font-bold">100</p>
+            {userCardData.totalPoints}
           </div>
         </div>
 
