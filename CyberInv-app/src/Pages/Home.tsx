@@ -1,12 +1,7 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { AiOutlineDiscord } from "react-icons/ai";
 import { FaInstagram } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
+import { FaDiscord } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
+import { SiGmail } from "react-icons/si";
 import cyb1 from "@/gal/cybinv1.jpg";
 import cyb2 from "@/gal/cybinv2.jpg";
 import cyb3 from "@/gal/cybinv3.jpg";
@@ -16,7 +11,17 @@ import cyb6 from "@/gal/cybinv6.jpg";
 import cyb7 from "@/gal/cybinv7.jpg";
 import cyb8 from "@/gal/cybinv8.jpg";
 import cyb9 from "@/gal/cybinv9.jpg";
+import FAQ from "@/components/FAQ";
 import TimerComp from "@/components/TimerComp";
+import { Card, CardContent } from "@/components/ui/card"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+
 // import {
 //   Carousel,
 //   CarouselContent,
@@ -29,7 +34,7 @@ export default function Home() {
 
 
   return (
-    <main className=" w-full flex flex-col bg-gradient-to-bl  font-sans">
+    <main className=" w-full flex flex-col bg-gradient-to-bl font-sans overflow-x-hidden">
       {/* Nav Bar */}
       <div className=" w-full">
         <div className="flex justify-center items-center text-center">
@@ -81,22 +86,10 @@ export default function Home() {
               </button>
             </a>
           </div>
-          <div className=" animate-bounce flex flex-col justify-center items-center text-center text-2xl mt-[25vh]">
+          <div className=" animate-bounce flex flex-col justify-center items-center text-center text-2xl mt-[15vh]">
             Learn more
             <br />
             <div className="mt-3">&#9660;</div>
-          </div>
-        </div>
-      </section>
-
-      {/* Links Section */}
-      <section id="sponsors" className="py-[3vh] bg-slate-800/30 border-y z-20 mt-10">
-        <div className="flex flex-col justify-center items-center">
-          <div className="text-accent text-2xl font-light mb-5">Get In Touch</div>
-          <div className="flex flex-row text-accent">
-            <MdEmail style={{ fontSize: "40px", color: "gray" }} className="hover:cursor-pointer mr-2 ml-2" />
-            <AiOutlineDiscord style={{ fontSize: "40px", color: "#7289DA" }} className="hover:cursor-pointer mr-2 ml-2" />
-            <FaInstagram style={{ fontSize: "40px", color: "#E4405F" }} className="hover:cursor-pointer mr-2 ml-2" />
           </div>
         </div>
       </section>
@@ -107,12 +100,108 @@ export default function Home() {
           <div className="flex justify-center items-center text-center text-5xl p-10 text-violet-500 font-extrabold">
             COUNTDOWN TIMER
           </div>
-          <TimerComp/>
+          <TimerComp />
         </div>
       </section>
 
+      {/* Meet The Team */}
+      <section className="flex items-center justify-center flex-col">
+        <div className="text-violet-500 text-6xl font-bold pl-10 pt-10 pb-7 text-center">Meet The Team</div>
+        <Carousel className="mt-16">
+          <CarouselContent>
+
+            <CarouselItem className="basis-1/3"> <div className="p-1">
+              <Card>
+                <CardContent className="flex aspect-square items-center justify-center scale-125">
+                  <div className="flex flex-col w-80 h-80">
+                    <img
+                      src={cyb1}
+                      alt="headshot"
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                      }}
+                    />
+                    <div className="text-center mt-5 text-2xl font-bold">Abel Semahagen</div>
+                    <div className="text-center mt-2 text-lg font-light">Project Manager</div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+            </CarouselItem>
+
+            <CarouselItem className="basis-1/3"> <div className="p-1">
+              <Card>
+                <CardContent className="flex aspect-square items-center justify-center scale-125">
+                  <div className="flex flex-col w-80 h-80">
+                    <img
+                      src={cyb3}
+                      alt="headshot"
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                      }}
+                    />
+                    <div className="text-center mt-5 text-2xl font-bold">Richard Jang</div>
+                    <div className="text-center mt-2 text-lg font-light">Project Manager</div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+            </CarouselItem>
+
+            <CarouselItem className="basis-1/3"> <div className="p-1">
+              <Card>
+                <CardContent className="flex aspect-square items-center justify-center scale-125">
+                  <div className="flex flex-col w-80 h-80">
+                    <img
+                      src={cyb6}
+                      alt="headshot"
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                      }}
+                    />
+                    <div className="text-center mt-5 text-2xl font-bold">Darrion Nguyen</div>
+                    <div className="text-center mt-2 text-lg font-light">Project Manager</div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+            </CarouselItem>
+
+            <CarouselItem className="basis-1/3"> <div className="p-1">
+              <Card>
+                <CardContent className="flex aspect-square items-center justify-center scale-125">
+                  <div className="flex flex-col w-80 h-80">
+                    <img
+                      src={cyb8}
+                      alt="headshot"
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                      }}
+                    />
+                    <div className="text-center mt-5 text-2xl font-bold">Tanay Sreedharan</div>
+                    <div className="text-center mt-2 text-lg font-light">Project Manager</div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+            </CarouselItem>
+
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
+      </section>
+
       {/* FAQ Section */}
-      <section id="faq" className="opacity-100 flex z-10 min-h-screen w-full mb-20 justify-center items-center font-bold">
+      <section id="faq" className="opacity-100 flex z-10 min-h-screen w-full mb-20 justify-center items-center font-bold -mt-20">
         <div className="flex flex-col w-[80vw]">
           <div className="border-2 border-white w-full rounded-xl mb-3">
             <div className="text-violet-500 text-6xl font-bold pl-10 pt-10 pb-7 text-center">FAQ</div>
@@ -122,37 +211,8 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid grid-flow-row md:grid-cols-2 gap-5 text-3xl">
-            <Accordion type="single" collapsible>
-              <AccordionItem value="item-1">
-                <AccordionTrigger>What is the location?</AccordionTrigger>
-                <AccordionContent className="text-2xl">TBD</AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-2">
-                <AccordionTrigger>What is the price?</AccordionTrigger>
-                <AccordionContent className="text-2xl">TBD</AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-3">
-                <AccordionTrigger>When does it start?</AccordionTrigger>
-                <AccordionContent className="text-2xl">TBD</AccordionContent>
-              </AccordionItem>
-            </Accordion>
+          <FAQ />
 
-            <Accordion type="single" collapsible>
-              <AccordionItem value="item-4">
-                <AccordionTrigger>Do I need prior cybersecurity knowledge?</AccordionTrigger>
-                <AccordionContent className="text-2xl">TBD</AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-5">
-                <AccordionTrigger>Are there any prizes?</AccordionTrigger>
-                <AccordionContent className="text-2xl">TBD</AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-6">
-                <AccordionTrigger>What is the schedule for the day?</AccordionTrigger>
-                <AccordionContent className="text-2xl">TBD</AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </div>
         </div>
       </section>
 
@@ -174,6 +234,28 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* Footer */}
+      <div className="w-screen bg-zinc-900 p-8 flex justify-center mt-[50vh]">
+        <div className="flex flex-col w-11/12 lg:w-5/6 items-center text-white">
+          <div className="w-full flex items-center justify-evenly">
+            <div className="w-1/4 lg:w-1/3 bg-zinc-100 h-0.5"></div>
+            <div className="w-1/2 lg:w-1/3 flex flex-row justify-evenly border-zinc-100 items-center">
+              <a href="mailto:allencyberinvitational@gmail.com"><SiGmail /></a>
+              <a href=""><FaInstagram /></a>
+              <a href=""><FaDiscord /></a>
+              <a href=""><FaLinkedin /></a>
+            </div>
+            <div className="w-1/4 lg:w-1/3 bg-zinc-100 h-0.5"></div>
+          </div>
+          <div className="flex items-center gap-3 my-3">
+            <img src={"/ico.svg"} className="w-20 h-20" />
+            <div className="text-white font-bold tracking-widest text-lg lg:text-3xl text-center">Allen Cyber Invitational</div>
+          </div>
+          <div className="text-sm lg:text-base">Copyright @ 2024 Allen Cyber Invitational</div>
+        </div>
+      </div>
+
     </main>
   );
 }
