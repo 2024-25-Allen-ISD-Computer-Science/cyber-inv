@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/carousel"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import Image from "next/image";
+import ico from "@/gal/ico.svg"
 export default function Home() {
 
 
@@ -51,11 +52,11 @@ export default function Home() {
                 <div className="flex flex-col md:flex-row justify-center items-center text-center md:text-left md:space-y-0 md:space-x-8 h-full">
                     <div className=" w-81 h-81 z-20 my-0">
                         <Image
-                            src="/ico.svg"
+                            src={ico}
                             width={500}
                             height={500}
                             alt="Eagle Logo"
-                            className="fill-accent"
+                            className=""
                         />
                     </div>
 
@@ -226,8 +227,8 @@ export default function Home() {
                         <div className="w-1/4 lg:w-1/3 bg-zinc-100 h-0.5"></div>
                     </div>
                     <div className="flex items-center gap-3 my-3">
-                        <Image src={"/ico.svg"} width={20} height={20} className="w-20 h-20" alt="ico" />
-                        <div className="text-white font-bold tracking-widest text-lg lg:text-3xl text-center">Allen Cyber Invitational</div>
+                        <Image src={ico} width={20} height={20} className="w-20 h-20" alt="ico" />
+                        <div className="text-white font-bold tracking-widest text-lg lg:text-3xl text-center fill-accent">Allen Cyber Invitational</div>
                     </div>
                     <div className="text-sm lg:text-base">Copyright @ 2024 Allen Cyber Invitational</div>
                 </div>
