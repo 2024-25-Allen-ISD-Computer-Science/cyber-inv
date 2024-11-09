@@ -1,49 +1,39 @@
-import { FaInstagram } from "react-icons/fa";
-import { FaDiscord } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
-import { SiGmail } from "react-icons/si";
-import cyb1 from "@/gal/cybinv1.jpg";
-import cyb2 from "@/gal/cybinv2.jpg";
-import cyb3 from "@/gal/cybinv3.jpg";
-import cyb4 from "@/gal/cybinv4.jpg";
-import cyb5 from "@/gal/cybinv5.jpg";
-import cyb6 from "@/gal/cybinv6.jpg";
-import cyb7 from "@/gal/cybinv7.jpg";
-import cyb8 from "@/gal/cybinv8.jpg";
-import cyb9 from "@/gal/cybinv9.jpg";
-import FAQ from "@/components/FAQ";
-import TimerComp from "@/components/Timer";
-import { Card, CardContent } from "@/components/ui/card"
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
-} from "@/components/ui/carousel"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import Image from "next/image";
-import ico from "@/gal/ico.svg"
+import { FaInstagram } from 'react-icons/fa';
+import { FaDiscord } from 'react-icons/fa';
+import { FaLinkedin } from 'react-icons/fa';
+import { SiGmail } from 'react-icons/si';
+import cyb1 from '@/images/cybinv1.jpg';
+import cyb2 from '@/images/cybinv2.jpg';
+import cyb3 from '@/images/cybinv3.jpg';
+import cyb4 from '@/images/cybinv4.jpg';
+import cyb5 from '@/images/cybinv5.jpg';
+import cyb6 from '@/images/cybinv6.jpg';
+import cyb7 from '@/images/cybinv7.jpg';
+import cyb8 from '@/images/cybinv8.jpg';
+import cyb9 from '@/images/cybinv9.jpg';
+import FAQ from '@/components/FAQ';
+// import TimerComp from "@/components/Timer";
+import { Card, CardContent } from '@/components/ui/card';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+// import { ScrollArea } from "@/components/ui/scroll-area"
+import Image from 'next/image';
+import ico from '@/images/ico.svg';
 export default function Home() {
-
-
     return (
         <main className=" w-full flex flex-col bg-gradient-to-bl font-sans overflow-x-hidden">
             {/* Nav Bar */}
             <div className=" w-full">
                 <div className="flex justify-center items-center text-center">
-                    {["Sponsors", "FAQ", "Last Year", "Meet the Team", "Sign Up", "Login"].map(
-                        (text) => {
-                            const href = `#${text.toLowerCase().replace(/\s+/g, '-')}`;
-                            return (
-                                <a href={href} key={text}>
-                                    <div className=" p-5 text-2xl" key={text}>
-                                        {text}
-                                    </div>
-                                </a>
-                            );
-                        }
-                    )}
+                    {['Sponsors', 'FAQ', 'Last Year', 'Meet the Team', 'Sign Up', 'Login'].map((text) => {
+                        const href = `#${text.toLowerCase().replace(/\s+/g, '-')}`;
+                        return (
+                            <a href={href} key={text}>
+                                <div className=" p-5 text-2xl" key={text}>
+                                    {text}
+                                </div>
+                            </a>
+                        );
+                    })}
                 </div>
             </div>
 
@@ -51,13 +41,7 @@ export default function Home() {
             <section className="w-full h-[100vh] flex flex-col items-center">
                 <div className="flex flex-col md:flex-row justify-center items-center text-center md:text-left md:space-y-0 md:space-x-8 h-full">
                     <div className=" w-81 h-81 z-20 my-0">
-                        <Image
-                            src={ico}
-                            width={500}
-                            height={500}
-                            alt="Eagle Logo"
-                            className=""
-                        />
+                        <Image src={ico} width={500} height={500} alt="Eagle Logo" className="" />
                     </div>
 
                     <div className="text-9xl font-bold z-20">
@@ -89,20 +73,23 @@ export default function Home() {
             </section>
 
             {/* Countdown */}
-            <section id="meet-the-team" className="opacity-100 gap-5 flex items-center justify-center text-center z-10 h-[50vh] mb-20">
+            <section
+                id="meet-the-team"
+                className="opacity-100 gap-5 flex items-center justify-center text-center z-10 h-[50vh] mb-20"
+            >
                 <div className="rounded-3xl">
                     <div className="flex justify-center items-center text-center text-5xl p-10 text-violet-500 font-extrabold">
                         COUNTDOWN TIMER
                     </div>
-                    <TimerComp />
+                    {/* <TimerComp /> */}
                 </div>
             </section>
 
             {/* Meet The Team */}
             <section className="flex items-center justify-center flex-col">
                 <div className="text-violet-500 text-6xl font-bold pl-10 pt-10 pb-7 text-center">Meet The Team</div>
-                <ScrollArea className="w-96 whitespace-nowrap rounded-md border">
-                    <div className="flex w-max space-x-4 p-4">
+                {/* <ScrollArea className="w-96 whitespace-nowrap rounded-md border"> */}
+                <div className="flex w-max space-x-4 p-4">
                     <Card>
                         <CardContent className="flex aspect-square items-center justify-center scale-125">
                             <div className="flex flex-col w-80 h-80">
@@ -174,29 +161,34 @@ export default function Home() {
                             </div>
                         </CardContent>
                     </Card>
-                    </div>
-                </ScrollArea>
+                </div>
+                {/* </ScrollArea> */}
             </section>
 
             {/* FAQ Section */}
-            <section id="faq" className="opacity-100 flex z-10 min-h-screen w-full mb-20 justify-center items-center font-bold -mt-20">
+            <section
+                id="faq"
+                className="opacity-100 flex z-10 min-h-screen w-full mb-20 justify-center items-center font-bold -mt-20"
+            >
                 <div className="flex flex-col w-[80vw]">
                     <div className="border-2 border-white w-full rounded-xl mb-3">
                         <div className="text-violet-500 text-6xl font-bold pl-10 pt-10 pb-7 text-center">FAQ</div>
                         <div className=" text-3xl font-light pl-10 pb-10 text-center">
-                            Do you still have questions about the event?<br />
+                            Do you still have questions about the event?
+                            <br />
                             Feel free to contact us at abelsemahagen@student.allenisd.org
                         </div>
                     </div>
 
                     <FAQ />
-
                 </div>
             </section>
 
             {/* Gallery Section */}
             <section id="last-year" className="w-full min-h-screen z-10">
-                <div className="text-violet-500 text-6xl font-bold pl-10 pt-10 pb-7 text-center">Last Year's Event!</div>
+                <div className="text-violet-500 text-6xl font-bold pl-10 pt-10 pb-7 text-center">
+                    Last Year's Event!
+                </div>
                 <div className="w-[80vw] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 p-4 z-10">
                     {[cyb1, cyb2, cyb3, cyb4, cyb5, cyb6, cyb7, cyb8, cyb9].map((image, index) => (
                         <div key={index} className="rounded-lg overflow-hidden shadow-lg">
@@ -219,21 +211,30 @@ export default function Home() {
                     <div className="w-full flex items-center justify-evenly">
                         <div className="w-1/4 lg:w-1/3 bg-zinc-100 h-0.5"></div>
                         <div className="w-1/2 lg:w-1/3 flex flex-row justify-evenly border-zinc-100 items-center">
-                            <a href="mailto:allencyberinvitational@gmail.com"><SiGmail /></a>
-                            <a href=""><FaInstagram /></a>
-                            <a href=""><FaDiscord /></a>
-                            <a href=""><FaLinkedin /></a>
+                            <a href="mailto:allencyberinvitational@gmail.com">
+                                <SiGmail />
+                            </a>
+                            <a href="">
+                                <FaInstagram />
+                            </a>
+                            <a href="">
+                                <FaDiscord />
+                            </a>
+                            <a href="">
+                                <FaLinkedin />
+                            </a>
                         </div>
                         <div className="w-1/4 lg:w-1/3 bg-zinc-100 h-0.5"></div>
                     </div>
                     <div className="flex items-center gap-3 my-3">
                         <Image src={ico} width={20} height={20} className="w-20 h-20" alt="ico" />
-                        <div className="text-white font-bold tracking-widest text-lg lg:text-3xl text-center fill-accent">Allen Cyber Invitational</div>
+                        <div className="text-white font-bold tracking-widest text-lg lg:text-3xl text-center fill-accent">
+                            Allen Cyber Invitational
+                        </div>
                     </div>
                     <div className="text-sm lg:text-base">Copyright @ 2024 Allen Cyber Invitational</div>
                 </div>
             </div>
-
         </main>
     );
 }
