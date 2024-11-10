@@ -1,27 +1,28 @@
-import { FaInstagram } from 'react-icons/fa';
-import { FaDiscord } from 'react-icons/fa';
-import { FaLinkedin } from 'react-icons/fa';
-import { SiGmail } from 'react-icons/si';
-import cyb1 from '@/images/cybinv1.jpg';
-import cyb2 from '@/images/cybinv2.jpg';
-import cyb3 from '@/images/cybinv3.jpg';
-import cyb4 from '@/images/cybinv4.jpg';
-import cyb5 from '@/images/cybinv5.jpg';
-import cyb6 from '@/images/cybinv6.jpg';
-import cyb7 from '@/images/cybinv7.jpg';
-import cyb8 from '@/images/cybinv8.jpg';
-import cyb9 from '@/images/cybinv9.jpg';
-import FAQ from '@/components/FAQ';
-// import TimerComp from "@/components/Timer";
+import { SiGmail, SiDiscord, SiInstagram, SiLinkedin } from 'react-icons/si';
 import { Card, CardContent } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-// import { ScrollArea } from "@/components/ui/scroll-area"
 import Image from 'next/image';
-import ico from '@/images/ico.svg';
+import Timer from '@/components/Timer';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Separator } from '@/components/ui/separator';
+
+import team from '@/data/team.json';
+import faq from '@/data/faq.json';
+
+import cyb1 from '~/images/cybinv1.jpg';
+import cyb2 from '~/images/cybinv2.jpg';
+import cyb3 from '~/images/cybinv3.jpg';
+import cyb4 from '~/images/cybinv4.jpg';
+import cyb5 from '~/images/cybinv5.jpg';
+import cyb6 from '~/images/cybinv6.jpg';
+import cyb7 from '~/images/cybinv7.jpg';
+import cyb8 from '~/images/cybinv8.jpg';
+import cyb9 from '~/images/cybinv9.jpg';
+import ico from '~/images/ico.svg';
+
 export default function Home() {
     return (
         <main className=" w-full flex flex-col bg-gradient-to-bl font-sans overflow-x-hidden">
-            {/* Nav Bar */}
             <div className=" w-full">
                 <div className="flex justify-center items-center text-center">
                     {['Sponsors', 'FAQ', 'Last Year', 'Meet the Team', 'Sign Up', 'Login'].map((text) => {
@@ -73,117 +74,60 @@ export default function Home() {
             </section>
 
             {/* Countdown */}
-            <section
-                id="meet-the-team"
-                className="opacity-100 gap-5 flex items-center justify-center text-center z-10 h-[50vh] mb-20"
-            >
-                <div className="rounded-3xl">
-                    <div className="flex justify-center items-center text-center text-5xl p-10 text-violet-500 font-extrabold">
-                        COUNTDOWN TIMER
-                    </div>
-                    {/* <TimerComp /> */}
-                </div>
+            <section className="flex flex-col items-center justify-center text-center">
+                <Timer />
             </section>
 
             {/* Meet The Team */}
-            <section className="flex items-center justify-center flex-col">
-                <div className="text-violet-500 text-6xl font-bold pl-10 pt-10 pb-7 text-center">Meet The Team</div>
-                {/* <ScrollArea className="w-96 whitespace-nowrap rounded-md border"> */}
-                <div className="flex w-max space-x-4 p-4">
-                    <Card>
-                        <CardContent className="flex aspect-square items-center justify-center scale-125">
-                            <div className="flex flex-col w-80 h-80">
-                                <Image
-                                    src={cyb1}
-                                    alt="headshot"
-                                    style={{
-                                        width: '100%',
-                                        height: '100%',
-                                        objectFit: 'cover',
-                                    }}
-                                />
-                                <div className="text-center mt-5 text-2xl font-bold">Abel Semahagen</div>
-                                <div className="text-center mt-2 text-lg font-light">Project Manager</div>
-                            </div>
-                        </CardContent>
-                    </Card>
-
-                    <Card>
-                        <CardContent className="flex aspect-square items-center justify-center scale-125">
-                            <div className="flex flex-col w-80 h-80">
-                                <Image
-                                    src={cyb3}
-                                    alt="headshot"
-                                    style={{
-                                        width: '100%',
-                                        height: '100%',
-                                        objectFit: 'cover',
-                                    }}
-                                />
-                                <div className="text-center mt-5 text-2xl font-bold">Richard Jang</div>
-                                <div className="text-center mt-2 text-lg font-light">Project Manager</div>
-                            </div>
-                        </CardContent>
-                    </Card>
-
-                    <Card>
-                        <CardContent className="flex aspect-square items-center justify-center scale-125">
-                            <div className="flex flex-col w-80 h-80">
-                                <Image
-                                    src={cyb6}
-                                    alt="headshot"
-                                    style={{
-                                        width: '100%',
-                                        height: '100%',
-                                        objectFit: 'cover',
-                                    }}
-                                />
-                                <div className="text-center mt-5 text-2xl font-bold">Darrion Nguyen</div>
-                                <div className="text-center mt-2 text-lg font-light">Project Manager</div>
-                            </div>
-                        </CardContent>
-                    </Card>
-
-                    <Card>
-                        <CardContent className="flex aspect-square items-center justify-center scale-125">
-                            <div className="flex flex-col w-80 h-80">
-                                <Image
-                                    src={cyb8}
-                                    alt="headshot"
-                                    style={{
-                                        width: '100%',
-                                        height: '100%',
-                                        objectFit: 'cover',
-                                    }}
-                                />
-                                <div className="text-center mt-5 text-2xl font-bold">Tanay Sreedharan</div>
-                                <div className="text-center mt-2 text-lg font-light">Project Manager</div>
-                            </div>
-                        </CardContent>
-                    </Card>
-                </div>
-                {/* </ScrollArea> */}
+            <section id="meet-the-team" className="flex items-center justify-center flex-col mt-20">
+                <div className="text-violet-500 text-6xl font-bold py-8 text-center">Meet The Team</div>
+                <Carousel className="w-full max-w-6xl p-2">
+                    <CarouselContent className="flex items-center justify-between">
+                        {team.map((member) => (
+                            <CarouselItem key={member.name} className="md:basis-1/2 lg:basis-1/3">
+                                <Card>
+                                    <CardContent className="flex items-center justify-center h-max md:h-80 flex-col p-6 md:p-2">
+                                        <Image
+                                            src={member.image}
+                                            alt={member.name}
+                                            width={4032}
+                                            height={3024}
+                                            className="object-cover rounded-md w-3/5"
+                                        />
+                                        <span className="text-center mt-5 text-3xl font-bold">{member.name}</span>
+                                        <span className="text-center mt-2 text-lg font-light">{member.title}</span>
+                                    </CardContent>
+                                </Card>
+                            </CarouselItem>
+                        ))}
+                    </CarouselContent>
+                    <CarouselPrevious />
+                    <CarouselNext />
+                </Carousel>
             </section>
 
-            {/* FAQ Section */}
-            <section
-                id="faq"
-                className="opacity-100 flex z-10 min-h-screen w-full mb-20 justify-center items-center font-bold -mt-20"
-            >
+            <section id="faq" className="w-full flex mt-20 justify-center items-center font-bold ">
                 <div className="flex flex-col w-[80vw]">
                     <div className="border-2 border-white w-full rounded-xl mb-3">
-                        <div className="text-violet-500 text-6xl font-bold pl-10 pt-10 pb-7 text-center">FAQ</div>
+                        <div className="text-violet-500 text-6xl font-bold pl-10 pt-10 pb-7 text-center">FAQs</div>
                         <div className=" text-3xl font-light pl-10 pb-10 text-center">
                             Do you still have questions about the event?
                             <br />
-                            Feel free to contact us at abelsemahagen@student.allenisd.org
+                            Feel free to contact us at abelsemahegn@student.allenisd.org
                         </div>
                     </div>
 
-                    <FAQ />
+                    <Accordion type="single" collapsible className="text-3xl items-center">
+                        {faq.map((item) => (
+                            <AccordionItem key={item.question} value={item.question}>
+                                <AccordionTrigger>{item.question}</AccordionTrigger>
+                                <AccordionContent className="text-2xl">{item.answer}</AccordionContent>
+                            </AccordionItem>
+                        ))}
+                    </Accordion>
                 </div>
             </section>
-
+            <Separator className="mt-10" />
             {/* Gallery Section */}
             <section id="last-year" className="w-full min-h-screen z-10">
                 <div className="text-violet-500 text-6xl font-bold pl-10 pt-10 pb-7 text-center">
@@ -206,7 +150,7 @@ export default function Home() {
             </section>
 
             {/* Footer */}
-            <div className="w-screen bg-zinc-900 p-8 flex justify-center mt-[50vh]">
+            <div className="bg-zinc-900 p-8 flex justify-center mt-8">
                 <div className="flex flex-col w-11/12 lg:w-5/6 items-center text-white">
                     <div className="w-full flex items-center justify-evenly">
                         <div className="w-1/4 lg:w-1/3 bg-zinc-100 h-0.5"></div>
@@ -215,24 +159,24 @@ export default function Home() {
                                 <SiGmail />
                             </a>
                             <a href="">
-                                <FaInstagram />
+                                <SiInstagram />
                             </a>
                             <a href="">
-                                <FaDiscord />
+                                <SiDiscord />
                             </a>
                             <a href="">
-                                <FaLinkedin />
+                                <SiLinkedin />
                             </a>
                         </div>
                         <div className="w-1/4 lg:w-1/3 bg-zinc-100 h-0.5"></div>
                     </div>
                     <div className="flex items-center gap-3 my-3">
-                        <Image src={ico} width={20} height={20} className="w-20 h-20" alt="ico" />
-                        <div className="text-white font-bold tracking-widest text-lg lg:text-3xl text-center fill-accent">
+                        <Image src={ico} width={20} height={20} className="w-20 h-20" alt="Cyber Invitational Icon" />
+                        <div className="text-white font-bold tracking-wide text-lg lg:text-3xl text-center">
                             Allen Cyber Invitational
                         </div>
                     </div>
-                    <div className="text-sm lg:text-base">Copyright @ 2024 Allen Cyber Invitational</div>
+                    <div className="text-sm lg:text-base">Copyright &copy; 2024 Allen Cyber Invitational</div>
                 </div>
             </div>
         </main>

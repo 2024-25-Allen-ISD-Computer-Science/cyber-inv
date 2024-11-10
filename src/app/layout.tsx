@@ -4,7 +4,7 @@ import '@/globals.css';
 
 const poppins = Poppins({
     variable: '--font-sans',
-    weight: ['100', '400', '700'],
+    weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
 });
 const inter = Inter({
     variable: '--font-sans-alt',
