@@ -22,12 +22,12 @@ export default function Main() {
 
                 {/* Title Animation */}
                 <motion.div 
-                    className="text-9xl font-bold z-20"
+                    className="text-7xl lg:text-9xl font-bold z-20 mb-28 lg:mb-0"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1 }}
                 >
-                    Allen Cyber <br /> Invitational
+                    Allen Cyber <br/> Invitational
                 </motion.div>
             </div>
 
