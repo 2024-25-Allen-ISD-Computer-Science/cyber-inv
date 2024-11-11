@@ -50,6 +50,16 @@ export default function Home() {
                 <Timer />
             </section>
 
+            <section className='flex flex-col items-center justify-center text-center'>
+                <div className='text-violet-500 text-6xl font-bold py-8'>
+                    Our Mission
+                </div>
+
+                <div className='flex flex-col text-3xl font-light text-center'>
+                    hello world
+                </div>
+            </section>
+
             {/* Meet The Team */}
             <section id="meet-the-team" className="flex items-center justify-center flex-col mt-20">
                 <div className="text-violet-500 text-6xl font-bold py-8 text-center">Meet The Team</div>
@@ -85,18 +95,19 @@ export default function Home() {
                         <div className=" text-3xl font-light pl-10 pb-10 text-center">
                             Do you still have questions about the event?
                             <br />
-                            Feel free to contact us at abelsemahegn@student.allenisd.org
+                            Feel free to contact us at [TODO EMAIL]
                         </div>
                     </div>
 
-                    <Accordion type="single" collapsible className="text-3xl items-center">
-                        {faq.map((item) => (
-                            <AccordionItem key={item.question} value={item.question}>
-                                <AccordionTrigger>{item.question}</AccordionTrigger>
-                                <AccordionContent className="text-2xl">{item.answer}</AccordionContent>
-                            </AccordionItem>
-                        ))}
-                    </Accordion>
+                        <Accordion type="single" collapsible className="text-3xl items-center">
+                            {faq.map((item) => (
+                                <AccordionItem key={item.question} value={item.question}>
+                                    <AccordionTrigger>{item.question}</AccordionTrigger>
+                                    <AccordionContent className="text-2xl">{item.answer}</AccordionContent>
+                                </AccordionItem>
+                            ))}
+                        </Accordion>
+
                 </div>
             </section>
             <Separator className="mt-10" />
