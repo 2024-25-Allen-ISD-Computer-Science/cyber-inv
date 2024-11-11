@@ -1,5 +1,6 @@
 import * as motion from "framer-motion/client"
-
+import Image from 'next/image';
+import ico from '~/images/ico.svg';
 
 export default function Main() {
     return (
@@ -16,7 +17,7 @@ export default function Main() {
                         damping: 20
                     }}
                 >
-                    <img src={"https://th.bing.com/th/id/OIG2.9O4YqGf98tiYzjKDvg7L"} width={500} height={500} alt="Eagle Logo" className="" />
+                    <Image src={ico} width={500} height={500} alt="Eagle Logo" className="" />
                 </motion.div>
 
                 {/* Title Animation */}

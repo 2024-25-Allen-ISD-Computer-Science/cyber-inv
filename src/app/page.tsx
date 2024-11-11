@@ -6,6 +6,7 @@ import Timer from '@/components/Timer';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Separator } from '@/components/ui/separator';
 import Main from '@/components/Home/Main';
+import Team from '@/components/Home/Team';
 
 import team from '@/data/team.json';
 import faq from '@/data/faq.json';
@@ -61,33 +62,8 @@ export default function Home() {
             </section>
 
             {/* Meet The Team */}
-            <section id="meet-the-team" className="flex items-center justify-center flex-col mt-20">
-                <div className="text-violet-500 text-6xl font-bold py-8 text-center">Meet The Team</div>
-                <Carousel className="w-full max-w-6xl p-2">
-                    <CarouselContent className="flex items-center justify-between">
-                        {team.map((member) => (
-                            <CarouselItem key={member.name} className="md:basis-1/2 lg:basis-1/3">
-                                <Card>
-                                    <CardContent className="flex items-center justify-center h-max md:h-80 flex-col p-6 md:p-2">
-                                        <Image
-                                            src={member.image}
-                                            alt={member.name}
-                                            width={4032}
-                                            height={3024}
-                                            className="object-cover rounded-md w-3/5"
-                                        />
-                                        <span className="text-center mt-5 text-3xl font-bold">{member.name}</span>
-                                        <span className="text-center mt-2 text-lg font-light">{member.title}</span>
-                                    </CardContent>
-                                </Card>
-                            </CarouselItem>
-                        ))}
-                    </CarouselContent>
-                    <CarouselPrevious />
-                    <CarouselNext />
-                </Carousel>
-            </section>
-
+            <Team/>
+            
             <section id="faq" className="w-full flex mt-20 justify-center items-center font-bold ">
                 <div className="flex flex-col w-[80vw]">
                     <div className="border-2 border-white w-full rounded-xl mb-3">
@@ -99,17 +75,18 @@ export default function Home() {
                         </div>
                     </div>
 
-                        <Accordion type="single" collapsible className="text-3xl items-center">
-                            {faq.map((item) => (
-                                <AccordionItem key={item.question} value={item.question}>
-                                    <AccordionTrigger>{item.question}</AccordionTrigger>
-                                    <AccordionContent className="text-2xl">{item.answer}</AccordionContent>
-                                </AccordionItem>
-                            ))}
-                        </Accordion>
+                    <Accordion type="single" collapsible className="text-3xl items-center">
+                        {faq.map((item) => (
+                            <AccordionItem key={item.question} value={item.question}>
+                                <AccordionTrigger>{item.question}</AccordionTrigger>
+                                <AccordionContent className="text-2xl">{item.answer}</AccordionContent>
+                            </AccordionItem>
+                        ))}
+                    </Accordion>
 
                 </div>
             </section>
+
             <Separator className="mt-10" />
             {/* Gallery Section */}
             <section id="last-year" className="w-full min-h-screen z-10">
