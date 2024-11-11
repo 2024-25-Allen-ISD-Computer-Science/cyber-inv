@@ -28,7 +28,7 @@ export default function Home() {
         <main className=" w-full flex flex-col bg-gradient-to-bl font-sans overflow-x-hidden">
             <div className=" w-full">
                 <div className="flex justify-center items-center text-center">
-                    {['Sponsors', 'FAQ', 'Last Year', 'Meet the Team', 'Sign Up', 'Login'].map((text) => {
+                    {['Sponsors', 'FAQ', 'Last Year', 'Meet the Team'].map((text) => {
                         const href = `#${text.toLowerCase().replace(/\s+/g, '-')}`;
                         return (
                             <a href={href} key={text}>
@@ -51,13 +51,20 @@ export default function Home() {
                 <Timer />
             </section>
 
-            <section className='flex flex-col items-center justify-center text-center'>
-                <div className='text-violet-500 text-6xl font-bold py-8'>
-                    Our Mission
+            <section className="flex flex-col md:flex-row items-center justify-center text-center w-[100%]">
+                <div className="w-81 h-81 z-20 my-0">
+                    <Image src={ico} width={500} height={500} alt="Eagle Logo" className="" />
                 </div>
 
-                <div className='flex flex-col text-3xl font-light text-center'>
-                    hello world
+                <div className='flex flex-col w-screen'>
+                    <div className="text-violet-500 text-6xl font-bold py-8">Our Mission</div>
+
+                    <div className="flex flex-col text-2xl font-light text-center">
+                        We aim to help students have an oppurtunity to learn and sharpen their cybersecurity skills
+                        through this competition. Whether you are a beginner or skilled, this events offer something for
+                        everyone. The Allen Cyber Invitational is open for all North Texan high school students. We hope
+                        to see you there!
+                    </div>
                 </div>
             </section>
 
