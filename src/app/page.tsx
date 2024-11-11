@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Timer from '@/components/Timer';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Separator } from '@/components/ui/separator';
+import Main from '@/components/Home/Main';
 
 import team from '@/data/team.json';
 import faq from '@/data/faq.json';
@@ -19,6 +20,7 @@ import cyb7 from '~/images/cybinv7.jpg';
 import cyb8 from '~/images/cybinv8.jpg';
 import cyb9 from '~/images/cybinv9.jpg';
 import ico from '~/images/ico.svg';
+
 
 export default function Home() {
     return (
@@ -39,39 +41,9 @@ export default function Home() {
             </div>
 
             {/* Main Section */}
-            <section className="w-full h-[100vh] flex flex-col items-center">
-                <div className="flex flex-col md:flex-row justify-center items-center text-center md:text-left md:space-y-0 md:space-x-8 h-full">
-                    <div className=" w-81 h-81 z-20 my-0">
-                        <Image src={ico} width={500} height={500} alt="Eagle Logo" className="" />
-                    </div>
-
-                    <div className="text-9xl font-bold z-20">
-                        Allen Cyber <br /> Invitational
-                    </div>
-                </div>
-
-                {/* Sign Up */}
-                <div className="w-full h-[50vh]">
-                    <div className="flex flex-row gap-5 justify-center items-center text-center text-3xl text-white -mt-[10vh]">
-                        <a href="/Signup">
-                            <button className="bg-violet-500 py-4 px-6 rounded-xl shadow-xl hover:cursor-pointer hover:bg-violet-600 ease-in-out duration-200">
-                                Sign Up
-                            </button>
-                        </a>
-
-                        <a href="/Login">
-                            <button className="bg-blue-500 py-4 px-6 rounded-xl shadow-xl hover:cursor-pointer hover:bg-blue-700 ease-in-out duration-200">
-                                Login
-                            </button>
-                        </a>
-                    </div>
-                    <div className=" animate-bounce flex flex-col justify-center items-center text-center text-2xl mt-[15vh]">
-                        Learn more
-                        <br />
-                        <div className="mt-3">&#9660;</div>
-                    </div>
-                </div>
-            </section>
+           <Main>
+            </Main> 
+            
 
             {/* Countdown */}
             <section className="flex flex-col items-center justify-center text-center">

@@ -41,3 +41,5 @@ next-env.d.ts
 
 # TODO: Remove this once done migrating
 old-app
+
+static-components
