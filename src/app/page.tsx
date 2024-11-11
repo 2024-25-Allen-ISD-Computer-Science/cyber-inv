@@ -42,31 +42,40 @@ export default function Home() {
             </div>
 
             {/* Main Section */}
-           <Main>
-            </Main> 
+           <Main/> 
             
 
             {/* Countdown */}
             <section className="flex flex-col items-center justify-center text-center">
                 <Timer />
             </section>
+            <section className="flex flex-col items-center justify-center w-full p-8 bg-black text-white">
+    <h2 className="text-violet-500 text-6xl font-bold text-center mb-8">Our Mission</h2>
+    
+    <div className="flex flex-col md:flex-row items-center justify-center w-full gap-8 md:px-12">
+        {/* Image Section */}
+        <div className="w-full md:w-1/2 flex justify-center">
+            <Image 
+                src={ico} 
+                width={500} 
+                height={500} 
+                alt="Eagle Logo" 
+                className="rounded-lg" 
+            />
+        </div>
 
-            <section className="flex flex-col md:flex-row items-center justify-center text-center w-[100%]">
-                <div className="w-81 h-81 z-20 my-0">
-                    <Image src={ico} width={500} height={500} alt="Eagle Logo" className="" />
-                </div>
+        {/* Text Section */}
+        <div className="w-full md:w-1/2 text-xl font-light text-justify">
+            <p>
+                We aim to help students have an opportunity to learn and sharpen their cybersecurity skills
+                through this competition. Whether you are a beginner or skilled, this event offers something for
+                everyone. The Allen Cyber Invitational is open for all North Texan high school students. We hope
+                to see you there!
+            </p>
+        </div>
+    </div>
+</section>
 
-                <div className='flex flex-col w-screen'>
-                    <div className="text-violet-500 text-6xl font-bold py-8">Our Mission</div>
-
-                    <div className="flex flex-col text-2xl font-light text-center">
-                        We aim to help students have an oppurtunity to learn and sharpen their cybersecurity skills
-                        through this competition. Whether you are a beginner or skilled, this events offer something for
-                        everyone. The Allen Cyber Invitational is open for all North Texan high school students. We hope
-                        to see you there!
-                    </div>
-                </div>
-            </section>
 
             {/* Meet The Team */}
             <Team/>
