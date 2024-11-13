@@ -18,6 +18,7 @@ import cyb8 from '~/images/cybinv8.jpg';
 import cyb9 from '~/images/cybinv9.jpg';
 import ico from '~/images/ico.svg';
 import Link from 'next/link';
+import { AppearOnScroll } from '@/components/Home/AppearOnScroll';
 
 export default function Home() {
     return (
@@ -25,34 +26,43 @@ export default function Home() {
             {/* Main Section */}
             <section className="h-full items-center">
                 <div className="flex h-3/5 flex-col items-center justify-center text-center md:flex-row md:text-left">
-                    <Image src={ico} width={500} height={500} alt="Eagle Logo" className="size-80" />
-
-                    <div className="text-7xl font-bold lg:text-8xl xl:text-9xl">
-                        Allen Cyber <br /> Invitational
-                    </div>
+                    <AppearOnScroll duration={300}>
+                        <Image src={ico} width={500} height={500} alt="Eagle Logo" className="size-80" />
+                    </AppearOnScroll>
+                    <AppearOnScroll duration={500}>
+                        <div className="text-7xl font-bold lg:text-8xl xl:text-9xl">
+                            Allen Cyber <br /> Invitational
+                        </div>
+                    </AppearOnScroll>
                 </div>
 
                 {/* Sign Up Section without animation, TODO: Add transitions back after refactoring */}
                 <div className="h-2/5">
-                    <div className="flex flex-row items-center justify-center gap-5 text-center text-xl font-light uppercase tracking-widest text-white">
-                        <Link
-                            href="/register"
-                            className="rounded-md bg-green-600 px-6 py-4 shadow-xl transition hover:bg-green-700"
-                        >
-                            Register
-                        </Link>
+                    <AppearOnScroll duration={700}>
+                        <div className="flex flex-row items-center justify-center gap-5 text-center text-xl font-light uppercase tracking-widest text-white">
+                            <Link
+                                href="/register"
+                                className="rounded-md bg-green-600 px-6 py-4 shadow-xl transition hover:bg-green-700"
+                            >
+                                Register
+                            </Link>
 
-                        <Link href="/login" className="rounded-md bg-blue-500 px-6 py-4 shadow-xl hover:bg-blue-600">
-                            Login
-                        </Link>
-                    </div>
-
-                    {/* Learn more section with bounce animation */}
-                    <div className="mt-20 flex animate-bounce flex-col items-center justify-center text-center text-2xl">
-                        Learn more
-                        <br />
-                        &#9660;
-                    </div>
+                            <Link
+                                href="/login"
+                                className="rounded-md bg-blue-500 px-6 py-4 shadow-xl hover:bg-blue-600"
+                            >
+                                Login
+                            </Link>
+                        </div>
+                    </AppearOnScroll>
+                    <AppearOnScroll duration={1000}>
+                        {/* Learn more section with bounce animation */}
+                        <div className="mt-20 flex animate-bounce flex-col items-center justify-center text-center text-2xl">
+                            Learn more
+                            <br />
+                            &#9660;
+                        </div>
+                    </AppearOnScroll>
                 </div>
             </section>
             {/* Countdown */}
@@ -81,7 +91,9 @@ export default function Home() {
             </section>
 
             {/* Meet The Team */}
-            <Team />
+            <AppearOnScroll duration={1000}>
+                <Team />
+            </AppearOnScroll>
 
             <section id="faq" className="mt-20 flex w-full items-center justify-center font-bold">
                 <div className="flex w-[80vw] flex-col">

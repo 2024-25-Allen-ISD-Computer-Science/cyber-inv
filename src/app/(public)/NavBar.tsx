@@ -6,7 +6,7 @@ import ico from '~/images/ico.svg';
 
 export function NavBar() {
     return (
-        <nav>
+        <nav className="border-b shadow-xl">
             <div className="flex items-center justify-between px-8 text-center">
                 <div className="flex items-center justify-center">
                     <Link href="/" className="mr-4">
