@@ -5,9 +5,12 @@ import ParticlesAni from '@/components/Particles';
 const poppins = Poppins({
     variable: '--font-sans',
     weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+    subsets: ['latin'], // Adding subset for Poppins if necessary
 });
+
 const inter = Inter({
     variable: '--font-sans-alt',
+    subsets: ['latin'], // Specify subset to fix preload error
 });
 
 export const metadata: Metadata = {
