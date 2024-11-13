@@ -66,7 +66,7 @@ export default function Home() {
                 </div>
             </section>
             {/* Countdown */}
-            <section className="mt-6 flex flex-col items-center justify-center border-y border-slate-600 py-8 text-center">
+            <section className="flex flex-col items-center justify-center border-y border-slate-600 py-8 text-center">
                 <Timer />
             </section>
             <section className="flex w-full flex-col items-center justify-center bg-black p-8 text-white">
