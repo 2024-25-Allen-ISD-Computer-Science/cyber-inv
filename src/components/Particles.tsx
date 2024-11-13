@@ -48,7 +48,7 @@ export default function ParticlesAni() {
                 },
                 modes: {
                     push: {
-                        quantity: 100,
+                        quantity: 70,
                     },
                     repulse: {
                         distance: 200,
@@ -87,7 +87,7 @@ export default function ParticlesAni() {
                     value: 0.5,
                 },
                 shape: {
-                    type: "square",
+                    type: "circle",
                 },
                 size: {
                     value: { min: 1, max: 5 },

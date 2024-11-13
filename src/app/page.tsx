@@ -233,16 +233,16 @@ export default function Home() {
                     >
             <section id="faq" className="w-full flex mt-20 justify-center items-center font-bold ">
                 <div className="flex flex-col w-[80vw]">
-                    <div className="flex justify-center items-center border-2 border-white w-full rounded-xl mb-3">
-                        <div className="text-violet-500 text-6xl font-bold pl-10 pt-10 pb-7 text-center">FAQs</div>
-                        <div className=" text-3xl font-light pl-10 pb-10 text-center">
+                    <div className="flex flex-col justify-center items-center border-2 border-white w-full rounded-xl mb-3">
+                        <div className="text-violet-500 text-4xl lg:text-6xl font-bold pt-10 pb-7 text-center">FAQs</div>
+                        <div className="text-sm lg:text-3xl font-light pb-10 text-center">
                         Have More Questions?
                         <br/>
                         Email them to us at 123bbc@gmail.com
                         </div>
                     </div>
 
-                    <Accordion type="single" collapsible className="items-center grid grid-cols-2 gap-4">
+                    <Accordion type="single" collapsible className="items-center lg:grid grid-cols-2 gap-4">
                         {faq.map((item) => (
                             <AccordionItem key={item.question} value={item.question} >
                                 <AccordionTrigger className="text-3xl">{item.question}</AccordionTrigger>
@@ -258,7 +258,7 @@ export default function Home() {
             <Separator className="mt-10" />
             {/* Gallery Section */}
             <section id="last-year" className="w-full min-h-screen z-10">
-                <div className="text-violet-500 text-6xl font-bold pl-10 pt-10 pb-7 text-center">
+                <div className="text-violet-500 text-6xl font-bold lg:pl-10 pt-10 pb-7 text-center">
                     Last Year's Event!
                 </div>
                 <div className="w-[80vw] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 p-4 z-10">
