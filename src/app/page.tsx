@@ -27,7 +27,7 @@ import ico from '~/images/ico.svg';
 export default function Home() {
     return (
 
-        <main className="w-full flex flex-col font-sans overflow-x-hidden">
+        <main className=" w-full flex flex-col font-sans overflow-x-hidden">
             <div className=" w-full">
                 <div className="flex justify-center items-center text-center">
                     <Progbar />
