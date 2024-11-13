@@ -158,8 +158,7 @@ export default function Home() {
                                 stiffness: 260,
                                 damping: 20
                             }}
-                            drag
-                            dragTransition={{ power: 0.2 }}
+
                         >
                             <div className="text-violet-500 text-6xl font-bold py-8 text-center">Meet The Team</div>
                             <Carousel className="w-full max-w-6xl p-2">
