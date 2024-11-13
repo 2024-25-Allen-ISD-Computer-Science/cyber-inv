@@ -73,7 +73,8 @@ export default function Home() {
                 </div>
 
                 <div className="w-full h-[50vh]">
-                    {/* <div className="flex flex-row gap-5 justify-center items-center text-center text-3xl text-white -mt-[10vh]">
+                    
+                    <div className="flex flex-row gap-5 justify-center items-center text-center text-3xl text-white -mt-[10vh]">
                     <motion.a 
                         href="/Signup"
                         initial={{ opacity: 0 }}
@@ -95,7 +96,7 @@ export default function Home() {
                             Login
                         </button>
                     </motion.a>
-                </div> */}
+                </div>
 
                     {/* Learn more section with bounce animation */}
                     <motion.div
@@ -143,10 +144,10 @@ export default function Home() {
                 }}
 
             >
-                <section className="flex flex-col items-center justify-center w-full p-8 bg-black text-white mt-[20vh] lg:mt-[17.5vh]">
+                <section className="flex flex-col items-center justify-center w-full p-8  text-white mt-[20vh] lg:mt-[17.5vh]">
                     <h2 className="text-violet-500 text-6xl font-bold text-center mb-4">Our Mission</h2>
 
-                    <div className="flex flex-col md:flex-row items-center justify-center w-full gap-8 md:px-12">
+                    <div className="flex flex-col md:flex-row items-center justify-center w-full gap-4 md:px-12">
                         {/* Image Section */}
                         <div className="w-full md:w-1/2 flex justify-center">
                             <Image
@@ -159,7 +160,7 @@ export default function Home() {
                         </div>
 
                         {/* Text Section */}
-                        <div className="w-full md:w-1/2 text-xl font-light text-justify">
+                        <div className="w-full md:w-1/3 md:text-3xl font-light text-justify text-xl">
                             <p>
                                 We aim to help students have an opportunity to learn and sharpen their cybersecurity skills
                                 through this competition. Whether you are a beginner or skilled, this event offers something for
