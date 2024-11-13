@@ -235,14 +235,16 @@ export default function Home() {
                     <div className="border-2 border-white w-full rounded-xl mb-3">
                         <div className="text-violet-500 text-6xl font-bold pl-10 pt-10 pb-7 text-center">FAQs</div>
                         <div className=" text-3xl font-light pl-10 pb-10 text-center">
-
+                        Have More Questions?
+                        <br/>
+                        Email them to us at 123bbc@gmail.com
                         </div>
                     </div>
 
-                    <Accordion type="single" collapsible className="text-3xl items-center">
+                    <Accordion type="single" collapsible className="items-center grid grid-cols-2 gap-4">
                         {faq.map((item) => (
-                            <AccordionItem key={item.question} value={item.question}>
-                                <AccordionTrigger>{item.question}</AccordionTrigger>
+                            <AccordionItem key={item.question} value={item.question} >
+                                <AccordionTrigger className="text-3xl">{item.question}</AccordionTrigger>
                                 <AccordionContent className="text-2xl">{item.answer}</AccordionContent>
                             </AccordionItem>
                         ))}
