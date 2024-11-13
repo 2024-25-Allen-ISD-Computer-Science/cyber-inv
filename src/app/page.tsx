@@ -73,7 +73,8 @@ export default function Home() {
                 </div>
 
                 <div className="w-full h-[50vh]">
-                    {/* <div className="flex flex-row gap-5 justify-center items-center text-center text-3xl text-white -mt-[10vh]">
+                    
+                    <div className="flex flex-row gap-5 justify-center items-center text-center text-3xl text-white -mt-[10vh]">
                     <motion.a 
                         href="/Signup"
                         initial={{ opacity: 0 }}
@@ -95,7 +96,7 @@ export default function Home() {
                             Login
                         </button>
                     </motion.a>
-                </div> */}
+                </div>
 
                     {/* Learn more section with bounce animation */}
                     <motion.div
@@ -143,10 +144,10 @@ export default function Home() {
                 }}
 
             >
-                <section className="flex flex-col items-center justify-center w-full p-8 bg-black text-white mt-[20vh] lg:mt-[17.5vh]">
+                <section className="flex flex-col items-center justify-center w-full p-8  text-white mt-[20vh] lg:mt-[17.5vh]">
                     <h2 className="text-violet-500 text-6xl font-bold text-center mb-4">Our Mission</h2>
 
-                    <div className="flex flex-col md:flex-row items-center justify-center w-full gap-8 md:px-12">
+                    <div className="flex flex-col md:flex-row items-center justify-center w-full gap-4 md:px-12">
                         {/* Image Section */}
                         <div className="w-full md:w-1/2 flex justify-center">
                             <Image
@@ -159,7 +160,7 @@ export default function Home() {
                         </div>
 
                         {/* Text Section */}
-                        <div className="w-full md:w-1/2 text-xl font-light text-justify">
+                        <div className="w-full md:w-1/3 md:text-3xl font-light text-justify text-xl">
                             <p>
                                 We aim to help students have an opportunity to learn and sharpen their cybersecurity skills
                                 through this competition. Whether you are a beginner or skilled, this event offers something for
@@ -232,16 +233,16 @@ export default function Home() {
                     >
             <section id="faq" className="w-full flex mt-20 justify-center items-center font-bold ">
                 <div className="flex flex-col w-[80vw]">
-                    <div className="flex justify-center items-center border-2 border-white w-full rounded-xl mb-3">
-                        <div className="text-violet-500 text-6xl font-bold pl-10 pt-10 pb-7 text-center">FAQs</div>
-                        <div className=" text-3xl font-light pl-10 pb-10 text-center">
+                    <div className="flex flex-col justify-center items-center border-2 border-white w-full rounded-xl mb-3">
+                        <div className="text-violet-500 text-4xl lg:text-6xl font-bold pt-10 pb-7 text-center">FAQs</div>
+                        <div className="text-sm lg:text-3xl font-light pb-10 text-center">
                         Have More Questions?
                         <br/>
                         Email them to us at 123bbc@gmail.com
                         </div>
                     </div>
 
-                    <Accordion type="single" collapsible className="items-center grid grid-cols-2 gap-4">
+                    <Accordion type="single" collapsible className="items-center lg:grid grid-cols-2 gap-4">
                         {faq.map((item) => (
                             <AccordionItem key={item.question} value={item.question} >
                                 <AccordionTrigger className="text-3xl">{item.question}</AccordionTrigger>
@@ -257,7 +258,7 @@ export default function Home() {
             <Separator className="mt-10" />
             {/* Gallery Section */}
             <section id="last-year" className="w-full min-h-screen z-10">
-                <div className="text-violet-500 text-6xl font-bold pl-10 pt-10 pb-7 text-center">
+                <div className="text-violet-500 text-6xl font-bold lg:pl-10 pt-10 pb-7 text-center">
                     Last Year's Event!
                 </div>
                 <div className="w-[80vw] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 p-4 z-10">
