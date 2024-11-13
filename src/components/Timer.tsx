@@ -1,7 +1,6 @@
 "use client";
 
 import dynamic from 'next/dynamic';
-import { useState, useEffect } from 'react';
 
 const Countdown = dynamic(() => import('react-countdown'), { ssr: false });
 
