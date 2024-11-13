@@ -27,7 +27,7 @@ import ico from '~/images/ico.svg';
 export default function Home() {
     return (
 
-        <main className=" w-full flex flex-col bg-gradient-to-bl font-sans overflow-x-hidden">
+        <main className=" w-full flex flex-col  font-sans overflow-x-hidden">
             <div className=" w-full">
                 <div className="flex justify-center items-center text-center">
                     <Progbar />
@@ -145,7 +145,7 @@ export default function Home() {
             >
                 <section className="flex flex-col items-center justify-center text-center">
                 </section>
-                <section className="flex flex-col items-center justify-center w-full p-8 bg-black text-white">
+                <section className="flex flex-col items-center justify-center w-full p-8  text-white">
                     <h2 className="text-violet-500 text-6xl font-bold text-center mb-4">Our Mission</h2>
 
                     <div className="flex flex-col md:flex-row items-center justify-center w-full gap-8 md:px-12">
