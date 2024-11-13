@@ -27,7 +27,7 @@ import ico from '~/images/ico.svg';
 export default function Home() {
     return (
 
-        <main className=" w-full flex flex-col  font-sans overflow-x-hidden">
+        <main className=" w-full flex flex-col font-sans overflow-x-hidden">
             <div className=" w-full">
                 <div className="flex justify-center items-center text-center">
                     <Progbar />
@@ -99,7 +99,7 @@ export default function Home() {
 
                     {/* Learn more section with bounce animation */}
                     <motion.div
-                        className=" flex flex-col justify-center items-center text-center text-2xl mt-[15vh]"
+                        className=" flex flex-col justify-center items-center text-center text-2xl mt-[12.5vh]"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 1, delay: 1 }}
@@ -143,9 +143,7 @@ export default function Home() {
                 }}
 
             >
-                <section className="flex flex-col items-center justify-center text-center">
-                </section>
-                <section className="flex flex-col items-center justify-center w-full p-8  text-white">
+                <section className="flex flex-col items-center justify-center w-full p-8 bg-black text-white mt-[20vh] lg:mt-[17.5vh]">
                     <h2 className="text-violet-500 text-6xl font-bold text-center mb-4">Our Mission</h2>
 
                     <div className="flex flex-col md:flex-row items-center justify-center w-full gap-8 md:px-12">
@@ -190,8 +188,9 @@ export default function Home() {
                     >
 
                         
-                        <div className="text-violet-500 text-6xl font-bold py-8 text-center">Meet The Team</div>
-                        <Carousel className="w-full max-w-6xl p-2">
+                        <div className="text-violet-500 text-5xl lg:text-6xl font-bold py-8 text-center">Meet The Team</div>
+                        <div className='flex justify-center items-center'>
+                        <Carousel className="w-[27.5%] md:w-[72.5%] lg:w-full max-w-6xl p-2">
                             <CarouselContent className="flex items-center justify-between">
                                 {team.map((member) => (
                                     <CarouselItem key={member.name} className="md:basis-1/2 lg:basis-1/3">
@@ -214,6 +213,7 @@ export default function Home() {
                             <CarouselPrevious />
                             <CarouselNext />
                         </Carousel>
+                        </div>
                     </motion.div>
                 </section>
             </div>
@@ -232,7 +232,7 @@ export default function Home() {
                     >
             <section id="faq" className="w-full flex mt-20 justify-center items-center font-bold ">
                 <div className="flex flex-col w-[80vw]">
-                    <div className="border-2 border-white w-full rounded-xl mb-3">
+                    <div className="flex justify-center items-center border-2 border-white w-full rounded-xl mb-3">
                         <div className="text-violet-500 text-6xl font-bold pl-10 pt-10 pb-7 text-center">FAQs</div>
                         <div className=" text-3xl font-light pl-10 pb-10 text-center">
                         Have More Questions?
