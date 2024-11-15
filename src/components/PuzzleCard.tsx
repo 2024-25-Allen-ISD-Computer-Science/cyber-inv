@@ -78,7 +78,7 @@ export function PuzzleCard({
             }`}
         >
             <div className="flex flex-row gap-1">
-                {puzzle.topics.map((topic) => {
+                {puzzle.topics.map((topic:string) => {
                     return <Badge style={{ background: stringToColor(topic) }}>{topic}</Badge>;
                 })}
             </div>

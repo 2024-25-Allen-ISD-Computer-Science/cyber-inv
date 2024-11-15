@@ -1,11 +1,15 @@
 import { SiGmail, SiDiscord, SiInstagram, SiLinkedin } from 'react-icons/si';
+import { Card, CardContent } from '@/components/ui/card';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import Image from 'next/image';
 import Timer from '@/components/Timer';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Separator } from '@/components/ui/separator';
-import Team from '@/components/Home/Team';
-
+import TiltLogo from '@/components/TiltLogo';
+import team from '@/data/team.json';
 import faq from '@/data/faq.json';
+import * as motion from "framer-motion/client"
+import Progbar from "@/components/Home/Prog"
 
 import cyb1 from '~/images/cybinv1.jpg';
 import cyb2 from '~/images/cybinv2.jpg';
@@ -17,134 +21,273 @@ import cyb7 from '~/images/cybinv7.jpg';
 import cyb8 from '~/images/cybinv8.jpg';
 import cyb9 from '~/images/cybinv9.jpg';
 import ico from '~/images/ico.svg';
-import Link from 'next/link';
-import { AppearOnScroll } from '@/components/Home/AppearOnScroll';
+
 
 export default function Home() {
     return (
-        <main className="h-full">
+
+        <main className=" w-full flex flex-col font-sans overflow-x-hidden">
+            <div className=" w-full">
+                <div className="flex justify-center items-center text-center">
+                    <Progbar />
+                </div>
+            </div>
+
             {/* Main Section */}
-            <section className="h-full items-center">
-                <div className="flex h-3/5 flex-col items-center justify-center text-center md:flex-row md:text-left">
-                    <AppearOnScroll duration={300}>
-                        <Image src={ico} width={500} height={500} alt="Eagle Logo" className="size-80" />
-                    </AppearOnScroll>
-                    <AppearOnScroll duration={500}>
-                        <div className="text-7xl font-bold lg:text-8xl xl:text-9xl">
-                            Allen Cyber <br /> Invitational
-                        </div>
-                    </AppearOnScroll>
+            <section className="w-full h-screen flex flex-col items-center mb-10">
+                <div className="flex h-fit flex-col md:flex-row justify-center items-center text-center md:text-left md:space-y-0 md:space-x-8 ">
+                    {/* Eagle Logo Animation */}
+                    <motion.div
+                        className="w-81 h-81 z-20 my-0"
+                        initial={{ rotate: -10, scale: 0 }}
+                        animate={{ rotate: 0, scale: 0.9 }}
+                        transition={{
+                            type: "spring",
+                            stiffness: 260,
+                            damping: 20
+                        }}
+                    >
+                        <TiltLogo />
+                    </motion.div>
+
+                    {/* Title Animation */}
+
+                    <motion.div
+                        className=" text-5xl md:text-7xl lg:text-9xl  z-20  lg:mb-0 relative top-0 w-fit h-auto py-4 justify-center flex bg-gradient-to-r items-center from-blue-500 via-violet-500 to-pink-500 bg-clip-text  font-extrabold text-transparent text-center select-auto"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1 }}
+                    >
+                        Allen Cyber <br /> Invitational
+                    </motion.div>
                 </div>
 
-                {/* Sign Up Section without animation, TODO: Add transitions back after refactoring */}
-                <div className="h-2/5">
-                    <AppearOnScroll duration={700}>
-                        <div className="flex flex-row items-center justify-center gap-5 text-center text-xl font-light uppercase tracking-widest text-white">
-                            <Link
-                                href="/register"
-                                className="rounded-md bg-green-600 px-6 py-4 shadow-xl transition hover:bg-green-700"
-                            >
-                                Register
-                            </Link>
+                <div className="w-fit h-full">
+                    <motion.div
+                        className="w-81 h-81  my-0"
+                        initial={{ scale: 0 }}
+                        whileInView={{ scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{
+                            type: "spring",
+                            stiffness: 260,
+                            damping: 20
+                        }}
 
-                            <Link
-                                href="/login"
-                                className="rounded-md bg-blue-500 px-6 py-4 shadow-xl hover:bg-blue-600"
-                            >
-                                Login
-                            </Link>
-                        </div>
-                    </AppearOnScroll>
-                    <AppearOnScroll duration={1000}>
-                        {/* Learn more section with bounce animation */}
-                        <div className="mt-20 flex animate-bounce flex-col items-center justify-center text-center text-2xl">
+                    >
+                        <Timer />
+                    </motion.div>
+                    {/* 
+                    <div className="flex flex-row gap-5 justify-center items-center text-center text-3xl text-white -mt-[10vh]">
+                    <motion.a 
+                        href="/Signup"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1, delay: 0.5 }}
+                    >
+                        <button className="bg-violet-500 py-4 px-6 rounded-xl shadow-xl hover:cursor-pointer hover:bg-violet-600 ease-in-out duration-200">
+                            Sign Up
+                        </button>
+                    </motion.a>
+
+                    <motion.a 
+                        href="/Login"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1, delay: 0.7 }}
+                    >
+                        <button className="bg-blue-500 py-4 px-6 rounded-xl shadow-xl hover:cursor-pointer hover:bg-blue-700 ease-in-out duration-200">
+                            Login
+                        </button>
+                    </motion.a>
+                </div> */}
+
+                    {/* <motion.div
+                        className=" flex flex-col justify-center items-center text-center text-2xl mt-2"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1, delay: 1 }}
+                    >
+                        <div className=''>
+
                             Learn more
                             <br />
                             &#9660;
                         </div>
-                    </AppearOnScroll>
+                        
+                    </motion.div> */}
                 </div>
+
+                {/* Sign Up Section with animation UNCOMMENT WHEN SIGN UP IS DONE*/}
             </section>
+
             {/* Countdown */}
-            <section className="flex flex-col items-center justify-center border-y border-slate-600 py-8 text-center">
-                <Timer />
-            </section>
-            <section className="flex w-full flex-col items-center justify-center bg-black p-8 text-white">
-                <h2 className="mb-8 text-center text-6xl font-bold text-violet-500">Our Mission</h2>
+            <motion.div
+                className="w-81 h-81 z-20 my-0"
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                    type: "spring",
+                    stiffness: 260,
+                    damping: 20
+                }}
 
-                <div className="flex w-full flex-col items-center justify-center gap-8 md:flex-row md:px-12">
-                    {/* Image Section */}
-                    <div className="flex w-full justify-center md:w-1/2">
-                        <Image src={ico} width={500} height={500} alt="Eagle Logo" className="rounded-lg" />
-                    </div>
+            >
+                <section className="flex flex-col items-center justify-center w-full p-8  text-white mt-[20vh] lg:mt-[17.5vh]">
+                    <h2 className="text-violet-500 text-6xl font-bold text-center mb-4">Our Mission</h2>
 
-                    {/* Text Section */}
-                    <div className="w-full text-justify text-xl font-light md:w-1/2">
-                        <p>
-                            We aim to help students have an opportunity to learn and sharpen their cybersecurity skills
-                            through this competition. Whether you are a beginner or skilled, this event offers something
-                            for everyone. The Allen Cyber Invitational is open for all North Texan high school students.
-                            We hope to see you there!
-                        </p>
-                    </div>
-                </div>
-            </section>
+                    <div className="flex flex-col md:flex-row items-center justify-center w-full gap-4 md:px-12">
+                        {/* Image Section */}
+                        <div className="w-full md:w-1/2 flex justify-center">
+                            <Image
+                                src={cyb9}
+                                width={500}
+                                height={500}
+                                alt="Eagle Logo"
+                                className="rounded-lg"
 
-            {/* Meet The Team */}
-            <AppearOnScroll duration={1000}>
-                <Team />
-            </AppearOnScroll>
+                            />
+                        </div>
 
-            <section id="faq" className="mt-20 flex w-full items-center justify-center font-bold">
-                <div className="flex w-[80vw] flex-col">
-                    <div className="mb-3 w-full rounded-xl border-2 border-white">
-                        <div className="pb-7 pl-10 pt-10 text-center text-6xl font-bold text-violet-500">FAQs</div>
-                        <div className="pb-10 pl-10 text-center text-3xl font-light">
-                            Do you still have questions about the event?
-                            <br />
-                            Feel free to contact us at [TODO EMAIL]
+                        {/* Text Section */}
+                        <div className="w-full md:w-1/3 md:text-3xl font-light text-justify text-xl">
+                            <p>
+                                We aim to help students have an opportunity to learn and sharpen their cybersecurity skills
+                                through this competition. Whether you are a beginner or skilled, this event offers something for
+                                everyone. The Allen Cyber Invitational is open for all North Texan high school students. We hope
+                                to see you there!
+                            </p>
                         </div>
                     </div>
+                </section>
+            </motion.div>
 
-                    <Accordion type="single" collapsible className="items-center text-3xl">
-                        {faq.map((item) => (
-                            <AccordionItem key={item.question} value={item.question}>
-                                <AccordionTrigger>{item.question}</AccordionTrigger>
-                                <AccordionContent className="text-2xl">{item.answer}</AccordionContent>
-                            </AccordionItem>
-                        ))}
-                    </Accordion>
-                </div>
-            </section>
+
+            <div>
+                <section id="meet-the-team" className="flex items-center justify-center flex-col mt-20">
+                    <motion.div
+                        className="w-81 h-81 z-20 my-0"
+                        initial={{ scale: 0 }}
+                        whileInView={{ scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{
+                            type: "spring",
+                            stiffness: 260,
+                            damping: 20
+                        }}
+
+                    >
+
+
+                        <div className="text-violet-500 text-5xl lg:text-6xl font-bold py-8 text-center">Meet The Team</div>
+                        <div className='flex justify-center items-center'>
+                            <Carousel className="w-[27.5%] md:w-[72.5%] lg:w-full max-w-6xl p-2">
+                                <CarouselContent className="flex items-center justify-between">
+                                    {team.map((member) => (
+                                        <CarouselItem key={member.name} className="md:basis-1/2 lg:basis-1/3">
+                                            <Card>
+                                                <CardContent className="flex items-center justify-center h-max md:h-80 flex-col p-6 md:p-2">
+                                                    <Image
+                                                        src={member.image}
+                                                        alt={member.name}
+                                                        width={4032}
+                                                        height={3024}
+                                                        className="object-cover rounded-md w-3/5"
+                                                    />
+                                                    <span className="text-center mt-5 text-3xl font-bold">{member.name}</span>
+                                                    <span className="text-center mt-2 text-lg font-light">{member.title}</span>
+                                                </CardContent>
+                                            </Card>
+                                        </CarouselItem>
+                                    ))}
+                                </CarouselContent>
+                                <CarouselPrevious />
+                                <CarouselNext />
+                            </Carousel>
+                        </div>
+                    </motion.div>
+                </section>
+            </div>
+
+            <motion.div
+                className="w-81 h-81 z-20 my-0"
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                    type: "spring",
+                    stiffness: 260,
+                    damping: 20
+                }}
+
+            >
+                <section id="faq" className="w-full flex mt-20 justify-center items-center font-bold ">
+                    <div className="flex flex-col w-[80vw]">
+                        <div className="flex flex-col justify-center items-center border-2 border-white w-full rounded-xl mb-3">
+                            <div className="text-violet-500 text-4xl lg:text-6xl font-bold pt-10 pb-7 text-center">FAQs</div>
+                            <div className="text-sm lg:text-3xl font-light pb-10 text-center">
+                                Have More Questions?
+                                <br />
+                                Email them to us at 12345@gmail.com
+                            </div>
+                        </div>
+
+                        <Accordion type="single" collapsible className="items-center lg:grid grid-cols-2 gap-4">
+                            {faq.map((item) => (
+                                <AccordionItem key={item.question} value={item.question} >
+                                    <AccordionTrigger className="text-3xl">{item.question}</AccordionTrigger>
+                                    <AccordionContent className="text-2xl">{item.answer}</AccordionContent>
+                                </AccordionItem>
+                            ))}
+                        </Accordion>
+
+                    </div>
+                </section>
+            </motion.div>
 
             <Separator className="mt-10" />
             {/* Gallery Section */}
-            <section id="last-year" className="z-10 min-h-screen w-full">
-                <div className="pb-7 pl-10 pt-10 text-center text-6xl font-bold text-violet-500">
+            <section id="last-year" className="w-full min-h-screen z-10">
+                <div className="text-violet-500 text-6xl font-bold lg:pl-10 pt-10 pb-7 text-center">
                     Last Year's Event!
                 </div>
-                <div className="z-10 mx-auto grid w-[80vw] grid-cols-1 gap-6 p-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+                <div className="w-[80vw] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 p-4 z-10">
                     {[cyb1, cyb2, cyb3, cyb4, cyb5, cyb6, cyb7, cyb8, cyb9].map((image, index) => (
-                        <div key={index} className="overflow-hidden rounded-lg shadow-lg">
-                            <Image
-                                src={image}
-                                alt={`Gallery image ${index + 1}`}
-                                width={500}
-                                height={500}
-                                loading="lazy"
-                                className="h-full w-full object-cover hover:zoom-in-75"
-                            />
-                        </div>
+                        <motion.div
+                            key={index} // Move key prop to motion.div
+                            className="w-81 h-81 my-0"
+                            initial={{ scale: 0 }}
+                            whileInView={{ scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{
+                                type: "spring",
+                                stiffness: 260,
+                                damping: 20,
+                            }}
+                        >
+                            <div className="rounded-lg overflow-hidden shadow-lg">
+                                <Image
+                                    src={image}
+                                    alt={`Gallery image ${index + 1}`}
+                                    width={500}
+                                    height={500}
+                                    loading="lazy"
+                                    className="object-cover h-full w-full hover:zoom-in"
+                                />
+                            </div>
+                        </motion.div>
                     ))}
                 </div>
             </section>
 
+
             {/* Footer */}
-            <div className="mt-8 flex justify-center bg-zinc-900 p-8">
-                <div className="flex w-11/12 flex-col items-center text-white lg:w-5/6">
-                    <div className="flex w-full items-center justify-evenly">
-                        <div className="h-0.5 w-1/4 bg-zinc-100 lg:w-1/3"></div>
-                        <div className="flex w-1/2 flex-row items-center justify-evenly border-zinc-100 lg:w-1/3">
+            <div className="bg-zinc-900 p-8 flex justify-center mt-8">
+                <div className="flex flex-col w-11/12 lg:w-5/6 items-center text-white">
+                    <div className="w-full flex items-center justify-evenly">
+                        <div className="w-1/4 lg:w-1/3 bg-zinc-100 h-0.5"></div>
+                        <div className="w-1/2 lg:w-1/3 flex flex-row justify-evenly border-zinc-100 items-center">
                             <a href="mailto:allencyberinvitational@gmail.com">
                                 <SiGmail />
                             </a>
@@ -158,11 +301,11 @@ export default function Home() {
                                 <SiLinkedin />
                             </a>
                         </div>
-                        <div className="h-0.5 w-1/4 bg-zinc-100 lg:w-1/3"></div>
+                        <div className="w-1/4 lg:w-1/3 bg-zinc-100 h-0.5"></div>
                     </div>
-                    <div className="my-3 flex items-center gap-3">
-                        <Image src={ico} width={20} height={20} className="h-20 w-20" alt="Cyber Invitational Icon" />
-                        <div className="text-center text-lg font-bold tracking-wide text-white lg:text-3xl">
+                    <div className="flex items-center gap-3 my-3">
+                        <Image src={ico} width={20} height={20} className="w-20 h-20" alt="Cyber Invitational Icon" />
+                        <div className="text-white font-bold tracking-wide text-lg lg:text-3xl text-center">
                             Allen Cyber Invitational
                         </div>
                     </div>
