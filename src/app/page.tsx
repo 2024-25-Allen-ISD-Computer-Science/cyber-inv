@@ -64,7 +64,7 @@ export default function Home() {
 
                     {/* Title Animation */}
                     <motion.div
-                        className="z-20 mb-10 text-5xl font-bold md:text-7xl lg:mb-0 lg:text-9xl"
+                        className="z-20 mb-32 lg:mb-10 text-5xl font-bold md:text-7xl lg:mb-0 lg:text-9xl"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 1 }}
@@ -253,18 +253,18 @@ export default function Home() {
                 <div className="pb-10 text-center text-6xl font-bold text-violet-500">Sponsors</div>
                 <div className="flex flex-col items-center justify-center space-y-5">
                     {sponsors.map((sponsor, index) => (
-                        <div className={`flex w-full items-center justify-between px-32 lg:px-52 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`} key={sponsor.name}>
+                        <div className={`flex w-full items-center justify-between px-10 md:px-24 lg:px-52 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`} key={sponsor.name}>
                             <Image
                                 src={sponsor.image}
                                 alt={sponsor.name}
                                 width={4032}
                                 height={3024}
-                                className="h-[20%] w-[20%] rounded-md object-cover"
+                                className="h-[35%] w-[35%] md:h-[20%] md:w-[20%] rounded-md object-cover"
                             />
                             <Card className="w-[60%]">
                                 <CardContent className="flex flex-col items-center justify-center p-6 h-36 md:p-2">
-                                    <span className="mt-5 text-center text-3xl font-bold">{sponsor.name}</span>
-                                    <span className="mt-2 text-center text-lg font-light">{sponsor.amount}</span>
+                                    <span className="mt-5 text-center text-xl md:text-3xl font-bold">{sponsor.name}</span>
+                                    <span className="mt-2 text-center md:text-lg font-light">{sponsor.amount}</span>
                                 </CardContent>
                             </Card>
                         </div>
