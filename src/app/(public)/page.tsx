@@ -265,6 +265,18 @@ export default function Home() {
                 <div className="pb-10 text-center text-6xl font-bold text-violet-500">Sponsors</div>
                 <div className="flex flex-col items-center justify-center space-y-5">
                     {sponsors.map((sponsor, index) => (
+                                                <motion.div
+                                                key={index} // Move key prop to motion.div
+                                                className="w-81 h-81 my-0"
+                                                initial={{ scale: 0 }}
+                                                whileInView={{ scale: 1 }}
+                                                viewport={{ once: true }}
+                                                transition={{
+                                                    type: "spring",
+                                                    stiffness: 260,
+                                                    damping: 20,
+                                                }}
+                                            >
                         <div className={`flex w-full items-center justify-between px-10 md:px-24 lg:px-52 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`} key={sponsor.name}>
                             <Image
                                 src={sponsor.image}
@@ -280,6 +292,7 @@ export default function Home() {
                                 </CardContent>
                             </Card>
                         </div>
+                        </motion.div>
                     ))}
                 </div>
             </section>

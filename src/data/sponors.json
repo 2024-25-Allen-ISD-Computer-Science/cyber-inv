@@ -2,21 +2,21 @@
     {
         "name": "Company 1",
         "amount": "$0",
-        "image": "/images/ico.svg"
+        "image": "/ico.svg"
     },
     {
         "name": "Company 2",
         "amount": "$100",
-        "image": "/images/ico.svg"
+        "image": "/ico.svg"
     },
     {
         "name": "Company 3",
         "amount": "$125",
-        "image": "/images/ico.svg"
+        "image": "/ico.svg"
     },
     {
         "name": "Company 4",
         "amount": "$250",
-        "image": "/images/ico.svg"
+        "image": "/ico.svg"
     }
 ]
