@@ -10,6 +10,7 @@ import team from '@/data/team.json';
 import faq from '@/data/faq.json';
 import * as motion from "framer-motion/client"
 import Progbar from "@/components/Home/Prog"
+import sponsors from '@/data/sponors.json'
 
 import cyb1 from '~/images/cybinv1.jpg';
 import cyb2 from '~/images/cybinv2.jpg';
@@ -76,6 +77,19 @@ export default function Home() {
 
                     >
                         <Timer />
+                                            {/* Learn more section with bounce animation */}
+                    <motion.div
+                        className="mt-[12.5vh] flex flex-col items-center justify-center text-center text-2xl"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1, delay: 1 }}
+                    >
+                        <div className="animate-bounce">
+                            Learn more
+                            <br />
+                            &#9660;
+                        </div>
+                    </motion.div>
                     </motion.div>
                     {/* 
                     <div className="flex flex-row gap-5 justify-center items-center text-center text-3xl text-white -mt-[10vh]">
@@ -246,7 +260,29 @@ export default function Home() {
                 </section>
             </motion.div>
 
-            <Separator className="mt-10" />
+            <Separator className="mt-10" />         
+<section id="sponsors" className="z-10 w-full">
+    <div className="pb-10 text-center text-6xl font-bold text-violet-500">Sponsors</div>
+    <div className="flex flex-col items-center justify-center space-y-5">
+        {sponsors.map((sponsor, index) => (
+            <div className={`flex w-full items-center justify-between px-10 md:px-24 lg:px-52 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`} key={sponsor.name}>
+                <Image
+                    src={sponsor.image}
+                    alt={sponsor.name}
+                    width={4032}
+                    height={3024}
+                    className="h-[35%] w-[35%] md:h-[20%] md:w-[20%] rounded-md object-cover"
+                />
+                <Card className="w-[60%]">
+                    <CardContent className="flex flex-col items-center justify-center p-6 h-36 md:p-2">
+                        <span className="mt-5 text-center text-xl md:text-3xl font-bold">{sponsor.name}</span>
+                        <span className="mt-2 text-center md:text-lg font-light">{sponsor.amount}</span>
+                    </CardContent>
+                </Card>
+            </div>
+        ))}
+    </div>
+</section>
             {/* Gallery Section */}
             <section id="last-year" className="w-full min-h-screen z-10">
                 <div className="text-violet-500 text-6xl font-bold lg:pl-10 pt-10 pb-7 text-center">
@@ -280,6 +316,7 @@ export default function Home() {
                     ))}
                 </div>
             </section>
+
 
 
             {/* Footer */}
