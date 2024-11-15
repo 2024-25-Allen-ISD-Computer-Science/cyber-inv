@@ -2,7 +2,7 @@ import { NavLink } from '@/components/nav/NavLink';
 import Image from 'next/image';
 import Link from 'next/link';
 import * as motion from "framer-motion/client"
-import ico from '~/images/ico.svg';
+import ico from '~/ico.svg';
 import { Button } from '../ui/button';
 export function NavBar() {
     return (
