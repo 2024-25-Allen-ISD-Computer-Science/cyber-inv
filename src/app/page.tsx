@@ -11,6 +11,7 @@ import team from '@/data/team.json';
 import faq from '@/data/faq.json';
 import * as motion from "framer-motion/client"
 import Progbar from "@/components/Home/Prog"
+import Footer from '@/components/Footer'
 
 import cyb1 from '~/images/cybinv1.jpg';
 import cyb2 from '~/images/cybinv2.jpg';
@@ -277,36 +278,8 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* Footer */}
-            <div className="bg-zinc-900 p-8 flex justify-center mt-8">
-                <div className="flex flex-col w-11/12 lg:w-5/6 items-center text-white">
-                    <div className="w-full flex items-center justify-evenly">
-                        <div className="w-1/4 lg:w-1/3 bg-zinc-100 h-0.5"></div>
-                        <div className="w-1/2 lg:w-1/3 flex flex-row justify-evenly border-zinc-100 items-center">
-                            <a href="mailto:allencyberinvitational@gmail.com">
-                                <SiGmail />
-                            </a>
-                            <a href="">
-                                <SiInstagram />
-                            </a>
-                            <a href="">
-                                <SiDiscord />
-                            </a>
-                            <a href="">
-                                <SiLinkedin />
-                            </a>
-                        </div>
-                        <div className="w-1/4 lg:w-1/3 bg-zinc-100 h-0.5"></div>
-                    </div>
-                    <div className="flex items-center gap-3 my-3">
-                        <Image src={ico} width={20} height={20} className="w-20 h-20" alt="Cyber Invitational Icon" />
-                        <div className="text-white font-bold tracking-wide text-lg lg:text-3xl text-center">
-                            Allen Cyber Invitational
-                        </div>
-                    </div>
-                    <div className="text-sm lg:text-base">Copyright &copy; 2024 Allen Cyber Invitational</div>
-                </div>
-            </div>
+            <Footer/>
+
         </main>
     );
 }
