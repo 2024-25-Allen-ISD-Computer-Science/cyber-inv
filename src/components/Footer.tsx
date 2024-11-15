@@ -1,6 +1,6 @@
 import { SiGmail, SiDiscord, SiInstagram, SiLinkedin } from 'react-icons/si';
 import Image from 'next/image';
-import ico from '~/images/ico.svg';
+import ico from '~/ico.svg';
 
 export default function Footer() {
     return (

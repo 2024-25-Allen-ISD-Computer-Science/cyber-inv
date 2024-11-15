@@ -1,7 +1,6 @@
 "use client";
 import Tilt from 'react-parallax-tilt';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import ico from '~/ico.svg';
 import Image from 'next/image';
 export default function TiltLogo() {

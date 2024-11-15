@@ -195,7 +195,7 @@ export default function Home() {
 
 
                         <div className="text-violet-500 text-5xl lg:text-6xl font-bold py-8 text-center">Meet The Team</div>
-                        <div className='flex justify-center items-center'>
+                        <div className="flex justify-center items-center">
                             <Carousel className="w-[27.5%] md:w-[72.5%] lg:w-full max-w-6xl p-2">
                                 <CarouselContent className="flex items-center justify-between">
                                     {team.map((member) => (
@@ -299,7 +299,7 @@ export default function Home() {
             {/* Gallery Section */}
             <section id="last-year" className="w-full min-h-screen z-10">
                 <div className="text-violet-500 text-6xl font-bold lg:pl-10 pt-10 pb-7 text-center">
-                    Last Year's Event!
+                    Last Year&apos;s Event!
                 </div>
                 <div className="w-[80vw] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 p-4 z-10">
                     {[cyb1, cyb2, cyb3, cyb4, cyb5, cyb6, cyb7, cyb8, cyb9].map((image, index) => (

@@ -1,9 +1,6 @@
 "use client";
 
-import dynamic from 'next/dynamic';
-
-const Countdown = dynamic(() => import('react-countdown'), { ssr: false });
-
+import Countdown from 'react-countdown';
 export default function Timer() {
     // Define the target date: March 16, 2025
     const targetDate = new Date('2025-03-15T00:00:00');
