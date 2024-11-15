@@ -13,7 +13,7 @@ export default function ParticlesAni() {
     const [init, setInit] = useState(false);
 
     useEffect(() => {
-        const isMobile = window.innerWidth <= 768;
+        // const isMobile = window.innerWidth <= 768;
 
         // Lock scrolling on desktop
 
