@@ -208,6 +208,7 @@ export default function Home() {
                                                         width={4032}
                                                         height={3024}
                                                         className="object-cover rounded-md w-3/5"
+                                                        style={{objectFit: "contain"}}
                                                     />
                                                     <span className="text-center mt-5 text-3xl font-bold">{member.name}</span>
                                                     <span className="text-center mt-2 text-lg font-light">{member.title}</span>
