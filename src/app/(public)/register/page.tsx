@@ -151,7 +151,7 @@ export default function LoginPage() {
                         >
                             Back
                         </Button>
-                        <Button type="submit" className="bg-blue-500 text-white">
+                        <Button type="submit" className="bg-blue-500 ">
                                 Submit
                             </Button>
                     </CardFooter>
