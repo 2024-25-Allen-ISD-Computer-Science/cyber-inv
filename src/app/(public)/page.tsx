@@ -202,14 +202,16 @@ export default function Home() {
                                         <CarouselItem key={member.name} className="md:basis-1/2 lg:basis-1/3">
                                             <Card>
                                                 <CardContent className="flex items-center justify-center h-max md:h-80 flex-col p-6 md:p-2">
-                                                    <Image
-                                                        src={member.image}
-                                                        alt={member.name}
-                                                        width={4032}
-                                                        height={3024}
-                                                        className="object-cover rounded-md w-3/5"
-                                                        style={{objectFit: "contain"}}
-                                                    />
+                                                    <div className="relative w-full h-full overflow-hidden rounded-md flex justify-center">
+                                                        <Image
+                                                            src={member.image}
+                                                            alt={member.name}
+                                                            width={100}
+                                                            height={200}
+                                                            className='object-cover h-full w-fit '
+                                                        />
+                                                    </div>
+
                                                     <span className="text-center mt-5 text-3xl font-bold">{member.name}</span>
                                                     <span className="text-center mt-2 text-lg font-light">{member.title}</span>
                                                 </CardContent>
@@ -266,33 +268,33 @@ export default function Home() {
                 <div className="pb-10 text-center text-6xl font-bold text-violet-500">Sponsors</div>
                 <div className="flex flex-col items-center justify-center space-y-5">
                     {sponsors.map((sponsor, index) => (
-                                                <motion.div
-                                                key={index} // Move key prop to motion.div
-                                                className="w-81 h-81 my-0"
-                                                initial={{ scale: 0 }}
-                                                whileInView={{ scale: 1 }}
-                                                viewport={{ once: true }}
-                                                transition={{
-                                                    type: "spring",
-                                                    stiffness: 260,
-                                                    damping: 20,
-                                                }}
-                                            >
-                        <div className={`flex w-full items-center justify-between px-10 md:px-24 lg:px-52 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`} key={sponsor.name}>
-                            <Image
-                                src={sponsor.image}
-                                alt={sponsor.name}
-                                width={4032}
-                                height={3024}
-                                className="h-[35%] w-[35%] md:h-[20%] md:w-[20%] rounded-md object-cover"
-                            />
-                            <Card className="w-[60%]">
-                                <CardContent className="flex flex-col items-center justify-center p-6 h-36 md:p-2">
-                                    <span className="mt-5 text-center text-xl md:text-3xl font-bold">{sponsor.name}</span>
-                                    <span className="mt-2 text-center md:text-lg font-light">{sponsor.amount}</span>
-                                </CardContent>
-                            </Card>
-                        </div>
+                        <motion.div
+                            key={index} // Move key prop to motion.div
+                            className="w-81 h-81 my-0"
+                            initial={{ scale: 0 }}
+                            whileInView={{ scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{
+                                type: "spring",
+                                stiffness: 260,
+                                damping: 20,
+                            }}
+                        >
+                            <div className={`flex w-full items-center justify-between px-10 md:px-24 lg:px-52 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`} key={sponsor.name}>
+                                <Image
+                                    src={sponsor.image}
+                                    alt={sponsor.name}
+                                    width={4032}
+                                    height={3024}
+                                    className="h-[35%] w-[35%] md:h-[20%] md:w-[20%] rounded-md object-cover"
+                                />
+                                <Card className="w-[60%]">
+                                    <CardContent className="flex flex-col items-center justify-center p-6 h-36 md:p-2">
+                                        <span className="mt-5 text-center text-xl md:text-3xl font-bold">{sponsor.name}</span>
+                                        <span className="mt-2 text-center md:text-lg font-light">{sponsor.amount}</span>
+                                    </CardContent>
+                                </Card>
+                            </div>
                         </motion.div>
                     ))}
                 </div>
