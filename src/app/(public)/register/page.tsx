@@ -93,7 +93,7 @@ export default function LoginPage() {
                         <CardDescription>Fill out details for each team member</CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <form className="flex flex-row gap-4">
+                        <form className="grid grid-rows-1 md:grid-flow-col gap-4">
                             <div className="flex flex-col  gap-4">
                                 <h3 className="font-bold">Member 1</h3>
                                 <Input
