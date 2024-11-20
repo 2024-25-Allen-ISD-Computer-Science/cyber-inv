@@ -23,7 +23,6 @@ import cyb8 from '~/images/cybinv8.jpg';
 import cyb9 from '~/images/cybinv9.jpg';
 import ico from '~/ico.svg';
 
-
 export default function Home() {
     return (
 
@@ -196,7 +195,7 @@ export default function Home() {
 
                         <div className="text-violet-500 text-5xl lg:text-6xl font-bold py-8 text-center">Meet The Team</div>
                         <div className="flex justify-center items-center">
-                            <Carousel className="w-[27.5%] md:w-[72.5%] lg:w-full max-w-6xl p-2">
+                            <Carousel className="w-[50vw] md:w-[75vw] max-w-6xl p-2">
                                 <CarouselContent className="flex items-center justify-between">
                                     {team.map((member) => (
                                         <CarouselItem key={member.name} className="md:basis-1/2 lg:basis-1/3">

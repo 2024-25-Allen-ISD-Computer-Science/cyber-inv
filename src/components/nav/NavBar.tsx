@@ -1,10 +1,14 @@
+"use client"
+
 import { NavLink } from '@/components/nav/NavLink';
 import Image from 'next/image';
 import Link from 'next/link';
 import * as motion from "framer-motion/client"
 import ico from '~/ico.svg';
 import { Button } from '../ui/button';
+
 export function NavBar() {
+
     return (
         <nav className="border-b shadow-xl">
             <div className="flex items-center justify-between px-8 text-center">
@@ -12,11 +16,11 @@ export function NavBar() {
                     <Link href="/" className="mr-4">
                         <Image src={ico} width={64} height={64} alt="Eagle Logo" className="size-16 rounded-lg" />
                     </Link>
-                    <NavLink href="/">Home</NavLink>
-                    <NavLink href="/#sponsors">Sponsors</NavLink>
-                    <NavLink href="/#faq">FAQ</NavLink>
-                    <NavLink href="/#meet-the-team">Meet the Team</NavLink>
-                    <NavLink href="/#last-year">Last Year</NavLink>
+                    <NavLink href='/'>Home</NavLink>
+                    <NavLink href="sponsors">Sponsors</NavLink>
+                    <NavLink href="faq">FAQ</NavLink>
+                    <NavLink href="meet-the-team">Meet the Team</NavLink>
+                    <NavLink href="last-year">Last Year</NavLink>
                 </div>
                 <div className="flex items-center justify-center">
                     <div className="flex flex-row gap-5 justify-center items-center text-center text-3xl text-white ">
