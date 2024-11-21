@@ -84,7 +84,7 @@ export default function Home() {
                             animate={{ opacity: 1 }}
                             transition={{ duration: 1, delay: 1 }}
                         >
-                            <div className="animate-bounce">
+                            <div className="animate-bounce max-sm:hidden">
                                 Learn more
                                 <br />
                                 &#9660;
