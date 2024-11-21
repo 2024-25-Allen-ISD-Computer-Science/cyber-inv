@@ -1,3 +1,5 @@
+"use client"
+
 import { SiGmail, SiDiscord, SiInstagram, SiLinkedin } from 'react-icons/si';
 import { Card, CardContent } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
@@ -6,6 +8,7 @@ import Timer from '@/components/Timer';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Separator } from '@/components/ui/separator';
 import TiltLogo from '@/components/TiltLogo';
+import Tilt from 'react-parallax-tilt'
 import team from '@/data/team.json';
 import faq from '@/data/faq.json';
 import * as motion from "framer-motion/client"
@@ -262,7 +265,7 @@ export default function Home() {
                 </section>
             </motion.div>
 
-            <Separator className="mt-10" />
+            <Separator className="my-20" />
             <section id="sponsors" className="z-10 w-full">
                 <div className="pb-10 text-center text-6xl font-bold text-violet-500">Sponsors</div>
                 <div className="flex flex-col items-center justify-center space-y-5">
@@ -280,17 +283,18 @@ export default function Home() {
                             }}
                         >
                             <div className={`flex w-full items-center justify-between px-10 md:px-24 lg:px-52 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`} key={sponsor.name}>
+                                <Tilt className="h-[35%] w-[35%] md:h-[20%] md:w-[20%] rounded-md object-cover">
                                 <Image
                                     src={sponsor.image}
                                     alt={sponsor.name}
                                     width={4032}
                                     height={3024}
-                                    className="h-[35%] w-[35%] md:h-[20%] md:w-[20%] rounded-md object-cover"
+                                    className='opacity-50 hover:opacity-100 transition-opacity duration-500'
                                 />
+                                </Tilt>
                                 <Card className="w-[60%]">
-                                    <CardContent className="flex flex-col items-center justify-center p-6 h-36 md:p-2">
-                                        <span className="mt-5 text-center text-xl md:text-3xl font-bold">{sponsor.name}</span>
-                                        <span className="mt-2 text-center md:text-lg font-light">{sponsor.amount}</span>
+                                    <CardContent className="flex flex-col items-center justify-center p-64 h-36 md:p-2">
+                                        <span className="mt-2 text-center text-2xl md:text-4xl font-bold">{sponsor.name}</span>
                                     </CardContent>
                                 </Card>
                             </div>

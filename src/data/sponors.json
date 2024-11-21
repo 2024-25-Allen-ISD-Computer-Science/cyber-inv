@@ -1,22 +1,18 @@
 [
     {
-        "name": "Company 1",
-        "amount": "$0",
-        "image": "/ico.svg"
+        "name": "CS Squared",
+        "image": "https://cs-squared.org/assets/animatedLogo-D3j0ewF6.svg"
     },
     {
         "name": "Company 2",
-        "amount": "$100",
         "image": "/ico.svg"
     },
     {
         "name": "Company 3",
-        "amount": "$125",
         "image": "/ico.svg"
     },
     {
         "name": "Company 4",
-        "amount": "$250",
         "image": "/ico.svg"
     }
 ]
