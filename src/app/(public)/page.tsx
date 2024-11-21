@@ -292,9 +292,9 @@ export default function Home() {
                                     className='opacity-50 hover:opacity-100 transition-opacity duration-500'
                                 />
                                 </Tilt>
-                                <Card className="w-[60%]">
-                                    <CardContent className="flex flex-col items-center justify-center p-64 h-36 md:p-2">
-                                        <span className="mt-2 text-center text-2xl md:text-4xl font-bold">{sponsor.name}</span>
+                                <Card className="w-[42.5vw]">
+                                    <CardContent className="flex flex-col items-center justify-center h-36 p-2">
+                                        <span className="mt-2 text-center text-xl md:text-3xl lg:text-4xl font-bold">{sponsor.name}</span>
                                     </CardContent>
                                 </Card>
                             </div>
