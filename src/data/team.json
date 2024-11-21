@@ -2,7 +2,7 @@
     {
         "name": "Abel Semahegn",
         "title": "Project Manager",
-        "image": "/images/cybinv1.jpg"
+        "image": "/images/Abel.png"
     },
     {
         "name": "Advaiya Lad",
@@ -15,14 +15,19 @@
         "image": "/images/cybinv1.jpg"
     },
     {
-        "name": "Darrion Nguyen",
+        "name": "Aidan Moris",
         "title": "Project Manager",
-        "image": "/images/cybinv1.jpg"
+        "image": "/images/Aidan.jpg"
+    },
+    {
+        "name": "Darrion Nguyen",
+        "title": "Dev",
+        "image": "/images/Darrion.png"
     },
     {
         "name": "Tanay Sreedharan",
-        "title": "DEV",
-        "image": "/images/cybinv1.jpg"
+        "title": "Dev",
+        "image": "/images/Tanay.png"
     },
     {
         "name": "Srujan Sannidhi",
@@ -33,5 +38,15 @@
         "name": "Ashrith Polam",
         "title": "Marketer",
         "image": "/images/cybinv1.jpg"
+    },
+    {
+        "name": "Aidan Polam",
+        "title": "Marketer",
+        "image": "/images/cybinv1.jpg"
+    },
+    {
+        "name": "Julian ",
+        "title": "Marketer",
+        "image": "/images/Julian.png"
     }
 ]

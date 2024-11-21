@@ -1,9 +1,12 @@
+"use client"
+
 import { NavLink } from '@/components/nav/NavLink';
 import Image from 'next/image';
 import Link from 'next/link';
 import * as motion from "framer-motion/client"
 import ico from '~/ico.svg';
 import { Button } from '../ui/button';
+
 import {
     Drawer,
     DrawerClose,
@@ -19,6 +22,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 
 
 export function NavBar() {
+
     return (
         <>
 
