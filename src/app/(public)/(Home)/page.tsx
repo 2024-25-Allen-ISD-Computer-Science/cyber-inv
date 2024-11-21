@@ -84,7 +84,7 @@ export default function Home() {
                             animate={{ opacity: 1 }}
                             transition={{ duration: 1, delay: 1 }}
                         >
-                            <div className="animate-bounce">
+                            <div className="animate-bounce max-sm:hidden">
                                 Learn more
                                 <br />
                                 &#9660;
@@ -148,7 +148,7 @@ export default function Home() {
                 }}
 
             >
-                <section className="flex flex-col items-center justify-center w-full p-8  text-white mt-[20vh] lg:mt-[17.5vh]">
+                <section className="flex flex-col items-center justify-center w-full p-8  text-white lg:mt-[17.5vh]">
                     <h2 className="text-violet-500 text-6xl font-bold text-center mb-4">Our Mission</h2>
 
                     <div className="flex flex-col md:flex-row items-center justify-center w-full gap-4 md:px-12">
