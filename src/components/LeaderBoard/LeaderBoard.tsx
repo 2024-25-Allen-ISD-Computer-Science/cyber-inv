@@ -1,5 +1,5 @@
 
-
+"use client"
 import { Team, columns } from "./Columns";
 import { DataTable } from "./DataTable";
 import { useState } from "react";
