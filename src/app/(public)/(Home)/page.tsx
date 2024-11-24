@@ -12,7 +12,6 @@ import Tilt from 'react-parallax-tilt'
 import team from '@/data/team.json';
 import faq from '@/data/faq.json';
 import * as motion from "framer-motion/client"
-import Progbar from "@/components/Home/Prog"
 import sponsors from '@/data/sponors.json'
 
 import cyb1 from '~/images/cybinv1.jpg';
@@ -30,11 +29,7 @@ export default function Home() {
     return (
 
         <main className=" w-full flex flex-col font-sans overflow-x-hidden">
-            <div className=" w-full">
-                <div className="flex justify-center items-center text-center">
-                    <Progbar />
-                </div>
-            </div>
+
 
             {/* Main Section */}
             <section className="w-full h-screen flex flex-col items-center mb-10">
@@ -86,7 +81,7 @@ export default function Home() {
                             animate={{ opacity: 1 }}
                             transition={{ duration: 1, delay: 1 }}
                         >
-                            <div className="animate-bounce">
+                            <div className="">
                                 Learn more
                                 <br />
                                 &#9660;
@@ -137,7 +132,6 @@ export default function Home() {
                 {/* Sign Up Section with animation UNCOMMENT WHEN SIGN UP IS DONE*/}
             </section>
 
-            {/* Countdown */}
             <motion.div
                 className="w-81 h-81 z-20 my-0"
                 initial={{ scale: 0 }}
@@ -150,8 +144,8 @@ export default function Home() {
                 }}
 
             >
-                <section className="flex flex-col items-center justify-center w-full p-8  text-white mt-[20vh] lg:mt-[17.5vh]">
-                    <h2 className="text-violet-500 text-6xl font-bold text-center mb-4">Our Mission</h2>
+                <section className="flex flex-col items-center justify-center w-full p-8  text-white mt-[5vh] lg:mt-[5vh]">
+                    <h2 className="text-violet-500 text-6xl font-bold sm:text-left md:text-center mb-4">Our Mission</h2>
 
                     <div className="flex flex-col md:flex-row items-center justify-center w-full gap-4 md:px-12">
                         {/* Image Section */}
@@ -167,7 +161,7 @@ export default function Home() {
                         </div>
 
                         {/* Text Section */}
-                        <div className="w-full md:w-1/3 md:text-3xl font-light text-justify text-xl">
+                        <div className="w-full md:w-1/3 md:text-3xl sm:text-left font-light text-justify text-xl">
                             <p>
                                 We aim to help students have an opportunity to learn and sharpen their cybersecurity skills
                                 through this competition. Whether you are a beginner or skilled, this event offers something for
@@ -180,54 +174,53 @@ export default function Home() {
             </motion.div>
 
 
-            <div>
-                <section id="meet-the-team" className="flex items-center justify-center flex-col mt-20">
-                    <motion.div
-                        className="w-81 h-81 z-20 my-0"
-                        initial={{ scale: 0 }}
-                        whileInView={{ scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{
-                            type: "spring",
-                            stiffness: 260,
-                            damping: 20
-                        }}
+            <section id="meet-the-team" className="flex items-center justify-center flex-col mt-20">
+                <motion.div
+                    className=" z-20 my-0"
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{
+                        type: "spring",
+                        stiffness: 260,
+                        damping: 20
+                    }}
 
-                    >
+                >
 
 
-                        <div className="text-violet-500 text-5xl lg:text-6xl font-bold py-8 text-center">Meet The Team</div>
-                        <div className="flex justify-center items-center">
-                            <Carousel className="w-[50vw] md:w-[75vw] max-w-6xl p-2">
-                                <CarouselContent className="flex items-center justify-between">
-                                    {team.map((member) => (
-                                        <CarouselItem key={member.name} className="md:basis-1/2 lg:basis-1/3">
-                                            <Card>
-                                                <CardContent className="flex items-center justify-center h-max md:h-80 flex-col p-6 md:p-2">
-                                                    <div className="relative w-full h-full overflow-hidden rounded-md flex justify-center">
-                                                        <Image
-                                                            src={member.image}
-                                                            alt={member.name}
-                                                            width={100}
-                                                            height={200}
-                                                            className='object-cover h-full w-fit '
-                                                        />
-                                                    </div>
+                    <div className="text-violet-500 text-5xl lg:text-6xl font-bold py-2 text-center">Meet The Team</div>
+                    <div className="flex justify-center items-center">
+                        <Carousel className="w-[50vw] md:w-[75vw] max-w-6xl">
+                            <CarouselContent className="flex items-center justify-between">
+                                {team.map((member) => (
+                                    <CarouselItem key={member.name} className=" lg:basis-1/3">
+                                        <Card>
+                                            <CardContent className="flex items-center justify-center h-max md:h-80 flex-col p-3 md:p-2">
+                                                <div className="relative w-full h-full overflow-hidden rounded-md flex justify-center">
+                                                    <Image
+                                                        src={member.image}
+                                                        alt={member.name}
+                                                        width={3000}
+                                                        height={2000}
+                                                        className='object-fill h-full w-fit'
+                                                    />
+                                                </div>
 
-                                                    <span className="text-center mt-5 text-3xl font-bold">{member.name}</span>
-                                                    <span className="text-center mt-2 text-lg font-light">{member.title}</span>
-                                                </CardContent>
-                                            </Card>
-                                        </CarouselItem>
-                                    ))}
-                                </CarouselContent>
-                                <CarouselPrevious />
-                                <CarouselNext />
-                            </Carousel>
-                        </div>
-                    </motion.div>
-                </section>
-            </div>
+                                                <span className="text-center mt-5 text-3xl font-bold line-wrap">{member.name}</span>
+                                                <span className="text-center mt-2 text-lg font-light">{member.title}</span>
+                                            </CardContent>
+                                        </Card>
+                                    </CarouselItem>
+                                ))}
+                            </CarouselContent>
+                            <CarouselPrevious />
+                            <CarouselNext />
+                        </Carousel>
+                    </div>
+                </motion.div>
+            </section>
+
 
             <motion.div
                 className="w-81 h-81 z-20 my-0"
@@ -248,7 +241,7 @@ export default function Home() {
                             <div className="text-sm lg:text-3xl font-light pb-10 text-center">
                                 Have More Questions?
                                 <br />
-                                Email them to us at 12345@gmail.com
+                                
                             </div>
                         </div>
 
@@ -284,13 +277,13 @@ export default function Home() {
                         >
                             <div className={`flex w-full items-center justify-between px-10 md:px-24 lg:px-52 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`} key={sponsor.name}>
                                 <Tilt className="h-[35%] w-[35%] md:h-[20%] md:w-[20%] rounded-md object-cover">
-                                <Image
-                                    src={sponsor.image}
-                                    alt={sponsor.name}
-                                    width={4032}
-                                    height={3024}
-                                    className='opacity-50 hover:opacity-100 transition-opacity duration-500'
-                                />
+                                    <Image
+                                        src={sponsor.image}
+                                        alt={sponsor.name}
+                                        width={4032}
+                                        height={3024}
+                                        className='opacity-50 hover:opacity-100 transition-opacity duration-500'
+                                    />
                                 </Tilt>
                                 <Card className="w-[42.5vw]">
                                     <CardContent className="flex flex-col items-center justify-center h-36 p-2">
@@ -339,7 +332,7 @@ export default function Home() {
 
 
             {/* Footer */}
-            <div className="bg-zinc-900 p-8 flex justify-center mt-8">
+            <div className=" p-8 flex justify-center mt-8">
                 <div className="flex flex-col w-11/12 lg:w-5/6 items-center text-white">
                     <div className="w-full flex items-center justify-evenly">
                         <div className="w-1/4 lg:w-1/3 bg-zinc-100 h-0.5"></div>
@@ -347,14 +340,11 @@ export default function Home() {
                             <a href="mailto:allencyberinvitational@gmail.com">
                                 <SiGmail />
                             </a>
-                            <a href="">
+                            <a href="https://www.instagram.com/allencyberinvitational/">
                                 <SiInstagram />
                             </a>
-                            <a href="">
+                            <a href="https://discord.gg/qJJNqgxCnk">
                                 <SiDiscord />
-                            </a>
-                            <a href="">
-                                <SiLinkedin />
                             </a>
                         </div>
                         <div className="w-1/4 lg:w-1/3 bg-zinc-100 h-0.5"></div>
