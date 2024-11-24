@@ -1,6 +1,6 @@
 "use client"
 
-import { SiGmail, SiDiscord, SiInstagram,  } from 'react-icons/si';
+import { SiGmail, SiDiscord, SiInstagram, SiLinkedin } from 'react-icons/si';
 import { Card, CardContent } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import Image from 'next/image';
@@ -12,6 +12,7 @@ import Tilt from 'react-parallax-tilt'
 import team from '@/data/team.json';
 import faq from '@/data/faq.json';
 import * as motion from "framer-motion/client"
+import Progbar from "@/components/Home/Prog"
 import sponsors from '@/data/sponors.json'
 
 import cyb1 from '~/images/cybinv1.jpg';
@@ -32,7 +33,7 @@ export default function Home() {
 
 
             {/* Main Section */}
-            <section id="#Home" className="w-full h-screen flex flex-col items-center mb-10">
+            <section className="w-full h-screen flex flex-col items-center mb-10">
                 <div className="flex h-fit flex-col md:flex-row justify-center items-center text-center md:text-left md:space-y-0 md:space-x-8 ">
                     {/* Eagle Logo Animation */}
                     <motion.div

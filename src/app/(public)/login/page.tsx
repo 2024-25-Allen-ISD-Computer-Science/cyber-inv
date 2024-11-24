@@ -17,16 +17,17 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+  // Placeholder for login logic
+  const handleLogin = async (e:any) => {
     e.preventDefault();
-  
+
     // Reset error
     setError("");
-  
+
     try {
       // Replace with backend API logic
       console.log("Logging in with:", { email, password });
-  
+      
       // Example: Check credentials (replace with actual backend response handling)
       if (email === "test@example.com" && password === "password123") {
         alert("Login successful!");
@@ -38,7 +39,6 @@ export default function LoginPage() {
       setError("An error occurred. Please try again.");
     }
   };
-  
 
   return (
     <main className="w-full h-screen flex justify-center items-center">
