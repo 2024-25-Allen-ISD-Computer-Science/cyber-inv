@@ -1,4 +1,3 @@
-import type { Metadata } from 'next';
 import { Poppins, Inter } from 'next/font/google';
 import '@/globals.css';
 import ParticlesAni from '@/components/Particles';
@@ -13,10 +12,7 @@ const inter = Inter({
     subsets: ['latin'], // Specify subset to fix preload error
 });
 
-export const metadata: Metadata = {
-    title: 'Cyber Invitational',
-    description: 'Cyber Security Competition for North Texas High school students!',
-};
+
 
 export default function RootLayout({
     children,

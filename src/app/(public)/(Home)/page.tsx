@@ -12,7 +12,6 @@ import Tilt from 'react-parallax-tilt'
 import team from '@/data/team.json';
 import faq from '@/data/faq.json';
 import * as motion from "framer-motion/client"
-import Progbar from "@/components/Home/Prog"
 import sponsors from '@/data/sponors.json'
 
 import cyb1 from '~/images/cybinv1.jpg';
