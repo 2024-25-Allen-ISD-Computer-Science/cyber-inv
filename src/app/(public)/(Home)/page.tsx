@@ -199,7 +199,7 @@ export default function Home() {
                         damping: 20,
                     }}
                 >
-                    <div className="text-violet-500 text-5xl lg:text-6xl font-bold py-2 text-center">
+                    <div className="select-none text-violet-500 text-5xl lg:text-6xl font-bold py-2 text-center">
                         Meet The Team
                     </div>
                     <div className="select-none flex justify-center items-center">
@@ -253,7 +253,7 @@ export default function Home() {
             >
                 <section
                     id="faq"
-                    className="w-full flex mt-20 justify-center items-center font-bold "
+                    className="select-none w-full flex mt-20 justify-center items-center font-bold "
                 >
                     <div className="flex flex-col w-[80vw]">
                         <div className="flex flex-col justify-center items-center border-2 border-white w-full rounded-xl mb-3">
