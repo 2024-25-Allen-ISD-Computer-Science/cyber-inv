@@ -162,7 +162,7 @@ export default function Home() {
                         </div>
 
                         {/* Text Section */}
-                        <div className="w-full md:w-1/3 md:text-3xl font-light text-justify text-xl">
+                        <div className="w-full md:w-1/3 md:text-3xl sm:text-left font-light text-justify text-xl">
                             <p>
                                 We aim to help students have an opportunity to learn and sharpen their cybersecurity skills
                                 through this competition. Whether you are a beginner or skilled, this event offers something for

@@ -26,11 +26,11 @@ export function NavBar() {
                         <Link href="/" className="mr-4">
                             <Image src={ico} width={64} height={64} alt="Eagle Logo" className="size-16 rounded-lg" />
                         </Link>
-                        <NavLink href="/">Home</NavLink>
-                        <NavLink href="/#sponsors">Sponsors</NavLink>
-                        <NavLink href="/#faq">FAQ</NavLink>
-                        <NavLink href="/#meet-the-team">Meet the Team</NavLink>
-                        <NavLink href="/#last-year">Last Year</NavLink>
+                        <Link href="/">Home</Link>
+                        <Link href="/#sponsors">Sponsors</Link>
+                        <Link href="/#faq">FAQ</Link>
+                        <Link href="/#meet-the-team">Meet the Team</Link>
+                        <Link href="/#last-year">Last Year</Link>
                     </div>
                     <div className="flex items-center justify-center">
                         {/* <div className="flex flex-row gap-5 justify-center items-center text-center text-3xl text-white">
@@ -68,7 +68,7 @@ export function NavBar() {
             </DrawerTrigger>
             <DrawerPortal>
                 <DrawerContent
-                    className="h-screen fixed top-0 left-0 w-[75vw] outline-none flex flex-col bg-black text-white"
+                    className="h-screen left-0 w-[75vw] outline-none flex flex-col bg-black text-white"
                     style={{ '--initial-transform': 'translateX(-100%)' } as React.CSSProperties}
                 >
                     <div className="h-full flex flex-col">
