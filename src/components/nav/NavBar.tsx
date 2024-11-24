@@ -59,63 +59,49 @@ export function NavBar() {
                     </div>
                 </div>
             </nav>
-
-            {/* Mobile Navbar */}
-            <nav className="block md:hidden sticky top-0 z-50 bg-black/50 backdrop-blur-md">
-                <div className="flex items-center justify-between px-8 text-center pb-4 py-2">
-                    <div className="flex items-center justify-center">
-                        <Drawer direction="left">
-                            <DrawerTrigger className="relative flex h-10 flex-shrink-0 items-center justify-center gap-2 overflow-hidden rounded-full px-4 text-sm font-medium shadow-sm transition-all hover:bg-[#FAFAFA] dark:bg-[#161615] dark:hover:bg-[#1A1A19] dark:text-white">
-                                <GiHamburgerMenu />
-                            </DrawerTrigger>
-                            <DrawerPortal>
-                                <DrawerOverlay className="fixed inset-0 bg-black/40" />
-                                <DrawerContent
-                                    className="h-screen fixed outline-none w-[75vw] flex"
-                                    style={{ '--initial-transform': 'calc(100% + 8px)' } as React.CSSProperties}
-                                >
-                                    <div className="bg-zinc-50 h-full w-full grow flex flex-col m-0">
-                                        <div className="max-w-md mx-auto">
-                                            <DrawerTitle className="font-medium mb-2 text-zinc-900">
-                                                It supports all directions.
-                                            </DrawerTitle>
-                                            <DrawerDescription className="text-zinc-600 mb-2">
-                                                This one specifically is not touching the edge of the screen, but that&apos;s not required for a side
-                                                drawer.
-                                            </DrawerDescription>
-                                        </div>
-                                    </div>
-                                </DrawerContent>
-                            </DrawerPortal>
-                        </Drawer>
+{/* Mobile Navbar */}
+<nav className="block md:hidden sticky top-0 z-50 bg-black/50 backdrop-blur-md">
+    <div className="flex items-center justify-between px-8 text-center pb-4">
+        <Drawer direction="left">
+            <DrawerTrigger className="relative flex h-10 flex-shrink-0 items-center justify-center gap-2 overflow-hidden rounded-full px-4 text-sm font-medium shadow-sm transition-all hover:bg-[#FAFAFA] dark:bg-[#161615] dark:hover:bg-[#1A1A19] dark:text-white">
+                <GiHamburgerMenu />
+            </DrawerTrigger>
+            <DrawerPortal>
+                <DrawerContent
+                    className="h-screen fixed top-0 left-0 w-[75vw] outline-none flex flex-col bg-black text-white"
+                    style={{ '--initial-transform': 'translateX(-100%)' } as React.CSSProperties}
+                >
+                    <div className="h-full flex flex-col">
+                        {/* Close Button */}
+                        <div className="p-4 flex justify-end">
+                            <DrawerClose className="text-xl text-white">✕</DrawerClose>
+                        </div>
+                        {/* Drawer Links */}
+                        <div className="flex flex-col gap-6 p-8">
+                            <Link href="/" className="text-lg font-medium">
+                                Home
+                            </Link>
+                            <Link href="/#sponsors" className="text-lg font-medium">
+                                Sponsors
+                            </Link>
+                            <Link href="/#faq" className="text-lg font-medium">
+                                FAQ
+                            </Link>
+                            <Link href="/#meet-the-team" className="text-lg font-medium">
+                                Meet the Team
+                            </Link>
+                            <Link href="/#last-year" className="text-lg font-medium">
+                                Last Year
+                            </Link>
+                        </div>
                     </div>
-                    <div className="flex items-center justify-center">
-                        {/* <div className="flex flex-row gap-5 justify-center items-center text-center text-3xl text-white">
-                            <motion.a
-                                href="/Signup"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ duration: 1, delay: 0.5 }}
-                            >
-                                <Button variant={"outline"} className="bg-pink-500 hover:bg-pink-600">
-                                    Sign Up
-                                </Button>
-                            </motion.a>
+                </DrawerContent>
+            </DrawerPortal>
+        </Drawer>
+    </div>
+</nav>
 
-                            <motion.a
-                                href="/Login"
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ duration: 1, delay: 0.7 }}
-                            >
-                                <Button variant={"outline"} className="bg-blue-500 hover:bg-blue-400">
-                                    Login
-                                </Button>
-                            </motion.a>
-                        </div> */}
-                    </div>
-                </div>
-            </nav>
+
         </>
     );
 }
