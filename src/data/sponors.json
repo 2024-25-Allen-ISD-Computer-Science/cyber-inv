@@ -2,17 +2,6 @@
     {
         "name": "CS Squared",
         "image": "https://cs-squared.org/assets/animatedLogo-D3j0ewF6.svg"
-    },
-    {
-        "name": "Company 2",
-        "image": "/ico.svg"
-    },
-    {
-        "name": "Company 3",
-        "image": "/ico.svg"
-    },
-    {
-        "name": "Company 4",
-        "image": "/ico.svg"
     }
+
 ]

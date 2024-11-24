@@ -16,12 +16,11 @@ import {
 } from "@/components/ui/drawer"
 
 import { GiHamburgerMenu } from "react-icons/gi";
-
-
 export function NavBar() {
     return (
         <>
-            <nav className="border-b shadow-xl hidden md:block">
+            {/* Desktop Navbar */}
+            <nav className="hidden md:block sticky top-0 z-50 bg-black/20 backdrop-blur-md">
                 <div className="flex items-center justify-between px-8 text-center">
                     <div className="flex items-center justify-center">
                         <Link href="/" className="mr-4">
@@ -34,14 +33,14 @@ export function NavBar() {
                         <NavLink href="/#last-year">Last Year</NavLink>
                     </div>
                     <div className="flex items-center justify-center">
-                        <div className="flex flex-row gap-5 justify-center items-center text-center text-3xl text-white ">
+                        {/* <div className="flex flex-row gap-5 justify-center items-center text-center text-3xl text-white">
                             <motion.a
                                 href="/Signup"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 1, delay: 0.5 }}
                             >
-                                <Button variant={"outline"} className='bg-pink-500 hover:bg-pink-600'>
+                                <Button variant={"outline"} className="bg-pink-500 hover:bg-pink-600">
                                     Sign Up
                                 </Button>
                             </motion.a>
@@ -52,24 +51,22 @@ export function NavBar() {
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 1, delay: 0.7 }}
                             >
-                                <Button variant={"outline"} className='bg-blue-500 hover:bg-blue-400'>
+                                <Button variant={"outline"} className="bg-blue-500 hover:bg-blue-400">
                                     Login
                                 </Button>
                             </motion.a>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </nav>
 
-
-
-
-            <nav className="border-b shadow-xl block md:hidden">
+            {/* Mobile Navbar */}
+            <nav className="block md:hidden sticky top-0 z-50 bg-black/50 backdrop-blur-md">
                 <div className="flex items-center justify-between px-8 text-center pb-4 py-2">
                     <div className="flex items-center justify-center">
                         <Drawer direction="left">
-                            <DrawerTrigger className="relative flex h-10 flex-shrink-0 items-center justify-center gap-2 overflow-hidden rounded-full bg-white px-4 text-sm font-medium shadow-sm transition-all hover:bg-[#FAFAFA] dark:bg-[#161615] dark:hover:bg-[#1A1A19] dark:text-white">
-                                <GiHamburgerMenu/>
+                            <DrawerTrigger className="relative flex h-10 flex-shrink-0 items-center justify-center gap-2 overflow-hidden rounded-full px-4 text-sm font-medium shadow-sm transition-all hover:bg-[#FAFAFA] dark:bg-[#161615] dark:hover:bg-[#1A1A19] dark:text-white">
+                                <GiHamburgerMenu />
                             </DrawerTrigger>
                             <DrawerPortal>
                                 <DrawerOverlay className="fixed inset-0 bg-black/40" />
@@ -79,7 +76,9 @@ export function NavBar() {
                                 >
                                     <div className="bg-zinc-50 h-full w-full grow flex flex-col m-0">
                                         <div className="max-w-md mx-auto">
-                                            <DrawerTitle className="font-medium mb-2 text-zinc-900">It supports all directions.</DrawerTitle>
+                                            <DrawerTitle className="font-medium mb-2 text-zinc-900">
+                                                It supports all directions.
+                                            </DrawerTitle>
                                             <DrawerDescription className="text-zinc-600 mb-2">
                                                 This one specifically is not touching the edge of the screen, but that&apos;s not required for a side
                                                 drawer.
@@ -89,17 +88,16 @@ export function NavBar() {
                                 </DrawerContent>
                             </DrawerPortal>
                         </Drawer>
-
                     </div>
                     <div className="flex items-center justify-center">
-                        <div className="flex flex-row gap-5 justify-center items-center text-center text-3xl text-white ">
+                        {/* <div className="flex flex-row gap-5 justify-center items-center text-center text-3xl text-white">
                             <motion.a
                                 href="/Signup"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 1, delay: 0.5 }}
                             >
-                                <Button variant={"outline"} className='bg-pink-500 hover:bg-pink-600'>
+                                <Button variant={"outline"} className="bg-pink-500 hover:bg-pink-600">
                                     Sign Up
                                 </Button>
                             </motion.a>
@@ -110,11 +108,11 @@ export function NavBar() {
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 1, delay: 0.7 }}
                             >
-                                <Button variant={"outline"} className='bg-blue-500 hover:bg-blue-400'>
+                                <Button variant={"outline"} className="bg-blue-500 hover:bg-blue-400">
                                     Login
                                 </Button>
                             </motion.a>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </nav>

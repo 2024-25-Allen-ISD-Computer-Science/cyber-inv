@@ -7,9 +7,13 @@ export default function RootLayout({
 }>) {
     return (
         <div className="">
-            <NavBar />
+            <header className="sticky top-0 z-50">
+                <NavBar />
+            </header>
 
-            {children}
+            <main>
+                {children}
+            </main>
         </div>
     );
 }

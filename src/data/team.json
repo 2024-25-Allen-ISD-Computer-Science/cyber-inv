@@ -4,16 +4,8 @@
         "title": "Project Manager",
         "image": "/images/Abel.png"
     },
-    {
-        "name": "Advaiya Lad",
-        "title": "Project Manager",
-        "image": "/images/cybinv1.jpg"
-    },
-    {
-        "name": "Richard Jang",
-        "title": "Project Manager",
-        "image": "/images/cybinv1.jpg"
-    },
+
+
     {
         "name": "Aidan Moris",
         "title": "Project Manager",
@@ -29,21 +21,8 @@
         "title": "Dev",
         "image": "/images/Tanay.png"
     },
-    {
-        "name": "Srujan Sannidhi",
-        "title": "Marketer",
-        "image": "/images/cybinv1.jpg"
-    },
-    {
-        "name": "Ashrith Polam",
-        "title": "Marketer",
-        "image": "/images/cybinv1.jpg"
-    },
-    {
-        "name": "Aidan Polam",
-        "title": "Marketer",
-        "image": "/images/cybinv1.jpg"
-    },
+
+
     {
         "name": "Julian ",
         "title": "Marketer",

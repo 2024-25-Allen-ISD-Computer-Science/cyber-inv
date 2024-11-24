@@ -17,7 +17,7 @@ export function NavLink({ children, href }: { children: React.ReactNode; href: s
         <button
             onClick={() => smoothScrolling(href)}
             className={cn(
-                'm-2 rounded-md bg-background p-3 text-xl text-slate-200 transition hover:bg-primary-foreground',
+                'm-2 rounded-md p-3 text-xl text-slate-200 transition',
             )}
         >
             {children}
