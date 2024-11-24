@@ -22,11 +22,11 @@ export function NavBar() {
             {/* Desktop Navbar */}
             <nav className="hidden md:block sticky top-0 z-50 bg-black/20 backdrop-blur-md">
                 <div className="flex items-center justify-between px-8 text-center">
-                    <div className="flex items-center justify-center">
+                    <div className="flex items-center justify-center space-x-4 text-3xl">
                         <Link href="/" className="mr-4">
                             <Image src={ico} width={64} height={64} alt="Eagle Logo" className="size-16 rounded-lg" />
                         </Link>
-                        <Link href="/">Home</Link>
+                        <Link href="/#Home">Home</Link>
                         <Link href="/#sponsors">Sponsors</Link>
                         <Link href="/#faq">FAQ</Link>
                         <Link href="/#meet-the-team">Meet the Team</Link>
@@ -78,7 +78,7 @@ export function NavBar() {
                         </div>
                         {/* Drawer Links */}
                         <div className="flex flex-col gap-6 p-8">
-                            <Link href="/" className="text-lg font-medium">
+                            <Link href="/#Home" className="text-lg font-medium">
                                 Home
                             </Link>
                             <Link href="/#sponsors" className="text-lg font-medium">

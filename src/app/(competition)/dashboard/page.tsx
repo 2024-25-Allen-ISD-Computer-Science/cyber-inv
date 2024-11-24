@@ -3,7 +3,7 @@ import { UserCard } from "@/components/ScoreCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { fetchUserCardData, User  } from "@/api/player";
 
-const dataChart:User = fetchUserCardData()
+const dataChart:Promise<User> = fetchUserCardData()
 export default function Dashboard() {
 
   return (
@@ -14,7 +14,7 @@ export default function Dashboard() {
           <div className="grid grid-cols-1 gap-5">
               <UserCard data={dataChart} />
             </div>
-          </CardHeader>
+          </CardHeader>outline
           <hr />
           <CardContent className="p-3">
           <CardHeader>
