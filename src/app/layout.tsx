@@ -1,36 +1,45 @@
-import type { Metadata } from 'next';
-import { Poppins, Inter } from 'next/font/google';
-import '@/globals.css';
-import ParticlesAni from '@/components/Particles';
-const poppins = Poppins({
-    variable: '--font-sans',
-    weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-    subsets: ['latin'], // Adding subset for Poppins if necessary
+import type { Metadata } from "next";
+import localFont from "next/font/local";
+import "./globals.css";
+import HomeBar from "@/components/Navbar/HomeBar"; // Assuming you have this Navbar component
+
+const geistSans = localFont({
+  src: "./fonts/GeistVF.woff",
+  variable: "--font-geist-sans",
+  weight: "100 900",
 });
 
-const inter = Inter({
-    variable: '--font-sans-alt',
-    subsets: ['latin'], // Specify subset to fix preload error
+const geistMono = localFont({
+  src: "./fonts/GeistMonoVF.woff",
+  variable: "--font-geist-mono",
+  weight: "100 900",
 });
 
 export const metadata: Metadata = {
-    title: 'Cyber Invitational',
-    description: 'Cyber Security Competition for North Texas High school students!',
+  title: "ACI",
+  description: "Allen Cyber Invitational",
 };
 
 export default function RootLayout({
-    children,
+  children,
 }: Readonly<{
-    children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-    return (
-        <html lang="en" className="h-full">
-            <body className={`${poppins.variable} ${inter.variable} h-full font-sans antialiased`}>
-                <div className='-z-10 absolute'>
-                    <ParticlesAni />
-                </div>
-                {children}
-            </body>
-        </html>
-    );
+  return (
+    <html lang="en">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased w-full h-full bg-gradient-to-r from-gray-900 to-black `}
+      >
+        {/* Navbar */}
+        
+        <HomeBar />
+      
+
+        {/* Content */}
+         {/* Adjust padding based on your navbar height */}
+          {children}
+      
+      </body>
+    </html>
+  );
 }
