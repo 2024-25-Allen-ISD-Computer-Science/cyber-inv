@@ -1,19 +1,30 @@
-"use client"
+'use client';
 
 import { SiGmail, SiDiscord, SiInstagram, SiLinkedin } from 'react-icons/si';
 import { Card, CardContent } from '@/components/ui/card';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from '@/components/ui/carousel';
 import Image from 'next/image';
 import Timer from '@/components/Timer';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from '@/components/ui/accordion';
 import { Separator } from '@/components/ui/separator';
 import TiltLogo from '@/components/TiltLogo';
-import Tilt from 'react-parallax-tilt'
+import Tilt from 'react-parallax-tilt';
 import team from '@/data/team.json';
 import faq from '@/data/faq.json';
-import * as motion from "framer-motion/client"
-import Progbar from "@/components/Home/Prog"
-import sponsors from '@/data/sponors.json'
+import * as motion from 'framer-motion/client';
+import Progbar from '@/components/Home/Prog';
+import sponsors from '@/data/sponors.json';
 
 import cyb1 from '~/images/cybinv1.jpg';
 import cyb2 from '~/images/cybinv2.jpg';
@@ -28,10 +39,7 @@ import ico from '~/ico.svg';
 
 export default function Home() {
     return (
-
         <main className=" w-full flex flex-col font-sans overflow-x-hidden">
-
-
             {/* Main Section */}
             <section className="w-full h-screen flex flex-col items-center mb-10">
                 <div className="flex h-fit flex-col md:flex-row justify-center items-center text-center md:text-left md:space-y-0 md:space-x-8 ">
@@ -41,9 +49,9 @@ export default function Home() {
                         initial={{ rotate: -10, scale: 0 }}
                         animate={{ rotate: 0, scale: 0.9 }}
                         transition={{
-                            type: "spring",
+                            type: 'spring',
                             stiffness: 260,
-                            damping: 20
+                            damping: 20,
                         }}
                     >
                         <TiltLogo />
@@ -68,11 +76,10 @@ export default function Home() {
                         whileInView={{ scale: 1 }}
                         viewport={{ once: true }}
                         transition={{
-                            type: "spring",
+                            type: 'spring',
                             stiffness: 260,
-                            damping: 20
+                            damping: 20,
                         }}
-
                     >
                         <Timer />
                         {/* Learn more section with bounce animation */}
@@ -139,14 +146,15 @@ export default function Home() {
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
                 transition={{
-                    type: "spring",
+                    type: 'spring',
                     stiffness: 260,
-                    damping: 20
+                    damping: 20,
                 }}
-
             >
                 <section className="flex flex-col items-center justify-center w-full p-8  text-white mt-[5vh] lg:mt-[5vh]">
-                    <h2 className="text-violet-500 text-6xl font-bold sm:text-left md:text-center mb-4">Our Mission</h2>
+                    <h2 className="text-violet-500 text-6xl font-bold sm:text-left md:text-center mb-4">
+                        Our Mission
+                    </h2>
 
                     <div className="flex flex-col md:flex-row items-center justify-center w-full gap-4 md:px-12">
                         {/* Image Section */}
@@ -157,45 +165,51 @@ export default function Home() {
                                 height={500}
                                 alt="Eagle Logo"
                                 className="rounded-lg"
-
                             />
                         </div>
 
                         {/* Text Section */}
                         <div className="w-full md:w-1/3 md:text-3xl sm:text-left font-light text-justify text-xl">
                             <p>
-                                We aim to help students have an opportunity to learn and sharpen their cybersecurity skills
-                                through this competition. Whether you are a beginner or skilled, this event offers something for
-                                everyone. The Allen Cyber Invitational is open for all North Texan high school students. We hope
-                                to see you there!
+                                We aim to help students have an opportunity to
+                                learn and sharpen their cybersecurity skills
+                                through this competition. Whether you are a
+                                beginner or skilled, this event offers something
+                                for everyone. The Allen Cyber Invitational is
+                                open for all North Texan high school students.
+                                We hope to see you there!
                             </p>
                         </div>
                     </div>
                 </section>
             </motion.div>
 
-
-            <section id="meet-the-team" className="flex items-center justify-center flex-col mt-20">
+            <section
+                id="meet-the-team"
+                className="flex items-center justify-center flex-col mt-20"
+            >
                 <motion.div
                     className=" z-20 my-0"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true }}
                     transition={{
-                        type: "spring",
+                        type: 'spring',
                         stiffness: 260,
-                        damping: 20
+                        damping: 20,
                     }}
-
                 >
-
-
-                    <div className="text-violet-500 text-5xl lg:text-6xl font-bold py-2 text-center">Meet The Team</div>
-                    <div className="flex justify-center items-center">
+                    <div className="text-violet-500 text-5xl lg:text-6xl font-bold py-2 text-center">
+                        Meet The Team
+                    </div>
+                    <div className="select-none flex justify-center items-center">
                         <Carousel className="w-[50vw] md:w-[75vw] max-w-6xl">
                             <CarouselContent className="flex items-center justify-between">
                                 {team.map((member) => (
-                                    <CarouselItem key={member.name} className=" lg:basis-1/3">
+                                    <CarouselItem
+                                        key={member.name}
+                                        className=" lg:basis-1/3"
+                                    >
                                         <Card>
                                             <CardContent className="flex items-center justify-center h-max md:h-80 flex-col p-3 md:p-2">
                                                 <div className="relative w-full h-full overflow-hidden rounded-md flex justify-center">
@@ -204,12 +218,16 @@ export default function Home() {
                                                         alt={member.name}
                                                         width={3000}
                                                         height={2000}
-                                                        className='object-fill h-full w-fit'
+                                                        className="object-fill h-full w-fit"
                                                     />
                                                 </div>
 
-                                                <span className="text-center mt-5 text-3xl font-bold line-wrap">{member.name}</span>
-                                                <span className="text-center mt-2 text-lg font-light">{member.title}</span>
+                                                <span className="text-center mt-5 text-3xl font-bold line-wrap">
+                                                    {member.name}
+                                                </span>
+                                                <span className="text-center mt-2 text-lg font-light">
+                                                    {member.title}
+                                                </span>
                                             </CardContent>
                                         </Card>
                                     </CarouselItem>
@@ -222,46 +240,60 @@ export default function Home() {
                 </motion.div>
             </section>
 
-
             <motion.div
                 className="w-81 h-81 z-20 my-0"
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
                 transition={{
-                    type: "spring",
+                    type: 'spring',
                     stiffness: 260,
-                    damping: 20
+                    damping: 20,
                 }}
-
             >
-                <section id="faq" className="w-full flex mt-20 justify-center items-center font-bold ">
+                <section
+                    id="faq"
+                    className="w-full flex mt-20 justify-center items-center font-bold "
+                >
                     <div className="flex flex-col w-[80vw]">
                         <div className="flex flex-col justify-center items-center border-2 border-white w-full rounded-xl mb-3">
-                            <div className="text-violet-500 text-4xl lg:text-6xl font-bold pt-10 pb-7 text-center">FAQs</div>
+                            <div className="text-violet-500 text-4xl lg:text-6xl font-bold pt-10 pb-7 text-center">
+                                FAQs
+                            </div>
                             <div className="text-sm lg:text-3xl font-light pb-10 text-center">
                                 Have More Questions?
                                 <br />
-                                
                             </div>
                         </div>
 
-                        <Accordion type="single" collapsible className="items-center lg:grid grid-cols-2 gap-4">
+                        <Accordion
+                            type="single"
+                            collapsible
+                            className="items-center lg:grid grid-cols-2 gap-4"
+                        >
                             {faq.map((item) => (
-                                <AccordionItem key={item.question} value={item.question} >
-                                    <AccordionTrigger className="text-3xl">{item.question}</AccordionTrigger>
-                                    <AccordionContent className="text-2xl">{item.answer}</AccordionContent>
+                                <AccordionItem
+                                    key={item.question}
+                                    value={item.question}
+                                >
+                                    <AccordionTrigger className="text-3xl">
+                                        {item.question}
+                                    </AccordionTrigger>
+                                    <AccordionContent className="text-2xl">
+                                        {item.answer}
+                                    </AccordionContent>
                                 </AccordionItem>
                             ))}
                         </Accordion>
-
                     </div>
                 </section>
             </motion.div>
 
             <Separator className="my-20" />
             <section id="sponsors" className="z-10 w-full">
-                <div className="pb-10 text-center text-6xl font-bold text-violet-500">Sponsors</div>
+                <div className="pb-10 text-center text-6xl font-bold text-violet-500">
+                    Sponsors
+                </div>
                 <div className="flex flex-col items-center justify-center space-y-5">
                     {sponsors.map((sponsor, index) => (
                         <motion.div
@@ -271,24 +303,29 @@ export default function Home() {
                             whileInView={{ scale: 1 }}
                             viewport={{ once: true }}
                             transition={{
-                                type: "spring",
+                                type: 'spring',
                                 stiffness: 260,
                                 damping: 20,
                             }}
                         >
-                            <div className={`flex w-full items-center justify-between px-10 md:px-24 lg:px-52 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`} key={sponsor.name}>
+                            <div
+                                className={`flex w-full items-center justify-between px-10 md:px-24 lg:px-52 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
+                                key={sponsor.name}
+                            >
                                 <Tilt className="h-[35%] w-[35%] md:h-[20%] md:w-[20%] rounded-md object-cover">
                                     <Image
                                         src={sponsor.image}
                                         alt={sponsor.name}
                                         width={4032}
                                         height={3024}
-                                        className='opacity-50 hover:opacity-100 transition-opacity duration-500'
+                                        className="opacity-50 hover:opacity-100 transition-opacity duration-500"
                                     />
                                 </Tilt>
                                 <Card className="w-[42.5vw]">
                                     <CardContent className="flex flex-col items-center justify-center h-36 p-2">
-                                        <span className="mt-2 text-center text-xl md:text-3xl lg:text-4xl font-bold">{sponsor.name}</span>
+                                        <span className="mt-2 text-center text-xl md:text-3xl lg:text-4xl font-bold">
+                                            {sponsor.name}
+                                        </span>
                                     </CardContent>
                                 </Card>
                             </div>
@@ -302,35 +339,35 @@ export default function Home() {
                     Last Year&apos;s Event!
                 </div>
                 <div className="w-[80vw] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 p-4 z-10">
-                    {[cyb1, cyb2, cyb3, cyb4, cyb5, cyb6, cyb7, cyb8, cyb9].map((image, index) => (
-                        <motion.div
-                            key={index} // Move key prop to motion.div
-                            className="w-81 h-81 my-0"
-                            initial={{ scale: 0 }}
-                            whileInView={{ scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{
-                                type: "spring",
-                                stiffness: 260,
-                                damping: 20,
-                            }}
-                        >
-                            <div className="rounded-lg overflow-hidden shadow-lg">
-                                <Image
-                                    src={image}
-                                    alt={`Gallery image ${index + 1}`}
-                                    width={500}
-                                    height={500}
-                                    loading="lazy"
-                                    className="object-cover h-full w-full hover:zoom-in"
-                                />
-                            </div>
-                        </motion.div>
-                    ))}
+                    {[cyb1, cyb2, cyb3, cyb4, cyb5, cyb6, cyb7, cyb8, cyb9].map(
+                        (image, index) => (
+                            <motion.div
+                                key={index} // Move key prop to motion.div
+                                className="w-81 h-81 my-0"
+                                initial={{ scale: 0 }}
+                                whileInView={{ scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{
+                                    type: 'spring',
+                                    stiffness: 260,
+                                    damping: 20,
+                                }}
+                            >
+                                <div className="rounded-lg overflow-hidden shadow-lg">
+                                    <Image
+                                        src={image}
+                                        alt={`Gallery image ${index + 1}`}
+                                        width={500}
+                                        height={500}
+                                        loading="lazy"
+                                        className="object-cover h-full w-full hover:zoom-in"
+                                    />
+                                </div>
+                            </motion.div>
+                        )
+                    )}
                 </div>
             </section>
-
-
 
             {/* Footer */}
             <div className=" p-8 flex justify-center mt-8">
@@ -351,12 +388,20 @@ export default function Home() {
                         <div className="w-1/4 lg:w-1/3 bg-zinc-100 h-0.5"></div>
                     </div>
                     <div className="flex items-center gap-3 my-3">
-                        <Image src={ico} width={20} height={20} className="w-20 h-20" alt="Cyber Invitational Icon" />
+                        <Image
+                            src={ico}
+                            width={20}
+                            height={20}
+                            className="w-20 h-20"
+                            alt="Cyber Invitational Icon"
+                        />
                         <div className="text-white font-bold tracking-wide text-lg lg:text-3xl text-center">
                             Allen Cyber Invitational
                         </div>
                     </div>
-                    <div className="text-sm lg:text-base">Copyright &copy; 2024 Allen Cyber Invitational</div>
+                    <div className="text-sm lg:text-base">
+                        Copyright &copy; 2024 Allen Cyber Invitational
+                    </div>
                 </div>
             </div>
         </main>
