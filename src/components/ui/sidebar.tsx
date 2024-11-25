@@ -181,7 +181,7 @@ const Sidebar = React.forwardRef<
       return (
         <div
           className={cn(
-            "flex h-full w-[--sidebar-width] flex-col bg-sidebar text-sidebar-foreground",
+            "flex w-[--sidebar-width] flex-col bg-sidebar text-sidebar-foreground ",
             className
           )}
           ref={ref}
@@ -460,7 +460,7 @@ const SidebarGroupAction = React.forwardRef<
       ref={ref}
       data-sidebar="group-action"
       className={cn(
-        "absolute right-3 top-3.5 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-sidebar-foreground outline-none ring-sidebar-ring transition-transform hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
+        "absolute right-3 top-3.5 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-sidebar-foreground outline-none ring-sidebar-ring transition-transform hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0 ",
         // Increases the hit area of the button on mobile.
         "after:absolute after:-inset-2 after:md:hidden",
         "group-data-[collapsible=icon]:hidden",

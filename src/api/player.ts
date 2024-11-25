@@ -4,7 +4,8 @@ interface ChartDataPoint {
 }
 
 export interface User {
-    username: string;
+    TeamName:string;
+    username: string[];
     puzzleRoundPoint: number;
     battleRoundPoint: number;
     scenarioPoint: number;
@@ -13,7 +14,8 @@ export interface User {
 }
 
 const userCardData: User = {
-    username: 'UserName , UserName',
+    TeamName:'strong arm',
+    username: ['player1','player2'],
     puzzleRoundPoint: 100000,
     battleRoundPoint: 100,
     scenarioPoint: 10000,
@@ -37,11 +39,8 @@ const userCardData: User = {
     ]
 };
 
-function delay<T>(ms: number, data: T): Promise<T> {
-    return new Promise(resolve => setTimeout(() => resolve(data), ms));
-}
 
 export async function fetchUserCardData(): Promise<User> {
     // Simulate a 20ms delay to mimic an API response
-    return delay(20, userCardData);
+    return( userCardData);
 }

@@ -3,7 +3,7 @@ import { UserCard } from "@/components/ScoreCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { fetchUserCardData, User } from "@/api/player";
 
-const dataChart: User = fetchUserCardData();
+const dataChart: User = await fetchUserCardData();
 
 export default function Dashboard() {
   return (
