@@ -30,6 +30,7 @@ export default function NavBar() {
                         <Link href="/#faq">FAQ</Link>
                         <Link href="/#meet-the-team">Meet the Team</Link>
                         <Link href="/#last-year">Last Year</Link>
+>>>>>>> 515e690e6fd1d59587a45434a5ec0cb31ea43d92
                     </div>
                     <div className="flex items-center justify-center">
                         {/* <div className="flex flex-row gap-5 justify-center items-center text-center text-3xl text-white">
