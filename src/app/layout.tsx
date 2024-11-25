@@ -1,5 +1,5 @@
 import { Poppins, Inter } from 'next/font/google';
-import '@/globals.css';
+import '@/app/globals.css';
 import ParticlesAni from '@/components/Particles';
 const poppins = Poppins({
     variable: '--font-sans',
@@ -12,7 +12,7 @@ const inter = Inter({
     subsets: ['latin'], // Specify subset to fix preload error
 });
 
-
+import { ThemeProvider } from "@/components/theme-provider"
 
 export default function RootLayout({
     children,
@@ -25,7 +25,14 @@ export default function RootLayout({
                 <div className='-z-10 absolute'>
                     <ParticlesAni />
                 </div>
-                {children}
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="dark"
+                    enableSystem
+                    disableTransitionOnChange
+                >
+                    {children}
+                </ThemeProvider>
             </body>
         </html>
     );
