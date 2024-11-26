@@ -1,7 +1,7 @@
 import { NavLink } from '@/components/nav/NavLink';
 import Image from 'next/image';
 import Link from 'next/link';
-import * as motion from "framer-motion/client"
+import * as motion from 'framer-motion/client';
 import ico from '~/ico.svg';
 import { Button } from '../ui/button';
 import {
@@ -12,10 +12,10 @@ import {
     DrawerOverlay,
     DrawerTitle,
     DrawerTrigger,
-    DrawerPortal
-} from "@/components/ui/drawer"
+    DrawerPortal,
+} from '@/components/ui/drawer';
 
-import { GiHamburgerMenu } from "react-icons/gi";
+import { GiHamburgerMenu } from 'react-icons/gi';
 export default function NavBar() {
     return (
         <>
@@ -23,14 +23,19 @@ export default function NavBar() {
                 <div className="flex items-center justify-between px-8 text-center">
                     <div className="flex items-center justify-center space-x-4 text-3xl">
                         <Link href="/" className="mr-4">
-                            <Image src={ico} width={64} height={64} alt="Eagle Logo" className="size-16 rounded-lg" />
+                            <Image
+                                src={ico}
+                                width={64}
+                                height={64}
+                                alt="Eagle Logo"
+                                className="size-16 rounded-lg"
+                            />
                         </Link>
                         <Link href="/#Home">Home</Link>
                         <Link href="/#sponsors">Sponsors</Link>
                         <Link href="/#faq">FAQ</Link>
                         <Link href="/#meet-the-team">Meet the Team</Link>
                         <Link href="/#last-year">Last Year</Link>
->>>>>>> 515e690e6fd1d59587a45434a5ec0cb31ea43d92
                     </div>
                     <div className="flex items-center justify-center">
                         {/* <div className="flex flex-row gap-5 justify-center items-center text-center text-3xl text-white">
@@ -69,28 +74,50 @@ export default function NavBar() {
                         <DrawerPortal>
                             <DrawerContent
                                 className="h-screen left-0 w-[75vw] outline-none flex flex-col bg-black text-white"
-                                style={{ '--initial-transform': 'translateX(-100%)' } as React.CSSProperties}
+                                style={
+                                    {
+                                        '--initial-transform':
+                                            'translateX(-100%)',
+                                    } as React.CSSProperties
+                                }
                             >
                                 <div className="h-full flex flex-col">
                                     {/* Close Button */}
                                     <div className="p-4 flex justify-end">
-                                        <DrawerClose className="text-xl text-white">✕</DrawerClose>
+                                        <DrawerClose className="text-xl text-white">
+                                            ✕
+                                        </DrawerClose>
                                     </div>
                                     {/* Drawer Links */}
                                     <div className="flex flex-col gap-6 p-8">
-                                        <Link href="/#Home" className="text-lg font-medium">
+                                        <Link
+                                            href="/#Home"
+                                            className="text-lg font-medium"
+                                        >
                                             Home
                                         </Link>
-                                        <Link href="/#sponsors" className="text-lg font-medium">
+                                        <Link
+                                            href="/#sponsors"
+                                            className="text-lg font-medium"
+                                        >
                                             Sponsors
                                         </Link>
-                                        <Link href="/#faq" className="text-lg font-medium">
+                                        <Link
+                                            href="/#faq"
+                                            className="text-lg font-medium"
+                                        >
                                             FAQ
                                         </Link>
-                                        <Link href="/#meet-the-team" className="text-lg font-medium">
+                                        <Link
+                                            href="/#meet-the-team"
+                                            className="text-lg font-medium"
+                                        >
                                             Meet the Team
                                         </Link>
-                                        <Link href="/#last-year" className="text-lg font-medium">
+                                        <Link
+                                            href="/#last-year"
+                                            className="text-lg font-medium"
+                                        >
                                             Last Year
                                         </Link>
                                     </div>
@@ -100,8 +127,6 @@ export default function NavBar() {
                     </Drawer>
                 </div>
             </nav>
-
-
         </>
     );
 }
