@@ -18,3 +18,17 @@ export type Team = {
     totalPoints: number;
     pointHistory: ChartDataPoint[];
 }
+
+export interface Puzzle {
+    puzzleName: string;
+    topics: string[];
+    puzzleDescription: string;
+    pointValue: number;
+    difficulty: 0 | 1 | 2 | 3;
+    authors: string[];
+    solves: number;
+    linkToFiles: string;
+    hints: string[];
+    teamSolved: boolean;
+    userSolved: boolean; // TODO: Some display for user-solved puzzles.
+  }
