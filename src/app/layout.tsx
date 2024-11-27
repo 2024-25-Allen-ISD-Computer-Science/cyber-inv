@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Poppins, Inter } from 'next/font/google';
 import '@/globals.css';
+import ParticlesAni from '@/components/Particles'
 
 const poppins = Poppins({
     variable: '--font-sans',
@@ -22,7 +23,12 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className="h-full">
-            <body className={`${poppins.variable} ${inter.variable} h-full font-sans antialiased`}>{children}</body>
+            <body className={`${poppins.variable} ${inter.variable} h-full font-sans antialiased`}>
+                <div className="absolute -z-10">
+                    <ParticlesAni/>
+                </div>
+                {children}
+            </body>
         </html>
     );
 }
