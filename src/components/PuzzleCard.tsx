@@ -1,4 +1,4 @@
-import { Puzzle } from '@/util/api';
+import { Puzzle } from '@/types';
 import { CheckBadgeIcon, HandThumbUpIcon, CurrencyDollarIcon } from '@heroicons/react/24/outline';
 import { Badge } from './ui/badge';
 
@@ -73,15 +73,22 @@ export function PuzzleCard({
                 e.preventDefault();
                 openModal(index);
             }}
-            className={`shadow bg-background min-h-48 border flex flex-col p-5 rounded-lg text-start ${
-                puzzle.teamSolved ? 'brightness-50' : ''
-            }`}
+            className={`shadow bg-background min-h-48 border flex flex-col p-5 rounded-lg text-start ${puzzle.teamSolved ? 'brightness-50' : ''
+                }`}
         >
             <div className="flex flex-row gap-1">
-                {puzzle.topics.map((topic) => {
-                    return <Badge style={{ background: stringToColor(topic) }}>{topic}</Badge>;
+                {puzzle.topics.map((topic:string, i:number) => {
+                    return (
+                        <Badge
+                            key={`${topic}-${i}`} // Unique key combining topic and index
+                            style={{ background: stringToColor(topic) }}
+                        >
+                            {topic}
+                        </Badge>
+                    );
                 })}
             </div>
+
             <div className="flex flex-col my-auto">
                 <div className="text-xl font-bold">{puzzle.puzzleName}</div>
                 <div className="text-sm text-neutral-500">{puzzle.authors.join(', ')}</div>

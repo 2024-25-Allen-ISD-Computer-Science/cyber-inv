@@ -1,3 +1,4 @@
+"use client"
 import { Area, AreaChart, CartesianGrid, XAxis } from 'recharts';
 
 import { ChartContainer, ChartTooltip, ChartTooltipContent, ChartConfig } from '@/components/ui/chart';
@@ -5,7 +6,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { Separator } from './ui/separator';
 
 import { PuzzlePieceIcon, ShieldExclamationIcon, ServerStackIcon } from '@heroicons/react/24/outline';
-import { User } from '@/api/player';
+import { User } from '@/types';
 
 const chartConfig = {
     desktop: {
