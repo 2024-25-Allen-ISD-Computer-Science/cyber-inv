@@ -1,15 +1,9 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
+import {Team} from "@/types"
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-export type Team = {
-  teamName: string;
-  self: boolean;
-  score: number;
-  division: "Gold" | "Platinum";
-};
 
 export const columns: ColumnDef<Team>[] = [
   {
@@ -27,10 +21,10 @@ export const columns: ColumnDef<Team>[] = [
     },
   },
 
-  // {
-  //   accessorKey: "division",
-  //   header: "Division",
-  // },
+  {
+    accessorKey: "division",
+    header: "Division",
+  },
   {
     accessorKey: "score",
     header: ({ column }) => {
