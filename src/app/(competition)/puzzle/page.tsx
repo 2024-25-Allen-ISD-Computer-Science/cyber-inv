@@ -9,8 +9,8 @@ import {
     PaginationNext,
     PaginationPrevious,
 } from "@/components/ui/pagination";
-import { Puzzle } from "@/types"
-import { getPuzzles } from "./actions";
+import { getPuzzles } from "./actions"
+import { Puzzle } from "@/types";
 import { PuzzleCard } from "@/components/PuzzleCard";
 import {
     ArrowPathIcon,
@@ -32,68 +32,46 @@ import {
 // TODO: Use Suspense
 
 export default function Page() {
+    const [totalPuzzles, setTotalPuzzles] = useState(0);
 
     const [fetching, setFetching] = useState(false);
+
     const [puzzles, setPuzzles] = useState<Puzzle[]>([]);
+
     const [page, setPage] = useState(0);
-    const [totalPages, setTotalPages] = useState(0); // Track total pages
-
-    const [searchQuery, setSearchQuery] = useState<string>("");
-  
-
     useEffect(() => {
         async function fetchPuzzles() {
             setFetching(true);
 
-            const perPage = 8; // Number of puzzles per page
-            const fetchedPuzzles = await getPuzzles(page, perPage);
-
-            setFetching(false);
-
-            if (fetchedPuzzles.length <= 0 && page > 0) {
-                // If the current page is empty, go to the previous page
-                setPage(Math.max(0, page - 1));
-            } else {
-                setPuzzles(fetchedPuzzles);
-                setTotalPages(Math.ceil(20 / perPage)); // Assuming a total of 20 puzzles for example
-            }
-        }
-
-        fetchPuzzles();
-    }, [page]);
-   // Filter the puzzles based on the search query
-   const filteredPuzzles = puzzles.filter((puzzle) =>
-    puzzle.puzzleName.toLowerCase().includes(searchQuery.toLowerCase())
-);
-
-// Update search query
-function handleSearchChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setSearchQuery(e.target.value);
-    setPage(0); // Reset to the first page when the search query changes
-}
-
-
-
-    function handlePreviousPage(e: MouseEvent) {
-        e.preventDefault();
-        if (fetching || page <= 0) return; // Disable if already on the first page
-        setPage(Math.max(0, page - 1));
-    }
-
-    useEffect(() => {
-        async function fetchPuzzles() {
-            setFetching(true);
-
-            const fetchedPuzzles = await getPuzzles(page);
+            const { puzzles: fetchedPuzzles, total } = await getPuzzles(page);
 
             setFetching(false);
 
             if (fetchedPuzzles.length <= 0) return setPage(Math.max(0, page - 1)); // current page is empty
             setPuzzles(fetchedPuzzles);
+            setTotalPuzzles(total); // Update total puzzles
         }
+
+
 
         fetchPuzzles();
     }, [page]);
+    const puzzlesPerPage = 9; // Same limit as in `getPuzzles`
+    const totalPages = Math.ceil(totalPuzzles / puzzlesPerPage);
+
+    function handleNextPage(e: MouseEvent) {
+        e.preventDefault();
+        if (fetching) return;
+
+        setPage(page + 1);
+    }
+
+    function handlePreviousPage(e: MouseEvent) {
+        e.preventDefault();
+        if (fetching) return;
+
+        setPage(Math.max(0, page - 1));
+    }
 
     const [modalPuzzle, setModalPuzzle] = useState<Puzzle | null>(null);
 
@@ -106,12 +84,6 @@ function handleSearchChange(e: React.ChangeEvent<HTMLInputElement>) {
     function closeModal() {
         setModalPuzzle(null);
     }
-    function handleNextPage(e: MouseEvent) {
-        e.preventDefault();
-        if (fetching) return;
-    
-        setPage(page + 1);
-      }
     return (
         <>
             <div
@@ -162,22 +134,20 @@ function handleSearchChange(e: React.ChangeEvent<HTMLInputElement>) {
                                             );
                                         })}
                                     </div>
+
                                     <Pagination>
                                         <PaginationContent>
                                             <PaginationItem>
                                                 <PaginationPrevious
                                                     onClick={handlePreviousPage}
-
-                                                    className={`cursor-pointer ${page <= 0 ? "opacity-50" : ""}`}
-                                                />
+                                                    className={`cursor-pointer ${page <= 0 ? "opacity-50" : ""}`} />
                                             </PaginationItem>
 
                                             <PaginationItem>
                                                 <PaginationNext
                                                     onClick={handleNextPage}
 
-                                                    className={`cursor-pointer ${page >= totalPages - 1 ? "opacity-50" : ""}`}
-                                                />
+                                                    className={`cursor-pointer ${page >= totalPages - 1 ? "opacity-50" : ""}`} />
                                             </PaginationItem>
                                         </PaginationContent>
                                     </Pagination>
@@ -225,16 +195,22 @@ function Modal({ puzzle }: { puzzle: Puzzle }) {
                         <div>
                             <div className="pb-1 text-primary">Hints:</div>
 
-                            <div className="inline-flex gap-2">
-                                {puzzle.hints.map((Hint: string, i: number) => (
-                                    <Popover key={`${Hint}-${i}`}> {/* Add a unique key */}
-                                        <PopoverTrigger className="w-full h-full px-2 rounded-lg bg-accent-foreground text-black">
-                                            {i + 1}
-                                        </PopoverTrigger>
-                                        <PopoverContent>{Hint}</PopoverContent>
-                                    </Popover>
-                                ))}
-                            </div>
+                            <div className="inline-flex flex-wrap gap-2">
+    {puzzle.hints.map((hint: string, i: number) => (
+        <Popover key={`${hint}-${i}`}>
+            <PopoverTrigger
+                className="w-8 h-8 flex items-center justify-center bg-primary text-black font-bold rounded-full hover:bg-primary-dark transition"
+                aria-label={`Hint ${i + 1}`} // Accessibility improvement
+            >
+                {i + 1}
+            </PopoverTrigger>
+            <PopoverContent className="p-3  shadow-lg rounded-lg border text-sm">
+                {hint}
+            </PopoverContent>
+        </Popover>
+    ))}
+</div>
+
 
                         </div>
                     </div>
