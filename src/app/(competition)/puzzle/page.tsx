@@ -196,20 +196,20 @@ function Modal({ puzzle }: { puzzle: Puzzle }) {
                             <div className="pb-1 text-primary">Hints:</div>
 
                             <div className="inline-flex flex-wrap gap-2">
-    {puzzle.hints.map((hint: string, i: number) => (
-        <Popover key={`${hint}-${i}`}>
-            <PopoverTrigger
-                className="w-8 h-8 flex items-center justify-center bg-primary text-black font-bold rounded-full hover:bg-primary-dark transition"
-                aria-label={`Hint ${i + 1}`} // Accessibility improvement
-            >
-                {i + 1}
-            </PopoverTrigger>
-            <PopoverContent className="p-3  shadow-lg rounded-lg border text-sm">
-                {hint}
-            </PopoverContent>
-        </Popover>
-    ))}
-</div>
+                                {puzzle.hints.map((hint: string, i: number) => (
+                                    <Popover key={`${hint}-${i}`}>
+                                        <PopoverTrigger
+                                            className="w-8 h-8 flex items-center justify-center bg-primary text-black font-bold rounded-full hover:bg-primary-dark transition"
+                                            aria-label={`Hint ${i + 1}`} // Accessibility improvement
+                                        >
+                                            {i + 1}
+                                        </PopoverTrigger>
+                                        <PopoverContent className="p-3  shadow-lg rounded-lg border text-sm">
+                                            {hint}
+                                        </PopoverContent>
+                                    </Popover>
+                                ))}
+                            </div>
 
 
                         </div>
