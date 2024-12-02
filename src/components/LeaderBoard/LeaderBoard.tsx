@@ -23,7 +23,6 @@ export default function LeaderBoard({ teams }: TeamProps) {
   const [position, setPosition] = useState("All");
   const [defaultPage, setDefaultPage] = useState(0);
 
-  // Compute sorted teams
   const sortedTeams = useMemo(() => {
     let filteredTeams = teams;
     if (position !== "All") {
@@ -32,7 +31,6 @@ export default function LeaderBoard({ teams }: TeamProps) {
     return filteredTeams.sort((a, b) => b.score - a.score);
   }, [position, teams]);
 
-  // Compute default page on load or when position changes
   useEffect(() => {
     if (position === "All") {
       const selfIndex = sortedTeams.findIndex((team) => team.self);

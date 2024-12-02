@@ -1,5 +1,5 @@
 import { Puzzle } from '@/types';
-import { CheckBadgeIcon, HandThumbUpIcon, CurrencyDollarIcon } from '@heroicons/react/24/outline';
+import { CheckBadgeIcon, CurrencyDollarIcon } from '@heroicons/react/24/outline';
 import { Badge } from './ui/badge';
 
 function getDiffBgColor(difficulty: 0 | 1 | 2 | 3) {
@@ -90,25 +90,25 @@ export function PuzzleCard({
             </div>
 
             <div className="flex flex-col my-auto">
-                <div className="text-xl font-bold">{puzzle.puzzleName}</div>
-                <div className="text-sm text-neutral-500">{puzzle.authors.join(', ')}</div>
+                <div className="text-3xl font-bold">{puzzle.puzzleName}</div>
+                {/* <div className="text-sm text-neutral-500">{puzzle.authors.join(', ')}</div> */}
             </div>
 
             <div className="flex flex-row gap-3">
-                <span className="flex flex-row">
-                    <CurrencyDollarIcon className="size-[24px]" />
+                <span className="flex flex-row text-orange-200">
+                    <CurrencyDollarIcon className="size-[24px] " />
                     {puzzle.pointValue}
                 </span>
 
-                <span className="flex flex-row">
+                <span className="flex flex-row text-blue-200">
                     <CheckBadgeIcon className="size-[24px]" />
                     {puzzle.solves}
                 </span>
 
-                <span className="flex flex-row">
+                {/* <span className="flex flex-row">
                     <HandThumbUpIcon className="size-[24px]" />
                     68%
-                </span>
+                </span> */}
 
                 <span className="ms-auto">
                     <Badge variant="default" className={getDiffBgColor(puzzle.difficulty)}>

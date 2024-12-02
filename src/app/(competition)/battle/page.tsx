@@ -115,14 +115,14 @@ export default function Page() {
                                 </div>
                             ) : (
                                 <div className="flex flex-col gap-3">
-                                    <label className="shadow border rounded-lg items-center flex flex-row ">
+                                    {/* <label className="shadow border rounded-lg items-center flex flex-row ">
                                         <MagnifyingGlassIcon className="size-4 m-3 aspect-square" />
                                         <input
                                             type="text"
                                             className="w-full bg-transparent p-3 outline-none ps-0"
                                         ></input>
-                                    </label>
-                                    <div className="grid grid-cols-3 grid-rows-3 gap-3">
+                                    </label> */}
+                                    <div className="grid grid-cols-2 grid-rows-2 gap-3">
                                         {puzzles.map((puzzle: Puzzle, i) => {
                                             return (
                                                 <PuzzleCard
@@ -135,7 +135,7 @@ export default function Page() {
                                         })}
                                     </div>
 
-                                    <Pagination>
+                                    {/* <Pagination>
                                         <PaginationContent>
                                             <PaginationItem>
                                                 <PaginationPrevious
@@ -150,7 +150,7 @@ export default function Page() {
                                                     className={`cursor-pointer ${page >= totalPages - 1 ? "opacity-50" : ""}`} />
                                             </PaginationItem>
                                         </PaginationContent>
-                                    </Pagination>
+                                    </Pagination> */}
                                 </div>
                             )}
                         </CardContent>
