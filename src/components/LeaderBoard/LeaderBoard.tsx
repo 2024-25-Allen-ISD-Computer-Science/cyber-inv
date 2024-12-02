@@ -1,9 +1,8 @@
-
-"use client"
+"use client";
 import { columns } from "./Columns";
-import {Team} from "@/types"
+import { Team } from "@/types";
 import { DataTable } from "./DataTable";
-import { useState } from "react";
+import { useState, useMemo, useEffect } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,24 +15,33 @@ import {
 
 import { Button } from "@/components/ui/button";
 
-interface team{
-  teams:Team[]
+interface TeamProps {
+  teams: Team[];
 }
-export default function LeaderBoard({teams}:team) {
+
+export default function LeaderBoard({ teams }: TeamProps) {
   const [position, setPosition] = useState("All");
-  // Make a sorted copy of the teams array which only contains the ones with the division from position
-  let sortedTeams: Team[] = teams;
-  let defaultPage = 0;
-  if (position != "All") {
-    sortedTeams = teams.filter((team) => team.division === position);
-  }
-  sortedTeams = sortedTeams.sort((a, b) => b.score - a.score); // Sorted highest score to lowest for finding the default page
-  if (position == "All")
-    sortedTeams.forEach((team, index) => {
-      if (team.self) {
-        defaultPage = Math.floor(index / 5);
-      }
-    });
+  const [defaultPage, setDefaultPage] = useState(0);
+
+  // Compute sorted teams
+  const sortedTeams = useMemo(() => {
+    let filteredTeams = teams;
+    if (position !== "All") {
+      filteredTeams = teams.filter((team) => team.division === position);
+    }
+    return filteredTeams.sort((a, b) => b.score - a.score);
+  }, [position, teams]);
+
+  // Compute default page on load or when position changes
+  useEffect(() => {
+    if (position === "All") {
+      const selfIndex = sortedTeams.findIndex((team) => team.self);
+      setDefaultPage(selfIndex >= 0 ? Math.floor(selfIndex / 5) : 0);
+    } else {
+      setDefaultPage(0);
+    }
+  }, [position, sortedTeams]);
+
   return (
     <div className="bg-background min-w-fit rounded-xl p-5">
       <div>
@@ -53,21 +61,14 @@ export default function LeaderBoard({teams}:team) {
               value={position}
               onValueChange={setPosition}
             >
-
               <DropdownMenuRadioItem value="Gold">Gold</DropdownMenuRadioItem>
-              <DropdownMenuRadioItem value="Platinum">
-                Platinum
-              </DropdownMenuRadioItem>
+              <DropdownMenuRadioItem value="Platinum">Platinum</DropdownMenuRadioItem>
               <DropdownMenuRadioItem value="All">All</DropdownMenuRadioItem>
             </DropdownMenuRadioGroup>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <DataTable
-        columns={columns}
-        data={sortedTeams}
-        defaultPage={defaultPage}
-      />
+      <DataTable columns={columns} data={sortedTeams} defaultPage={defaultPage} />
     </div>
   );
 }
