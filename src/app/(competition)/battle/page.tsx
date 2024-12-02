@@ -1,79 +1,64 @@
-"use client"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+"use client";
 
-import { MouseEvent, useEffect, useState } from "react";
-import {
-    Pagination,
-    PaginationContent,
-    PaginationItem,
-    PaginationNext,
-    PaginationPrevious,
-} from "@/components/ui/pagination";
-import { getPuzzles } from "./actions"
+import { useState, useEffect, MouseEvent } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Puzzle } from "@/types";
+import { Slider } from "@/components/ui/slider";
+import { Button } from "@/components/ui/button";
 import { PuzzleCard } from "@/components/PuzzleCard";
+import { getPuzzles } from "./actions";
 import {
     ArrowPathIcon,
     CheckBadgeIcon,
     HandThumbDownIcon,
     HandThumbUpIcon,
     MagnifyingGlassIcon,
+    UserIcon
 } from "@heroicons/react/24/outline";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { Input } from "@/components/ui/input";
-import { UserIcon } from "lucide-react";
 import {
     Popover,
     PopoverTrigger,
     PopoverContent,
 } from "@/components/ui/popover";
-
-// TODO: Use Suspense
-
+import {Input} from "@/components/ui/input"
+import Link from "next/link";
 export default function Page() {
+    const [betConfirmed, setBetConfirmed] = useState<boolean>(false); // Tracks bet confirmation
+    const [betAmount, setBet] = useState<number>(0); // Tracks bet amount
+
     const [totalPuzzles, setTotalPuzzles] = useState(0);
-
     const [fetching, setFetching] = useState(false);
-
     const [puzzles, setPuzzles] = useState<Puzzle[]>([]);
-
     const [page, setPage] = useState(0);
+    const [modalPuzzle, setModalPuzzle] = useState<Puzzle | null>(null);
+
     useEffect(() => {
-        async function fetchPuzzles() {
-            setFetching(true);
-
-            const { puzzles: fetchedPuzzles, total } = await getPuzzles(page);
-
-            setFetching(false);
-
-            if (fetchedPuzzles.length <= 0) return setPage(Math.max(0, page - 1)); // current page is empty
-            setPuzzles(fetchedPuzzles);
-            setTotalPuzzles(total); // Update total puzzles
+        if (betConfirmed) {
+            async function fetchPuzzles() {
+                setFetching(true);
+                const { puzzles: fetchedPuzzles, total } = await getPuzzles(page);
+                setFetching(false);
+                if (fetchedPuzzles.length <= 0) {
+                    return setPage(Math.max(0, page - 1)); // Current page is empty
+                }
+                setPuzzles(fetchedPuzzles);
+                setTotalPuzzles(total); // Update total puzzles
+            }
+            fetchPuzzles();
         }
-
-
-
-        fetchPuzzles();
-    }, [page]);
-    const puzzlesPerPage = 9; // Same limit as in `getPuzzles`
-    const totalPages = Math.ceil(totalPuzzles / puzzlesPerPage);
+    }, [page, betConfirmed]);
 
     function handleNextPage(e: MouseEvent) {
         e.preventDefault();
         if (fetching) return;
-
         setPage(page + 1);
     }
 
     function handlePreviousPage(e: MouseEvent) {
         e.preventDefault();
         if (fetching) return;
-
         setPage(Math.max(0, page - 1));
     }
-
-    const [modalPuzzle, setModalPuzzle] = useState<Puzzle | null>(null);
 
     function openModal(index: number) {
         const puzzle = puzzles[index];
@@ -84,13 +69,41 @@ export default function Page() {
     function closeModal() {
         setModalPuzzle(null);
     }
+
+    // Render the Gamble Modal first if bet is not confirmed
+    if (!betConfirmed) {
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-gray-100">
+                <div className="max-w-lg w-full p-5 border bg-background rounded-lg shadow-lg">
+                    <div className="text-center">
+                        <div className="text-4xl font-bold mb-6">Place Your Bet</div>
+                        <div className="text-2xl mb-8">{`Bet Amount: ${betAmount} Points`}</div>
+                        <Slider
+                            value={[betAmount]} // Current value of the slider
+                            onValueChange={(value) => setBet(value[0])} // Update bet amount
+                            max={100} // Max slider value
+                            step={5} // Slider step increment
+                            className="w-full"
+                        />
+                        <Button
+                            onClick={() => setBetConfirmed(true)} // Confirm bet and proceed
+                            className="mt-8 bg-green-500 hover:bg-green-600 text-white w-full"
+                        >
+                            Confirm Bet
+                        </Button>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    // Render the Main Content if bet is confirmed
     return (
         <>
             <div
-                className={`absolute top-0 start-0 z-50 w-screen h-screen flex justify-center items-center ${modalPuzzle
-                    ? "opacity-100 pointer-events-auto"
-                    : "opacity-0 pointer-events-none"
-                    }`}
+                className={`absolute top-0 start-0 z-50 w-screen h-screen flex justify-center items-center ${
+                    modalPuzzle ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+                }`}
             >
                 <button
                     onClick={(e) => {
@@ -99,7 +112,7 @@ export default function Page() {
                     }}
                     className="absolute h-full w-full backdrop-blur"
                 />
-                {modalPuzzle ? <Modal puzzle={modalPuzzle} /> : <></>}
+                {modalPuzzle ? <Modal puzzle={modalPuzzle} /> : null}
             </div>
             <main className="min-h-full min-w-full flex flex-col">
                 <div className="mx-auto w-full max-w-screen-xl flex flex-col gap-3 mb-10">
@@ -111,46 +124,20 @@ export default function Page() {
                         <CardContent className="p-5">
                             {fetching ? (
                                 <div className="w-full h-full flex justify-center items-center">
-                                    <ArrowPathIcon className="size-16 animate-spin my-64" />
+                                    Loading...
                                 </div>
                             ) : (
                                 <div className="flex flex-col gap-3">
-                                    {/* <label className="shadow border rounded-lg items-center flex flex-row ">
-                                        <MagnifyingGlassIcon className="size-4 m-3 aspect-square" />
-                                        <input
-                                            type="text"
-                                            className="w-full bg-transparent p-3 outline-none ps-0"
-                                        ></input>
-                                    </label> */}
                                     <div className="grid grid-cols-2 grid-rows-2 gap-3">
-                                        {puzzles.map((puzzle: Puzzle, i) => {
-                                            return (
-                                                <PuzzleCard
-                                                    openModal={openModal}
-                                                    index={i}
-                                                    key={puzzle.puzzleName + i} // Use a unique key, e.g., puzzleName and index
-                                                    puzzle={puzzle}
-                                                />
-                                            );
-                                        })}
+                                        {puzzles.map((puzzle: Puzzle, i) => (
+                                            <PuzzleCard
+                                                openModal={openModal}
+                                                index={i}
+                                                key={puzzle.puzzleName + i} // Unique key
+                                                puzzle={puzzle}
+                                            />
+                                        ))}
                                     </div>
-
-                                    {/* <Pagination>
-                                        <PaginationContent>
-                                            <PaginationItem>
-                                                <PaginationPrevious
-                                                    onClick={handlePreviousPage}
-                                                    className={`cursor-pointer ${page <= 0 ? "opacity-50" : ""}`} />
-                                            </PaginationItem>
-
-                                            <PaginationItem>
-                                                <PaginationNext
-                                                    onClick={handleNextPage}
-
-                                                    className={`cursor-pointer ${page >= totalPages - 1 ? "opacity-50" : ""}`} />
-                                            </PaginationItem>
-                                        </PaginationContent>
-                                    </Pagination> */}
                                 </div>
                             )}
                         </CardContent>
@@ -184,10 +171,6 @@ function Modal({ puzzle }: { puzzle: Puzzle }) {
                                                 {puzzle.solves}{" "}
                                             </div>
                                         </div>
-                                        {/* <div className="inline-flex">
-                                            <HandThumbUpIcon className="size-5" />
-                                            <div className="font-normal text-sm">68% </div>
-                                        </div> */}
                                     </div>
                                 </div>
                             </div>
@@ -200,18 +183,16 @@ function Modal({ puzzle }: { puzzle: Puzzle }) {
                                     <Popover key={`${hint}-${i}`}>
                                         <PopoverTrigger
                                             className="w-8 h-8 flex items-center justify-center bg-primary text-black font-bold rounded-full hover:bg-primary-dark transition"
-                                            aria-label={`Hint ${i + 1}`} // Accessibility improvement
+                                            aria-label={`Hint ${i + 1}`} // Corrected syntax
                                         >
                                             {i + 1}
                                         </PopoverTrigger>
-                                        <PopoverContent className="p-3  shadow-lg rounded-lg border text-sm">
+                                        <PopoverContent className="p-3 shadow-lg rounded-lg border text-sm">
                                             {hint}
                                         </PopoverContent>
                                     </Popover>
                                 ))}
                             </div>
-
-
                         </div>
                     </div>
                 </div>
@@ -246,14 +227,6 @@ function Modal({ puzzle }: { puzzle: Puzzle }) {
                             </Link>
                         </Button>
                     </div>
-                    {/* <div className=" gap-1 inline-flex">
-                        <Button>
-                            <HandThumbUpIcon className="size-4" />
-                        </Button>
-                        <Button>
-                            <HandThumbDownIcon className="size-4" />
-                        </Button>
-                    </div> */}
                 </div>
             </div>
         </div>

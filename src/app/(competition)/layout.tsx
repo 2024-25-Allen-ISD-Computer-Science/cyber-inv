@@ -11,7 +11,7 @@ export default function RootLayout({
 }>) {
     return (
         <div className="w-full h-full">
-        <CompBar/>
+        {/* <CompBar/> */}
             {children}
         </div>
     );

@@ -70,3 +70,6 @@ export async function getPuzzles(
     total: puzzles.length, // Total number of puzzles available
   };
 }
+export async function setBet(){
+  return
+}
