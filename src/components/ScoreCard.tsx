@@ -1,21 +1,11 @@
-<<<<<<< HEAD
-"use client"
-import { Area, AreaChart, CartesianGrid, XAxis } from 'recharts';
-=======
 // import { Area, AreaChart, CartesianGrid, XAxis } from 'recharts';
->>>>>>> dev
 
 // import { ChartContainer, ChartTooltip, ChartTooltipContent, ChartConfig } from '@/components/ui/chart';
 // import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 // import { Separator } from './ui/separator';
 
-<<<<<<< HEAD
-import { PuzzlePieceIcon, ShieldExclamationIcon, ServerStackIcon } from '@heroicons/react/24/outline';
-import { User } from '@/types';
-=======
 // // import { PuzzlePieceIcon, ShieldExclamationIcon, ServerStackIcon } from '@heroicons/react/24/outline';
 // // import { User } from '@/api/player';
->>>>>>> dev
 
 // const chartConfig = {
 //     desktop: {

@@ -1,50 +1,3 @@
-<<<<<<< HEAD
-import { Puzzle } from '@/types';
-import { CheckBadgeIcon, CurrencyDollarIcon } from '@heroicons/react/24/outline';
-import { Badge } from './ui/badge';
-
-function getDiffBgColor(difficulty: 0 | 1 | 2 | 3) {
-    switch (difficulty) {
-        case 0:
-            return 'bg-green-500';
-        case 1:
-            return 'bg-amber-500';
-        case 2:
-            return 'bg-red-500';
-        case 3:
-            return 'bg-neutral-500';
-        default:
-            return '';
-    }
-}
-
-function getDiffLabel(difficulty: 0 | 1 | 2 | 3) {
-    switch (difficulty) {
-        case 0:
-            return 'Easy';
-        case 1:
-            return 'Medium';
-        case 2:
-            return 'Hard';
-        case 3:
-            return 'Challenger';
-        default:
-            return 'Unranked';
-    }
-}
-
-// interface Puzzle {
-//   puzzleName: string;
-//   topics: string[];
-//   puzzleDescription: string;
-//   pointValue: number;
-//   difficulty: 0 | 1 | 2 | 3;
-//   authors: string[];
-//   solves: number;
-//   linkToFiles: string;
-//   hints: string[];
-//   isSolved: boolean;
-=======
 // // import { Puzzle } from '@/util/api';
 // import { CheckBadgeIcon, HandThumbUpIcon, CurrencyDollarIcon } from '@heroicons/react/24/outline';
 // import { Badge } from './ui/badge';
@@ -62,7 +15,6 @@ function getDiffLabel(difficulty: 0 | 1 | 2 | 3) {
 //         default:
 //             return '';
 //     }
->>>>>>> dev
 // }
 
 // function getDiffLabel(difficulty: 0 | 1 | 2 | 3) {
@@ -80,59 +32,6 @@ function getDiffLabel(difficulty: 0 | 1 | 2 | 3) {
 //     }
 // }
 
-<<<<<<< HEAD
-export function PuzzleCard({
-    puzzle,
-    index,
-    openModal,
-}: {
-    puzzle: Puzzle;
-    index: number;
-    openModal: (index: number) => void;
-}) {
-    return (
-        <button
-            onClick={(e) => {
-                e.preventDefault();
-                openModal(index);
-            }}
-            className={`shadow bg-background min-h-48 border flex flex-col p-5 rounded-lg text-start ${puzzle.teamSolved ? 'brightness-50' : ''
-                }`}
-        >
-            <div className="flex flex-row gap-1">
-                {puzzle.topics.map((topic:string, i:number) => {
-                    return (
-                        <Badge
-                            key={`${topic}-${i}`} // Unique key combining topic and index
-                            style={{ background: stringToColor(topic) }}
-                        >
-                            {topic}
-                        </Badge>
-                    );
-                })}
-            </div>
-
-            <div className="flex flex-col my-auto">
-                <div className="text-3xl font-bold">{puzzle.puzzleName}</div>
-                {/* <div className="text-sm text-neutral-500">{puzzle.authors.join(', ')}</div> */}
-            </div>
-
-            <div className="flex flex-row gap-3">
-                <span className="flex flex-row text-orange-200">
-                    <CurrencyDollarIcon className="size-[24px] " />
-                    {puzzle.pointValue}
-                </span>
-
-                <span className="flex flex-row text-blue-200">
-                    <CheckBadgeIcon className="size-[24px]" />
-                    {puzzle.solves}
-                </span>
-
-                {/* <span className="flex flex-row">
-                    <HandThumbUpIcon className="size-[24px]" />
-                    68%
-                </span> */}
-=======
 // // interface Puzzle {
 // //   puzzleName: string;
 // //   topics: string[];
@@ -191,7 +90,6 @@ export function PuzzleCard({
 //                 <div className="text-xl font-bold">{puzzle.puzzleName}</div>
 //                 <div className="text-sm text-neutral-500">{puzzle.authors.join(', ')}</div>
 //             </div>
->>>>>>> dev
 
 //             <div className="flex flex-row gap-3">
 //                 <span className="flex flex-row">

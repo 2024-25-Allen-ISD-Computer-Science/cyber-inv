@@ -14,10 +14,6 @@ export default function Timer() {
 
     return (
         <div>
-<<<<<<< HEAD
-            <div className="px-8 pb-8 text-center text-5xl font-extrabold text-violet-500">COUNTDOWN TIMER</div>
-=======
->>>>>>> dev
             <Countdown
                 date={targetDate}
                 renderer={({ days, hours, minutes, seconds, completed }) => {

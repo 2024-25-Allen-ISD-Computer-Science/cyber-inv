@@ -16,15 +16,6 @@
     },
     {
         "name": "Tanay Sreedharan",
-<<<<<<< HEAD
-        "title": "Dev",
-        "image": "/images/Tanay.png"
-    },
-    {
-        "name": "Julian Thomas",
-        "title": "Marketer",
-        "image": "/images/Julian.png"
-=======
         "title": "DEV",
         "image": "/images/cybinv1.jpg"
     },
@@ -37,6 +28,5 @@
         "name": "Ashrith Polam",
         "title": "Marketer",
         "image": "/images/cybinv1.jpg"
->>>>>>> dev
     }
 ]
