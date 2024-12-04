@@ -1,7 +1,7 @@
-import { Puzzle } from '@/types';
-import { CheckBadgeIcon, CurrencyDollarIcon } from '@heroicons/react/24/outline';
+// import { Puzzle } from '@/util/api';
+import { CheckBadgeIcon, HandThumbUpIcon, CurrencyDollarIcon } from '@heroicons/react/24/outline';
 import { Badge } from './ui/badge';
-
+const Puzzle = 0;
 function getDiffBgColor(difficulty: 0 | 1 | 2 | 3) {
     switch (difficulty) {
         case 0:
@@ -77,38 +77,35 @@ export function PuzzleCard({
                 }`}
         >
             <div className="flex flex-row gap-1">
-                {puzzle.topics.map((topic:string, i:number) => {
+                {puzzle.topics.map((topic: string) => {
                     return (
-                        <Badge
-                            key={`${topic}-${i}`} // Unique key combining topic and index
-                            style={{ background: stringToColor(topic) }}
-                        >
+                        <Badge key={topic} style={{ background: stringToColor(topic) }}>
                             {topic}
                         </Badge>
                     );
                 })}
-            </div>
 
+            </div>
             <div className="flex flex-col my-auto">
-                <div className="text-3xl font-bold">{puzzle.puzzleName}</div>
-                {/* <div className="text-sm text-neutral-500">{puzzle.authors.join(', ')}</div> */}
+                <div className="text-xl font-bold">{puzzle.puzzleName}</div>
+                <div className="text-sm text-neutral-500">{puzzle.authors.join(', ')}</div>
             </div>
 
             <div className="flex flex-row gap-3">
-                <span className="flex flex-row text-orange-200">
-                    <CurrencyDollarIcon className="size-[24px] " />
+                <span className="flex flex-row">
+                    <CurrencyDollarIcon className="size-[24px]" />
                     {puzzle.pointValue}
                 </span>
 
-                <span className="flex flex-row text-blue-200">
+                <span className="flex flex-row">
                     <CheckBadgeIcon className="size-[24px]" />
                     {puzzle.solves}
                 </span>
 
-                {/* <span className="flex flex-row">
+                <span className="flex flex-row">
                     <HandThumbUpIcon className="size-[24px]" />
                     68%
-                </span> */}
+                </span>
 
                 <span className="ms-auto">
                     <Badge variant="default" className={getDiffBgColor(puzzle.difficulty)}>

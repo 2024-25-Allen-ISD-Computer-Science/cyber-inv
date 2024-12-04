@@ -16,12 +16,17 @@
     },
     {
         "name": "Tanay Sreedharan",
-        "title": "Dev",
-        "image": "/images/Tanay.png"
+        "title": "DEV",
+        "image": "/images/cybinv1.jpg"
     },
     {
-        "name": "Julian Thomas",
+        "name": "Srujan Sannidhi",
         "title": "Marketer",
-        "image": "/images/Julian.png"
+        "image": "/images/cybinv1.jpg"
+    },
+    {
+        "name": "Ashrith Polam",
+        "title": "Marketer",
+        "image": "/images/cybinv1.jpg"
     }
 ]
