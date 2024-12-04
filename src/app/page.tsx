@@ -25,7 +25,7 @@ import cyb6 from '~/images/cybinv6.jpg';
 import cyb7 from '~/images/cybinv7.jpg';
 import cyb8 from '~/images/cybinv8.jpg';
 import cyb9 from '~/images/cybinv9.jpg';
-import ico from '~/images/ico.svg';
+import ico from '~/ico.svg';
 
 const smoothScrolling = (id: string) => {
     const element = document.getElementById(id);
@@ -119,8 +119,13 @@ export default function Home() {
                 </div> */}
 
                     {/* Learn more section with bounce animation */}
+                    <div className='w-full flex place-content-center justify-center'>
+                    <Timer />
+
+                    </div>
+
                     <motion.div
-                        className="mt-[12.5vh] flex flex-col items-center justify-center text-center text-2xl"
+                        className="mt-[2.5vh] flex flex-col items-center justify-center text-center text-2xl"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 1, delay: 1 }}
@@ -134,9 +139,7 @@ export default function Home() {
             </section>
 
             {/* Countdown */}
-            <section className="mb-16 flex flex-col items-center justify-center text-center">
-                <Timer />
-            </section>
+
             <section className="flex w-full flex-col items-center justify-center bg-black p-8 text-white">
                 <h2 className="mb-4 text-center text-6xl font-bold text-violet-500">Our Mission</h2>
 
