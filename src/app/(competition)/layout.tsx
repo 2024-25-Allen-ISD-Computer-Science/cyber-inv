@@ -1,7 +1,7 @@
 import CompBar from "@/components/nav/CompBar";
 import { Metadata } from "next";
 export const metadata: Metadata = {
-    title: 'ACI',
+    title: 'ACI-comp',
     description: 'Comp software',
 };
 export default function RootLayout({

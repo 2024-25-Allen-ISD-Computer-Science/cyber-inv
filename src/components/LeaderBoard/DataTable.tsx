@@ -64,7 +64,7 @@ export function DataTable<TData extends TDataModified, TValue>({
   }
   return (
     <div>
-      <Table className="gap-10 w-full">
+      <Table className="gap-5 w-full">
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
@@ -100,14 +100,14 @@ export function DataTable<TData extends TDataModified, TValue>({
             ))
           ) : (
             <TableRow>
-              <TableCell colSpan={columns.length} className="h-24 text-center">
+              <TableCell colSpan={columns.length} className="h-12 text-center">
                 No results.
               </TableCell>
             </TableRow>
           )}
         </TableBody>
       </Table>
-      <div className="flex items-center justify-end space-x-2 py-4">
+      <div className="flex items-center justify-end space-x-2">
         <Button
           variant="outline"
           size="sm"

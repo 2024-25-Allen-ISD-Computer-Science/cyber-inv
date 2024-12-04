@@ -40,10 +40,11 @@ const puzzles: Puzzle[] = [
     hints: ["Break words into smaller parts.", "Focus on double meanings."],
     teamSolved: true,
     userSolved: true,
-  },  {
+  },  
+  {
     puzzleName: "Cryptic Crossword",
     topics: ["Language", "Logic"],
-    puzzleDescription: "Solve this challenging cryptic crossword.",
+    puzzleDescription: "Solve this challenging cryptic crossword.Solve this challenging cryptic crossword.Solve this challenging cryptic crossword.Solve this challenging cryptic crossword.Solve this challenging cryptic crossword.Solve this challenging cryptic crossword.Solve this challenging cryptic crossword.",
     pointValue: 150,
     difficulty: 2,
     authors: ["Clark Kent"],

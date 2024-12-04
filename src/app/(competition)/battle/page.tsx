@@ -7,6 +7,8 @@ import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { PuzzleCard } from "@/components/PuzzleCard";
 import { getPuzzles } from "./actions";
+import { Skeleton } from "@/components/ui/skeleton"
+
 import {
     ArrowPathIcon,
     CheckBadgeIcon,
@@ -20,7 +22,7 @@ import {
     PopoverTrigger,
     PopoverContent,
 } from "@/components/ui/popover";
-import {Input} from "@/components/ui/input"
+import { Input } from "@/components/ui/input"
 import Link from "next/link";
 export default function Page() {
     const [betConfirmed, setBetConfirmed] = useState<boolean>(false); // Tracks bet confirmation
@@ -73,27 +75,30 @@ export default function Page() {
     // Render the Gamble Modal first if bet is not confirmed
     if (!betConfirmed) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-gray-100">
-                <div className="max-w-lg w-full p-5 border bg-background rounded-lg shadow-lg">
-                    <div className="text-center">
-                        <div className="text-4xl font-bold mb-6">Place Your Bet</div>
-                        <div className="text-2xl mb-8">{`Bet Amount: ${betAmount} Points`}</div>
-                        <Slider
-                            value={[betAmount]} // Current value of the slider
-                            onValueChange={(value) => setBet(value[0])} // Update bet amount
-                            max={100} // Max slider value
-                            step={5} // Slider step increment
-                            className="w-full"
-                        />
-                        <Button
-                            onClick={() => setBetConfirmed(true)} // Confirm bet and proceed
-                            className="mt-8 bg-green-500 hover:bg-green-600 text-white w-full"
-                        >
-                            Confirm Bet
-                        </Button>
+            <>
+                <div className="min-h-screen flex items-center justify-center  backdrop-blur-xl">
+                    <div className="max-w-lg w-full p-5 border bg-background rounded-lg shadow-lg">
+                        <div className="text-center">
+                            <div className="text-4xl font-bold mb-6">Place Your Bet</div>
+                            <div className="text-2xl mb-8">{`Bet Amount: ${betAmount} Points`}</div>
+                            <Slider
+                                value={[betAmount]} // Current value of the slider
+                                onValueChange={(value) => setBet(value[0])} // Update bet amount
+                                max={100} // Max slider value
+                                step={5} // Slider step increment
+                                className="w-full"
+                            />
+                            <Button
+                                onClick={() => setBetConfirmed(true)} // Confirm bet and proceed
+                                className="mt-8 bg-green-500 hover:bg-green-600 text-white w-full"
+                            >
+                                Confirm Bet
+                            </Button>
+                        </div>
                     </div>
                 </div>
-            </div>
+
+            </>
         );
     }
 
@@ -101,9 +106,8 @@ export default function Page() {
     return (
         <>
             <div
-                className={`absolute top-0 start-0 z-50 w-screen h-screen flex justify-center items-center ${
-                    modalPuzzle ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-                }`}
+                className={`absolute top-0 start-0 z-50 w-screen h-screen flex justify-center items-center ${modalPuzzle ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+                    }`}
             >
                 <button
                     onClick={(e) => {

@@ -1,6 +1,5 @@
 "use client"
 import { Area, AreaChart, CartesianGrid, XAxis } from 'recharts';
-
 import { ChartContainer, ChartTooltip, ChartTooltipContent, ChartConfig } from '@/components/ui/chart';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { Separator } from './ui/separator';
