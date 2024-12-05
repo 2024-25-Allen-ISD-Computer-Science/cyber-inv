@@ -8,6 +8,7 @@ import Timer from '@/components/Timer';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Separator } from '@/components/ui/separator';
 import Tilt from 'react-parallax-tilt'
+import React, { useState, useEffect } from 'react';
 
 
 import team from '@/data/team.json';
@@ -15,6 +16,7 @@ import faq from '@/data/faq.json';
 import sponsors from '@/data/sponsors.json'
 import * as motion from "framer-motion/client"
 import Progbar from "@/components/Home/Prog"
+import Sheet from '@/components/Home/HamburgerMenu'
 
 import cyb1 from '~/images/cybinv1.jpg';
 import cyb2 from '~/images/cybinv2.jpg';
@@ -36,30 +38,43 @@ const smoothScrolling = (id: string) => {
 }
 
 export default function Home() {
+
+    const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < 426);
+    const checkScreenWidth = () => {
+        setIsMobile(window.innerWidth < 426)
+    }
+
+    window.addEventListener('resize', checkScreenWidth)
+
     return (
         <main className="flex w-full flex-col overflow-x-hidden bg-gradient-to-bl font-sans">
             <div className="w-full">
                 <div className="flex items-center justify-center text-center">
                     <Progbar />
-                    {['Sponsors', 'FAQ', 'Last Year', 'Meet the Team'].map((text) => {
-                        const href = `#${text.toLowerCase().replace(/\s+/g, '-')}`;
-                        const scrollTo = href.replace('#', '');
-                        return (
-                            <a
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    window.history.pushState(null, '', href);
-                                    smoothScrolling(scrollTo);
-                                }}
-                                href={href}
-                                key={text}
-                            >
-                                <div className="p-5 text-lg md:text-2xl" key={text}>
-                                    {text}
-                                </div>
-                            </a>
-                        );
-                    })}
+                    {isMobile ? (
+                        <Sheet />
+                    ) : (
+                        ['Sponsors', 'FAQ', 'Last Year', 'Meet the Team'].map((text) => {
+                            const href = `#${text.toLowerCase().replace(/\s+/g, '-')}`;
+                            const scrollTo = href.replace('#', '');
+
+                            return (
+                                <a
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        window.history.pushState(null, '', href);
+                                        smoothScrolling(scrollTo);
+                                    }}
+                                    href={href}
+                                    key={text}
+                                >
+                                    <div className="p-5 text-lg md:text-2xl" key={text}>
+                                        <div className="navbar">{text}</div>
+                                    </div>
+                                </a>
+                            );
+                        })
+                    )}
                 </div>
             </div>
 
@@ -119,9 +134,8 @@ export default function Home() {
                 </div> */}
 
                     {/* Learn more section with bounce animation */}
-                    <div className='w-full flex place-content-center justify-center'>
+                    <div className="flex w-full place-content-center justify-center">
                         <Timer />
-
                     </div>
 
                     <motion.div
@@ -182,13 +196,13 @@ export default function Home() {
                                         <CarouselItem key={member.name} className="md:basis-1/2 lg:basis-1/3">
                                             <Card>
                                                 <CardContent className="flex h-max flex-col items-center justify-center p-6 md:h-80 md:p-2">
-                                                    <div className='relative w-full h-full overflow-hidden rounded-md flex justify-center'>
+                                                    <div className="relative flex h-full w-full justify-center overflow-hidden rounded-md">
                                                         <Image
                                                             src={member.image}
                                                             alt={member.name}
                                                             width={3000}
                                                             height={2000}
-                                                            className="object-fill h-full w-fit"
+                                                            className="h-full w-fit object-fill"
                                                         />
                                                     </div>
 
@@ -220,12 +234,7 @@ export default function Home() {
 
                     <div className="grid grid-cols-2 gap-8">
                         {faq.map((item) => (
-                            <Accordion
-                                key={item.question}
-                                type="single"
-                                collapsible
-                                className="items-start text-3xl"
-                            >
+                            <Accordion key={item.question} type="single" collapsible className="items-start text-3xl">
                                 <AccordionItem value={item.question}>
                                     <AccordionTrigger className="text-3xl">{item.question}</AccordionTrigger>
                                     <AccordionContent className="text-2xl">{item.answer}</AccordionContent>
@@ -233,7 +242,6 @@ export default function Home() {
                             </Accordion>
                         ))}
                     </div>
-
                 </div>
             </section>
 
