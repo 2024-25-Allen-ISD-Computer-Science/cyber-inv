@@ -31,7 +31,7 @@ const smoothScrolling = (id: string) => {
     const element = document.getElementById(id);
 
     if (element) {
-        element.scrollIntoView({behavior: 'smooth'})
+        element.scrollIntoView({ behavior: 'smooth' })
     }
 }
 
@@ -120,7 +120,7 @@ export default function Home() {
 
                     {/* Learn more section with bounce animation */}
                     <div className='w-full flex place-content-center justify-center'>
-                    <Timer />
+                        <Timer />
 
                     </div>
 
@@ -183,13 +183,13 @@ export default function Home() {
                                             <Card>
                                                 <CardContent className="flex h-max flex-col items-center justify-center p-6 md:h-80 md:p-2">
                                                     <div className='relative w-full h-full overflow-hidden rounded-md flex justify-center'>
-                                                    <Image
-                                                        src={member.image}
-                                                        alt={member.name}
-                                                        width={3000}
-                                                        height={2000}
-                                                        className="object-fill h-full w-fit"
-                                                    />
+                                                        <Image
+                                                            src={member.image}
+                                                            alt={member.name}
+                                                            width={3000}
+                                                            height={2000}
+                                                            className="object-fill h-full w-fit"
+                                                        />
                                                     </div>
 
                                                     <span className="mt-5 text-center text-3xl font-bold">
@@ -218,14 +218,22 @@ export default function Home() {
                         <div className="pb-10 pl-10 text-center text-3xl font-light"></div>
                     </div>
 
-                    <Accordion type="single" collapsible className="items-center text-3xl">
+                    <div className="grid grid-cols-2 gap-8">
                         {faq.map((item) => (
-                            <AccordionItem key={item.question} value={item.question}>
-                                <AccordionTrigger>{item.question}</AccordionTrigger>
-                                <AccordionContent className="text-2xl">{item.answer}</AccordionContent>
-                            </AccordionItem>
+                            <Accordion
+                                key={item.question}
+                                type="single"
+                                collapsible
+                                className="items-start text-3xl"
+                            >
+                                <AccordionItem value={item.question}>
+                                    <AccordionTrigger className="text-3xl">{item.question}</AccordionTrigger>
+                                    <AccordionContent className="text-2xl">{item.answer}</AccordionContent>
+                                </AccordionItem>
+                            </Accordion>
                         ))}
-                    </Accordion>
+                    </div>
+
                 </div>
             </section>
 

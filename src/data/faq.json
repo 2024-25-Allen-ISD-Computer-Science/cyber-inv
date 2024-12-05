@@ -5,22 +5,62 @@
     },
     {
         "question": "What is the price?",
-        "answer": "TBD"
+        "answer": "There is no entry cost! Competitors will need to bring their own personal devices."
     },
     {
         "question": "When does it start?",
-        "answer": "TBD"
+        "answer": "The competition starts in March, but the exact date is still to be determined."
     },
     {
         "question": "Do I need prior cybersecurity knowledge?",
-        "answer": "TBD"
+        "answer": "No prior cybersecurity knowledge is required. Competitors will learn all necessary material during the competition, and there will be mentors ready to help competitors. This competition is a great learning experience and an opportunity to experience entry level cybersecurity."
     },
     {
         "question": "Are there any prizes?",
-        "answer": "TBD"
+        "answer": "There will be prizes for the top three teams of both divisions. There will be over $1,000 in prizes."
     },
     {
-        "question": "What is the schedule for the day?",
-        "answer": "TBD"
+        "question": "What do competitors need to bring?",
+        "answer": "Competitors will need to bring their personal devices. We will provide food (pizza) and water, but we recommend that the competitor brings their own lunch if there are dietary restrictions."
+    },
+    {
+        "question": "Do I need a team?",
+        "answer": ""
+    },
+    {
+        "question": "Is food provided?",
+        "answer": ""
+    },
+    {
+        "question": "What are the divisions?",
+        "answer": ""
+    },
+    {
+        "question": "When do I have to sign up by?",
+        "answer": ""
+    },
+    {
+        "question": "What is the format of the competition?",
+        "answer": ""
+    },
+    {
+        "question": "Do I need to install any software?",
+        "answer": ""
+    },
+    {
+        "question": "Who can participate? Are there any age restrictions?",
+        "answer": ""
+    },
+    {
+        "question": "How do I register for the competition?",
+        "answer": ""
+    },
+    {
+        "question": "Will mentors or support be available?",
+        "answer": ""
+    },
+    {
+        "question": "When and how will winners be announced?",
+        "answer": ""
     }
 ]
