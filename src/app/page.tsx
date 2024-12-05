@@ -15,7 +15,6 @@ import team from '@/data/team.json';
 import faq from '@/data/faq.json';
 import sponsors from '@/data/sponsors.json'
 import * as motion from "framer-motion/client"
-import Progbar from "@/components/Home/Prog"
 import Sheet from '@/components/Home/HamburgerMenu'
 
 import cyb1 from '~/images/cybinv1.jpg';
@@ -50,7 +49,6 @@ export default function Home() {
         <main className="flex w-full flex-col overflow-x-hidden bg-gradient-to-bl font-sans">
             <div className="w-full">
                 <div className="flex items-center justify-center text-center">
-                    <Progbar />
                     {isMobile ? (
                         <Sheet />
                     ) : (
@@ -232,16 +230,14 @@ export default function Home() {
                         <div className="pb-10 pl-10 text-center text-3xl font-light"></div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-8">
-                        {faq.map((item) => (
-                            <Accordion key={item.question} type="single" collapsible className="items-start text-3xl">
-                                <AccordionItem value={item.question}>
+                    <Accordion type="single" collapsible className="items-center lg:grid grid-cols-2 gap-4">
+                            {faq.map((item) => (
+                                <AccordionItem key={item.question} value={item.question} >
                                     <AccordionTrigger className="text-3xl">{item.question}</AccordionTrigger>
-                                    <AccordionContent className="text-2xl">{item.answer}</AccordionContent>
+                                    <AccordionContent className="text-xl font-normal">{item.answer}</AccordionContent>
                                 </AccordionItem>
-                            </Accordion>
-                        ))}
-                    </div>
+                            ))}
+                        </Accordion>
                 </div>
             </section>
 

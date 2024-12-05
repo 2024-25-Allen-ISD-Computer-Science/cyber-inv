@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Poppins, Inter } from 'next/font/google';
 import '@/globals.css';
 import ParticlesAni from '@/components/Particles';
+import { ThemeProvider } from "@/components/theme-provider"
 const poppins = Poppins({
     variable: '--font-sans',
     weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -29,7 +30,14 @@ export default function RootLayout({
                 <div className='-z-10 absolute'>
                     <ParticlesAni />
                 </div>
+                <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            
+          >
                 {children}
+                </ThemeProvider>
             </body>
         </html>
     );

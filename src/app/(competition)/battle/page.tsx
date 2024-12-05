@@ -76,11 +76,14 @@ export default function Page() {
     if (!betConfirmed) {
         return (
             <>
-                <div className="min-h-screen flex items-center justify-center  backdrop-blur-xl">
+                <div className="z-20 absolute top-0 start-0 w-full min-h-full flex items-center justify-center  backdrop-blur-xl">
                     <div className="max-w-lg w-full p-5 border bg-background rounded-lg shadow-lg">
                         <div className="text-center">
-                            <div className="text-4xl font-bold mb-6">Place Your Bet</div>
-                            <div className="text-2xl mb-8">{`Bet Amount: ${betAmount} Points`}</div>
+                            <div className="text-4xl font-bold mb-6">
+                                Place Your Bet <br />
+                           div (min 10%)
+                            </div>
+                            <div className="text-2xl mb-8">{`Bet Amount: ${betAmount} Points`}%</div>
                             <Slider
                                 value={[betAmount]} // Current value of the slider
                                 onValueChange={(value) => setBet(value[0])} // Update bet amount

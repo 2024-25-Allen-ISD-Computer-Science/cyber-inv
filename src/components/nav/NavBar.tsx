@@ -68,7 +68,7 @@ export function NavBar() {
             <nav className="border-b shadow-xl block md:hidden overflow-x-hidden">
                 <div className="flex items-center justify-between px-8 text-center pb-4 py-2">
                     <div className="flex items-center justify-center">
-                        <Drawer direction="left" >
+                        <Drawer direction="right" >
                             <DrawerTrigger >
                                 <GiHamburgerMenu className="size-6" />
                             </DrawerTrigger>

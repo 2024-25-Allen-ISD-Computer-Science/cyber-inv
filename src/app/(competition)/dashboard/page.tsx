@@ -11,11 +11,11 @@ const rankings:Team[] = await leaderboard()
 export default function Dashboard() {
 
   return (
-    <main className="min-h-full min-w-full max-h-full max-w-full flex flex-col">
-      <div className="mx-auto w-full max-w-screen-xl flex flex-col gap-3 mb-10">
+    <main className="w-full h-full flex place-content-center justify-center">
+      <div className="mx-auto w-full max-w-screen-2xl flex flex-col gap-3 ">
         <Card className="shadow">
           <CardHeader>
-          <div className="grid grid-cols-1 gap-5">
+          <div className="grid grid-cols-1 ">
               <UserCard data={userCardData} />
             </div>
           </CardHeader>

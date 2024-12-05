@@ -5,7 +5,8 @@ import { useEffect } from 'react';
 export default function Scenario() {
     
     return (
-        <div className="w-full h-full">
+        <div className="w-full h-[90vh] pt-10">
+            
             <ResizablePanelGroup
                 direction="horizontal"
                 className="h-max min-w-full max-w-md rounded-lg border  border-none"
