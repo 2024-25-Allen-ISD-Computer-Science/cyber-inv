@@ -267,15 +267,25 @@ const puzzles: Puzzle[] = [
 
 export async function getPuzzles(
   page: number = 0,
-  limit: number = 9
+  limit: number = 9,
+  searchQuery: string = ""
 ): Promise<{ puzzles: Puzzle[]; total: number }> {
+  // Filter puzzles based on the search query if provided
+  let filteredPuzzles = puzzles;
+
+  if (searchQuery) {
+    filteredPuzzles = puzzles.filter((puzzle) =>
+      puzzle.puzzleName.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }
+
   // Calculate the start and end indices for the current page
   const start = page * limit;
   const end = start + limit;
 
   // Return the sliced puzzles and the total number of puzzles
   return {
-    puzzles: puzzles.slice(start, end),
-    total: puzzles.length, // Total number of puzzles available
+    puzzles: filteredPuzzles.slice(start, end),
+    total: filteredPuzzles.length, // Total number of filtered puzzles
   };
 }

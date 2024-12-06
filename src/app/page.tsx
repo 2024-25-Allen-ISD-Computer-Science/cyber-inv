@@ -97,7 +97,7 @@ export default function Home() {
 
                     {/* Title Animation */}
                     <motion.div
-                        className="relative top-0 z-20 flex h-auto w-fit select-auto items-center justify-center bg-gradient-to-r from-blue-500 via-violet-500 to-pink-500 bg-clip-text py-4 text-center text-5xl font-extrabold text-transparent md:text-7xl lg:mb-0 lg:text-9xl"
+                        className="relative top-0 z-20 flex h-auto w-fit select-auto items-center justify-center bg-gradient-to-r from-blue-500 via-violet-500 to-pink-500 bg-clip-text  text-center text-5xl font-extrabold text-transparent md:text-7xl lg:mb-0 lg:text-9xl"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 1 }}

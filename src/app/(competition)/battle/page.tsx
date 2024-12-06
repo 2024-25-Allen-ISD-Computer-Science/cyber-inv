@@ -7,7 +7,6 @@ import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { PuzzleCard } from "@/components/PuzzleCard";
 import { getPuzzles } from "./actions";
-import { Skeleton } from "@/components/ui/skeleton"
 
 import {
     ArrowPathIcon,
@@ -83,7 +82,7 @@ export default function Page() {
                                 Place Your Bet <br />
                            div (min 10%)
                             </div>
-                            <div className="text-2xl mb-8">{`Bet Amount: ${betAmount} Points`}%</div>
+                            <div className="text-2xl mb-8">{`Bet Amount: ${betAmount}% Points`}</div>
                             <Slider
                                 value={[betAmount]} // Current value of the slider
                                 onValueChange={(value) => setBet(value[0])} // Update bet amount

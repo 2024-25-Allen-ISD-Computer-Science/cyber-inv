@@ -32,30 +32,30 @@ import {
 // TODO: Use Suspense
 
 export default function Page() {
+    const [searchQuery, setSearchQuery] = useState(""); // Add state for search
     const [totalPuzzles, setTotalPuzzles] = useState(0);
-
     const [fetching, setFetching] = useState(false);
-
     const [puzzles, setPuzzles] = useState<Puzzle[]>([]);
-
     const [page, setPage] = useState(0);
+    const [search, setSearch] = useState("");
     useEffect(() => {
         async function fetchPuzzles() {
             setFetching(true);
-
-            const { puzzles: fetchedPuzzles, total } = await getPuzzles(page);
-
+            const { puzzles: fetchedPuzzles, total } = await getPuzzles(page, puzzlesPerPage, searchQuery);
             setFetching(false);
 
-            if (fetchedPuzzles.length <= 0) return setPage(Math.max(0, page - 1)); // current page is empty
+            if (fetchedPuzzles.length <= 0) {
+                setPage((prevPage) => Math.max(0, prevPage - 1)); // Go back if the page is empty
+                return;
+            }
+
             setPuzzles(fetchedPuzzles);
-            setTotalPuzzles(total); // Update total puzzles
+            setTotalPuzzles(total);
         }
 
-
-
         fetchPuzzles();
-    }, [page]);
+    }, [page, searchQuery]); // Fetch puzzles whenever `page` or `searchQuery` changes
+
     const puzzlesPerPage = 9; // Same limit as in `getPuzzles`
     const totalPages = Math.ceil(totalPuzzles / puzzlesPerPage);
 
@@ -73,6 +73,7 @@ export default function Page() {
         setPage(Math.max(0, page - 1));
     }
 
+
     const [modalPuzzle, setModalPuzzle] = useState<Puzzle | null>(null);
 
     function openModal(index: number) {
@@ -84,14 +85,19 @@ export default function Page() {
     function closeModal() {
         setModalPuzzle(null);
     }
+    // Filter puzzles based on search query
+    const filteredPuzzles = puzzles.filter((puzzle) =>
+        puzzle.puzzleName.toLowerCase().includes(searchQuery.toLowerCase())
+    );
     return (
         <>
+            {/* Modal Overlay */}
             <div
-                className={`absolute top-0 start-0 z-50 w-screen h-screen flex justify-center items-center ${modalPuzzle
-                    ? "opacity-100 pointer-events-auto"
-                    : "opacity-0 pointer-events-none"
-                    }`}
+                className={`absolute top-0 left-0 z-50 w-screen h-screen flex justify-center items-center ${
+                    modalPuzzle ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+                }`}
             >
+                {/* Modal Close Button */}
                 <button
                     onClick={(e) => {
                         e.preventDefault();
@@ -99,8 +105,10 @@ export default function Page() {
                     }}
                     className="absolute h-full w-full backdrop-blur"
                 />
-                {modalPuzzle ? <Modal puzzle={modalPuzzle} /> : <></>}
+                {modalPuzzle && <Modal puzzle={modalPuzzle} />}
             </div>
+    
+            {/* Main Content */}
             <main className="min-h-full min-w-full flex flex-col">
                 <div className="mx-auto w-full max-w-screen-xl flex flex-col gap-3 mb-10">
                     <Card className="shadow">
@@ -111,43 +119,69 @@ export default function Page() {
                         <CardContent className="p-5">
                             {fetching ? (
                                 <div className="w-full h-full flex justify-center items-center">
-                                    <ArrowPathIcon className="size-16 animate-spin my-64" />
+                                    <ArrowPathIcon className="w-16 h-16 animate-spin my-64" />
                                 </div>
                             ) : (
                                 <div className="flex flex-col gap-3">
-                                    <label className="shadow border rounded-lg items-center flex flex-row ">
-                                        <MagnifyingGlassIcon className="size-4 m-3 aspect-square" />
+                                    {/* Search Bar */}
+                                    <label className="shadow border rounded-lg items-center flex flex-row">
+                                        <MagnifyingGlassIcon className="w-4 h-4 m-3" />
                                         <input
                                             type="text"
-                                            className="w-full bg-transparent p-3 outline-none ps-0"
-                                        ></input>
+                                            className="w-full bg-transparent p-3 outline-none"
+                                            placeholder="Search puzzles..."
+                                            value={search}
+                                            onChange={(e) => setSearch(e.target.value)}
+                                        />
+                                        <Button
+                                            variant="default"
+                                            onClick={() => {
+                                                if (search.trim()) {
+                                                    setSearchQuery(search);
+                                                    setSearch("");
+                                                    setPage(0);
+                                                }
+                                            }}
+                                        >
+                                            {">"}
+                                        </Button>
+                                        <Button
+                                            variant="default"
+                                            onClick={() => {
+                                                setSearchQuery("");
+                                                setPage(0);
+                                            }}
+                                        >
+                                            X
+                                        </Button>
                                     </label>
+    
+                                    {/* Puzzle Grid */}
                                     <div className="grid grid-cols-3 grid-rows-3 gap-3">
-                                        {puzzles.map((puzzle: Puzzle, i) => {
-                                            return (
-                                                <PuzzleCard
-                                                    openModal={openModal}
-                                                    index={i}
-                                                    key={puzzle.puzzleName + i} // Use a unique key, e.g., puzzleName and index
-                                                    puzzle={puzzle}
-                                                />
-                                            );
-                                        })}
+                                        {puzzles.map((puzzle: Puzzle, i) => (
+                                            <PuzzleCard
+                                                openModal={openModal}
+                                                index={i}
+                                                key={`${puzzle.puzzleName}-${i}`}
+                                                puzzle={puzzle}
+                                            />
+                                        ))}
                                     </div>
-
+    
+                                    {/* Pagination */}
                                     <Pagination>
                                         <PaginationContent>
                                             <PaginationItem>
                                                 <PaginationPrevious
                                                     onClick={handlePreviousPage}
-                                                    className={`cursor-pointer ${page <= 0 ? "opacity-50" : ""}`} />
+                                                    className={`cursor-pointer ${page <= 0 ? "opacity-50" : ""}`}
+                                                />
                                             </PaginationItem>
-
                                             <PaginationItem>
                                                 <PaginationNext
                                                     onClick={handleNextPage}
-
-                                                    className={`cursor-pointer ${page >= totalPages - 1 ? "opacity-50" : ""}`} />
+                                                    className={`cursor-pointer ${page >= totalPages - 1 ? "opacity-50" : ""}`}
+                                                />
                                             </PaginationItem>
                                         </PaginationContent>
                                     </Pagination>
@@ -159,8 +193,8 @@ export default function Page() {
             </main>
         </>
     );
+    
 }
-
 function Modal({ puzzle }: { puzzle: Puzzle }) {
     return (
         <div className="z-50 transition-none max-w-screen-md w-full p-5 border bg-background rounded-lg">
