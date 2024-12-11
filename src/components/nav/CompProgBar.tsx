@@ -16,59 +16,31 @@ export default function CompProgBar() {
                     <div className="text-center">Round Name: Test Name</div>
                     <div className="w-fit inline-flex space-x-2">
                         <Link href={"/dashboard"}>
-                            <HoverCard >
-                                <HoverCardTrigger>
+
                                     <ChartBarIcon className="size-8 hover:animate-pulse" />
 
-                                </HoverCardTrigger>
-                                <HoverCardContent>
-                                    <ChartBarIcon className="size-8" />
 
-                                    Dashboard - Track your and other teams stats.
-                                </HoverCardContent>
-                            </HoverCard>
+
 
                         </Link>
 
                         <Link href={"/puzzle"}>
-                            <HoverCard>
-                                <HoverCardTrigger>
+
                                     <PuzzlePieceIcon className="size-8 hover:animate-pulse" />
-                                </HoverCardTrigger>
-                                <HoverCardContent>
-                                    <PuzzlePieceIcon className="size-8" />
-                                    Puzzle Round - Solve puzzles in the alloted
-                                </HoverCardContent>
-                            </HoverCard>
+
 
                         </Link>
 
                         <Link href={"/battle"}>
-                            <HoverCard>
-                                <HoverCardTrigger>
+
                                     <ShieldExclamationIcon className="size-8 " />
 
-                                </HoverCardTrigger>
-                                <HoverCardContent>
-                                    <ShieldExclamationIcon className="size-8" />
 
-                                    Battle Round - Put everything on the line to get ahead!
-                                </HoverCardContent>
-                            </HoverCard>
 
                         </Link>
 
                         <Link href={"/scenario"}>
-                            <HoverCard>
-                                <HoverCardTrigger>
                                     <SparklesIcon className="size-8" />
-                                </HoverCardTrigger>
-                                <HoverCardContent>
-                                    <SparklesIcon className="size-8" />
-
-                                    Scenario Round - Blue team simulation where you and your team defend Allen Texas from cyber security threats.
-                                </HoverCardContent>
-                            </HoverCard>
 
                         </Link>
                     </div>
