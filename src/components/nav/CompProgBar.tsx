@@ -1,61 +1,70 @@
 import { Progress } from "@/components/ui/progress"
 import { ChartBarIcon, PuzzlePieceIcon, SparklesIcon, ShieldExclamationIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-
-import {
-    HoverCard,
-    HoverCardContent,
-    HoverCardTrigger,
-} from "@/components/ui/hover-card"
+import Ico from "~/ico.svg"
+import { Button } from "../ui/button";
+import Image from "next/image";
 
 export default function CompProgBar() {
     return (
-        <div className="w-full top-0 left-0  justify-center place-content-center flex mb-5">
-            <div className="w-fit h-fit bg-zinc-950 rounded-xl p-2 border border-white border-foreground">
-                <div className="w-fit inline-flex justify-between space-x-4 p-3">
-                    <div className="text-center">Round Name: Test Name</div>
-                    <div className="w-fit inline-flex space-x-2">
-                        <Link href={"/dashboard"}>
-
-                                    <ChartBarIcon className="size-8 hover:animate-pulse" />
-
-
-
-
-                        </Link>
-
-                        <Link href={"/puzzle"}>
-
-                                    <PuzzlePieceIcon className="size-8 hover:animate-pulse" />
-
-
-                        </Link>
-
-                        <Link href={"/battle"}>
-
-                                    <ShieldExclamationIcon className="size-8 " />
-
-
-
-                        </Link>
-
-                        <Link href={"/scenario"}>
-                                    <SparklesIcon className="size-8" />
-
-                        </Link>
-                    </div>
-
-
-
-                    <div className="text-center">Time Remaining: 00:00:00 </div>
+        <div className="w-fit h-fit p-4">
+            <div className="bg-background rounded-lg w-full flex items-center justify-between px-4 py-2 shadow-md gap-6">
+                {/* Logo */}
+                <div className="flex items-center gap-2">
+                    <Image src={Ico} height={50} width={50} alt="ico" />
+                    <span className="text-lg font-bold">Name of round~00:00:00</span>
                 </div>
 
-                <Progress value={33} className="text-2xl font-black text-center">
-
-                </Progress>
-
+                {/* Button Group */}
+                <div className="flex items-center gap-2">
+                    <Button variant="secondary" className="p-2">
+                        <ChartBarIcon className="h-6 w-6" />
+                    </Button>
+                    <Button variant="secondary" className="p-2">
+                        <PuzzlePieceIcon className="h-6 w-6" />
+                    </Button>
+                    <Button variant="secondary" className="p-2">
+                        <SparklesIcon className="h-6 w-6" />
+                    </Button>
+                    <Button variant="secondary" className="p-2">
+                        <ShieldExclamationIcon className="h-6 w-6" />
+                    </Button>
+                </div>
             </div>
         </div>
-
     );
 }
+
+// export default function CompProgBar() {
+//     return (
+//         <div className="w-full top-0 left-0  justify-center place-content-center flex mb-5">
+//             <div className="w-fit h-fit bg-zinc-950 rounded-xl p-2 border border-white border-foreground">
+//                 <div className="w-fit inline-flex justify-between space-x-4 p-3">
+//                     <div className="text-center">Round Name: Test Name</div>
+//                     <div className="w-fit inline-flex space-x-2">
+//                         <Link href={"/dashboard"}>
+//                             <ChartBarIcon className="size-8 hover:animate-pulse" />
+//                         </Link>
+//                         <Link href={"/puzzle"}>
+//                             <PuzzlePieceIcon className="size-8 hover:animate-pulse" />
+//                         </Link>
+//                         <Link href={"/battle"}>
+//                             <ShieldExclamationIcon className="size-8 " />
+//                         </Link>
+//                         <Link href={"/scenario"}>
+//                             <SparklesIcon className="size-8" />
+
+//                         </Link>
+//                     </div>
+//                     <div className="text-center">Time Remaining: 00:00:00 </div>
+//                 </div>
+
+//                 <Progress value={33} className="text-2xl font-black text-center">
+
+//                 </Progress>
+
+//             </div>
+//         </div>
+
+//     );
+// }
