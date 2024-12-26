@@ -28,22 +28,37 @@ import cyb8 from '~/images/cybinv8.jpg';
 import cyb9 from '~/images/cybinv9.jpg';
 import ico from '~/ico.svg';
 
-const smoothScrolling = (id: string) => {
-    const element = document.getElementById(id);
-
-    if (element) {
-        element.scrollIntoView({ behavior: 'smooth' })
-    }
-}
 
 export default function Home() {
 
-    const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < 426);
-    const checkScreenWidth = () => {
-        setIsMobile(window.innerWidth < 426)
-    }
 
-    window.addEventListener('resize', checkScreenWidth)
+        const [isMobile, setIsMobile] = useState<boolean>(false);
+      
+        // Function for smooth scrolling
+        const smoothScrolling = (id: string) => {
+          const element = document.getElementById(id);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+          }
+        };
+      
+        // Use useEffect to handle window-dependent logic
+        useEffect(() => {
+          const checkScreenWidth = () => {
+            setIsMobile(window.innerWidth < 426);
+          };
+      
+          // Initial check
+          checkScreenWidth();
+      
+          // Add event listener for resize
+          window.addEventListener("resize", checkScreenWidth);
+      
+          // Cleanup event listener on unmount
+          return () => {
+            window.removeEventListener("resize", checkScreenWidth);
+          };
+        }, []);
 
     return (
         <main className="flex w-full flex-col overflow-x-hidden bg-gradient-to-bl font-sans">

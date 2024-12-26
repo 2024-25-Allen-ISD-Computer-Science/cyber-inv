@@ -24,7 +24,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className="h-full">
+        <html lang="en" >
             <body className={`${poppins.variable} ${inter.variable} h-full font-sans antialiased`}>
 
                 <ThemeProvider
