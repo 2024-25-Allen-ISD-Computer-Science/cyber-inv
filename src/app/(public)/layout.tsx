@@ -8,9 +8,9 @@ export default function RootLayout({
 }>) {
     return (
         <div className="">
-                                        <div className='-z-10 absolute'>
-                                            <ParticlesAni />
-                                        </div>
+            <div className='-z-10 absolute'>
+                <ParticlesAni />
+            </div>
             <NavBar />
             {children}
         </div>

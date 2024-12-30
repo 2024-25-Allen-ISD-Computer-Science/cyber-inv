@@ -62,7 +62,7 @@ export default function Home() {
 
     return (
         <main className="flex w-full flex-col overflow-x-hidden bg-gradient-to-bl font-sans">
-            <div className="w-full">
+            {/* <div className="w-full">
                 <div className="flex items-center justify-center text-center">
                     {isMobile ? (
                         <Sheet />
@@ -89,7 +89,7 @@ export default function Home() {
                         })
                     )}
                 </div>
-            </div>
+            </div> */}
 
             {/* Main Section */}
             <section className="flex h-[100vh] w-full flex-col items-center">

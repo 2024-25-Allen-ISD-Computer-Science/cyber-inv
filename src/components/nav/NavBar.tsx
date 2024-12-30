@@ -20,9 +20,11 @@ import { GiHamburgerMenu } from "react-icons/gi";
 
 export function NavBar() {
     return (
-        <>
+        <div className='w-full flex justify-center sticky top-0 z-30'>
 
-            <nav className="border-b shadow-xl hidden md:block overflow-x-hidden">
+        <div className='w-full sm:w-fit h-fit p-2  '>
+
+            <nav className=" rounded-lg bg-background border shadow-xl hidden md:block overflow-x-hidden ">
                 <div className="flex items-center justify-between px-8 text-center">
                     <div className="flex items-center justify-center">
                         <Link href="/" className="mr-4">
@@ -65,7 +67,7 @@ export function NavBar() {
 
 
 
-            <nav className="border-b shadow-xl block md:hidden overflow-x-hidden">
+            <nav className="rounded-lg bg-background w-full border shadow-xl block md:hidden overflow-x-hidden">
                 <div className="flex items-center justify-between px-8 text-center pb-4 py-2">
                     <div className="flex items-center justify-center">
                         <Drawer direction="right" >
@@ -100,6 +102,7 @@ export function NavBar() {
                         </Drawer>
 
                     </div>
+                    
                     <div className="flex items-center justify-center">
                         <div className="flex flex-row gap-5 justify-center items-center text-center text-3xl text-white ">
                             <motion.a
@@ -127,6 +130,7 @@ export function NavBar() {
                     </div>
                 </div>
             </nav>
-        </>
+        </div>
+        </div>
     );
 }

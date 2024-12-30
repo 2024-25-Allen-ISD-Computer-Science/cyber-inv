@@ -25,42 +25,42 @@
     },
     {
         "question": "Do I need a team?",
-        "answer": ""
+        "answer": "No, you can sign up as an individual"
     },
     {
         "question": "Is food provided?",
-        "answer": ""
+        "answer": "Yes, but if you have dietary restrictions, please bring your own"
     },
     {
         "question": "What are the divisions?",
-        "answer": ""
-    },
-    {
-        "question": "When do I have to sign up by?",
-        "answer": ""
-    },
-    {
-        "question": "What is the format of the competition?",
-        "answer": ""
-    },
-    {
-        "question": "Do I need to install any software?",
-        "answer": ""
-    },
-    {
-        "question": "Who can participate? Are there any age restrictions?",
-        "answer": ""
-    },
-    {
-        "question": "How do I register for the competition?",
-        "answer": ""
-    },
-    {
-        "question": "Will mentors or support be available?",
-        "answer": ""
-    },
-    {
-        "question": "When and how will winners be announced?",
-        "answer": ""
+        "answer": "There will be two divisions, gold & platinum."
     }
 ]
+//     {
+//         "question": "When do I have to sign up by?",
+//         "answer": ""
+//     },
+//     {
+//         "question": "What is the format of the competition?",
+//         "answer": ""
+//     },
+//     {
+//         "question": "Do I need to install any software?",
+//         "answer": ""
+//     },
+//     {
+//         "question": "Who can participate? Are there any age restrictions?",
+//         "answer": ""
+//     },
+//     {
+//         "question": "How do I register for the competition?",
+//         "answer": ""
+//     },
+//     {
+//         "question": "Will mentors or support be available?",
+//         "answer": ""
+//     },
+//     {
+//         "question": "When and how will winners be announced?",
+//         "answer": ""
+//     }
