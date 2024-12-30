@@ -7,6 +7,8 @@ import Image from "next/image";
 
 export default function CompProgBar() {
     return (
+        <div className="w-full top-0 sticky flex justify-center">
+
         <div className="w-fit h-fit p-4">
             <div className="bg-background rounded-lg w-full flex items-center justify-between px-4 py-2 shadow-md gap-6">
                 {/* Logo */}
@@ -17,20 +19,31 @@ export default function CompProgBar() {
 
                 {/* Button Group */}
                 <div className="flex items-center gap-2">
-                    <Button variant="secondary" className="p-2">
-                        <ChartBarIcon className="h-6 w-6" />
+                    <Link href={"/dashboard"}>
+                    <Button variant="secondary" className="" >
+                        <ChartBarIcon className="size-6" />
                     </Button>
-                    <Button variant="secondary" className="p-2">
-                        <PuzzlePieceIcon className="h-6 w-6" />
+                    </Link>
+                    <Link href={"/puzzle"}>
+                    <Button variant="secondary" className="">
+                        <PuzzlePieceIcon className="size-6" />
                     </Button>
-                    <Button variant="secondary" className="p-2">
-                        <SparklesIcon className="h-6 w-6" />
+                    </Link>
+                    <Link href={"/battle"}>
+
+                    <Button variant="secondary" className="">
+                        <SparklesIcon className="size-6" />
                     </Button>
-                    <Button variant="secondary" className="p-2">
-                        <ShieldExclamationIcon className="h-6 w-6" />
+                    </Link>
+                    <Link href={"/scenario"}>
+
+                    <Button variant="secondary" className="">
+                        <ShieldExclamationIcon className="size-6" />
                     </Button>
+                    </Link>
                 </div>
             </div>
+        </div>
         </div>
     );
 }
