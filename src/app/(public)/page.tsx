@@ -167,12 +167,16 @@ export default function Home() {
 
             {/* Countdown */}
 
-            <section className="flex w-full flex-col items-center justify-center bg-black p-8 text-white">
+            <section className="flex w-full flex-col items-center justify-center  p-8 text-white ">
+                <Tilt>
+
+                <div className='flex flex-col items-center glass'>
+
                 <h2 className="mb-4 text-center text-6xl font-bold text-violet-500">Our Mission</h2>
 
                 <div className="flex w-full flex-col items-center justify-center gap-8 md:flex-row md:px-12">
                     {/* Image Section */}
-                    <div className="flex w-full justify-center md:w-1/2">
+                    <div className="flex w-full justify-center md:w-1/2 shadow-xl">
                         <Image src={ico} width={500} height={500} alt="Eagle Logo" className="rounded-lg" />
                     </div>
 
@@ -186,6 +190,8 @@ export default function Home() {
                         </p>
                     </div>
                 </div>
+                </div>
+                </Tilt>
             </section>
 
             <div>

@@ -13,7 +13,7 @@ export default function Dashboard() {
   return (
     <main className="w-full h-full flex place-content-center justify-center">
       <div className="mx-auto w-full max-w-screen-2xl flex flex-col ">
-        <Card className="shadow">
+        <Card className="">
           <CardHeader>
           <div className="grid grid-cols-1 ">
               <UserCard data={userCardData} />

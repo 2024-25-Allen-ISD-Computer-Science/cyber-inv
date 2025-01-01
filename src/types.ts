@@ -38,3 +38,9 @@ export interface Puzzle {
   teamSolved: boolean;
   userSolved: boolean; // TODO: Some display for user-solved puzzles.
 }
+
+export interface round {
+  roundName: string;
+  roundEnd: Date;
+  roundType: "puzzle" | "battle" | "scenario" | "none";
+}

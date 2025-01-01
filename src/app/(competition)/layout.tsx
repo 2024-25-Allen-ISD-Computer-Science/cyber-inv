@@ -1,23 +1,25 @@
 import { Metadata } from "next";
 import CompProgBar from "@/components/nav/CompProgBar";
 import Comp1BG from "@/components/Comp1BG";
-
+import { getRound } from "./action";
+import { round } from "@/types";
 export const metadata: Metadata = {
     title: 'ACI-comp',
     description: 'Comp software',
 };
-
+const roundInfo:round = await getRound()
 export default function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
     return (
-        <div className="w-full h-full">
+        <div className="w-full h-fit">
             <Comp1BG />
-        <div className="z-10 absolute w-full justify-center top-0 left-0">
-             <CompProgBar />
-        </div> 
+            <CompProgBar 
+                timeRemaining={roundInfo.roundEnd}
+                roundName={roundInfo.roundName}
+            />
             {children}
         </div>
     );

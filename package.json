@@ -42,6 +42,7 @@
         "argon2": "^0.41.1",
         "class-variance-authority": "^0.7.0",
         "clsx": "^2.1.1",
+        "daisyui": "^4.12.23",
         "drawer": "^0.0.2",
         "embla-carousel-react": "^8.3.1",
         "framer-motion": "^11.11.15",
