@@ -12,7 +12,7 @@ export default function Dashboard() {
 
   return (
     <main className="w-full h-full flex place-content-center justify-center">
-      <div className="mx-auto w-full max-w-screen-2xl flex flex-col gap-3 ">
+      <div className="mx-auto w-full max-w-screen-2xl flex flex-col ">
         <Card className="shadow">
           <CardHeader>
           <div className="grid grid-cols-1 ">
@@ -20,10 +20,8 @@ export default function Dashboard() {
             </div>
           </CardHeader>
           <hr />
-          <CardContent className="p-3">
-          <CardHeader>
-            <CardTitle>Leader Board</CardTitle>
-          </CardHeader>
+          <CardContent className="">
+
           <hr />
           <CardContent >
             <LeaderBoard 

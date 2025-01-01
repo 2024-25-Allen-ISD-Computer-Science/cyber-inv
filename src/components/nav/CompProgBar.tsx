@@ -20,25 +20,25 @@ export default function CompProgBar() {
                 {/* Button Group */}
                 <div className="flex items-center gap-2">
                     <Link href={"/dashboard"}>
-                    <Button variant="secondary" className="" >
-                        <ChartBarIcon className="size-6" />
+                    <Button variant="secondary" className="w-fit h-fit" >
+                        <ChartBarIcon className="size-10" />
                     </Button>
                     </Link>
                     <Link href={"/puzzle"}>
-                    <Button variant="secondary" className="">
-                        <PuzzlePieceIcon className="size-6" />
+                    <Button variant="secondary" className="w-fit h-fit">
+                        <PuzzlePieceIcon className="size-10" />
                     </Button>
                     </Link>
                     <Link href={"/battle"}>
 
-                    <Button variant="secondary" className="">
-                        <SparklesIcon className="size-6" />
+                    <Button variant="secondary" className="w-fit h-fit">
+                        <SparklesIcon className="size-10" />
                     </Button>
                     </Link>
                     <Link href={"/scenario"}>
 
-                    <Button variant="secondary" className="">
-                        <ShieldExclamationIcon className="size-6" />
+                    <Button variant="secondary" className="w-fit h-fit">
+                        <ShieldExclamationIcon className="size-10" />
                     </Button>
                     </Link>
                 </div>
