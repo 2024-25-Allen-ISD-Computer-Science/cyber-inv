@@ -3,8 +3,23 @@ import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/componen
 import { useEffect } from 'react';
 import Scenario from '@/components/assets/Scenario';
 import { Input } from '@/components/ui/input';
-
+import { redirect } from 'next/navigation'// TODO: Use Suspense
+import { getRound } from "../action";
 export default function page() {
+    useEffect(() => {
+        async function checkRoundType() {
+            const currentRound = await getRound();
+            if (currentRound.roundName !== "scenario") {
+                redirect('/scenario');
+            }
+        }
+
+        checkRoundType(); // Initial check
+
+        const intervalId = setInterval(checkRoundType, 5000); // Check every 5 seconds
+
+        return () => clearInterval(intervalId); // Cleanup interval on component unmount
+    }, []);
     return (
         <div className='w-full h-full'>
             <ResizablePanelGroup

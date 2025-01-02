@@ -28,9 +28,8 @@ import {
     PopoverTrigger,
     PopoverContent,
 } from "@/components/ui/popover";
-
-// TODO: Use Suspense
-
+import { redirect } from 'next/navigation'// TODO: Use Suspense
+import { getRound } from "../action";
 export default function Page() {
     const [searchQuery, setSearchQuery] = useState(""); // Add state for search
     const [totalPuzzles, setTotalPuzzles] = useState(0);
@@ -38,6 +37,24 @@ export default function Page() {
     const [puzzles, setPuzzles] = useState<Puzzle[]>([]);
     const [page, setPage] = useState(0);
     const [search, setSearch] = useState("");
+    const [currentRoundType, setCurrentRoundType] = useState<string | null>(null);
+
+
+    useEffect(() => {
+        async function checkRoundType() {
+            const currentRound = await getRound();
+            setCurrentRoundType(currentRound.roundType);
+            if (currentRound.roundName !== "puzzle") {
+                redirect('/dashboard');
+            }
+        }
+
+        checkRoundType(); // Initial check
+
+        const intervalId = setInterval(checkRoundType, 5000); // Check every 5 seconds
+
+        return () => clearInterval(intervalId); // Cleanup interval on component unmount
+    }, []);
     useEffect(() => {
         async function fetchPuzzles() {
             setFetching(true);

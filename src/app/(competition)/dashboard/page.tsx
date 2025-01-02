@@ -4,7 +4,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {User,Team} from "@/types"
 import {playerGraph, leaderboard} from "./actions"
 
-
 const userCardData: User = await playerGraph()
 const rankings:Team[] = await leaderboard()
 

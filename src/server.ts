@@ -2,7 +2,7 @@
 import {round} from '@/types'
 
 let currentRound:round = {
-    roundName: "puzzle",
+    roundName: "battle",
     roundEnd: new Date('2025-10-01T00:00:00'),
     roundType: "none"
 }
