@@ -1,5 +1,6 @@
 "use client";
-
+import { pushRound } from "@/server";
+import { round } from "@/types";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -17,17 +18,19 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
 import { Separator } from "@/components/ui/separator";
-
+import { useEffect } from "react";
+import { EndRound } from "./action";
 const roundSchema = z.object({
   roundName: z.string().min(1, "Round name is required."),
   roundType: z.enum(["battle", "puzzle", "scenario"], {
     errorMap: () => ({ message: "Select a valid round type." }),
   }),
-  roundLength: z.number().min(1).max(120, "Length must be between 1 and 120 minutes."),
-  division: z.enum(["gold", "platinum", "all"], {
+  roundEnd: z.number().min(1).max(120, "Length must be between 1 and 120 minutes."),
+  roundDivision: z.enum(["gold", "platinum", "all"], {
     errorMap: () => ({ message: "Select a division." }),
   }),
 });
+
 
 const pointsSchema = z.object({
   player: z.string().min(1, "Player is required."),
@@ -38,15 +41,18 @@ const pointsSchema = z.object({
 });
 
 export default function RoundController() {
-  const roundForm = useForm({
+  type RoundFormValues = z.infer<typeof roundSchema>;
+
+  const roundForm = useForm<RoundFormValues>({
     resolver: zodResolver(roundSchema),
     defaultValues: {
       roundName: "",
       roundType: "battle",
-      roundLength: 30,
-      division: "gold",
+      roundEnd: 30,
+      roundDivision: "all",
     },
   });
+  
 
   const pointsForm = useForm({
     resolver: zodResolver(pointsSchema),
@@ -57,16 +63,40 @@ export default function RoundController() {
     },
   });
 
-  function handleStartRound(values) {
-    console.log("Start Round:", values);
+  async function handleStartRound(values: z.infer<typeof roundSchema>) {
+    try {
+      // Convert roundEnd to a Date after validation
+      const roundEnd = new Date();
+      roundEnd.setMinutes(roundEnd.getMinutes() + values.roundEnd);
+  
+      // Prepare the round object
+      const roundData:round = {
+        ...values,
+        roundEnd,
+      };
+  
+      // Call the pushRound function with the updated data
+      await pushRound(roundData);
+      console.log('Round started successfully:', roundData);
+    } catch (error) {
+      console.error('Error starting round:', error);
+    }
   }
-
+  
+  
+  
+  
   function handlePointsChange(values:number) {
     console.log("Points Change:", values);
   }
 
-  function handleStopRounds() {
-    console.log("All rounds stopped.");
+  async function handleStopRounds() {
+    try {
+      await EndRound();
+      console.log('All rounds stopped successfully');
+    } catch (error) {
+      console.error('Error stopping rounds:', error);
+    }
   }
   function splitIntoDivs() {
     console.log("players have been separated.");
@@ -79,8 +109,8 @@ export default function RoundController() {
     
       <div className="w-1/2 bg-card p-6 shadow-md rounded-md">
         <Form {...roundForm}>
-          <form onSubmit={roundForm.handleSubmit(handleStartRound)} className="space-y-4">
-            {/* Round Name */}
+        <form onSubmit={roundForm.handleSubmit(handleStartRound)} className="space-y-4">
+        {/* Round Name */}
             <FormField
               control={roundForm.control}
               name="roundName"
@@ -127,7 +157,7 @@ export default function RoundController() {
             {/* Round Length */}
             <FormField
               control={roundForm.control}
-              name="roundLength"
+              name="roundEnd"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Round Length (minutes)</FormLabel>
@@ -150,7 +180,7 @@ export default function RoundController() {
             {/* Division */}
             <FormField
               control={roundForm.control}
-              name="division"
+              name="roundDivision"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Division</FormLabel>
@@ -189,77 +219,78 @@ export default function RoundController() {
         </Button>
       </div>
 
-      <Separator className="my-8 w-2/4" orientation="horizontal" />
-
-      {/* Points Adjustment */}
-      <div className="w-1/2 bg-card p-6 shadow-md rounded-md">
-        <div className="text-center font-bold text-xl mb-4">Adjust Player Points</div>
-        <Form {...pointsForm}>
-          <form onSubmit={pointsForm.handleSubmit(handlePointsChange)} className="space-y-4">
-            {/* Player Selection */}
-            <FormField
-              control={pointsForm.control}
-              name="player"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Player</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Search player" {...field} />
-                  </FormControl>
-                  <FormDescription>Select the player to adjust points.</FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            {/* Operation */}
-            <FormField
-              control={pointsForm.control}
-              name="operation"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Operation</FormLabel>
-                  <FormControl>
-                    <Select
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                    >
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select operation" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="add">Add</SelectItem>
-                        <SelectItem value="subtract">Subtract</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </FormControl>
-                  <FormDescription>Add or subtract points.</FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            {/* Points */}
-            <FormField
-              control={pointsForm.control}
-              name="points"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Points</FormLabel>
-                  <FormControl>
-                    <Input type="number" min="1" placeholder="Enter points" {...field} />
-                  </FormControl>
-                  <FormDescription>Number of points to add or subtract.</FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            {/* Submit Button */}
-            <Button type="submit">Submit</Button>
-          </form>
-        </Form>
-      </div>
+     
     </main>
   );
 }
+// {/* <Separator className="my-8 w-2/4" orientation="horizontal" />
+
+// {/* Points Adjustment */}
+// <div className="w-1/2 bg-card p-6 shadow-md rounded-md">
+//   <div className="text-center font-bold text-xl mb-4">Adjust Player Points</div>
+//   <Form {...pointsForm}>
+//     <form onSubmit={pointsForm.handleSubmit(handlePointsChange)} className="space-y-4">
+//       {/* Player Selection */}
+//       <FormField
+//         control={pointsForm.control}
+//         name="player"
+//         render={({ field }) => (
+//           <FormItem>
+//             <FormLabel>Player</FormLabel>
+//             <FormControl>
+//               <Input placeholder="Search player" {...field} />
+//             </FormControl>
+//             <FormDescription>Select the player to adjust points.</FormDescription>
+//             <FormMessage />
+//           </FormItem>
+//         )}
+//       />
+
+//       {/* Operation */}
+//       <FormField
+//         control={pointsForm.control}
+//         name="operation"
+//         render={({ field }) => (
+//           <FormItem>
+//             <FormLabel>Operation</FormLabel>
+//             <FormControl>
+//               <Select
+//                 onValueChange={field.onChange}
+//                 defaultValue={field.value}
+//               >
+//                 <SelectTrigger>
+//                   <SelectValue placeholder="Select operation" />
+//                 </SelectTrigger>
+//                 <SelectContent>
+//                   <SelectItem value="add">Add</SelectItem>
+//                   <SelectItem value="subtract">Subtract</SelectItem>
+//                 </SelectContent>
+//               </Select>
+//             </FormControl>
+//             <FormDescription>Add or subtract points.</FormDescription>
+//             <FormMessage />
+//           </FormItem>
+//         )}
+//       />
+
+//       {/* Points */}
+//       <FormField
+//         control={pointsForm.control}
+//         name="points"
+//         render={({ field }) => (
+//           <FormItem>
+//             <FormLabel>Points</FormLabel>
+//             <FormControl>
+//               <Input type="number" min="1" placeholder="Enter points" {...field} />
+//             </FormControl>
+//             <FormDescription>Number of points to add or subtract.</FormDescription>
+//             <FormMessage />
+//           </FormItem>
+//         )}
+//       />
+
+//       {/* Submit Button */}
+//       <Button type="submit">Submit</Button>
+//     </form>
+//   </Form>
+// </div> */}

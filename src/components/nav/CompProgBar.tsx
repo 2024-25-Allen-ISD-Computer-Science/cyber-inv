@@ -1,35 +1,17 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Progress } from "@/components/ui/progress";
-import { ChartBarIcon, PuzzlePieceIcon, SparklesIcon, ShieldExclamationIcon } from "@heroicons/react/24/outline";
-import Link from "next/link";
-import Ico from "~/ico.svg";
 import { Button } from "../ui/button";
 import Countdown from 'react-countdown';
 import Image from "next/image";
-import { getRound } from "@/app/(competition)/action";
+import Ico from "~/ico.svg";
+import Link from "next/link";
+import { ChartBarIcon, PuzzlePieceIcon, ShieldExclamationIcon, SparklesIcon } from "@heroicons/react/20/solid";
+import { RoundInfo } from "@/server";
+const timeRemaining = await RoundInfo().then((round) => round.roundEnd);
+const roundName = await RoundInfo().then((round) => round.roundName);
+const currentRoundType = await RoundInfo().then((round) => round.roundType);
+export default function CompProgBar() {
 
-interface Props {
-    roundName: string;
-    timeRemaining: Date;
-}
-
-export default function CompProgBar({ roundName, timeRemaining }: Props) {
-    const [currentRoundType, setCurrentRoundType] = useState<string | null>(null);
-
-    useEffect(() => {
-        async function checkRoundType() {
-            const currentRound = await getRound();
-            console.log("Current Round:", currentRound.roundName); // Debugging: log the current round
-            setCurrentRoundType(currentRound.roundName);
-        }
-
-        checkRoundType(); // Initial check
-
-        const intervalId = setInterval(checkRoundType, 5000); // Check every 5 seconds
-
-        return () => clearInterval(intervalId); // Cleanup interval on component unmount
-    }, []);
 
     const CountdownSection = ({ name, value }: { name: string; value: number }) => (
         <div className="flex flex-col items-center rounded-xl text-center w-fit">
@@ -45,7 +27,7 @@ export default function CompProgBar({ roundName, timeRemaining }: Props) {
                     <div className="flex items-center gap-2">
                         <Image src={Ico} height={50} width={50} alt="ico" />
                         <span className="text-lg font-bold inline-flex">
-                            {roundName}
+                            {roundName}~
                             <Countdown
                                 date={timeRemaining}
                                 renderer={({ hours, minutes, seconds, completed }) => {

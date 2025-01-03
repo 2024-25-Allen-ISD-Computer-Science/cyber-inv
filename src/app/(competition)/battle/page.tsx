@@ -41,7 +41,7 @@ export default function Page() {
         async function checkRoundType() {
             const currentRound = await getRound();
             setCurrentRoundType(currentRound.roundType);
-            if (currentRound.roundName !== "battle") {
+            if (currentRound.roundType !== "battle") {
                 redirect('/dashboard');
             }
         }

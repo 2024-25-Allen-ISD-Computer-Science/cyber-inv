@@ -2,37 +2,46 @@
 import {round} from '@/types'
 
 let currentRound:round = {
-    roundName: "battle",
-    roundEnd: new Date('2025-10-01T00:00:00'),
-    roundType: "none"
+    roundName: "No round ATM",
+    roundEnd: new Date(),
+    roundType: "puzzle",
+    roundDivision: "all"
 }
 let endRoundState:round = {
     roundName: "No round ATM",
-    roundEnd: new Date('0000-00-00T00:00:00'),
-    roundType: "none"
+    roundEnd: new Date(),
+    roundType: "none",
+    roundDivision: "all"
 }
 
 //sign up
 //sign in
 
 //push round
-export async function pushRound(round:round){
-    currentRound = round
-    return round
+export async function pushRound(Cround:round){
+    currentRound = Cround
+    return currentRound
 }
 //end round
 export async function endRound(){
     currentRound.roundType = "none"
-    currentRound.roundEnd = new Date('0000-00-00T00:00:00');
-    currentRound.roundName = ""
+    currentRound.roundEnd = new Date();
+    currentRound.roundName = "No round ATM"
     return currentRound
 }
 //get round
-export async function RoundInfo(){
-    if (hasDatePassed(currentRound.roundEnd) == true){
-        return endRoundState
+export async function RoundInfo() {
+    try {
+        if (hasDatePassed(currentRound.roundEnd)) {
+            console.log("Round has ended. Returning end round state.",currentRound);
+            return endRoundState;
+        }
+        console.log("Round is ongoing. Returning current round info.",currentRound);
+        return currentRound;
+    } catch (error) {
+        console.error("Error fetching round info:", error);
+        throw new Error("Failed to fetch round info");
     }
-    return currentRound
 }
 // get time left in round
 function hasDatePassed(date: Date): boolean {

@@ -9,8 +9,8 @@ export default function page() {
     useEffect(() => {
         async function checkRoundType() {
             const currentRound = await getRound();
-            if (currentRound.roundName !== "scenario") {
-                redirect('/scenario');
+            if (currentRound.roundType !== "scenario") {
+                redirect('/dashboard');
             }
         }
 

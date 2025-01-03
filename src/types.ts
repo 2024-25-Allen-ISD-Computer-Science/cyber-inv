@@ -43,4 +43,5 @@ export interface round {
   roundName: string;
   roundEnd: Date;
   roundType: "puzzle" | "battle" | "scenario" | "none";
+  roundDivision: "gold" | "platinum" | "all";
 }

@@ -44,7 +44,7 @@ export default function Page() {
         async function checkRoundType() {
             const currentRound = await getRound();
             setCurrentRoundType(currentRound.roundType);
-            if (currentRound.roundName !== "puzzle") {
+            if (currentRound.roundType !== "puzzle") {
                 redirect('/dashboard');
             }
         }
