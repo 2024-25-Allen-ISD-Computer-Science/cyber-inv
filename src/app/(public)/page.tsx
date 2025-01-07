@@ -32,33 +32,33 @@ import ico from '~/ico.svg';
 export default function Home() {
 
 
-        const [isMobile, setIsMobile] = useState<boolean>(false);
-      
-        // Function for smooth scrolling
-        const smoothScrolling = (id: string) => {
-          const element = document.getElementById(id);
-          if (element) {
+    const [isMobile, setIsMobile] = useState<boolean>(false);
+
+    // Function for smooth scrolling
+    const smoothScrolling = (id: string) => {
+        const element = document.getElementById(id);
+        if (element) {
             element.scrollIntoView({ behavior: "smooth" });
-          }
-        };
-      
-        // Use useEffect to handle window-dependent logic
-        useEffect(() => {
-          const checkScreenWidth = () => {
+        }
+    };
+
+    // Use useEffect to handle window-dependent logic
+    useEffect(() => {
+        const checkScreenWidth = () => {
             setIsMobile(window.innerWidth < 426);
-          };
-      
-          // Initial check
-          checkScreenWidth();
-      
-          // Add event listener for resize
-          window.addEventListener("resize", checkScreenWidth);
-      
-          // Cleanup event listener on unmount
-          return () => {
+        };
+
+        // Initial check
+        checkScreenWidth();
+
+        // Add event listener for resize
+        window.addEventListener("resize", checkScreenWidth);
+
+        // Cleanup event listener on unmount
+        return () => {
             window.removeEventListener("resize", checkScreenWidth);
-          };
-        }, []);
+        };
+    }, []);
 
     return (
         <main className="flex w-full flex-col overflow-x-hidden bg-gradient-to-bl font-sans">
@@ -170,27 +170,27 @@ export default function Home() {
             <section className="flex w-full flex-col items-center justify-center  p-8 text-white ">
                 <Tilt>
 
-                <div className='flex flex-col items-center glass'>
+                    <div className='flex flex-col items-center glass'>
 
-                <h2 className="mb-4 text-center text-6xl font-bold text-violet-500">Our Mission</h2>
+                        <h2 className="mb-4 text-center text-6xl font-bold text-violet-500">Our Mission</h2>
 
-                <div className="flex w-full flex-col items-center justify-center gap-8 md:flex-row md:px-12">
-                    {/* Image Section */}
-                    <div className="flex w-full justify-center md:w-1/2 shadow-xl">
-                        <Image src={ico} width={500} height={500} alt="Eagle Logo" className="rounded-lg" />
+                        <div className="flex w-full flex-col items-center justify-center gap-8 md:flex-row md:px-12">
+                            {/* Image Section */}
+                            <div className="flex w-full justify-center md:w-1/2 shadow-xl">
+                                <Image src={ico} width={500} height={500} alt="Eagle Logo" className="rounded-lg" />
+                            </div>
+
+                            {/* Text Section */}
+                            <div className="w-full text-justify text-xl font-light md:w-1/2">
+                                <p>
+                                    We aim to help students have an opportunity to learn and sharpen their cybersecurity skills
+                                    through this competition. Whether you are a beginner or skilled, this event offers something
+                                    for everyone. The Allen Cyber Invitational is open for all North Texan high school students.
+                                    We hope to see you there!
+                                </p>
+                            </div>
+                        </div>
                     </div>
-
-                    {/* Text Section */}
-                    <div className="w-full text-justify text-xl font-light md:w-1/2">
-                        <p>
-                            We aim to help students have an opportunity to learn and sharpen their cybersecurity skills
-                            through this competition. Whether you are a beginner or skilled, this event offers something
-                            for everyone. The Allen Cyber Invitational is open for all North Texan high school students.
-                            We hope to see you there!
-                        </p>
-                    </div>
-                </div>
-                </div>
                 </Tilt>
             </section>
 
@@ -252,13 +252,13 @@ export default function Home() {
                     </div>
 
                     <Accordion type="single" collapsible className="items-center lg:grid grid-cols-2 gap-4">
-                            {faq.map((item) => (
-                                <AccordionItem key={item.question} value={item.question} >
-                                    <AccordionTrigger className="text-3xl">{item.question}</AccordionTrigger>
-                                    <AccordionContent className="text-xl font-normal">{item.answer}</AccordionContent>
-                                </AccordionItem>
-                            ))}
-                        </Accordion>
+                        {faq.map((item) => (
+                            <AccordionItem key={item.question} value={item.question} >
+                                <AccordionTrigger className="text-3xl">{item.question}</AccordionTrigger>
+                                <AccordionContent className="text-xl font-normal">{item.answer}</AccordionContent>
+                            </AccordionItem>
+                        ))}
+                    </Accordion>
                 </div>
             </section>
 
@@ -303,6 +303,13 @@ export default function Home() {
                             </div>
                         </motion.div>
                     ))}
+                </div>
+            </section>
+
+            {/* Prizes Section */}
+            <section id="prizes" className="z-10 min-h-screen w-full">
+                <div className="pb-7 pl-10 pt-10 text-center text-6xl font-bold text-violet-500">
+                    Prizes!
                 </div>
             </section>
 
