@@ -4,7 +4,7 @@ import {round} from '@/types'
 let currentRound:round = {
     roundName: "No round ATM",
     roundEnd: new Date(),
-    roundType: "puzzle",
+    roundType: "none",
     roundDivision: "all"
 }
 let endRoundState:round = {

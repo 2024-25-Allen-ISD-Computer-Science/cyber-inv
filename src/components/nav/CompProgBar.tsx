@@ -20,14 +20,17 @@ export default function CompProgBar() {
     );
 
     return (
-        <div className="w-full top-0 sticky flex justify-center">
+        <div className="z-10 top-0 sticky flex justify-center overflow-x-hidden max-w-1/2 line-clamp-0">
             <div className="w-fit h-fit p-4">
                 <div className="bg-background rounded-lg w-full flex items-center justify-between px-4 py-2 shadow-md gap-6">
                     {/* Logo */}
                     <div className="flex items-center gap-2">
                         <Image src={Ico} height={50} width={50} alt="ico" />
                         <span className="text-lg font-bold inline-flex">
-                            {roundName}~
+                            <span className="flex text-lg w-fit max-w-[57.5vw] font-bold inline-flex truncate overflow-hidden text-ellipsis whitespace-nowrap">
+                                {roundName}
+                            </span>
+                            {'\xa0'} ~ {'\xa0'}
                             <Countdown
                                 date={timeRemaining}
                                 renderer={({ hours, minutes, seconds, completed }) => {
