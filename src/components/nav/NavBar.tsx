@@ -24,17 +24,20 @@ export function NavBar() {
 
         <div className='w-full sm:w-fit h-fit p-2  '>
 
-            <nav className=" rounded-lg bg-background border shadow-xl hidden md:block overflow-x-hidden ">
+            <nav className=" rounded-lg bg-background/40 backdrop-blur-xl border shadow-xl hidden md:block overflow-x-hidden ">
                 <div className="flex items-center justify-between px-8 text-center">
-                    <div className="flex items-center justify-center">
+                    <div className="flex items-center justify-center ">
                         <Link href="/" className="mr-4">
                             <Image src={ico} width={64} height={64} alt="Eagle Logo" className="size-16 rounded-lg" />
                         </Link>
-                        <NavLink href="/">Home</NavLink>
-                        <NavLink href="/#sponsors">Sponsors</NavLink>
-                        <NavLink href="/#faq">FAQ</NavLink>
-                        <NavLink href="/#meet-the-team">Meet the Team</NavLink>
-                        <NavLink href="/#last-year">Last Year</NavLink>
+                        <div className='gap-x-10 inline-flex p-2'>
+
+                        <Link href="/">Home</Link>
+                        <Link href="/#sponsors">Sponsors</Link>
+                        <Link href="/#faq">FAQ</Link>
+                        <Link href="/#meet-the-team">Meet the Team</Link>
+                        <Link href="/#last-year">Last Year</Link>
+                        </div>
                     </div>
                     <div className="flex items-center justify-center">
                         <div className="flex flex-row gap-5 justify-center items-center text-center text-3xl text-white ">
@@ -70,7 +73,7 @@ export function NavBar() {
             <nav className="rounded-lg bg-background w-full border shadow-xl block md:hidden overflow-x-hidden">
                 <div className="flex items-center justify-between px-8 text-center pb-4 py-2">
                     <div className="flex items-center justify-center">
-                        <Drawer direction="right" >
+                        <Drawer direction="left" >
                             <DrawerTrigger >
                                 <GiHamburgerMenu className="size-6" />
                             </DrawerTrigger>
@@ -90,11 +93,11 @@ export function NavBar() {
                                         <Link href="/" className="">
                                             <Image src={ico} width={80} height={80} alt="Eagle Logo" className="size-44 rounded-lg" />
                                         </Link>
-                                        <NavLink href="/">Home</NavLink>
-                                        <NavLink href="/#sponsors">Sponsors</NavLink>
-                                        <NavLink href="/#faq">FAQ</NavLink>
-                                        <NavLink href="/#meet-the-team">Meet the Team</NavLink>
-                                        <NavLink href="/#last-year">Last Year</NavLink>
+                                        <Link href="/">Home</Link>
+                                        <Link href="/#sponsors">Sponsors</Link>
+                                        <Link href="/#faq">FAQ</Link>
+                                        <Link href="/#meet-the-team">Meet the Team</Link>
+                                        <Link href="/#last-year">Last Year</Link>
                                     </div>
 
                                 </DrawerContent>
@@ -106,7 +109,7 @@ export function NavBar() {
                     <div className="flex items-center justify-center">
                         <div className="flex flex-row gap-5 justify-center items-center text-center text-3xl text-white ">
                             <motion.a
-                                href="/register"
+                                href="/register "
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 1, delay: 0.5 }}
