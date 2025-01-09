@@ -7,7 +7,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <div className="w-full h-full flex flex-col">
+        <div className="w-full h-screen flex flex-col">
             <div className='-z-10 absolute'>
                 <ParticlesAni />
             </div>

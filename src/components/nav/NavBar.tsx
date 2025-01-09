@@ -42,7 +42,7 @@ export function NavBar() {
                     <div className="flex items-center justify-center">
                         <div className="flex flex-row gap-5 justify-center items-center text-center text-3xl text-white ">
                             <motion.a
-                                href="/Signup"
+                                href="/register"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 1, delay: 0.5 }}
@@ -53,7 +53,7 @@ export function NavBar() {
                             </motion.a>
 
                             <motion.a
-                                href="/Login"
+                                href="/login"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 1, delay: 0.7 }}
