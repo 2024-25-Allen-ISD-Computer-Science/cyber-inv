@@ -51,24 +51,24 @@ export default function CompProgBar() {
 
                     {/* Button Group */}
                     <div className="flex items-center gap-2">
-                        <Button variant="secondary">
-                            <Link href="/dashboard">
-                                <ChartBarIcon className="h-5 w-5" />
+                        <Button variant="secondary" className="-p-4">
+                            <Link href="/dashboard" className="p-4">
+                                <ChartBarIcon/>
                             </Link>
                         </Button>
-                        <Button disabled={currentRoundType !== "puzzle"} variant="secondary">
-                            <Link href="/puzzle">
-                                <PuzzlePieceIcon className="h-5 w-5" />
+                        <Button disabled={currentRoundType !== "puzzle"} variant="secondary" className="-p-4">
+                            <Link href="/puzzle" className="p-4">
+                                <PuzzlePieceIcon/>
                             </Link>
                         </Button>
-                        <Button disabled={currentRoundType !== "battle"} variant="secondary">
-                            <Link href="/battle">
-                                <ShieldExclamationIcon className="h-5 w-5" />
+                        <Button disabled={currentRoundType !== "battle"} variant="secondary" className="-p-4">
+                            <Link href="/battle" className="p-4">
+                                <ShieldExclamationIcon/>
                             </Link>
                         </Button>
-                        <Button disabled={currentRoundType !== "scenario"} variant="secondary">
-                            <Link href="/scenario">
-                                <SparklesIcon className="h-5 w-5" />
+                        <Button disabled={currentRoundType !== "scenario"} variant="secondary" className="-p-4">
+                            <Link href="/scenario" className="p-4">
+                                <SparklesIcon/>
                             </Link>
                         </Button>
                     </div>
