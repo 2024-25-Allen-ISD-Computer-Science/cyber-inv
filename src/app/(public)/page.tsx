@@ -61,7 +61,7 @@ export default function Home() {
     }, []);
 
     return (
-        <main className="flex w-full flex-col overflow-x-hidden bg-gradient-to-bl font-sans">
+        <main className="flex w-full flex-col overflow-x-hidden bg-gradient-to-bl font-sans h-full">
             {/* <div className="w-full">
                 <div className="flex items-center justify-center text-center">
                     {isMobile ? (
@@ -92,7 +92,7 @@ export default function Home() {
             </div> */}
 
             {/* Main Section */}
-            <section className="flex h-[100vh] w-full flex-col items-center">
+            <section className="flex h-full w-full flex-col items-center">
                 <div className="flex h-full flex-col items-center justify-center text-center md:flex-row md:space-x-8 md:space-y-0 md:text-left">
                     {/* Eagle Logo Animation */}
                     <motion.div
@@ -167,7 +167,7 @@ export default function Home() {
 
             {/* Countdown */}
 
-            <section className="flex w-full flex-col items-center justify-center  p-8 text-white ">
+            <section className="flex w-full flex-col items-center justify-center  p-8 text-white h-fit">
                 <Tilt>
 
                     <div className='flex flex-col items-center glass'>

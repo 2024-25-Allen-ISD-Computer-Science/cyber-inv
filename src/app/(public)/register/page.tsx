@@ -79,8 +79,7 @@ export default function LoginPage() {
                                     <Input type="email" placeholder="Email" className="pb-2 border rounded-md" />
                                     <Input type="password" placeholder="Password" className="pb-2 border rounded-md" />
                                     <Input type="password" placeholder="Confirm Password" className="pb-2 border rounded-md" />
-                                    <Label htmlFor="member1-id">School ID</Label>
-                                    <Input id="member1-id" type="file" />
+       
                                 </div>
                                 <div className="flex flex-col gap-4">
                                     <h3 className="font-bold">Member 2</h3>
@@ -88,8 +87,6 @@ export default function LoginPage() {
                                     <Input type="email" placeholder="Email" className="pb-2 border rounded-md" />
                                     <Input type="password" placeholder="Password" className="pb-2 border rounded-md" />
                                     <Input type="password" placeholder="Confirm Password" className="pb-2 border rounded-md" />
-                                    <Label htmlFor="member2-id">School ID</Label>
-                                    <Input id="member2-id" type="file" />
                                 </div>
                             </div>
                         </form>
