@@ -27,6 +27,7 @@ import cyb7 from '~/images/cybinv7.jpg';
 import cyb8 from '~/images/cybinv8.jpg';
 import cyb9 from '~/images/cybinv9.jpg';
 import ico from '~/ico.svg';
+import trophy from '~/images/trophy.png';
 
 
 export default function Home() {
@@ -309,7 +310,14 @@ export default function Home() {
             {/* Prizes Section */}
             <section id="prizes" className="z-10 min-h-screen w-full">
                 <div className="pb-7 pl-10 pt-10 text-center text-6xl font-bold text-violet-500">
+
                     Prizes!
+                    <div className="prizes flex flex-row justify-center">
+                        <div className="flex flex-col justify-center text-center">
+                            <Image src={trophy} height={700} width={700} alt={"trophy"}></Image>
+                            <div className="text-white">First Place</div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
