@@ -1,7 +1,7 @@
 "use client"
 
 import { SiGmail, SiDiscord, SiInstagram, SiLinkedin } from 'react-icons/si';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import Image from 'next/image';
 import Timer from '@/components/Timer';
@@ -308,15 +308,63 @@ export default function Home() {
             </section>
 
             {/* Prizes Section */}
-            <section id="prizes" className="z-10 min-h-screen w-full">
-                <div className="pb-7 pl-10 pt-10 text-center text-6xl font-bold text-violet-500">
+            <section id="prizes" className="relative z-10 w-full py-16">
+                <div className="container mx-auto px-6">
+                    <h2 className="text-center text-5xl font-bold text-violet-500">Prizes</h2>
+                    <div className="mt-10 grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                        
+                        {/* Second Place */}
+                        <Card className="bg-gradient-to-b from-gray-300 to-gray-500
+ text-white shadow-lg hover:scale-105 transition-transform flex flex-col justify-center">
+                            <CardHeader>
+                                <Image
+                                    src={trophy}
+                                    alt="Trophy"
+                                    width={200}
+                                    height={200}
+                                    className="mx-auto mb-3"
+                                />
+                                <CardTitle className="mt-4 text-center text-2xl font-bold">Second Place</CardTitle>
+                            </CardHeader>
+                            <CardContent className="text-center text-gray-300">
+                                <p>Win $550 for Upper Division and $450 for Lower Division!!</p>
+                            </CardContent>
+                        </Card>
 
-                    Prizes!
-                    <div className="prizes flex flex-row justify-center">
-                        <div className="flex flex-col justify-center text-center">
-                            <Image src={trophy} height={700} width={700} alt={"trophy"}></Image>
-                            <div className="text-white">First Place</div>
-                        </div>
+                        {/* First Place */}
+                        <Card className="bg-gray-800 text-white shadow-lg hover:scale-105 transition-transform flex flex-col justify-center ">
+                            <CardHeader>
+                                <Image
+                                    src={trophy}
+                                    alt="Trophy"
+                                    width={200}
+                                    height={200}
+                                    className="mx-auto mb-3"
+                                />
+                                <CardTitle className="mt-4 text-center text-2xl font-bold">First Place</CardTitle>
+                            </CardHeader>
+                            <CardContent className="text-center text-gray-300">
+                                <p>Win $600 for Upper Division and $500 for Lower Division!</p>
+                            </CardContent>
+                        </Card>
+
+                        {/* Third Place */}
+                        <Card className="bg-gradient-to-b from-orange-500 to-orange-700
+ text-white shadow-lg hover:scale-105 transition-transform flex flex-col justify-center">
+                            <CardHeader>
+                                <Image
+                                    src={trophy}
+                                    alt="Trophy"
+                                    width={200}
+                                    height={200}
+                                    className="mx-auto mb-3"
+                                />
+                                <CardTitle className="mt-4 text-center text-2xl font-bold">Third Place</CardTitle>
+                            </CardHeader>
+                            <CardContent className="text-center text-gray-300">
+                                <p>Win $500 for Upper Division and $400 for Lower Division!</p>
+                            </CardContent>
+                        </Card>
                     </div>
                 </div>
             </section>
