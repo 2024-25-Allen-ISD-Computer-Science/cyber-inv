@@ -27,14 +27,9 @@ export default function RootLayout({
         <html lang="en" >
             <body className={`${poppins.variable} ${inter.variable} h-full font-sans antialiased`}>
 
-                <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            
-          >
+ 
+
                 {children}
-                </ThemeProvider>
             </body>
         </html>
     );

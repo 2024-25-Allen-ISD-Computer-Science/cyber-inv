@@ -1,5 +1,4 @@
 import { NavBar } from '@/components/nav/NavBar';
-import ParticlesAni from '@/components/Particles';
 
 export default function RootLayout({
     children,
@@ -7,11 +6,9 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <div className="w-full h-screen flex flex-col">
-            <div className='-z-10 absolute'>
-                <ParticlesAni />
-            </div>
-            <NavBar />
+        <div className="w-full h-full flex flex-col">
+
+     
             <div className='flex-grow'>
 
             {children}

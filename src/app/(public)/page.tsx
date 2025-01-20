@@ -1,362 +1,93 @@
-"use client"
-
-import { SiGmail, SiDiscord, SiInstagram, SiLinkedin } from 'react-icons/si';
-import { Card, CardContent } from '@/components/ui/card';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import Image from 'next/image';
-import Timer from '@/components/Timer';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Separator } from '@/components/ui/separator';
-import Tilt from 'react-parallax-tilt'
-import React, { useState, useEffect } from 'react';
-
-
-import team from '@/data/team.json';
+import { Button } from "@/components/ui/button";
+import Car from "@/components/Home/Car";
+import { ShieldExclamationIcon, PuzzlePieceIcon, SparklesIcon } from "@heroicons/react/24/outline";
+import Podium from "~/images/podium.svg"
+import Image from "next/image";
+import {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
+} from "@/components/ui/accordion"
 import faq from '@/data/faq.json';
-import sponsors from '@/data/sponsors.json'
-import * as motion from "framer-motion/client"
-import Sheet from '@/components/Home/HamburgerMenu'
-
-import cyb1 from '~/images/cybinv1.jpg';
-import cyb2 from '~/images/cybinv2.jpg';
-import cyb3 from '~/images/cybinv3.jpg';
-import cyb4 from '~/images/cybinv4.jpg';
-import cyb5 from '~/images/cybinv5.jpg';
-import cyb6 from '~/images/cybinv6.jpg';
-import cyb7 from '~/images/cybinv7.jpg';
-import cyb8 from '~/images/cybinv8.jpg';
-import cyb9 from '~/images/cybinv9.jpg';
-import ico from '~/ico.svg';
-
-
-export default function Home() {
-
-
-        const [isMobile, setIsMobile] = useState<boolean>(false);
-      
-        // Function for smooth scrolling
-        const smoothScrolling = (id: string) => {
-          const element = document.getElementById(id);
-          if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
-          }
-        };
-      
-        // Use useEffect to handle window-dependent logic
-        useEffect(() => {
-          const checkScreenWidth = () => {
-            setIsMobile(window.innerWidth < 426);
-          };
-      
-          // Initial check
-          checkScreenWidth();
-      
-          // Add event listener for resize
-          window.addEventListener("resize", checkScreenWidth);
-      
-          // Cleanup event listener on unmount
-          return () => {
-            window.removeEventListener("resize", checkScreenWidth);
-          };
-        }, []);
-
+export default function Page() {
     return (
-        <main className="flex w-full flex-col overflow-x-hidden bg-gradient-to-bl font-sans h-full">
-            {/* <div className="w-full">
-                <div className="flex items-center justify-center text-center">
-                    {isMobile ? (
-                        <Sheet />
-                    ) : (
-                        ['Sponsors', 'FAQ', 'Last Year', 'Meet the Team'].map((text) => {
-                            const href = `#${text.toLowerCase().replace(/\s+/g, '-')}`;
-                            const scrollTo = href.replace('#', '');
-
-                            return (
-                                <a
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        window.history.pushState(null, '', href);
-                                        smoothScrolling(scrollTo);
-                                    }}
-                                    href={href}
-                                    key={text}
-                                >
-                                    <div className="p-5 text-lg md:text-2xl" key={text}>
-                                        <div className="navbar">{text}</div>
-                                    </div>
-                                </a>
-                            );
-                        })
-                    )}
-                </div>
-            </div> */}
-
-            {/* Main Section */}
-            <section className="flex h-full w-full flex-col items-center">
-                <div className="flex h-full flex-col items-center justify-center text-center md:flex-row md:space-x-8 md:space-y-0 md:text-left">
-                    {/* Eagle Logo Animation */}
-                    <motion.div
-                        className="w-81 h-81 z-20 my-0"
-                        initial={{ rotate: -10, scale: 0 }}
-                        animate={{ rotate: 0, scale: 0.9 }}
-                        transition={{
-                            type: 'spring',
-                            stiffness: 260,
-                            damping: 20,
-                        }}
-                    >
-                        <Tilt>
-                            <Image src={ico} width={500} height={500} alt="Eagle Logo" className="" />
-                        </Tilt>
-                    </motion.div>
-
-                    {/* Title Animation */}
-                    <motion.div
-                        className="relative top-0 z-20 flex h-auto w-fit select-auto items-center justify-center bg-gradient-to-r from-blue-500 via-violet-500 to-pink-500 bg-clip-text  text-center text-5xl font-extrabold text-transparent md:text-7xl lg:mb-0 lg:text-9xl"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 1 }}
-                    >
-                        Allen Cyber <br /> Invitational
-                    </motion.div>
-                </div>
-
-                <div className="h-[50vh] w-full">
-                    {/* <div className="flex flex-row gap-5 justify-center items-center text-center text-3xl text-white -mt-[10vh]">
-                    <motion.a 
-                        href="/Signup"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 1, delay: 0.5 }}
-                    >
-                        <button className="bg-violet-500 py-4 px-6 rounded-xl shadow-xl hover:cursor-pointer hover:bg-violet-600 ease-in-out duration-200">
-                            Sign Up
-                        </button>
-                    </motion.a>
-
-                    <motion.a 
-                        href="/Login"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 1, delay: 0.7 }}
-                    >
-                        <button className="bg-blue-500 py-4 px-6 rounded-xl shadow-xl hover:cursor-pointer hover:bg-blue-700 ease-in-out duration-200">
-                            Login
-                        </button>
-                    </motion.a>
-                </div> */}
-
-                    {/* Learn more section with bounce animation */}
-                    <div className="flex w-full place-content-center justify-center">
-                        <Timer />
-                    </div>
-
-                    <motion.div
-                        className="mt-[2.5vh] flex flex-col items-center justify-center text-center text-2xl"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 1, delay: 1 }}
-                    >
-                        <div className="animate-bounce">Learn more &#9660;</div>
-                        <br />
-                    </motion.div>
-                </div>
-
-                {/* Sign Up Section with animation UNCOMMENT WHEN SIGN UP IS DONE*/}
-            </section>
-
-            {/* Countdown */}
-
-            <section className="flex w-full flex-col items-center justify-center  p-8 text-white h-fit">
-                <Tilt>
-
-                <div className='flex flex-col items-center glass'>
-
-                <h2 className="mb-4 text-center text-6xl font-bold text-violet-500">Our Mission</h2>
-
-                <div className="flex w-full flex-col items-center justify-center gap-8 md:flex-row md:px-12">
-                    {/* Image Section */}
-                    <div className="flex w-full justify-center md:w-1/2 shadow-xl">
-                        <Image src={ico} width={500} height={500} alt="Eagle Logo" className="rounded-lg" />
-                    </div>
-
+        <main className="w-full h-screen">
+            <section className="w-full h-2/3 flex flex-col justify-center items-center px-6 md:px-24">
+                <div className="flex flex-col-reverse md:flex-row justify-between items-center md:w-2/3 h-full">
                     {/* Text Section */}
-                    <div className="w-full text-justify text-xl font-light md:w-1/2">
-                        <p>
-                            We aim to help students have an opportunity to learn and sharpen their cybersecurity skills
-                            through this competition. Whether you are a beginner or skilled, this event offers something
-                            for everyone. The Allen Cyber Invitational is open for all North Texan high school students.
-                            We hope to see you there!
-                        </p>
-                    </div>
-                </div>
-                </div>
-                </Tilt>
-            </section>
-
-            <div>
-                <section id="meet-the-team" className="mt-20 flex flex-col items-center justify-center">
-                    <motion.div
-                        className="w-81 h-81 z-20 my-0"
-                        initial={{ rotate: -10, scale: 0 }}
-                        animate={{ rotate: 0, scale: 0.9 }}
-                        transition={{
-                            type: 'spring',
-                            stiffness: 260,
-                            damping: 20,
-                        }}
-                        dragTransition={{ power: 0.2 }}
-                    >
-                        <div className="py-8 text-center text-6xl font-bold text-violet-500">Meet The Team</div>
-                        <div className="flex items-center justify-center">
-                            <Carousel className="w-[87.5vw] max-w-6xl p-2">
-                                <CarouselContent className="flex items-center justify-between">
-                                    {team.map((member) => (
-                                        <CarouselItem key={member.name} className="md:basis-1/2 lg:basis-1/3">
-                                            <Card>
-                                                <CardContent className="flex h-max flex-col items-center justify-center p-6 md:h-80 md:p-2">
-                                                    <div className="relative flex h-full w-full justify-center overflow-hidden rounded-md">
-                                                        <Image
-                                                            src={member.image}
-                                                            alt={member.name}
-                                                            width={3000}
-                                                            height={2000}
-                                                            className="h-full w-fit object-fill"
-                                                        />
-                                                    </div>
-
-                                                    <span className="mt-5 text-center text-3xl font-bold">
-                                                        {member.name}
-                                                    </span>
-                                                    <span className="mt-2 text-center text-lg font-light">
-                                                        {member.title}
-                                                    </span>
-                                                </CardContent>
-                                            </Card>
-                                        </CarouselItem>
-                                    ))}
-                                </CarouselContent>
-                                <CarouselPrevious />
-                                <CarouselNext />
-                            </Carousel>
+                    <div className="flex flex-col  items-center space-y-4 text-center flex-grow">
+                        <h1 className="text-4xl font-bold">The Allen Cyber Invitational</h1>
+                        <p className="text-lg">Providing an opportunities to those interested</p>
+                        <p className="text-sm">Brought to you by Allen CS-forum</p>
+                        <div className="flex space-x-4 mt-4">
+                            <Button className="px-6 py-2">Log In</Button>
+                            <Button className="px-6 py-2" variant={"secondary"}>Sign Up</Button>
                         </div>
-                    </motion.div>
-                </section>
-            </div>
-
-            <section id="faq" className="mt-20 flex w-full items-center justify-center font-bold">
-                <div className="flex w-[80vw] flex-col">
-                    <div className="mb-3 w-full rounded-xl border-2 border-white">
-                        <div className="pb-7 pl-10 pt-10 text-center text-6xl font-bold text-violet-500">FAQs</div>
-                        <div className="pb-10 pl-10 text-center text-3xl font-light"></div>
                     </div>
-
-                    <Accordion type="single" collapsible className="items-center lg:grid grid-cols-2 gap-4">
-                            {faq.map((item) => (
-                                <AccordionItem key={item.question} value={item.question} >
-                                    <AccordionTrigger className="text-3xl">{item.question}</AccordionTrigger>
-                                    <AccordionContent className="text-xl font-normal">{item.answer}</AccordionContent>
-                                </AccordionItem>
-                            ))}
-                        </Accordion>
+                    {/* Image Placeholder */}
+                    <div className="flex flex-col justify-center items-center text-center p-2 ">
+                        <Car />
+                    </div>
                 </div>
             </section>
 
-            <Separator className="my-20" />
-
-            <section id="sponsors" className="z-10 w-full">
-                <div className="pb-10 text-center text-6xl font-bold text-violet-500">Sponsors</div>
-                <div className="flex flex-col items-center justify-center space-y-5">
-                    {sponsors.map((sponsor, index) => (
-                        <motion.div
-                            key={index} // Move key prop to motion.div
-                            className="w-81 h-81 my-0"
-                            initial={{ scale: 0 }}
-                            whileInView={{ scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{
-                                type: 'spring',
-                                stiffness: 260,
-                                damping: 20,
-                            }}
-                        >
-                            <div
-                                className={`flex w-full items-center justify-between px-10 md:px-24 lg:px-52 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
-                                key={sponsor.name}
-                            >
-                                <Tilt className="h-[35%] w-[35%] rounded-md object-cover md:h-[20%] md:w-[20%]">
-                                    <Image
-                                        src={sponsor.image}
-                                        alt={sponsor.name}
-                                        width={4032}
-                                        height={3024}
-                                        className="opacity-50 transition-opacity duration-500 hover:opacity-100"
-                                    />
-                                </Tilt>
-                                <Card className="w-[42.5vw]">
-                                    <CardContent className="flex h-36 flex-col items-center justify-center p-2">
-                                        <span className="mt-2 text-center text-xl font-bold md:text-3xl lg:text-4xl">
-                                            {sponsor.name}
-                                        </span>
-                                    </CardContent>
-                                </Card>
+            <section className="w-full h-fit flex justify-center items-center mt-10">
+                <div className="bg-accent/40 border border-1 border-white/20 p-2 rounded-xl md:w-2/3 shadow-2xl">
+                    <div className="rounded-lg p-4 flex flex-col md:flex-row gap-4 items-center justify-center w-full">
+                        <div className="bg-card border border-white/30 p-5 w-full md:w-2/3 rounded-lg shadow-xl flex flex-col items-center min-h-full">
+                            <div className="text-2xl">
+                                <PuzzlePieceIcon className="w-12 h-12 text-green-300" />
                             </div>
-                        </motion.div>
-                    ))}
-                </div>
-            </section>
-
-            {/* Gallery Section */}
-            <section id="last-year" className="z-10 min-h-screen w-full">
-                <div className="pb-7 pl-10 pt-10 text-center text-6xl font-bold text-violet-500">
-                    Last Year's Event!
-                </div>
-                <div className="z-10 mx-auto grid w-[80vw] grid-cols-1 gap-6 p-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
-                    {[cyb1, cyb2, cyb3, cyb4, cyb5, cyb6, cyb7, cyb8, cyb9].map((image, index) => (
-                        <div key={index} className="overflow-hidden rounded-lg shadow-lg">
-                            <Image
-                                src={image}
-                                alt={`Gallery image ${index + 1}`}
-                                width={500}
-                                height={500}
-                                loading="lazy"
-                                className="h-full w-full object-cover hover:zoom-in-75"
-                            />
+                            <div>Puzzle Round</div>
+                            <div className="text-center mt-2 w-1/2">
+                                CTF based round where teams solve puzzles as fast as possible to earn points.
+                            </div>
                         </div>
-                    ))}
-                </div>
-            </section>
 
-            {/* Footer */}
-            <div className="mt-8 flex justify-center bg-zinc-900 p-8">
-                <div className="flex w-11/12 flex-col items-center text-white lg:w-5/6">
-                    <div className="flex w-full items-center justify-evenly">
-                        <div className="h-0.5 w-1/4 bg-zinc-100 lg:w-1/3"></div>
-                        <div className="flex w-1/2 flex-row items-center justify-evenly border-zinc-100 lg:w-1/3">
-                            <a href="mailto:allencyberinvitational@gmail.com">
-                                <SiGmail />
-                            </a>
-                            <a href="">
-                                <SiInstagram />
-                            </a>
-                            <a href="">
-                                <SiDiscord />
-                            </a>
-                            <a href="">
-                                <SiLinkedin />
-                            </a>
+
+                        <div className="bg-card border border-white/30 p-5 w-full  md:w-2/3 rounded-lg shadow-xl flex flex-col justify-items-center items-center min-h-full">
+                            <div className="text-2xl"><ShieldExclamationIcon className="size-12 text-red-300" /></div>
+                            <div>Battle Round</div>
+                            <div className="text-center mt-2 w-1/2">CTF based round where teams gamble their points from previous rounds to get ahead.</div>
                         </div>
-                        <div className="h-0.5 w-1/4 bg-zinc-100 lg:w-1/3"></div>
-                    </div>
-                    <div className="my-3 flex items-center gap-3">
-                        <Image src={ico} width={20} height={20} className="h-20 w-20" alt="Cyber Invitational Icon" />
-                        <div className="text-center text-lg font-bold tracking-wide text-white lg:text-3xl">
-                            Allen Cyber Invitational
+
+                        <div className="bg-card border border-white/30 p-5 w-full md:w-2/3 rounded-lg shadow-xl flex flex-col justify-items-center items-center min-h-full">
+                            <div className="text-2xl"><SparklesIcon className="size-12 text-violet-300" /></div>
+                            <div>Scenario Round</div>
+                            <div className="text-center mt-2 w-1/2">Blue team based game where you defend your systems from intruders and earn points.</div>
                         </div>
                     </div>
-                    <div className="text-sm lg:text-base">Copyright &copy; 2024 Allen Cyber Invitational</div>
                 </div>
-            </div>
+            </section>
+            <section className="w-full h-fit md:h-2/3 flex flex-col justify-center items-center  px-2 gap-5 mt-10">
+                <div
+                    className="text-3xl md:text-7xl font-bold bg-gradient-to-r from-orange-500 via-orange-300 to-yellow-300"
+                    style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
+                >
+                    $2,000 in prizes
+                </div>
+                {/* TODO: switch this out with real prize money */}
+                <Image src={Podium} alt="podium" height={440} width={900} />
+            </section>
+            <section className="w-full h-fit flex justify-center items-center">
+                <div className="flex flex-col justify-center items-center  p-24 gap-5  rounded-xl w-full md:w-2/3">
+
+                    <div className="text-3xl"> FAQ</div>
+                    <Accordion type="single" collapsible className="items-center lg:grid grid-cols-2 gap-4 w-full">
+                        {faq.map((item) => (
+                            <AccordionItem key={item.question} value={item.question} >
+                                <AccordionTrigger className="text-2xl">{item.question}</AccordionTrigger>
+                                <AccordionContent className="text-xl font-normal">{item.answer}</AccordionContent>
+                            </AccordionItem>
+                        ))}
+                    </Accordion>
+                </div>
+            </section>
+            <section className="w-full h-1/2">
+
+            </section>
+
         </main>
     );
 }
