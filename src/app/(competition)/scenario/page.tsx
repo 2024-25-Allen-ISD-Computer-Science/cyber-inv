@@ -26,15 +26,15 @@ export default function page() {
                 direction="horizontal"
                 className="h-full w-full"
             >
-                <ResizablePanel defaultSize={65}>
+                <ResizablePanel defaultSize={75} maxSize={77.5}>
                     <div className="flex h-full items-center justify-center">
-                        <div className='absolute -z-10 overflow-hidden'>
-                            <Scenario />
+                        <div className='flex -z-10 overflow-hidden'>
+                            <Scenario/>
                         </div>
                     </div>
                 </ResizablePanel>
                 <ResizableHandle withHandle />
-                <ResizablePanel defaultSize={35}>
+                <ResizablePanel defaultSize={35} maxSize={37.5}>
                     <div className="flex flex-col h-full bg-background/60 backdrop-blur-md">
                         <div className="flex-grow flex w-full p-2 overflow-y-scroll">
                             <div className='grid grid-cols-1 w-full h-fit gap-5'>
