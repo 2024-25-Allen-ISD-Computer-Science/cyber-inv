@@ -33,33 +33,34 @@ export default function Page() {
             </section>
 
             <section className="w-full h-fit flex justify-center items-center mt-10">
-                <div className="bg-accent/40 border border-1 border-white/20 p-2 rounded-xl md:w-2/3 shadow-2xl">
-                    <div className="rounded-lg p-4 flex flex-col md:flex-row gap-4 items-center justify-center w-full">
-                        <div className="bg-card border border-white/30 p-5 w-full md:w-2/3 rounded-lg shadow-xl flex flex-col items-center min-h-full">
-                            <div className="text-2xl">
-                                <PuzzlePieceIcon className="w-12 h-12 text-green-300" />
-                            </div>
-                            <div>Puzzle Round</div>
-                            <div className="text-center mt-2 w-1/2">
-                                CTF based round where teams solve puzzles as fast as possible to earn points.
-                            </div>
-                        </div>
-
-
-                        <div className="bg-card border border-white/30 p-5 w-full  md:w-2/3 rounded-lg shadow-xl flex flex-col justify-items-center items-center min-h-full">
-                            <div className="text-2xl"><ShieldExclamationIcon className="size-12 text-red-300" /></div>
-                            <div>Battle Round</div>
-                            <div className="text-center mt-2 w-1/2">CTF based round where teams gamble their points from previous rounds to get ahead.</div>
-                        </div>
-
-                        <div className="bg-card border border-white/30 p-5 w-full md:w-2/3 rounded-lg shadow-xl flex flex-col justify-items-center items-center min-h-full">
-                            <div className="text-2xl"><SparklesIcon className="size-12 text-violet-300" /></div>
-                            <div>Scenario Round</div>
-                            <div className="text-center mt-2 w-1/2">Blue team based game where you defend your systems from intruders and earn points.</div>
-                        </div>
-                    </div>
+    <div className="bg-accent/40 border border-1 border-white/20 p-2 rounded-xl md:w-2/3 shadow-2xl">
+        <div className="rounded-lg p-4 flex flex-col md:flex-row gap-4 items-stretch justify-center w-full">
+            <div className="bg-card border border-white/30 p-5 w-full md:w-2/3 rounded-lg shadow-xl flex flex-col justify-items-center items-center h-full">
+                <div className="text-2xl">
+                    <PuzzlePieceIcon className="w-12 h-12 text-green-300" />
                 </div>
-            </section>
+                <div>Puzzle Round</div>
+                <div className="text-center mt-2 w-1/2">CTF based round where teams solve puzzles together as fast as possible to earn points.</div>
+            </div>
+
+          <div className="bg-card border border-white/30 p-5 w-full md:w-2/3 rounded-lg shadow-xl flex flex-col justify-items-center items-center h-full">
+                <div className="text-2xl">
+                    <ShieldExclamationIcon className="size-12 text-red-300" />
+                </div>
+                <div>Battle Round</div>
+                <div className="text-center mt-2 w-1/2">CTF based round where teams gamble their points from previous rounds to get ahead.</div>
+            </div>
+
+            <div className="bg-card border border-white/30 p-5 w-full md:w-2/3 rounded-lg shadow-xl flex flex-col justify-items-center items-center h-full">
+                <div className="text-2xl">
+                    <SparklesIcon className="size-12 text-violet-300" />
+                </div>
+                <div>Scenario Round</div>
+                <div className="text-center mt-2 w-1/2">Blue team based game where you defend your systems from intruders and earn points.</div>
+            </div>
+        </div>
+    </div>
+</section>
             <section className="w-full h-fit md:h-2/3 flex flex-col justify-center items-center  px-2 gap-5 mt-10">
                 <div
                     className="text-3xl md:text-7xl font-bold bg-gradient-to-r from-orange-500 via-orange-300 to-yellow-300"
