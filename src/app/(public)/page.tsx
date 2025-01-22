@@ -10,9 +10,31 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion"
 import faq from '@/data/faq.json';
+import ico from "~/ico.svg"
+
 export default function Page() {
     return (
         <main className="w-full h-screen">
+            <section className="flex align-center justify-center items-center">
+                <div className="w-[75vw] flex flex-row text-center align-center items-center mt-5 p-5 text-xl justify-between">
+                    <div className="text-2xl font-semibold">
+                        <div className="flex flex-row items-center">
+                        <Image src={ico} height={50} width={50} className="mr-2"/>
+                        ALLEN CYBER
+                        </div>
+                    </div>
+                    <div className="flex flex-row ">
+                        <div className="ml-5 mr-5">Info</div>
+                        <div className="ml-5 mr-5">Mission</div>
+                        <div className="ml-5 mr-5">Prizes</div>
+                        <div className="ml-5 mr-5">FAQ</div>
+                    </div>
+                    <div className="flex flex-row gap-x-2">
+                                                <Button className="px-6 py-2">Log In</Button>
+                            <Button className="px-6 py-2" variant={"secondary"}>Sign Up</Button>
+                    </div>
+                </div>
+            </section>
             <section className="w-full h-2/3 flex flex-col justify-center items-center px-6 md:px-24">
                 <div className="flex flex-col-reverse md:flex-row justify-between items-center md:w-2/3 h-full">
                     {/* Text Section */}
@@ -33,34 +55,34 @@ export default function Page() {
             </section>
 
             <section className="w-full h-fit flex justify-center items-center mt-10">
-    <div className="bg-accent/40 border border-1 border-white/20 p-2 rounded-xl md:w-2/3 shadow-2xl">
-        <div className="rounded-lg p-4 flex flex-col md:flex-row gap-4 items-stretch justify-center w-full">
-            <div className="bg-card border border-white/30 p-5 w-full md:w-2/3 rounded-lg shadow-xl flex flex-col justify-items-center items-center h-full">
-                <div className="text-2xl">
-                    <PuzzlePieceIcon className="w-12 h-12 text-green-300" />
-                </div>
-                <div>Puzzle Round</div>
-                <div className="text-center mt-2 w-1/2">CTF based round where teams solve puzzles together as fast as possible to earn points.</div>
-            </div>
+                <div className="bg-accent/40 border border-1 border-white/20 p-2 rounded-xl md:w-2/3 shadow-2xl">
+                    <div className="rounded-lg p-4 flex flex-col md:flex-row gap-4 items-stretch justify-center w-full">
+                        <div className="bg-card border border-white/30 p-5 w-full md:w-2/3 rounded-lg shadow-xl flex flex-col justify-items-center items-center h-full">
+                            <div className="text-2xl">
+                                <PuzzlePieceIcon className="w-12 h-12 text-green-300" />
+                            </div>
+                            <div>Puzzle Round</div>
+                            <div className="text-center mt-2 w-1/2">CTF based round where teams solve puzzles together as fast as possible to earn points.</div>
+                        </div>
 
-          <div className="bg-card border border-white/30 p-5 w-full md:w-2/3 rounded-lg shadow-xl flex flex-col justify-items-center items-center h-full">
-                <div className="text-2xl">
-                    <ShieldExclamationIcon className="size-12 text-red-300" />
-                </div>
-                <div>Battle Round</div>
-                <div className="text-center mt-2 w-1/2">CTF based round where teams gamble their points from previous rounds to get ahead.</div>
-            </div>
+                        <div className="bg-card border border-white/30 p-5 w-full md:w-2/3 rounded-lg shadow-xl flex flex-col justify-items-center items-center h-full">
+                            <div className="text-2xl">
+                                <ShieldExclamationIcon className="size-12 text-red-300" />
+                            </div>
+                            <div>Battle Round</div>
+                            <div className="text-center mt-2 w-1/2">CTF based round where teams gamble their points from previous rounds to get ahead.</div>
+                        </div>
 
-            <div className="bg-card border border-white/30 p-5 w-full md:w-2/3 rounded-lg shadow-xl flex flex-col justify-items-center items-center h-full">
-                <div className="text-2xl">
-                    <SparklesIcon className="size-12 text-violet-300" />
+                        <div className="bg-card border border-white/30 p-5 w-full md:w-2/3 rounded-lg shadow-xl flex flex-col justify-items-center items-center h-full">
+                            <div className="text-2xl">
+                                <SparklesIcon className="size-12 text-violet-300" />
+                            </div>
+                            <div>Scenario Round</div>
+                            <div className="text-center mt-2 w-1/2">Blue team based game where you defend your systems from intruders and earn points.</div>
+                        </div>
+                    </div>
                 </div>
-                <div>Scenario Round</div>
-                <div className="text-center mt-2 w-1/2">Blue team based game where you defend your systems from intruders and earn points.</div>
-            </div>
-        </div>
-    </div>
-</section>
+            </section>
             <section className="w-full h-fit md:h-2/3 flex flex-col justify-center items-center  px-2 gap-5 mt-10">
                 <div
                     className="text-3xl md:text-7xl font-bold bg-gradient-to-r from-orange-500 via-orange-300 to-yellow-300"
