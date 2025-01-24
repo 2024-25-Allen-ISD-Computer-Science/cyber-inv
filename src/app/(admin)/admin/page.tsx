@@ -18,7 +18,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
 import { Separator } from "@/components/ui/separator";
-import { useEffect } from "react";
+import React, { useRef } from "react";
 import { EndRound } from "./action";
 const roundSchema = z.object({
   roundName: z.string().min(1, "Round name is required."),
@@ -104,7 +104,7 @@ export default function RoundController() {
 
 
   return (
-    <main className="w-full h-full flex flex-col justify-center items-center">
+    <main className="w-full h-full flex flex-col justify-center items-center mt-6">
       <div className="w-full text-center font-bold text-2xl underline">Round Creation Settings</div>
     
       <div className="w-1/2 bg-card p-6 shadow-md rounded-md">
@@ -211,10 +211,10 @@ export default function RoundController() {
         </Form>
 
         {/* Stop Rounds Button */}
-        <Button variant="destructive" onClick={handleStopRounds} className="mt-4">
+        <Button variant="destructive" onClick={handleStopRounds} className="mt-4 mr-2">
           Stop All Rounds
         </Button>
-        <Button variant="outline" onClick={splitIntoDivs} className="mt-4 bg-lime-700">
+        <Button variant="outline" onClick={splitIntoDivs} className="mt-4 bg-lime-700 ml-2">
          Split into divs
         </Button>
       </div>
