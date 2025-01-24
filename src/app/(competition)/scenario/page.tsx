@@ -27,7 +27,7 @@ export default function page() {
         async function checkRoundType() {
             const currentRound = await getRound();
             if (currentRound.roundType !== "scenario") {
-                //redirect('/dashboard');
+                redirect('/dashboard');
             }
         }
 
@@ -50,8 +50,19 @@ export default function page() {
                 </ResizablePanel>
                 <ResizableHandle withHandle />
                 <ResizablePanel defaultSize={35} maxSize={37.5}>
-                    <div className="flex flex-col max-h-[86.5vh] h-full bg-background/60 backdrop-blur-md">
-                        <div className="flex-grow flex w-full p-2 overflow-y-scroll flex-col-reverse">
+                    <div className="flex flex-col h-full bg-background/60 backdrop-blur-md">
+                        <div className='flex grid grid-cols-1 border-2 w-full h-[15vh] items-center justify-center'>
+                            <div className='flex items-center justify-center'>
+                                <div className='w-[5vw] h-[5vh]' style={{background: "radial-gradient(circle, #66FF00 25%, rgba(0,255,0,0.25) 50%, transparent 0%)"}}/>
+                                <div>Power Status</div>
+                            </div>
+
+                            <div className='flex items-center justify-center'>
+                                <div className='w-[5vw] h-[5vh]' style={{background: "radial-gradient(circle, #66FF00 25%, rgba(0,255,0,0.25) 50%, transparent 0%)"}}/>
+                                <div>Water Status</div>
+                            </div>
+                        </div>
+                        <div className="flex-grow flex w-full max-h-[65vh] p-2 overflow-y-scroll flex-col-reverse">
                             <div className='grid grid-cols-1 w-full h-fit gap-3'>
                                 {messages.map((message, index) => (
                                     <div key={index} className="whitespace-pre-wrap break-words">
