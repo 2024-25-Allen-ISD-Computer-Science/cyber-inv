@@ -1,4 +1,4 @@
-import { NavBar } from '@/components/nav/NavBar';
+import Nav from "@/components/Home/Nav";
 
 export default function RootLayout({
     children,
@@ -6,13 +6,19 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
+        <>
+            {/* Navbar */}
+            <div className="sticky top-0 z-20 bg-black/30 backdrop-blur-md w-full">
+                <Nav />
+            </div>
+        
         <div className="w-full h-full flex flex-col">
 
-     
-            <div className='flex-grow'>
-
-            {children}
+            {/* Main Content */}
+            <div className="flex-grow w-full">
+                {children}
             </div>
         </div>
+        </>
     );
 }

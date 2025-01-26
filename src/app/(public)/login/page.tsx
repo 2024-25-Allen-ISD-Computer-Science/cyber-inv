@@ -1,4 +1,5 @@
-"use client"
+// page.tsx
+"use client";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,6 +11,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { loginUser } from '@/server'; // Import the login function
 
 export default function LoginPage() {
   // State management for email, password, and error message
@@ -17,22 +19,27 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  // Placeholder for login logic
-  const handleLogin = async (e:any) => {
+  // Handle login logic
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Reset error
     setError("");
 
     try {
-      // Replace with backend API logic
-      console.log("Logging in with:", { email, password });
-      
-      // Example: Check credentials (replace with actual backend response handling)
-      if (email === "test@example.com" && password === "password123") {
+      // Call the server-side login function
+      const result = await loginUser(email, password);
+
+      if (result.success) {
+        // If login is successful, log the user data and redirect
+        console.log("Login successful:", result.user);
         alert("Login successful!");
+
+        // Redirect to another page (e.g., dashboard)
+        window.location.href = "/dashboard"; // Replace with your desired route
       } else {
-        setError("Invalid email or password.");
+        // If login fails, display an error message
+        setError(result.error || "An error occurred. Please try again.");
       }
     } catch (err) {
       console.error("Login error:", err);

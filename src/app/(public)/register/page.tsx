@@ -1,20 +1,38 @@
+// signup.tsx
 "use client";
 import { useState } from "react";
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { signUpSolo, signUpTeam } from '@/server';
 
-export default function LoginPage() {
-    // State to track the current step
+export default function SignUpPage() {
     const [step, setStep] = useState("choice"); // "choice", "solo", "team"
+
+    const handleSoloSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const formData = new FormData(event.currentTarget);
+        await signUpSolo(formData);
+    };
+
+    const handleTeamSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const formData = new FormData(event.currentTarget);
+
+        // Log form data for debugging
+        for (const [key, value] of formData.entries()) {
+            console.log(key, value);
+        }
+
+        try {
+            await signUpTeam(formData);
+            alert("Team created successfully!");
+        } catch (error) {
+            console.error("Error creating team:", error);
+            alert("Failed to create team. Please check the console for details.");
+        }
+    };
 
     return (
         <main className="w-full h-full flex justify-center items-center">
@@ -42,14 +60,13 @@ export default function LoginPage() {
                         <CardDescription>Fill out your personal details</CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <form className="flex flex-col gap-4">
-                            <Input type="text" placeholder="Team Name" className="pb-2 border rounded-md" />
-                            <Input type="text" placeholder="Name" className="pb-2 border rounded-md" />
-                            <Input type="email" placeholder="Email" className="pb-2 border rounded-md" />
-                            <Input type="password" placeholder="Password" className="pb-2 border rounded-md" />
-                            <Input type="password" placeholder="Confirm Password" className="pb-2 border rounded-md" />
+                        <form onSubmit={handleSoloSubmit} className="flex flex-col gap-4">
+                            <Input name="teamName" type="text" placeholder="Team Name" className="pb-2 border rounded-md" />
+                            <Input name="name" type="text" placeholder="Name" className="pb-2 border rounded-md" />
+                            <Input name="email" type="email" placeholder="Email" className="pb-2 border rounded-md" />
+                            <Input name="password" type="password" placeholder="Password" className="pb-2 border rounded-md" />
+                            <Input name="confirmPassword" type="password" placeholder="Confirm Password" className="pb-2 border rounded-md" />
                             <Label htmlFor="school-id">School ID</Label>
-                            <Input id="school-id" type="file" />
                             <Button type="submit" className="bg-blue-500 text-white">
                                 Submit
                             </Button>
@@ -70,33 +87,32 @@ export default function LoginPage() {
                         <CardDescription>Fill out details for each team member</CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <form className="flex flex-col gap-4">
-                            <Input type="text" placeholder="Team Name" className="pb-2 border rounded-md" />
+                        <form onSubmit={handleTeamSubmit} className="flex flex-col gap-4">
+                            <Input name="teamName" type="text" placeholder="Team Name" className="pb-2 border rounded-md" />
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div className="flex flex-col gap-4">
                                     <h3 className="font-bold">Member 1</h3>
-                                    <Input type="text" placeholder="Name" className="pb-2 border rounded-md" />
-                                    <Input type="email" placeholder="Email" className="pb-2 border rounded-md" />
-                                    <Input type="password" placeholder="Password" className="pb-2 border rounded-md" />
-                                    <Input type="password" placeholder="Confirm Password" className="pb-2 border rounded-md" />
-       
+                                    <Input name="member1Name" type="text" placeholder="Name" className="pb-2 border rounded-md" />
+                                    <Input name="member1Email" type="email" placeholder="Email" className="pb-2 border rounded-md" />
+                                    <Input name="member1Password" type="password" placeholder="Password" className="pb-2 border rounded-md" />
+                                    <Input name="member1ConfirmPassword" type="password" placeholder="Confirm Password" className="pb-2 border rounded-md" />
                                 </div>
                                 <div className="flex flex-col gap-4">
                                     <h3 className="font-bold">Member 2</h3>
-                                    <Input type="text" placeholder="Name" className="pb-2 border rounded-md" />
-                                    <Input type="email" placeholder="Email" className="pb-2 border rounded-md" />
-                                    <Input type="password" placeholder="Password" className="pb-2 border rounded-md" />
-                                    <Input type="password" placeholder="Confirm Password" className="pb-2 border rounded-md" />
+                                    <Input name="member2Name" type="text" placeholder="Name" className="pb-2 border rounded-md" />
+                                    <Input name="member2Email" type="email" placeholder="Email" className="pb-2 border rounded-md" />
+                                    <Input name="member2Password" type="password" placeholder="Password" className="pb-2 border rounded-md" />
+                                    <Input name="member2ConfirmPassword" type="password" placeholder="Confirm Password" className="pb-2 border rounded-md" />
                                 </div>
                             </div>
+                            <Button type="submit" className="bg-blue-500 text-white">
+                                Submit
+                            </Button>
                         </form>
                     </CardContent>
                     <CardFooter className="flex justify-between">
                         <Button variant="outline" onClick={() => setStep("choice")}>
                             Back
-                        </Button>
-                        <Button type="submit" className="bg-blue-500 text-white">
-                            Submit
                         </Button>
                     </CardFooter>
                 </Card>

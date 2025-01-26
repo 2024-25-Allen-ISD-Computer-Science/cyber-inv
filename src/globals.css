@@ -2,53 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 /* Comp1BG.css */
-.dots-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    pointer-events: none; /* Allows user interactions through the background */
-    z-index: -1; /* Ensures it stays in the background */
-}
-.grid-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    pointer-events: none; /* Allows user interactions through the background */
-    z-index: -1; /* Ensures it stays in the background */
-}
-/* GridBackground.css */
-.grid-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 200%;
-    height: 200%;
-    background-image: linear-gradient(#b2b2b2 2px, transparent 2px), 
-                      linear-gradient(to right, #b2b2b2 2px, transparent 2px);
-    background-size: 32px 32px;
- 
-    pointer-events: none; /* Allows interactions with elements on top */
-    z-index: -20;
-    opacity: 10; /* Keeps it in the background */
-    animation: slide-dots 20s linear infinite;
-}
 
-.dots {
-    width: 200%; /* Extend width for smooth animation */
-    height: 200%; /* Extend height for smooth animation */
-    background-image: radial-gradient(rgba(159, 159, 159, 0.42) 2px, transparent 2px), radial-gradient(rgba(159, 159, 159, 0.42) 2px, transparent 2px);
-    background-size: 32px 32px;
-    background-position: 0 0, 16px 16px;
-    background-color: rgba(255, 255, 255, 0);
-    opacity: 30;
-    animation: slide-dots 20s linear infinite;
-}
 
 @keyframes slide-dots {
     from {
