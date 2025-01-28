@@ -35,7 +35,7 @@ export default function SignUpPage() {
     };
 
     return (
-        <main className="w-full h-full flex justify-center items-center">
+        <main className="w-full h-full flex flex-col justify-center items-center">
             {step === "choice" && (
                 <Card className="w-fit h-fit">
                     <CardHeader>

@@ -44,54 +44,72 @@ export default function Page() {
                     </div>
                 </div>
             </section>
-
             <section className="w-full h-fit md:h-1/3 flex justify-center items-center">
-                <div className="bg-accent/40 border border-1 border-white/20 md:w-2/3 rounded-lg shadow-2xl h-full w-full ">
-                    <div className="rounded-lg p-4 flex flex-col md:flex-row gap-4 items-stretch justify-center w-full h-full">
-                        {/* Puzzle Round Card */}
-                        <div className="bg-card border border-white/30 p-5 w-full md:w-1/3 rounded-lg shadow-xl flex flex-col justify-center items-center h-full relative overflow-hidden group">
-                            <div className="text-2xl">
-                                <PuzzlePieceIcon className="size-48 text-green-300" />
-                            </div>
-                            <div>Puzzle Round</div>
-                            {/* Hidden Content */}
-                            <div className="absolute bottom-0 left-0 w-full bg-card/30 backdrop-blur-md p-4 transform translate-y-full transition-transform duration-300 group-hover:translate-y-0 h-full">
-                                <div className="text-center mt-2 w-full ">
-                                    CTF based round where teams solve puzzles together as fast as possible to earn points. This will make up a majority of the competition.
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Battle Round Card */}
-                        <div className="bg-card border border-white/30 p-5 w-full md:w-1/3 rounded-lg shadow-xl flex flex-col justify-center items-center h-full relative overflow-hidden group">
-                            <div className="text-2xl">
-                                <ShieldExclamationIcon className="size-48 text-red-300" />
-                            </div>
-                            <div>Battle Round</div>
-                            {/* Hidden Content */}
-                            <div className="absolute bottom-0 left-0 w-full bg-card/30 backdrop-blur-md p-4 transform translate-y-full transition-transform duration-300 group-hover:translate-y-0 h-full">
-                                <div className="text-center mt-2 w-full ">
-                                    CTF based round where teams will place their bets
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Scenario Round Card */}
-                        <div className="bg-card border border-white/30 p-5 w-full md:w-1/3 rounded-lg shadow-xl flex flex-col justify-center items-center h-full relative overflow-hidden group">
-                            <div className="text-2xl">
-                                <SparklesIcon className="size-48 text-violet-300" />
-                            </div>
-                            <div>Scenario Round</div>
-                            {/* Hidden Content */}
-                            <div className="absolute bottom-0 left-0 w-full bg-card/30 backdrop-blur-md p-4 transform translate-y-full transition-transform duration-300 group-hover:translate-y-0 h-full">
-                                <div className="text-center mt-2 w-full ">
-                                    Blue team based game where you defend your systems from intruders and earn points.
-                                </div>
-                            </div>
-                        </div>
+    <div className="bg-accent/40 border border-1 border-white/20 md:w-2/3 rounded-lg shadow-2xl h-full w-full">
+        <div className="rounded-lg p-4 flex flex-col md:flex-row gap-4 items-stretch justify-center w-full h-full">
+            {/* Puzzle Round Card */}
+            <div className="bg-card border border-white/30 p-5 w-full md:w-1/3 rounded-lg shadow-xl flex flex-col justify-center items-center h-full relative group">
+                {/* Icon */}
+                <div className="text-2xl md:mb-4">
+                    <PuzzlePieceIcon className="size-36 md:size-48 text-green-300" />
+                </div>
+                {/* Title */}
+                <div className="mb-2 text-lg font-semibold md:mb-0">Puzzle Round</div>
+                {/* Hidden Content (Hover Effect on Desktop) */}
+                <div className="absolute bottom-0 left-0 w-full bg-card/30 backdrop-blur-md p-4 transition-opacity duration-300 opacity-0 group-hover:opacity-100 h-full hidden md:flex items-center justify-center">
+                    <div className="text-center w-full">
+                        CTF based round where teams solve puzzles together as fast as possible to earn points. This will make up a majority of the competition.
                     </div>
                 </div>
-            </section>
+                {/* Always Visible Description (Mobile) */}
+                <div className="block md:hidden text-center mt-2">
+                    CTF based round where teams solve puzzles together as fast as possible to earn points. This will make up a majority of the competition.
+                </div>
+            </div>
+
+            {/* Battle Round Card */}
+            <div className="bg-card border border-white/30 p-5 w-full md:w-1/3 rounded-lg shadow-xl flex flex-col justify-center items-center h-full relative group">
+                {/* Icon */}
+                <div className="text-2xl md:mb-4">
+                    <ShieldExclamationIcon className="size-36 md:size-48 text-red-300" />
+                </div>
+                {/* Title */}
+                <div className="mb-2 text-lg font-semibold md:mb-0">Battle Round</div>
+                {/* Hidden Content (Hover Effect on Desktop) */}
+                <div className="absolute bottom-0 left-0 w-full bg-card/30 backdrop-blur-md p-4 transition-opacity duration-300 opacity-0 group-hover:opacity-100 h-full hidden md:flex items-center justify-center">
+                    <div className="text-center w-full">
+                        CTF based round where teams will place their bets.
+                    </div>
+                </div>
+                {/* Always Visible Description (Mobile) */}
+                <div className="block md:hidden text-center mt-2">
+                    CTF based round where teams will place their bets.
+                </div>
+            </div>
+
+            {/* Scenario Round Card */}
+            <div className="bg-card border border-white/30 p-5 w-full md:w-1/3 rounded-lg shadow-xl flex flex-col justify-center items-center h-full relative group">
+                {/* Icon */}
+                <div className="text-2xl md:mb-4">
+                    <SparklesIcon className="size-36 md:size-48 text-violet-300" />
+                </div>
+                {/* Title */}
+                <div className="mb-2 text-lg font-semibold md:mb-0">Scenario Round</div>
+                {/* Hidden Content (Hover Effect on Desktop) */}
+                <div className="absolute bottom-0 left-0 w-full bg-card/30 backdrop-blur-md p-4 transition-opacity duration-300 opacity-0 group-hover:opacity-100 h-full hidden md:flex items-center justify-center">
+                    <div className="text-center w-full">
+                        Blue team based game where you defend your systems from intruders and earn points.
+                    </div>
+                </div>
+                {/* Always Visible Description (Mobile) */}
+                <div className="block md:hidden text-center mt-2">
+                    Blue team based game where you defend your systems from intruders and earn points.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 
             <section className="w-full h-lvh md:h-lvh flex flex-col justify-center items-center px-2 gap-5 ">
                 <div
