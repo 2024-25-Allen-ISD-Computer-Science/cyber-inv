@@ -12,16 +12,19 @@ import {
 } from "@/components/ui/accordion"
 import faq from '@/data/faq.json';
 import Link from "next/link";
-
+import BLUR1 from "~/BLUR1.svg"
+import BLUR2 from "~/BLUR2.svg"
+import BLUR3 from "~/BLUR3.svg"
 export default function Page() {
 
 
     return (
-        <main className="w-full h-screen">
+        <main className="w-full h-full">
 
 
             {/* Rest of the Page */}
             <section className="w-full h-2/3 flex flex-col justify-center items-center px-6 md:px-24">
+            <Image src={BLUR1} height={500} width={500} alt="blur1" className="absolute justify-center w-full h-full -z-20 overflow-clip opacity-15"/>
                 <div className="flex flex-col-reverse md:flex-row justify-between items-center md:w-2/3 h-full">
                     {/* Text Section */}
                     <div className="flex flex-col items-center space-y-4 text-center flex-grow">
@@ -45,7 +48,10 @@ export default function Page() {
                 </div>
             </section>
             <section className="w-full h-fit md:h-1/3 flex justify-center items-center">
+            <Image src={BLUR2} height={500} width={500} alt="blur1" className="absolute flex justify-self-end w-full h-full -z-20 overflow-clip opacity-15"/>
+
     <div className="bg-accent/40 border border-1 border-white/20 md:w-2/3 rounded-lg shadow-2xl h-full w-full">
+    
         <div className="rounded-lg p-4 flex flex-col md:flex-row gap-4 items-stretch justify-center w-full h-full">
             {/* Puzzle Round Card */}
             <div className="bg-card border border-white/30 p-5 w-full md:w-1/3 rounded-lg shadow-xl flex flex-col justify-center items-center h-full relative group">
@@ -112,6 +118,8 @@ export default function Page() {
 
 
             <section className="w-full h-lvh md:h-lvh flex flex-col justify-center items-center px-2 gap-5 ">
+            <Image src={BLUR3} height={500} width={500} alt="blur1" className="absolute flex justify-self-end w-full h-full -z-20 overflow-clip opacity-25"/>
+
                 <div
                     className="text-3xl md:text-7xl font-bold bg-gradient-to-r from-orange-500 via-orange-300 to-yellow-300"
                     style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}
