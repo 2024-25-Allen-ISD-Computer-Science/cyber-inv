@@ -1,6 +1,6 @@
-import { pushRound } from "@/server";
+import { pushRound } from "@/api/server";
 import { round } from "@/types";
-import { endRound } from "@/server";
+import { endRound } from "@/api/server";
 export async function newRound(round:round){
     return await pushRound(round)
 }

@@ -1,5 +1,5 @@
 "use client";
-import { pushRound } from "@/server";
+import { pushRound } from "@/api/server";
 import { round } from "@/types";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";

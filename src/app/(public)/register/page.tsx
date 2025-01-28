@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { signUpSolo, signUpTeam } from '@/server';
+import { signUpSolo, signUpTeam } from '@/api/Auth';
 
 export default function SignUpPage() {
     const [step, setStep] = useState("choice"); // "choice", "solo", "team"

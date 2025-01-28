@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import ico from "~/ico.svg";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function Nav() {
@@ -14,9 +15,13 @@ export default function Nav() {
     return (
         <div className="w-full flex flex-col md:flex-row items-center justify-between p-4">
             {/* Logo and Branding */}
-            <div className="text-2xl font-semibold flex items-center">
-                <Image src={ico} height={50} width={50} alt="ico" className="mr-2" />
-                ALLEN CYBER
+            <div className="text-2xl font-semibold">
+                <Link href={"/"} className=" flex items-center">
+
+                    <Image src={ico} height={50} width={50} alt="ico" className="mr-2" />
+                    ALLEN CYBER
+
+                </Link>
             </div>
 
             {/* Hamburger Menu for Mobile */}
@@ -39,8 +44,13 @@ export default function Nav() {
                 <div className="ml-5 mr-5">Prizes</div>
                 <div className="ml-5 mr-5">FAQ</div>
                 <div className="flex flex-row gap-x-2">
-                    <Button className="px-6 py-2">Log In</Button>
-                    <Button className="px-6 py-2" variant={"secondary"}>Sign Up</Button>
+                    <Link href={"/login"}>
+                        <Button className="px-6 py-2">Log In</Button>
+                    </Link>
+                    <Link href={"/register"}>
+
+                        <Button className="px-6 py-2" variant={"secondary"}>Sign Up</Button>
+                    </Link>
                 </div>
             </div>
 
@@ -53,8 +63,13 @@ export default function Nav() {
                         <div>Prizes</div>
                         <div>FAQ</div>
                         <div className="flex flex-row gap-x-2">
-                            <Button className="px-6 py-2">Log In</Button>
-                            <Button className="px-6 py-2" variant={"secondary"}>Sign Up</Button>
+                            <Link href={"/login"}>
+                                <Button className="px-6 py-2">Log In</Button>
+                            </Link>
+                            <Link href={"/register"}>
+
+                                <Button className="px-6 py-2" variant={"secondary"}>Sign Up</Button>
+                            </Link>
                         </div>
                     </div>
                 </div>

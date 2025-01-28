@@ -6,7 +6,7 @@ import Image from "next/image";
 import Ico from "~/ico.svg";
 import Link from "next/link";
 import { ChartBarIcon, PuzzlePieceIcon, ShieldExclamationIcon, SparklesIcon } from "@heroicons/react/20/solid";
-import { RoundInfo } from "@/server";
+import { RoundInfo } from "@/api/server";
 const timeRemaining = await RoundInfo().then((round) => round.roundEnd);
 const roundName = await RoundInfo().then((round) => round.roundName);
 const currentRoundType = await RoundInfo().then((round) => round.roundType);

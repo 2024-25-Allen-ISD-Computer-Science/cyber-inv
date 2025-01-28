@@ -11,7 +11,7 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion"
 import faq from '@/data/faq.json';
-
+import Link from "next/link";
 
 export default function Page() {
 
@@ -29,8 +29,13 @@ export default function Page() {
                         <p className="text-lg">Providing opportunities to those interested</p>
                         <p className="text-sm">Brought to you by Allen CS-forum</p>
                         <div className="flex space-x-4 mt-4">
-                            <Button className="px-6 py-2">Log In</Button>
-                            <Button className="px-6 py-2" variant={"secondary"}>Sign Up</Button>
+                            <Link href={"/login"}>
+                                <Button className="px-6 py-2">Log In</Button>
+                            </Link>
+                            <Link href={"/register"}>
+
+                                <Button className="px-6 py-2" variant={"secondary"}>Sign Up</Button>
+                            </Link>
                         </div>
                     </div>
                     {/* Image Placeholder */}
