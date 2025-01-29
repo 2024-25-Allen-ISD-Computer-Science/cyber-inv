@@ -19,11 +19,11 @@ export default function Page() {
 
 
     return (
-        <main className="w-full h-full">
+        <main className="w-full ">
 
 
             {/* Rest of the Page */}
-            <section className="w-full h-2/3 flex flex-col justify-center items-center px-6 md:px-24">
+            <section className="w-full h-dvh md:h-[50vh] flex flex-col justify-center items-center px-6 md:px-24">
             <Image src={BLUR1} height={500} width={500} alt="blur1" className="absolute justify-center w-full h-full -z-20 overflow-clip opacity-15"/>
                 <div className="flex flex-col-reverse md:flex-row justify-between items-center md:w-2/3 h-full">
                     {/* Text Section */}
