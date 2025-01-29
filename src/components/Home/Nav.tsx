@@ -20,7 +20,7 @@ export default function Nav() {
         <div className="text-2xl font-semibold">
           <Link href="/" className="flex items-center">
             <Image src={ico} height={50} width={50} alt="logo" className="mr-2" />
-            ALLEN CYBER
+            ALLEN CYBER INV
           </Link>
         </div>
 

@@ -1,7 +1,5 @@
 "use client";
 
-import Timer from "@/components/Timer";
-import Footer from '@/components/Footer'
 import * as motion from 'framer-motion/client'
 
 export default function Tmp() {
@@ -12,19 +10,7 @@ export default function Tmp() {
                 <div className="mb-5 text-center text-5xl font-bold tracking-wide lg:text-6xl">Preparation</div>
                 {/* Countdown Timer */}
                 <div className="flex justify-center p-8 text-center">
-                    <motion.div
-                        className="w-81 h-81 z-20 my-0"
-                        initial={{ scale: 0 }}
-                        whileInView={{ scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{
-                            type: 'spring',
-                            stiffness: 260,
-                            damping: 50,
-                        }}
-                    >
-                        <Timer />
-                    </motion.div>
+
                 </div>
 
                 {/* Grid for Questions */}
@@ -80,7 +66,7 @@ export default function Tmp() {
                     </motion.div>
                 </div>
             </div>
-            <Footer />
+            
         </main>
     );
 }

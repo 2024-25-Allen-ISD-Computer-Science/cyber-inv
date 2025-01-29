@@ -36,7 +36,7 @@ export default function LoginPage() {
         alert("Login successful!");
 
         // Redirect to another page (e.g., dashboard)
-        window.location.href = "/dashboard"; // Replace with your desired route
+        window.location.href = "/Temp"; // Replace with your desired route
       } else {
         // If login fails, display an error message
         setError(result.error || "An error occurred. Please try again.");

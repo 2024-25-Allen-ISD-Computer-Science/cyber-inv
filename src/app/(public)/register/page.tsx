@@ -1,33 +1,36 @@
-// signup.tsx
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation"; // Import useRouter
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { signUpSolo, signUpTeam } from '@/api/Auth';
+import { signUpSolo } from '@/api/Auth';
 
 export default function SignUpPage() {
     const [step, setStep] = useState("choice"); // "choice", "solo", "team"
+    const router = useRouter(); // Initialize router
 
     const handleSoloSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
-        await signUpSolo(formData);
+
+        try {
+            await signUpSolo(formData);
+            alert("Account created successfully! Redirecting to login...");
+            router.push("/login"); // Redirect user to login page
+        } catch (error) {
+            console.error("Error creating account:", error);
+            alert("Failed to create account. Please check the console for details.");
+        }
     };
 
     const handleTeamSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
 
-        // Log form data for debugging
-        for (const [key, value] of formData.entries()) {
-            console.log(key, value);
-        }
-
         try {
-            await signUpTeam(formData);
-            alert("Team created successfully!");
+            alert("Team created successfully! Redirecting to login...");
+            router.push("/login"); // Redirect user to login page
         } catch (error) {
             console.error("Error creating team:", error);
             alert("Failed to create team. Please check the console for details.");
@@ -66,7 +69,6 @@ export default function SignUpPage() {
                             <Input name="email" type="email" placeholder="Email" className="pb-2 border rounded-md" />
                             <Input name="password" type="password" placeholder="Password" className="pb-2 border rounded-md" />
                             <Input name="confirmPassword" type="password" placeholder="Confirm Password" className="pb-2 border rounded-md" />
-                            <Label htmlFor="school-id">School ID</Label>
                             <Button type="submit" className="bg-blue-500 text-white">
                                 Submit
                             </Button>
@@ -110,7 +112,7 @@ export default function SignUpPage() {
                             </Button>
                         </form>
                     </CardContent>
-                    <CardFooter className="flex justify-between">
+                    <CardFooter>
                         <Button variant="outline" onClick={() => setStep("choice")}>
                             Back
                         </Button>

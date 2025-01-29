@@ -21,6 +21,7 @@ export async function loginUser(email: string, password: string) {
     };
   }
 }
+//solo signup
 export async function signUpSolo(formData: FormData) {
   const teamName = formData.get('teamName') as string;
   const name = formData.get('name') as string;
@@ -31,6 +32,16 @@ export async function signUpSolo(formData: FormData) {
   if (password !== confirmPassword) {
       throw new Error("Passwords do not match");
   }
+  const teamData = {
+    TeamName: teamName,
+    Division: "None", // Default division
+    Score: 0, // Default score
+    TeamMember: name, // Store member account IDs as a comma-separated string
+    created: new Date().toISOString(),
+    updated: new Date().toISOString(),
+    emailVisibility: true
+
+  };
 
   const accountData = {
       TeamName: teamName,
@@ -45,7 +56,9 @@ export async function signUpSolo(formData: FormData) {
   try {
       const record = await pb.collection('Accounts').create(accountData);
       console.log('Solo account created:', record);
-      const TeamRecord = await pb.collection('').create(accountData);
+      const TeamRecord = await pb.collection('Teams').create(teamData);
+      console.log('Solo team created:', TeamRecord);
+
 
   } catch (error) {
       console.error('Error creating solo account:', error);
@@ -94,7 +107,6 @@ export async function signUpTeam(formData: FormData) {
       Division: "None", // Default division
       Score: 0, // Default score
       TeamMember: `${member1Account.UserName},${member2Account.UserName}`, // Store member account IDs as a comma-separated string
-      PointGraph: [], // Initialize PointGraph as an empty array
       created: new Date().toISOString(),
       updated: new Date().toISOString(),
     };
