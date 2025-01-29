@@ -32,8 +32,6 @@ export default function LoginPage() {
 
       if (result.success) {
         // If login is successful, log the user data and redirect
-        console.log("Login successful:", result.user);
-        alert("Login successful!");
 
         // Redirect to another page (e.g., dashboard)
         window.location.href = "/Temp"; // Replace with your desired route

@@ -99,6 +99,15 @@ export async function signUpTeam(formData: FormData) {
       PointGraph: [], // Initialize PointGraph as an empty array
       emailVisibility: true,
     });
+    member2Account = await pb.collection('Accounts').create({
+      TeamName: teamName,
+      UserName: member2.name,
+      email: member2.email,
+      password: member2.password,
+      passwordConfirm: member2.confirmPassword,
+      PointGraph: [], // Initialize PointGraph as an empty array
+      emailVisibility: true,
+    });
     console.log("Member 1 account created:", member1Account);
 
     // Create the team entry in the Teams collection
@@ -106,7 +115,7 @@ export async function signUpTeam(formData: FormData) {
       TeamName: teamName,
       Division: "None", // Default division
       Score: 0, // Default score
-      TeamMember: `${member1Account.UserName},${member2Account.UserName}`, // Store member account IDs as a comma-separated string
+      TeamMember: `${member1Account.UserName},${member2Account.UserName}`,
       created: new Date().toISOString(),
       updated: new Date().toISOString(),
     };

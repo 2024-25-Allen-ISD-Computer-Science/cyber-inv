@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation"; // Import useRouter
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { signUpSolo } from '@/api/Auth';
+import { signUpSolo,signUpTeam } from '@/api/Auth';
 
 export default function SignUpPage() {
     const [step, setStep] = useState("choice"); // "choice", "solo", "team"
@@ -29,6 +29,8 @@ export default function SignUpPage() {
         const formData = new FormData(event.currentTarget);
 
         try {
+            await signUpTeam(formData);
+
             alert("Team created successfully! Redirecting to login...");
             router.push("/login"); // Redirect user to login page
         } catch (error) {
