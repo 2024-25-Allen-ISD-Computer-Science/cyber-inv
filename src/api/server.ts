@@ -8,7 +8,7 @@ let currentRound: round = {
     roundDivision: "all"
 };
 
-let endRoundState: round = {
+const endRoundState: round = {
     roundName: "No round ATM",
     roundEnd: new Date(),
     roundType: "none",
@@ -23,9 +23,7 @@ export async function pushRound(Cround: round) {
 
 // End round
 export async function endRound() {
-    currentRound.roundType = "none";
-    currentRound.roundEnd = new Date();
-    currentRound.roundName = "No round ATM";
+    currentRound = endRoundState;
     return currentRound;
 }
 

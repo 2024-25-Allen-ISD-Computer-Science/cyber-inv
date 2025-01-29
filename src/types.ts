@@ -1,5 +1,5 @@
 
-import { ColumnDef } from "@tanstack/react-table";
+// import { ColumnDef } from "@tanstack/react-table";
 interface ChartDataPoint {
   minute: string;
   points: number;

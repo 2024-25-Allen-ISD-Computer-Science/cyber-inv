@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Poppins, Inter } from 'next/font/google';
 import '@/globals.css';
-import { ThemeProvider } from "@/components/theme-provider"
 const poppins = Poppins({
     variable: '--font-sans',
     weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
