@@ -36,7 +36,7 @@ export default function page() {
     
       const handleInputSubmit = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter' && inputValue.trim()) {
-          setMessages([...messages, inputValue + '\n \t ' + inputValue]);
+          //setMessages([...messages, inputValue + '\n \t ' + inputValue]);
 
           switch (true) {
             case inputValue.startsWith('echo'):
@@ -73,7 +73,7 @@ export default function page() {
         async function checkRoundType() {
             const currentRound = await getRound();
             if (currentRound.roundType !== "scenario") {
-                //redirect('/dashboard');
+                redirect('/dashboard');
             }
         }
 
