@@ -4,6 +4,7 @@ import Image from "next/image";
 import ico from "~/ico.svg";
 import Link from "next/link";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,15 +20,14 @@ export default function Nav() {
         {/* Left Section - Logo */}
         <div className="text-2xl font-semibold">
           <Link href="/" className="flex items-center">
-            <Image src={ico} height={50} width={50} alt="logo" className="mr-2" />
+            <Image src={ico} height={50} width={50} alt="logo" className="" />
             ALLEN CYBER INV
           </Link>
         </div>
 
         {/* Center Section - Menu Items */}
         <div className="flex gap-8">
-          <div>Info</div>
-          <div>Mission</div>
+          <Link href={"/#About"}>About</Link>
           <div>Prizes</div>
           <div>FAQ</div>
         </div>
@@ -43,18 +43,19 @@ export default function Nav() {
             </Button>
           </Link>
         </div>
+
       </div>
 
       {/* Mobile Navbar - hidden on desktop */}
-      <div className="md:hidden w-full p-4">
+      <div className="md:hidden w-full">
         {/* Top Bar with Logo and Hamburger */}
         <div className="flex justify-between items-center w-full">
           <Link href="/" className="flex items-center">
-            <Image src={ico} height={50} width={50} alt="logo" className="mr-2" />
+            <Image src={ico} height={50} width={50} alt="logo" className="" />
             <span className="text-2xl font-semibold">ALLEN CYBER</span>
           </Link>
           
-          <button onClick={toggleMenu} className="p-2">
+          <button onClick={toggleMenu} className="">
             <svg
               className="w-6 h-6"
               fill="none"
@@ -80,9 +81,15 @@ export default function Nav() {
           </button>
         </div>
 
-        {/* Collapsible Mobile Menu */}
+        {/* Collapsible Mobile Menu with Animation */}
         {isMenuOpen && (
-          <div className="mt-4 flex flex-col items-center gap-4">
+          <motion.div
+            initial={{ y: -10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -10, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="mt-4 flex flex-col items-center gap-4"
+          >
             <div>Info</div>
             <div>Mission</div>
             <div>Prizes</div>
@@ -97,7 +104,7 @@ export default function Nav() {
                 </Button>
               </Link>
             </div>
-          </div>
+          </motion.div>
         )}
       </div>
     </>

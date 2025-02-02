@@ -47,7 +47,7 @@ export default function LoginPage() {
 
   return (
     <main className="w-full h-full flex justify-center items-center">
-      <Card className="w-fit h-fit drop-shadow-2xl p-2">
+      <Card className=" drop-shadow-2xl p-2">
         <CardHeader>
           <CardTitle className="text-3xl font-bold">Login</CardTitle>
         </CardHeader>
