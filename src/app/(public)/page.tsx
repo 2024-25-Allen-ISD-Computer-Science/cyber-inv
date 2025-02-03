@@ -144,12 +144,12 @@ export default function Page() {
                 <Image src={BLUR3} height={500} width={500} alt="blur1" className="absolute flex justify-self-end w-full h-full -z-20 overflow-clip opacity-25" />
             </section>
             <section className="gap-x-12  mt-10  w-full h-fit p-2 flex justify-center place-content-center">
-                <Link href={"https://discord.gg/qJJNqgxCnk"}>
+                <a href={"https://discord.gg/qJJNqgxCnk"}>
                     <FaDiscord className="size-24 hover:text-blue-500" />
-                </Link>
-                <Link href={"https://instagram.com/allen.cyber.inv/"}>
-                    < BsInstagram className="size-24 hover:text-purple-400" />
-                </Link>
+                </a>
+                <a href={"https://instagram.com/allen.cyber.inv"}>
+                    <BsInstagram className="size-24 hover:text-purple-400" />
+                </a>
             </section>
 
         </main>
