@@ -147,7 +147,7 @@ export default function Page() {
                 <Link href={"https://discord.gg/qJJNqgxCnk"}>
                     <FaDiscord className="size-24 hover:text-blue-500" />
                 </Link>
-                <Link href={"www.instagram.com/allen.cyber.inv/"}>
+                <Link href={"https://instagram.com/allen.cyber.inv/"}>
                     < BsInstagram className="size-24 hover:text-purple-400" />
                 </Link>
             </section>
