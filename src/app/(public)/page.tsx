@@ -24,7 +24,7 @@ export default function Page() {
         <main className="w-full ">
             {/* Rest of the Page */}
             <section className="w-full h-fit mb-10 md:h-[50vh] flex flex-col justify-center items-center px-6 md:px-24">
-                <Image src={BLUR1} height={500} width={500} alt="blur1" className="absolute justify-center w-full h-full -z-20 overflow-clip opacity-35" />
+                <Image src={BLUR1} height={500} width={500} alt="blur1" className="absolute right-1/2 w-full h-full -z-20  opacity-15 -rotate-14 " />
                 <div className="flex flex-col-reverse md:flex-row justify-between items-center md:w-2/3 h-full">
                     {/* Text Section */}
                     <div className="flex flex-col items-center space-y-4 text-center flex-grow">
