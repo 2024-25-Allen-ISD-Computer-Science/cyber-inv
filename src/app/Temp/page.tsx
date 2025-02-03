@@ -1,17 +1,36 @@
-"use client";
-
 import * as motion from 'framer-motion/client'
+import Image from 'next/image'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
+import { FaDiscord } from "react-icons/fa";
+import { BsInstagram } from "react-icons/bs";
+
+import BLUR1 from '~/BLUR1.svg'
+import ico from '~/ico.svg'
 
 export default function Tmp() {
 
     return (
         <main className="flex h-full w-full flex-col items-center overflow-x-hidden">
+            
+            <div className="hidden w-full items-center justify-between p-4 md:flex">
+                <div className="text-2xl font-semibold">
+                    <Link href="/" className="flex items-center">
+                        <Image src={ico} height={50} width={50} alt="logo" className="" />
+                        ALLEN CYBER INV
+                    </Link>
+                </div>
+            </div>
+
+            <Image
+                src={BLUR1}
+                height={500}
+                width={500}
+                alt="blur1"
+                className="absolute h-full w-full justify-center overflow-clip opacity-50"
+            />
             <div className="h-fit w-full max-w-4xl rounded-3xl p-5 shadow-2xl">
                 <div className="mb-5 text-center text-5xl font-bold tracking-wide lg:text-6xl">Preparation</div>
-                {/* Countdown Timer */}
-                <div className="flex justify-center p-8 text-center">
-
-                </div>
 
                 {/* Grid for Questions */}
                 <div className="grid w-full grid-cols-1 place-items-center gap-5">
@@ -42,7 +61,7 @@ export default function Tmp() {
                                     />
                                 </div>
                                 <div className="mt-2 text-center font-semibold">
-                                    Hey, Check out this playlist to get you ahead for the competition.
+                                    Check out this playlist to get you ahead for the competition.
                                 </div>
                             </div>
 
@@ -59,14 +78,22 @@ export default function Tmp() {
                                     />
                                 </div>
                                 <div className="mt-2 text-center font-semibold">
-                                    Hey, Check out this video to set up your laptop.
+                                    Check out this video to set up your laptop.
                                 </div>
                             </div>
                         </div>
                     </motion.div>
                 </div>
             </div>
-            
+
+            <section className="fixed bottom-0 z-10 mb-6 flex h-fit w-full place-content-center justify-center gap-x-12 p-2">
+                <Link href={'https://discord.gg/qJJNqgxCnk'}>
+                    <FaDiscord className="size-24 hover:text-blue-500" />
+                </Link>
+                <Link href={'https://instagram.com/allen.cyber.inv/'}>
+                    <BsInstagram className="size-24 hover:text-purple-400" />
+                </Link>
+            </section>
         </main>
     );
 }
