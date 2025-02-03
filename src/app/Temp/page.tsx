@@ -1,7 +1,6 @@
 import * as motion from 'framer-motion/client'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
 import { FaDiscord } from "react-icons/fa";
 import { BsInstagram } from "react-icons/bs";
 
