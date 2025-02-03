@@ -25,12 +25,12 @@ export default function Nav() {
           </Link>
         </div>
 
-        {/* Center Section - Menu Items */}
+        {/* Center Section - Menu Items
         <div className="flex gap-8">
           <Link href={"/#About"}>About</Link>
           <div>Prizes</div>
           <div>FAQ</div>
-        </div>
+        </div> */}
 
         {/* Right Section - Buttons */}
         <div className="flex gap-4">
