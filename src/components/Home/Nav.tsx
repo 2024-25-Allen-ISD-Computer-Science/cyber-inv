@@ -90,10 +90,7 @@ export default function Nav() {
             transition={{ duration: 0.3, ease: "easeOut" }}
             className="mt-4 flex flex-col items-center gap-4"
           >
-            <div>Info</div>
-            <div>Mission</div>
-            <div>Prizes</div>
-            <div>FAQ</div>
+
             <div className="flex flex-col w-full gap-2 mt-4">
               <Link href="/login" className="w-full">
                 <Button className="w-full py-2">Log In</Button>
