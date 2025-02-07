@@ -18,5 +18,15 @@
         "name": "Company 4",
         "amount": "$250",
         "image": "/ico.svg"
+    },
+    {
+        "name": "Company 5",
+        "amount": "$300",
+        "image": "/ico.svg"
+    },
+    {
+        "name": "Company 6",
+        "amount": "$350",
+        "image": "/ico.svg"
     }
 ]
