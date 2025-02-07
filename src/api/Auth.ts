@@ -57,7 +57,7 @@ export async function signUpSolo(formData: FormData) {
       const record = await pb.collection('Accounts').create(accountData);
       console.log('Solo account created:', record);
       const TeamRecord = await pb.collection('Teams').create(teamData);
-      console.log('Solo team created:', TeamRecord);
+      console.log('Solo team has been created:', TeamRecord);
 
 
   } catch (error) {
@@ -121,11 +121,11 @@ export async function signUpTeam(formData: FormData) {
     };
 
     const teamRecord = await pb.collection('Teams').create(teamData);
-    console.log('Team created successfully:', teamRecord);
+    console.log('Team has been created successfully:', teamRecord);
 
     return {
       success: true,
-      message: "Team and accounts created successfully!",
+      message: "Team and accounts have been created successfully!",
     };
   } catch (error) {
     console.error("Error during team sign-up:", error);
@@ -133,12 +133,12 @@ export async function signUpTeam(formData: FormData) {
     // Rollback: Delete the first account if the second account creation fails
     if (member1Account && !member2Account) {
       await pb.collection('Accounts').delete(member1Account.id);
-      console.log("Rollback: Deleted Member 1 account due to failure.");
+      console.log("Rollback: Deleted Member 1's account due to failure.");
     }
 
     return {
       success: false,
-      error: "Failed to create team. Please try again.",
+      error: "Failed to create the team. Please try again.",
     };
   }
 }
