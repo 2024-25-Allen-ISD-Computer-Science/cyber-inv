@@ -10,19 +10,25 @@ import { Container } from 'lucide-react';
 import { input } from 'framer-motion/client';
 
 <style>
-  {`
+{`
     @keyframes pulse {
-      0% {
+    0% {
         transform: scale(1);
         opacity: 0;
-      }
-      100% {
+    }
+    100% {
         transform: scale(1.1);
         opacity: 1;
-      }
     }
-  `}
+    }
+`}
 </style>
+
+interface FunctionLibrary {
+    echo: (input: string) => void,
+    ls: (input: string) => void,
+    mkdir: (input: string) => void,
+}
 
 export default function page() {
     const [inputValue, setInputValue] = useState('')
@@ -30,26 +36,37 @@ export default function page() {
     const [power, setPower] = useState('Normal')
     const [water, setWater] = useState('Normal')
 
+    const commands : FunctionLibrary = {
+        echo: (input: string) => setMessages([...messages, input + '\n' + input.substring(5, input.length)]),
+        ls: (input: string) => setMessages([...messages, input + '\n' + 'Placeholder']),
+        mkdir: (input: string) => setMessages([...messages, input]),
+    }
+
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value);
-      };
+    };
     
-      const handleInputSubmit = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const handleInputSubmit = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter' && inputValue.trim()) {
-          //setMessages([...messages, inputValue + '\n \t ' + inputValue]);
 
-          switch (true) {
+        switch (true) {
             case inputValue.startsWith('echo'):
-                setMessages([...messages, inputValue + '\n \t ' + inputValue.substring(5, inputValue.length)])
+                commands.echo(inputValue)
+                break
+            case inputValue === 'ls':
+                commands.ls(inputValue)
+                break
+            case inputValue.startsWith('mkdir'):
+                commands.mkdir(inputValue)
                 break
             default:
-                setMessages([...messages, inputValue + '\n \t' + inputValue + ' is not recognized as a command.'])
-          }
-          setInputValue('');
+                setMessages([...messages, inputValue + '\n bash: ' + inputValue + ' command not found'])
         }
-      };    
+        setInputValue('');
+        }
+    };    
 
-      const updateStatus = (status : String) => {
+    const updateStatus = (status : String) => {
         switch (status) {
             case 'Normal':
                 return 'rgba(0,255,0,1) 25%, rgba(0,255,0,0.25) 50%'
@@ -58,9 +75,9 @@ export default function page() {
             case 'Critical':
                 return 'rgba(255,0,0,1) 25%, rgba(255,0,0,0.25) 50%'
         }
-      }
-      
-      useEffect(() => {
+    }
+    
+    useEffect(() => {
         const interval = setInterval(() => {
             setPower('Critical');
             setWater('Warning');
@@ -73,7 +90,7 @@ export default function page() {
         async function checkRoundType() {
             const currentRound = await getRound();
             if (currentRound.roundType !== "scenario") {
-                redirect('/dashboard');
+                //redirect('/dashboard');
             }
         }
 
@@ -96,7 +113,7 @@ export default function page() {
                 </ResizablePanel>
                 <ResizableHandle withHandle />
                 <ResizablePanel defaultSize={35} maxSize={37.5}>
-                    <div className="flex flex-col h-full bg-background/60 backdrop-blur-md">
+                    <div className="flex flex-col h-full bg-background/60 backdrop-blur-md ">
                         <div className='flex grid grid-cols-1 border-2 w-full h-[15vh] items-center justify-center'>
                             <div className='flex items-center justify-center'>
                             <div className='w-[5vw] h-[5vh]' style={{background: `radial-gradient(circle, ${updateStatus(power)}, 50%, transparent 0%)`, animation: 'pulse 2s infinite'}}/>
@@ -112,7 +129,7 @@ export default function page() {
                             <div className='grid grid-cols-1 w-full h-fit gap-3'>
                                 {messages.map((message, index) => (
                                     <div key={index} className="whitespace-pre-wrap break-words">
-                                        {'> ' + message}
+                                        {'$ ' + message}
                                     </div>
                                 ))}
                             </div>
@@ -122,7 +139,8 @@ export default function page() {
                             about="term input"
                             value={inputValue}
                             onChange={handleInputChange}
-                            onKeyDown={handleInputSubmit}/>
+                            onKeyDown={handleInputSubmit}
+                            />  
                         </div>
                     </div>
                 </ResizablePanel>
