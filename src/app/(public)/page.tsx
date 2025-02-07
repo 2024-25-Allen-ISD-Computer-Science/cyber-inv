@@ -1,4 +1,6 @@
 "use client"
+import { FaDiscord, FaInstagram } from "react-icons/fa";
+import { CiMail } from "react-icons/ci";
 import { Button } from "@/components/ui/button";
 import Car from "@/components/Home/Car";
 import { ShieldExclamationIcon, PuzzlePieceIcon, SparklesIcon } from "@heroicons/react/24/outline";
@@ -180,6 +182,55 @@ export default function Page() {
             </section>
 
             <section className="w-full h-1/2"></section>
+
+            <footer className="w-full bg-accent/40 text-white py-8">
+    <div className="container mx-auto px-6 md:px-24">
+        <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+            
+            <div className="flex flex-col items-center md:items-start space-y-4">
+                <h2 className="text-2xl font-bold">Allen Cyber Invitational</h2>
+                <p className="text-sm text-gray-400 text-center md:text-left">
+                    Providing opportunities to those interested
+                </p>
+            </div>
+
+            <div className="flex flex-col items-center md:items-start space-y-4">
+                <h3 className="text-lg font-semibold">Links</h3>
+                <ul className="flex flex-col items-center md:items-start space-y-2">
+                    <li>
+                        <Link href="#" className="text-sm text-gray-400 hover:text-white transition duration-300">
+                            Log In
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="#" className="text-sm text-gray-400 hover:text-white transition duration-300">
+                            Contact
+                        </Link>
+                    </li>
+                </ul>
+            </div>
+
+            <div className="flex flex-col items-center md:items-start space-y-4">
+                <h3 className="text-lg font-semibold">Follow Us</h3>
+                <div className="flex space-x-4">
+                <Link href="" className="text-gray-400 hover:text-white transition duration-300">
+                        <CiMail size={24} />
+                    </Link>
+                    <Link href="" className="text-gray-400 hover:text-white transition duration-300">
+                        <FaInstagram size={24} />
+                    </Link>
+                    <Link href="" className="text-gray-400 hover:text-white transition duration-300">
+                        <FaDiscord size={24} />
+                    </Link>
+                </div>
+            </div>
+        </div>
+
+        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
+            &copy; {new Date().getFullYear()} Allen Cyber Invitational
+        </div>
+    </div>
+</footer>
         </main>
     );
 }
