@@ -38,7 +38,7 @@ export default function Page() {
   useEffect(() => {
     if (!pb.authStore.isValid) {
       // If the user is not authenticated, redirect to the login page
-      navigate("/login");
+      // navigate("/login");
     }
   }, [navigate]); // Runs only once when the component mounts
 

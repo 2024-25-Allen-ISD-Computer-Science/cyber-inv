@@ -1,6 +1,5 @@
-import PocketBase from "pocketbase";
+import PocketBase from 'pocketbase';
 
-// Initialize PocketBase instance
-const pb = new PocketBase('http://127.0.0.1:8090');
+const pb = new PocketBase('https://db-patient-grass-5899.fly.dev');
 
 export default pb;

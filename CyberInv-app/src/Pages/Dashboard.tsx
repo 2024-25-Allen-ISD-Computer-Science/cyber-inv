@@ -1,7 +1,7 @@
 import LeaderBoard from "@/components/LeaderBoard/LeaderBoard";
 import { UserCard } from "@/components/ScoreCard";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { userCardData,User } from "@/api/player";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { userCardData } from "@/api/player";
 
 
 export default function Dashboard() {
@@ -17,10 +17,7 @@ export default function Dashboard() {
           </CardHeader>
           <hr />
           <CardContent className="p-3">
-          <CardHeader>
-            <CardTitle>Leader Board</CardTitle>
-          </CardHeader>
-          <hr />
+
           <CardContent >
             <LeaderBoard />
           </CardContent>

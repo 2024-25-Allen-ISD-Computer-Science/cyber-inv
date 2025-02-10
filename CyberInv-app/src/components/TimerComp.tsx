@@ -2,7 +2,7 @@ import Countdown from 'react-countdown';
 
 export default function TimerComp() {
   // Define the target date: March 15, 2025
-  const targetDate = new Date('2025-03-15T00:00:00');
+  const targetDate = new Date('2025-03-23T00:00:00');
 
   interface CountdownRendererProps {
     days: number;
