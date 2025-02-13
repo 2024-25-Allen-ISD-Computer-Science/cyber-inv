@@ -27,19 +27,22 @@ import { input } from 'framer-motion/client';
 interface FunctionLibrary {
     echo: (input: string) => void,
     ls: (input: string) => void,
-    mkdir: (input: string) => void,
+    help: (input: string) => void,
+    status: (input: string) => void,
 }
 
 export default function page() {
     const [inputValue, setInputValue] = useState('')
     const [messages, setMessages] = useState([])
-    const [power, setPower] = useState('Normal')
-    const [water, setWater] = useState('Normal')
+    const [power, setPower] = useState(100)
+    const [water, setWater] = useState(100)
 
     const commands : FunctionLibrary = {
         echo: (input: string) => setMessages([...messages, input + '\n' + input.substring(5, input.length)]),
         ls: (input: string) => setMessages([...messages, input + '\n' + 'Placeholder']),
-        mkdir: (input: string) => setMessages([...messages, input]),
+        status: (input: string) => setMessages([...messages, input + '\n Power: ' + power + '\n Water: ' + water]),
+        help: (input: string) => setMessages([...messages, input + `\n insert some stuff here
+More info can be found in the docs page`]),
     }
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,8 +59,11 @@ export default function page() {
             case inputValue === 'ls':
                 commands.ls(inputValue)
                 break
-            case inputValue.startsWith('mkdir'):
-                commands.mkdir(inputValue)
+            case inputValue === 'help':
+                commands.help(inputValue)
+                break
+            case inputValue === 'status':
+                commands.status(inputValue)
                 break
             default:
                 setMessages([...messages, inputValue + '\n bash: ' + inputValue + ' command not found'])
@@ -66,21 +72,31 @@ export default function page() {
         }
     };    
 
-    const updateStatus = (status : String) => {
-        switch (status) {
-            case 'Normal':
-                return 'rgba(0,255,0,1) 25%, rgba(0,255,0,0.25) 50%'
-            case 'Warning':
-                return 'rgba(255,255,0,1) 25%,rgba(255,255,0,0.25) 50%'
-            case 'Critical':
-                return 'rgba(255,0,0,1) 25%, rgba(255,0,0,0.25) 50%'
+    const updateStatus = (status : number) => {
+        if (status > 80) {
+            return 'rgba(0,255,0,1) 25%, rgba(0,255,0,0.25) 50%' 
+        } else if (status > 50) {
+            return 'rgba(255,255,0,1) 25%,rgba(255,255,0,0.25) 50%'
+        } else if (status > 0) {
+            return 'rgba(255,0,0,1) 25%, rgba(255,0,0,0.25) 50%'
         }
     }
     
     useEffect(() => {
         const interval = setInterval(() => {
-            setPower('Critical');
-            setWater('Warning');
+            setPower(prevPower => {
+                if (prevPower > 0) {
+                    prevPower -= 1
+                }
+                return prevPower;
+            });
+    
+            setWater(prevWater => {
+                if (prevWater > 0) {
+                    prevWater -= 1
+                }
+                return prevWater;
+            });
         }, 1000);
 
         return () => clearInterval(interval); // Cleanup interval on component unmount
