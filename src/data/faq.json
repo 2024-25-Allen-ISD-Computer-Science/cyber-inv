@@ -1,38 +1,38 @@
 [
     {
         "question": "What is the location?",
-        "answer": "TBD"
+        "answer": "Currently TBD, but the most plausible location will likely be the Recreation Center or a hotel venue."
     },
     {
         "question": "What is the price?",
-        "answer": "There is no entry cost! Competitors will need to bring their own personal devices."
+        "answer": "There is no entry cost, the competition is free for all! However, competitors will need to bring a personal device to code on."
     },
     {
         "question": "When does it start?",
-        "answer": "The competition starts in March, but the exact date is still to be determined."
+        "answer": "The competition will be held in March, however, an exact date and time has yet to be determined."
     },
     {
         "question": "Do I need prior cybersecurity knowledge?",
-        "answer": "No prior cybersecurity knowledge is required. Competitors will learn all necessary material during the competition, and there will be mentors ready to help competitors. This competition is a great learning experience and an opportunity to experience entry level cybersecurity."
+        "answer": "No prior cybersecurity knowledge is required. Competitors will be able to learn all necessary material during the competition, and there will be mentors on standby ready to help. This competition is a great learning experience and an opportunity to experience entry level cybersecurity."
     },
     {
         "question": "Are there any prizes?",
-        "answer": "There will be prizes for the top three teams of both divisions. There will be over $1,000 in prizes."
+        "answer": "Prizes will be available for the best three teams of both divisions. There will be over $1,000 in prizes, including laptops and other technology."
     },
     {
         "question": "What do competitors need to bring?",
-        "answer": "Competitors will need to bring their personal devices. We will provide food (pizza) and water, but we recommend that the competitor brings their own lunch if there are dietary restrictions."
+        "answer": "Competitors will need to bring their charged, working, personal devices. We will provide food (pizza) and water, but we recommend that competitors bring their own lunch if they have certain dietary restrictions."
     },
     {
         "question": "Do I need a team?",
-        "answer": "No, you can sign up as an individual"
+        "answer": "A team is not required, you can sign up as an individual competitor."
     },
     {
         "question": "Is food provided?",
-        "answer": "Yes, but if you have dietary restrictions, please bring your own"
+        "answer": "Yes, there will be pizza and water provided. However, if you have dietary restrictions, please try to bring your own meals."
     },
     {
         "question": "What are the divisions?",
-        "answer": "There will be two divisions, gold & platinum."
+        "answer": "There will be two; a gold division and a platinum division."
     }
 ]
