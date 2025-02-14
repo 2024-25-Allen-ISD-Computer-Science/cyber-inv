@@ -7,13 +7,14 @@ export default function RootLayout({
 }>) {
     return (
 
-        <div className="w-full max-h-full flex flex-col">
-            <div className="sticky mb-auto top-0 z-20 bg-black/30 backdrop-blur-md  w-full">
+        <div className="w-full min-h-screen flex flex-col">
+            {/* Sticky Navbar */}
+            <div className="sticky top-0 z-20 bg-black/30 backdrop-blur-md w-full">
                 <Nav />
             </div>
 
-            {/* Main Content */}
-            <div className="flex-grow w-full h-full">
+            {/* Main Content (Centered) */}
+            <div className="flex-grow flex justify-center items-center w-full">
                 {children}
             </div>
         </div>

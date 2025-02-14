@@ -91,7 +91,7 @@ export default function Nav() {
             className="mt-4 flex flex-col items-center gap-4"
           >
 
-            <div className="flex flex-col w-full gap-2 mt-4">
+            <div className="flex flex-row w-full gap-2 mt-4">
               <Link href="/login" className="w-full">
                 <Button className="w-full py-2">Log In</Button>
               </Link>
