@@ -14,14 +14,12 @@ import faq from '@/data/faq.json';
 import Link from "next/link";
 import BLUR1 from "~/BLUR1.svg"
 import BLUR2 from "~/BLUR2.svg"
-import BLUR3 from "~/BLUR3.svg"
-import { FaDiscord } from "react-icons/fa";
-import { BsInstagram } from "react-icons/bs";
+
 export default function Page() {
 
 
     return (
-        <main className="w-full ">
+<main className="w-full">
             {/* Rest of the Page */}
             <section className="w-full h-fit mb-10 md:h-[50vh] flex flex-col justify-center items-center px-6 md:px-24">
                 <Image src={BLUR1} height={500} width={500} alt="blur1" className="absolute right-1/2 w-full h-full -z-20  opacity-15 -rotate-14 " />
@@ -141,16 +139,9 @@ export default function Page() {
                         ))}
                     </Accordion>
                 </div>
-                <Image src={BLUR3} height={500} width={500} alt="blur1" className="absolute flex justify-self-end w-full h-full -z-20 overflow-clip opacity-25" />
             </section>
-            <section className="gap-x-12  mt-10  w-full h-fit p-2 flex justify-center place-content-center">
-                <a href={"https://discord.gg/qJJNqgxCnk"}>
-                    <FaDiscord className="size-24 hover:text-blue-500" />
-                </a>
-                <a href={"https://instagram.com/allen.cyber.inv"}>
-                    <BsInstagram className="size-24 hover:text-purple-400" />
-                </a>
-            </section>
+
+
 
         </main>
     );
