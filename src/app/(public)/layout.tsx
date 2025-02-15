@@ -14,7 +14,7 @@ export default function RootLayout({
             </div>
 
             {/* Main Content (Takes Remaining Space) */}
-            <main className="flex-grow flex justify-center items-center w-full">
+            <main className="flex-grow flex justify-center items-center w-full h-full">
                 {children}
             </main>
 

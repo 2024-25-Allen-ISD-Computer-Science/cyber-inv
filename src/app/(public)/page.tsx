@@ -14,38 +14,63 @@ import faq from '@/data/faq.json';
 import Link from "next/link";
 import BLUR1 from "~/BLUR1.svg"
 import BLUR2 from "~/BLUR2.svg"
-
+import GroupPhoto from "~/images/cybinv9.jpg"
 export default function Page() {
 
 
     return (
-<main className="w-full">
+        <main className="w-full">
             {/* Rest of the Page */}
-            <section className="w-full h-fit mb-10 md:h-[50vh] flex flex-col justify-center items-center px-6 md:px-24">
+            <section className="w-full h-full mb-10 md:h-[50vh] flex flex-col justify-center items-center px-6 md:px-24">
                 <Image src={BLUR1} height={500} width={500} alt="blur1" className="absolute right-1/2 w-full h-full -z-20  opacity-15 -rotate-14 " />
-                <div className="flex flex-col-reverse md:flex-row justify-between items-center md:w-2/3 h-full">
-                    {/* Text Section */}
-                    <div className="flex flex-col items-center space-y-4 text-center flex-grow">
-                        <h1 className="text-4xl font-bold">The Allen Cyber Invitational</h1>
-                        <p className="text-lg">Providing opportunities to those interested</p>
-                        <p className="text-sm">Brought to you by Allen CS-forum</p>
-                        <div className="flex space-x-4 mt-4">
-                            <Link href={"/login"}>
-                                <Button className="px-6 py-2">Log In</Button>
-                            </Link>
-                            <Link href={"/register"}>
-
-                                <Button className="px-6 py-2" variant={"secondary"}>Sign Up</Button>
-                            </Link>
-                        </div>
-                    </div>
-                    {/* Image Placeholder */}
-                    <div className="flex flex-col justify-center items-center text-center p-2">
+                <div className="flex flex-col md:flex-row justify-between items-center w-full h-full">
+                    <div className="flex flex-col justify-center items-center text-center p-2 w-full h-full">
                         <Car />
+                    </div>
+                    {/* Text Section */}
+                <div className="w-full flex flex-col items-center space-y-4 text-center flex-grow">
+                    <h1 className="text-4xl font-bold">The Allen Cyber Invitational</h1>
+                    <p className="text-lg">Providing opportunities to those interested</p>
+                    <p className="text-sm">Brought to you by Allen CS-forum</p>
+                    <div className="flex space-x-4 mt-4">
+                        <Link href={"/login"}>
+                            <Button className="px-6 py-2">Log In</Button>
+                        </Link>
+                        <Link href={"/register"}>
+
+                            <Button className="px-6 py-2" variant={"secondary"}>Sign Up</Button>
+                        </Link>
+                    </div>
+                </div>
+
+                    {/* Image Placeholder */}
+                </div>
+
+            </section>
+            <section className="w-full px-6 md:px-24 text-center md:text-left mb-10">
+                <div className="gap-x-5 flex flex-col md:flex-row items-center md:items-start bg-accent/40 p-6 rounded-lg shadow-lg w-full md:w-2/3 mx-auto">
+                    {/* Text Section */}
+                    <div className="md:w-1/2">
+                        <h2 className="text-2xl font-bold mb-3  md:text-left text-center">What is the Allen Cyber Invitational?</h2>
+                        <p className="text-md md:text-lg">
+                            An annual student-run cybersecurity competition for high school students in the DFW area.
+                            Test your skills in cryptography, hacking, and system security through fun and competitive challenges!
+                        </p>
+                    </div>
+
+                    {/* Image Section */}
+                    <div className="md:w-1/2 flex justify-center md:justify-end mt-6 md:mt-0">
+                        <Image src={GroupPhoto} width={500} alt="Group photo" className="rounded-lg" />
                     </div>
                 </div>
             </section>
-            <section className="w-full h-fit flex justify-center items-center" id="About">
+
+
+
+            <section className="w-full h-fit flex justify-center items-center" id="Comp Description">
+
+
+
                 <Image src={BLUR2} height={500} width={500} alt="blur1" className="absolute flex justify-self-end w-full h-full -z-20 overflow-clip opacity-35" />
 
                 <div className="bg-accent/40 border border-1 border-white/20 md:w-2/3 rounded-lg shadow-2xl h-full w-full">
