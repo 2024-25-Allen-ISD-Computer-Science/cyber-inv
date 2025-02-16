@@ -47,7 +47,7 @@ export default function Page() {
                 </div>
 
             </section>
-            <section className="w-full px-6 md:px-24 text-center md:text-left mb-10">
+            <section className="w-full px-6 text-center md:text-left mb-10">
                 <div className="gap-x-5 flex flex-col md:flex-row items-center md:items-start bg-accent/40 p-6 rounded-lg shadow-lg w-full md:w-2/3 mx-auto">
                     {/* Text Section */}
                     <div className="md:w-1/2">

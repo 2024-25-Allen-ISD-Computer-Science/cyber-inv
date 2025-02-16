@@ -20,7 +20,7 @@ export default function Car() {
   return (
     <div className="w-full flex justify-center items-center py-4">
       <Carousel
-        className="w-full max-w-4xl  overflow-hidden"
+        className="w-full max-w-7xl  overflow-hidden"
         plugins={[
           Autoplay({
             delay: 4000,
@@ -34,8 +34,8 @@ export default function Car() {
               <div className="w-full h-full relative">
                 <Image
                   src={src}
-                  height={200}
-                  width={700}
+                  height={100}
+                  width={900}
                   alt={`Carousel item ${index}`}
                   className="rounded-lg object-cover"
                   priority={index === 0}
