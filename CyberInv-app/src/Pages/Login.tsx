@@ -35,7 +35,7 @@ export default function LoginForm() {
   
     try {
       // Perform PocketBase authentication without storing authData
-      await pb.collection("player").authWithPassword(email, password);
+      await pb.collection("Accounts").authWithPassword(email, password);
   
       if (pb.authStore.model) {
         console.log("Logged in successfully");
