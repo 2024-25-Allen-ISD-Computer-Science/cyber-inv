@@ -19,4 +19,4 @@ export async function loginUser(email: string, password: string) {
         error: "Invalid email or password. Please try again.",
       };
     }
-  }
+  } 

@@ -1,5 +1,5 @@
 'use server';
-import { round } from '@/types';
+import { round } from '@/lib/types';
 
 let currentRound: round = {
     roundName: "No round ATM",
