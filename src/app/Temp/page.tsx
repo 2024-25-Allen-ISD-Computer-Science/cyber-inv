@@ -9,8 +9,8 @@ import { BsInstagram } from "react-icons/bs";
 import { pb } from '@/lib/pocketbase';
 import BLUR1 from '~/BLUR1.svg'
 import ico from '~/ico.svg'
-console.log(pb.authStore.isValid)
 export default function Tmp() {
+
 
     return (
         <main className="flex h-full w-full flex-col items-center overflow-x-hidden">

@@ -33,7 +33,10 @@ export async function middleware(request: NextRequest) {
 
   try {
     // get an up-to-date auth store state by verifying and refreshing the loaded auth model (if any)
-    pb.authStore.isValid && (await pb.collection('Accounts').authRefresh())
+    if (pb.authStore.isValid) {
+        await pb.collection('Accounts').authRefresh()
+      }
+      
     console.log('authstore is valid')
     // console.log('authstore:', pb.authStore)
   } catch (err) {
