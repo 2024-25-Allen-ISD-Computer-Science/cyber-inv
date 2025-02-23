@@ -6,7 +6,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FaDiscord } from "react-icons/fa";
 import { BsInstagram } from "react-icons/bs";
-import { pb } from '@/lib/pocketbase';
 import BLUR1 from '~/BLUR1.svg'
 import ico from '~/ico.svg'
 export default function Tmp() {
