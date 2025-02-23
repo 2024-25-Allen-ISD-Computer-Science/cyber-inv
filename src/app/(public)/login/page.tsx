@@ -11,10 +11,11 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { loginUser } from '@/api/Auth'; // Import the login function
-
+import { loginUser } from "./action"; // Import the login function
+import { useRouter } from 'next/navigation'
 export default function LoginPage() {
   // State management for email, password, and error message
+  const router = useRouter()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -34,7 +35,7 @@ export default function LoginPage() {
         // If login is successful, log the user data and redirect
 
         // Redirect to another page (e.g., dashboard)
-        window.location.href = "/Temp"; // Replace with your desired route
+        router.push('/Temp') // Replace with your desired route
       } else {
         // If login fails, display an error message
         setError(result.error || "An error occurred. Please try again.");

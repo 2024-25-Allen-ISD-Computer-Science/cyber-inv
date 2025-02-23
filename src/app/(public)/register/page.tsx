@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation"; // Import useRouter
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { signUpSolo,signUpTeam } from '@/api/Auth';
+import { signUpSolo,signUpTeam } from './action';
 
 export default function SignUpPage() {
     const [step, setStep] = useState("choice"); // "choice", "solo", "team"

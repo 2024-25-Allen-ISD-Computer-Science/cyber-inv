@@ -1,13 +1,15 @@
+
+
+"use client"
 import * as motion from 'framer-motion/client'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FaDiscord } from "react-icons/fa";
 import { BsInstagram } from "react-icons/bs";
-
 import BLUR1 from '~/BLUR1.svg'
 import ico from '~/ico.svg'
-
 export default function Tmp() {
+
 
     return (
         <main className="flex h-full w-full flex-col items-center overflow-x-hidden">
