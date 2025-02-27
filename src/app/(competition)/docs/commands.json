@@ -1,0 +1,16 @@
+[
+    {
+        "name": "echo (input: string)",
+        "desc": "display text passed onto terminal"
+    },
+
+    {
+        "name": "status (input: string)",
+        "desc": "returns current percent efficiency of either power or water based off inputted value"
+    },
+
+    {
+        "name": "repair (input: string)",
+        "desc": "increases efficiency of either power or water based off inputted value"
+    }
+]
