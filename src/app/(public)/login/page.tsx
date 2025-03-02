@@ -13,6 +13,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { loginUser } from "./action"; // Import the login function
 import { useRouter } from 'next/navigation'
+import { pb } from "@/lib/pocketbase";
+
 export default function LoginPage() {
   // State management for email, password, and error message
   const router = useRouter()
@@ -33,7 +35,7 @@ export default function LoginPage() {
 
       if (result.success) {
         // If login is successful, log the user data and redirect
-
+        
         // Redirect to another page (e.g., dashboard)
         router.push('/Temp') // Replace with your desired route
       } else {

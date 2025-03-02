@@ -3,10 +3,12 @@ import type { NextRequest } from 'next/server'
 import { pb } from './lib/pocketbase'
 // This function can be marked `async` if using `await` inside
 export async function middleware(request: NextRequest) {
+  pb.authStore.onChange((token, model) => {
+    document.cookie = pb.authStore.exportToCookie({ httpOnly: true });
+});
   // console.log('Document Cookie:', document?.cookie)
   const response = NextResponse.next()
   const request_cookie = request.cookies.get('pb_auth')
-
   if (request_cookie || '') {
     try {
       console.log('Loadinng cookie:', request_cookie)
@@ -23,7 +25,6 @@ export async function middleware(request: NextRequest) {
       // console.log('Model: ', pb.authStore)
     } catch (error) {
       console.log('Error Loading from cookie: ', error)
-      pb.authStore.clear()
       response.headers.set(
         'set-cookie',
         pb.authStore.exportToCookie({ httpOnly: false }),
@@ -38,6 +39,8 @@ export async function middleware(request: NextRequest) {
       }
       
     console.log('authstore is valid')
+    console.log(request_cookie?.value)
+
     // console.log('authstore:', pb.authStore)
   } catch (err) {
     console.log('Invalid authstore: ', err)
