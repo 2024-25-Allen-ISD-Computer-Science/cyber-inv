@@ -14,7 +14,7 @@ export async function signUpSolo(formData: FormData) {
   }
   const teamData = {
     TeamName: teamName,
-    Division: "None", // Default division
+    Division: "All", // Default division
     Score: 0, // Default score
     TeamMember: name, // Store member account IDs as a comma-separated string
     created: new Date().toISOString(),

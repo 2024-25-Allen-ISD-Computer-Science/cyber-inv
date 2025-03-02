@@ -1,20 +1,18 @@
 
 // import { ColumnDef } from "@tanstack/react-table";
-interface ChartDataPoint {
-  minute: string;
-  points: number;
+export interface leaderboard{
+  Division: "Gold" | "Platinum" | "All";
+  Score:number;
+  TeamName:string;
+  id:string;
 }
 export type Team = {
-  username: string[];
-  puzzleRoundPoint: number;
-  battleRoundPoint: number;
-  scenarioPoint: number;
-  totalPoints: number;
-  pointHistory: ChartDataPoint[];
-  teamName: string;
-  self: boolean;
-  score: number;
-  division: "Gold" | "Platinum";
+  id: string;          // Added id field which PocketBase always returns
+  username?: string; // Made optional since it might not be present in all responses
+  TeamName: string;    // PocketBase field name
+  self?: boolean;      // Made optional as it might be added client-side
+  Score: number;       // PocketBase field name matches case
+  division: "Gold" | "Platinum" | "All"; // Changed to lowercase to match your component
 };
 export interface User {
   username: string;
@@ -22,7 +20,7 @@ export interface User {
   battleRoundPoint: number;
   scenarioPoint: number;
   totalPoints: number;
-  pointHistory: ChartDataPoint[];
+
 }
 
 export interface Puzzle {
