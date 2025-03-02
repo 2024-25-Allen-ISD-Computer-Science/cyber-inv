@@ -6,6 +6,11 @@ export interface leaderboard{
   TeamName:string;
   id:string;
 }
+export interface podium{
+  Score:number;
+  TeamName:string;
+  id:string;
+}
 export type Team = {
   id: string;          // Added id field which PocketBase always returns
   username?: string; // Made optional since it might not be present in all responses
