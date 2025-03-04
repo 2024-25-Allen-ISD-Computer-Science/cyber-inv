@@ -37,7 +37,7 @@ export default function LoginPage() {
         // If login is successful, log the user data and redirect
         
         // Redirect to another page (e.g., dashboard)
-        router.push('/Temp') // Replace with your desired route
+        router.push('/dashboard') // Replace with your desired route
       } else {
         // If login fails, display an error message
         setError(result.error || "An error occurred. Please try again.");
