@@ -55,6 +55,7 @@ export default function Page() {
 
         return () => clearInterval(intervalId); // Cleanup interval on component unmount
     }, []);
+    vd
     useEffect(() => {
         async function fetchPuzzles() {
             setFetching(true);

@@ -1,12 +1,13 @@
 "use client";
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable';
-import { useEffect, useRef } from 'react';
+import { use, useEffect, useRef } from 'react';
 import Scenario from '@/components/assets/Scenario';
 import { Input } from '@/components/ui/input';
 import { redirect } from 'next/navigation'// TODO: Use Suspense
 import { getRound } from "../action";
 import React, {useState} from 'react';
 import { Container, Mouse } from 'lucide-react';
+import { string } from 'zod';
 
 <style>
 {`
@@ -23,32 +24,42 @@ import { Container, Mouse } from 'lucide-react';
 `}
 </style>
 
-export default function page() {
-    const [prevCmd, setprevCmd] = useState('')
-    const [inputValue, setInputValue] = useState('')
-    const [messages, setMessages] = useState([])
-    const [power, setPower] = useState(100)
-    const [water, setWater] = useState(100)
+    export default function page() {
+        const [prevCmd, setprevCmd] = useState('')
+        const [inputValue, setInputValue] = useState('')
+        const [messages, setMessages] = useState([])
+        const [power, setPower] = useState(100)
+        const [water, setWater] = useState(100)
 
-    const commands : FunctionLibrary = {
-        echo: (input: string) => setMessages([...messages, input + '\n' + input.substring(5, input.length)]),
-        help: (input: string) => setMessages([...messages, input + `\n insert some stuff here
-More info can be found in the docs page`]),
-        status: (input: string) => setMessages([...messages, input + '\n' + retrieveStatus(input.substring(7, input.length))]),
-        repair: (input: string) => setMessages([...messages, input + '\n' + repair(input.substring(7, input.length))])
-    }
+        const [visible, setVisible] = useState(true)
 
-    function retrieveStatus(text: string) {
-        if (text.toLowerCase() === 'power') {
-            return 'Power: ' + power + '%'
-        } else if (text.toLowerCase() === 'water') {
-            return 'Water: ' + water + '%'
-        } else if (text.toLowerCase() === 'all') {
-            return 'Power: ' + power + '% \n' + 'Water: ' + water + '%'
-        } else {
-            return 'Could not find status for: ' + text
+        const events = {
+            test:() => setVisible(false)
         }
-    }
+
+        const commands = {
+            echo: (input: string) => setMessages([...messages, input + '\n' + input.substring(5, input.length)]),
+            help: (input: string) => setMessages([...messages, input + `\n insert some stuff here
+    More info can be found in the docs page`]),
+            status: (input: string) => setMessages([...messages, input + '\n' + retrieveStatus(input.substring(7, input.length))]),
+            restore: () => {setTimeout(() => {setVisible(true); setMessages([...messages, '\n Status restored'])}, 2000)},
+            repair: (input: string) => setMessages([...messages, input + '\n' + repair(input.substring(7, input.length))]),
+        }
+
+        function retrieveStatus(text: string) {
+            if (!visible) {
+                return 'Error: Could not retrieve status'
+            }
+            if (text.toLowerCase() === 'power') {
+                return 'Power: ' + power + '%'
+            } else if (text.toLowerCase() === 'water') {
+                return 'Water: ' + water + '%'
+            } else if (text.toLowerCase() === 'all') {
+                return 'Power: ' + power + '% \n' + 'Water: ' + water + '%'
+            } else {
+                return 'Could not find status for: ' + text
+            }
+        }
 
     function repair(text: string) {
         if (text.toLowerCase() === 'power') {
@@ -78,6 +89,9 @@ More info can be found in the docs page`]),
             case inputValue === 'help':
                 commands.help(inputValue)
                 break
+            case inputValue === 'restore':
+                commands.restore()
+                break
             case inputValue.startsWith('status'):
                 commands.status(inputValue)
                 break
@@ -99,7 +113,8 @@ More info can be found in the docs page`]),
     };    
 
     const updateStatus = (status : number) => {
-        if (status > 80) {return 'rgba(0,255,0,1) 25%, rgba(0,255,0,0.25) 50%' 
+        if (status > 80) {
+            return 'rgba(0,255,0,1) 25%, rgba(0,255,0,0.25) 50%'
         } else if (status > 50) {
             return 'rgba(255,255,0,1) 25%,rgba(255,255,0,0.25) 50%'
         } else if (status > 0) {
@@ -112,6 +127,12 @@ More info can be found in the docs page`]),
 
             setPower((prevPower) => Math.max(prevPower - 1, 0))
             setWater((prevWater) => Math.max(prevWater - 1, 0))
+            
+            const randomEvent = Math.round(Math.random() * 100) / 100
+            
+            if (randomEvent <= .5) {
+                events.test()
+            }
 
         }, 1000);
 
@@ -148,16 +169,16 @@ More info can be found in the docs page`]),
                     <div className="flex flex-col h-full bg-background/60 backdrop-blur-md ">
                         <div className='flex grid grid-cols-1 border-2 w-full h-[15vh] items-center justify-center'>
                             <div className='flex items-center justify-center'>
-                            <div className='w-[5vw] h-[5vh]' style={{background: `radial-gradient(circle, ${updateStatus(power)}, 50%, transparent 0%)`, animation: 'pulse 2s infinite'}}/>
-                                <div>Power Status</div>
+                            <div className={`w-[5vw] h-[5vh] opacity-${visible ? '100' : '0'}`} style={{background: `radial-gradient(circle, ${updateStatus(power)}, transparent 0%)`, animation: visible ? 'pulse 2s infinite' : 'none'}}/>
+                                <div>{visible ? 'Power Status' : '⚠️ Error ⚠️'}</div>
                             </div>
 
                             <div className='flex items-center justify-center'>
-                                <div className='w-[5vw] h-[5vh]' style={{background: `radial-gradient(circle, ${updateStatus(water)}, transparent 0%)`, animation: 'pulse 2s infinite'}}/>
-                                <div>Water Status</div>
+                                <div className={`w-[5vw] h-[5vh] opacity-${visible ? '100' : '0'}`} style={{background: `radial-gradient(circle, ${updateStatus(water)}, transparent 0%)`, animation: visible ? 'pulse 2s infinite' : 'none'}}/>
+                                <div>{visible ? 'Water Status' : '⚠️ Error ⚠️'}</div>
                             </div>
                         </div>
-                        <div className="flex-grow flex w-full max-h-[65vh] p-2 overflow-y-scroll flex-col-reverse">
+                        <div className="flex-grow flex w-full max-h-[64vh] p-2 overflow-y-scroll flex-col-reverse">
                             <div className='grid grid-cols-1 w-full h-fit gap-3'>
                                 {messages.map((message, index) => (
                                     <div key={index} className="whitespace-pre-wrap break-words">
