@@ -143,7 +143,7 @@ import { string } from 'zod';
         async function checkRoundType() {
             const currentRound = await getRound();
             if (currentRound.roundType !== "scenario") {
-                //redirect('/dashboard');
+                redirect('/dashboard');
             }
         }
 
