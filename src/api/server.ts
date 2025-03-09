@@ -1,18 +1,16 @@
 'use server';
 import { round } from '@/lib/types';
-
+import { pb } from '@/lib/pocketbase';
 let currentRound: round = {
-    roundName: "No round ATM",
     roundEnd: new Date(),
-    roundType: "none",
-    roundDivision: "all"
+    roundType: "No round ATM",
+    roundDivision: "none"
 };
 
 const endRoundState: round = {
-    roundName: "No round ATM",
     roundEnd: new Date(),
-    roundType: "none",
-    roundDivision: "all"
+    roundType: "No round ATM",
+    roundDivision: "none"
 };
 
 // Push round

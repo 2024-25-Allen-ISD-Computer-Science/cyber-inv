@@ -3,7 +3,6 @@
 import { pb } from "@/lib/pocketbase"
 import { leaderboard,podium } from "@/lib/types"
 import { cookies } from 'next/headers'
-
 export async function getLeaderboard(): Promise<leaderboard[]> {
     const cookieStore = await cookies()
     const authCookie = cookieStore.get('pb_auth')
@@ -50,4 +49,4 @@ export async function getPodium(): Promise<podium[]> {
         console.error("Error fetching top 3 teams:", error);
         return [];
     }
-}
+  }

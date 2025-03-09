@@ -43,8 +43,7 @@ export interface Puzzle {
 }
 
 export interface round {
-  roundName: string;
   roundEnd: Date;
-  roundType: "puzzle" | "battle" | "scenario" | "none";
-  roundDivision: "gold" | "platinum" | "all";
+  roundType: "puzzle" | "battle" | "scenario" | "No round ATM";
+  roundDivision: "gold" | "platinum" | "none";
 }

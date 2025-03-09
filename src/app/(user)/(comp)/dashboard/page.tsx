@@ -6,6 +6,8 @@ import { Suspense } from "react";
 import Skel from "@/components/LeaderBoard/Skel"
 import Leaderboard from "@/components/LeaderBoard/board";
 import TeamPodium from "@/components/LeaderBoard/podium";
+import TeamPodiumSkeleton from "@/components/LeaderBoard/PodiumSkel";
+import Navbar from "@/components/Comp/Navbar";
 // const userCardData: User = await playerGraph()
 async function LeaderboardContainer() {
     const rankings = await getLeaderboard();
@@ -24,26 +26,22 @@ async function LeaderboardContainer() {
 export default function Dashboard() {
 
   return (
-    <main className="w-full h-full flex place-content-center justify-center">
-      <div className="mx-auto w-full max-w-screen-2xl flex flex-col ">
-        <Card className="">
-          <CardHeader>
+    <main className="w-full flex-grow flex place-content-center justify-center p-4">
+    <div className="mx-auto w-full max-w-screen-2xl flex flex-col">
+      <Card className="">
+        <CardHeader>
+          <Suspense fallback={<TeamPodiumSkeleton />}>
+            <PodiumContainer />
+          </Suspense>
+        </CardHeader>
+        <hr />
+        <CardContent className="p-2">
           <Suspense fallback={<Skel />}>
-                <PodiumContainer />
-              </Suspense>
-          </CardHeader>
-          <hr />
-          <CardContent className="">
-
-          <CardContent className="p-2" >
-            
-          <Suspense fallback={<Skel />}>
-                <LeaderboardContainer />
-              </Suspense>
-          </CardContent>
-          </CardContent>
-        </Card>
-      </div>
-    </main>
+            <LeaderboardContainer />
+          </Suspense>
+        </CardContent>
+      </Card>
+    </div>
+  </main>
   );
 }
