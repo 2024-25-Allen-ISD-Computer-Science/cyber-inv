@@ -29,17 +29,15 @@ export interface User {
 }
 
 export interface Puzzle {
+  id:string;
   puzzleName: string;
   topics: string[];
   puzzleDescription: string;
   pointValue: number;
   difficulty: 0 | 1 | 2 | 3;
-  authors: string[];
-  solves: number;
   linkToFiles: string;
   hints: string[];
-  teamSolved: boolean;
-  userSolved: boolean; // TODO: Some display for user-solved puzzles.
+  solved:boolean;
 }
 
 export interface round {
